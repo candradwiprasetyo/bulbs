@@ -1,0 +1,232 @@
+/* CSS Document */
+
+
+
+.navbar {
+	min-height:100px;
+	margin-bottom:0px;
+}
+.navbar-default {
+	background: #477cbd;
+	box-shadow:none;
+}
+
+.navbar-default .navbar-brand {
+	color:#fff;
+	height:100px;
+	line-height:100px;
+	margin-left:50px;
+}
+
+.navbar-default .navbar-brand:hover{
+	color:#fff;
+}
+.navbar-brand, .navbar-nav > li > a {
+	text-shadow:none;
+}
+
+.navbar-nav > li > a {
+	height: 100px;
+	line-height: 100px;
+}
+
+.navbar-collapse {
+	box-shadow: none;
+}
+
+.nav > li > a {
+	padding-left:20px;
+	padding-right:20px;
+	text-transform:uppercase;
+	font-size:16px;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color:#fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+	color:#fff;
+}
+
+.navbar-static-top {
+  border-width:0;
+  z-index:1000;
+}
+
+.navbar-default .navbar-nav > .active > a {
+	background:#477CBD;
+	box-shadow: none;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	background:#477CBD;
+	color:#fff;
+}
+
+.slider_dummy{
+	width:100%;
+	height:550px;
+	background:#ccc;
+}
+
+.slider_page{
+	background:#477cbd;
+	height:auto;
+}
+.login_page{
+	color:#fff;
+	font-weight:normal;
+	font-size:10px;
+	
+}
+
+.login page label{
+	font-weight:normal;
+}
+
+.button_creatives{
+	background:#2a5da8;
+	width:100%;
+	padding:10px 10px;
+	text-align:center;
+	color:#fff;
+	letter-spacing:2px;
+	font-weight:bold;
+	margin-bottom:20px;
+	font-size:12px;
+}
+
+.button_regular{
+	background:#bcbcbc;
+	width:100%;
+	padding:10px 10px;
+	text-align:center;
+	color:#fff;
+	letter-spacing:2px;
+	font-weight:bold;
+	font-size:12px;
+}
+
+.box{
+	padding-top:30px;
+}
+
+.form-control{
+	border-radius:0px;
+	border:none;
+}
+
+
+
+.button_signup{
+	width:100%;
+	background:#2a5da8;
+	border-radius:0px;
+	letter-spacing:2px;
+	font-weight:bold;
+	font-size:12px;
+	padding:10px 10px;
+}
+.button_signup:hover{
+	color:#fff;
+	background:#19488e;
+}
+
+.button_login_facebook{
+	width:100%;
+	background:#3d5a98;
+	border-radius:0px;
+	letter-spacing:2px;
+	font-weight:bold;
+	font-size:12px;
+	padding:10px 10px;
+}
+.button_login_facebook:hover{
+	color:#fff;
+	background:#294684;
+}
+
+
+.button_search{
+	width:100%;
+	background:#477cbd;
+	border-radius:0px;
+	letter-spacing:2px;
+	font-weight:bold;
+	font-size:12px;
+	padding:10px 15px;
+	color:#fff !important;
+}
+.button_search:hover{
+	color:#fff;
+	background:#294684;
+}
+.search_page{
+	background:#2a5da8;
+	padding-top:40px;
+	padding-bottom:20px;
+}
+
+.footer_page{
+	background:#2a5da8;
+	padding-top:40px;
+	padding-bottom:20px;
+}
+
+.search_quote{
+	text-transform:uppercase;
+	font-weight:bold;
+	letter-spacing:2px;
+	font-size:20px;
+	color:#fff;
+}
+
+.select_search{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+.box_content{
+	width:100%;
+	height:400px;
+	background:#2a5da8;
+	color:#fff;
+	text-align:center;
+	position:relative;
+}
+
+.box_content_half{
+	width:100%;
+	height:200px;
+	background:#6498d8;
+	color:#fff;
+	text-align:center;
+}
+
+.box_content_img{
+	width:100%;
+	height:100%;
+}
+
+.footer-copyright{
+	font-size:12px;
+	line-height:30px !important;
+	height:60px !important;
+}
+
+.footer-menu{
+	font-size:12px !important;
+	line-height:30px !important;
+	height:60px !important;
+}
+
+.footer-icon{
+	width:30px;
+	height:30px;
+	border-radius:50%;
+	background:#fff;
+	display:inline-block;
+	margin-top:15px;
+	margin-left:15px;
+}
