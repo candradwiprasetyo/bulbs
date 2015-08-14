@@ -13,34 +13,35 @@
         <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1200px; height: 700px;
             overflow: hidden;">
             <div>
+               
                 <img u=image src="<?= base_url(); ?>assets/images/slider/home/01.jpg" />
-                <div u="thumb">Do you notice it is draggable by mouse/finger?</div>
+                <div u="thumb">Verve Coffee Roasters by Manual Creative</div>
             </div>
             <div>
                 <img u=image src="<?= base_url(); ?>assets/images/slider/home/02.jpg" />
-                <div u="thumb">Did you drag by either horizontal or vertical?</div>
+                <div u="thumb">2Did you drag by either horizontal or vertical?</div>
             </div>
             <div>
                 <img u=image src="<?= base_url(); ?>assets/images/slider/home/02.jpg" />
-                <div u="thumb">Do you notice navigator responses when drag?</div>
+                <div u="thumb">3Do you notice navigator responses when drag?</div>
             </div>
             <div>
                 <img u=image src="<?= base_url(); ?>assets/images/slider/home/04.jpg" />
-                <div u="thumb">ddDo you notice arrow responses when click?</div>
+                <div u="thumb">4Do you notice arrow responses when click?</div>
             </div>
         </div>
         
         <!--#region Thumbnail Navigator Skin Begin -->
         <!-- Help: http://www.jssor.com/development/slider-with-thumbnail-navigator-jquery.html -->
         <!-- thumbnail navigator container -->
-        <div u="thumbnavigator" style="position: absolute; bottom: 0px; left: 0px; height:45px; width:600px;">
-            <div style="filter: alpha(opacity=40); opacity:0.4; position: absolute; display: block;
-                background-color: #000000; top: 0px; left: 0px; width: 100%; height: 100%;">
+        <div u="thumbnavigator" style="position: absolute; bottom: 0px; right: 0px; height:150px; width:1000px;">
+            <div style="filter: alpha(opacity=70); opacity:0.7;
+                background-color: #477CBD; top: 0px; right: 0px; width: 100%; height: 100%; ">
             </div>
             <!-- Thumbnail Item Skin Begin -->
             <div u="slides">
-                <div u="prototype" style="position: absolute; width: 600px; height: 45px; top: 0; left: 0;">
-                    <div u="thumbnailtemplate" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; font-family: verdana; font-weight: normal; color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></div>
+                <div u="prototype" style="position: absolute; width: 900px; height: 45px; top: 0; left: 0; ">
+                    <div u="thumbnailtemplate" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; text-transform:capitalize; font-size:32px !important; font-weight:bold; color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></div>
                 </div>
             </div>
             <!-- Thumbnail Item Skin End -->

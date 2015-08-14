@@ -1,4 +1,4 @@
-<div class="page_name">HOMEPAGE</div>
+<div class="page_name">LOGIN PAGE</div>
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
 <div class="navbar navbar-default navbar-static-top" role="navigation">

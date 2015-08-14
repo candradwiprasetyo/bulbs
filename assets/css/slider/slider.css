@@ -1,4 +1,11 @@
+.slider_desc{
+	height:100px;
+	width:100%;
+	background:#000;
+}
+
    .captionOrange, .captionBlack
+   
         {
             color: #fff;
             font-size: 20px;
@@ -69,7 +76,7 @@
                 width: 40px;
                 height: 40px;
                 cursor: pointer;
-                background: url(../../images/slider/a17.png) no-repeat;
+                background: url(../../images/slider/a21.png) no-repeat;
                 overflow: hidden;
             }
             .jssora05l { background-position: -10px -40px; }

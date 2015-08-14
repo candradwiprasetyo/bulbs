@@ -14,19 +14,20 @@
             overflow: hidden;">
             <div>
                 <img u=image src="<?= base_url(); ?>assets/images/slider/home/01.jpg" />
-                <div u="thumb">Do you notice it is draggable by mouse/finger?</div>
+                <div u="thumb">1Do you notice it is draggable by mouse/finger?</div>
+               
             </div>
             <div>
                 <img u=image src="<?= base_url(); ?>assets/images/slider/home/02.jpg" />
-                <div u="thumb">Did you drag by either horizontal or vertical?</div>
+                <div u="thumb">2Did you drag by either horizontal or vertical?</div>
             </div>
             <div>
                 <img u=image src="<?= base_url(); ?>assets/images/slider/home/02.jpg" />
-                <div u="thumb">Do you notice navigator responses when drag?</div>
+                <div u="thumb">3Do you notice navigator responses when drag?</div>
             </div>
             <div>
                 <img u=image src="<?= base_url(); ?>assets/images/slider/home/04.jpg" />
-                <div u="thumb">ddDo you notice arrow responses when click?</div>
+                <div u="thumb">4Do you notice arrow responses when click?</div>
             </div>
         </div>
         

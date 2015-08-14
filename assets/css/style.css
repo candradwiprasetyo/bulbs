@@ -1,7 +1,20 @@
 /* CSS Document */
 
+body
+{
+	background:#f2f2f2;
+}
 
-
+.page_name{
+	width:100%;
+	height:100px;
+	line-height:100px;
+	background:#333;
+	color:#fff;
+	text-align:center;
+	font-weight:bold;
+	font-size:24px;
+}
 .navbar {
 	min-height:100px;
 	margin-bottom:0px;
@@ -127,6 +140,7 @@
 	font-weight:bold;
 	font-size:12px;
 	padding:10px 10px;
+	color:#fff;
 }
 .button_signup:hover{
 	color:#fff;
@@ -141,6 +155,7 @@
 	font-weight:bold;
 	font-size:12px;
 	padding:10px 10px;
+	color:#fff;
 }
 .button_login_facebook:hover{
 	color:#fff;
@@ -229,4 +244,37 @@
 	display:inline-block;
 	margin-top:15px;
 	margin-left:15px;
+}
+
+.new_login_page{
+	color:#999;
+}
+
+.new_title{
+	width:100%;
+	text-align:center;
+	font-size:26px;
+	margin-bottom:20px;
+}
+.new_label{
+	font-size:11px;
+	font-weight:normal;
+}
+
+.circle_signup{
+	width:30px;
+	height:30px;
+	color:#fff;
+	background:#477cbd;
+	float:left;
+	padding:5px;
+	padding-left:10px;
+	border-radius:50%;
+	margin-right:10px;
+}
+
+.category_search{
+	background:#ddd;
+	padding-top:15px;
+	padding-bottom:15px;
 }
