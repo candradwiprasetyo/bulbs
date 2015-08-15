@@ -14,20 +14,20 @@
             overflow: hidden;">
             <div>
                
-                <img u=image src="<?= base_url(); ?>assets/images/slider_new/2.jpg" />
+                <img u=image src="<?= base_url(); ?>assets/images/project2.jpg" />
                 <div u="thumb">Verve Coffee Roasters by Manual Creative</div>
             </div>
             <div>
-                <img u=image src="<?= base_url(); ?>assets/images/slider_new/1.jpg" />
-                <div u="thumb">2Did you drag by either horizontal or vertical?</div>
+                <img u=image src="<?= base_url(); ?>assets/images/project.jpg" />
+                <div u="thumb">Verve Coffee Roasters by Manual Creative</div>
             </div>
             <div>
-                <img u=image src="<?= base_url(); ?>assets/images/slider_new/3.png" />
-                <div u="thumb">3Do you notice navigator responses when drag?</div>
+                <img u=image src="<?= base_url(); ?>assets/images/project3.jpg" />
+                <div u="thumb">Verve Coffee Roasters by Manual Creative</div>
             </div>
             <div>
-                <img u=image src="<?= base_url(); ?>assets/images/slider_new/4.jpg" />
-                <div u="thumb">4Do you notice arrow responses when click?</div>
+                <img u=image src="<?= base_url(); ?>assets/images/project4.jpg" />
+                <div u="thumb">Verve Coffee Roasters by Manual Creative</div>
             </div>
         </div>
         

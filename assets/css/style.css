@@ -11,9 +11,15 @@
 }
 
 @font-face {
-  font-family: 'MinionPro-Regular';
-  src:url('http://localhost/bulbs/assets/fonts/MinionPro-Regular.otf') format('opentype')
+  font-family: 'MinionProRegular';
+  src:url('http://localhost/bulbs/assets/fonts/MinionProRegular.ttf') format('truetype')
 }
+
+@font-face {
+  font-family: 'BrauerNeue-Regular';
+  src:url('http://localhost/bulbs/assets/fonts/BrauerNeue-Regular.otf') format('opentype')
+}
+
 
 body
 {
