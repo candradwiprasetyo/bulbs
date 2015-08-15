@@ -2,9 +2,11 @@
     
         <div class="col-md-3">
        	 	<div class="row">
-                <select name="i_type" size="1" class="form-control select_search category_search"/>
+                <select name="i_type" size="1" class="form-control select_search category_search" placeholder="test"/>
                      <option value="1">Concentration</option>
-                     <option value="2">-</option>       
+                     <option value="2">Graphic Design</option>    
+                      <option value="2">Photography</option>  
+                      <option value="2">Design Interior</option>            
                  </select> 
              </div> 
         </div>
@@ -12,7 +14,9 @@
        	 	<div class="row">
                 <select name="i_type" size="1" class="form-control select_search category_search"/>
                      <option value="1">Location</option>
-                     <option value="2">-</option>       
+                     <option value="2">Jakarta</option>       
+                     <option value="2">Bandung</option>       
+                     <option value="2">Surabaya</option>       
                  </select> 
              </div> 
         </div>
@@ -20,7 +24,10 @@
        	 	<div class="row">
                 <select name="i_type" size="1" class="form-control select_search category_search"/>
                      <option value="1">Sort By</option>
-                     <option value="2">-</option>       
+                     <option value="2">Feature</option>       
+                     <option value="2">Most Recommended</option>
+                     <option value="2">Most Resent</option>       
+                            
                  </select> 
              </div> 
         </div>

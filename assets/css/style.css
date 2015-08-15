@@ -3,6 +3,7 @@
 body
 {
 	background:#f2f2f2;
+	color:#888;
 }
 
 .page_name{
@@ -130,7 +131,21 @@ body
 	border:none;
 }
 
-
+.button_message{
+	width:100%;
+	background:#477cbd;
+	border-radius:0px;
+	letter-spacing:2px;
+	font-weight:bold;
+	font-size:12px;
+	padding:10px 10px;
+	color:#fff;
+	text-align:center;
+}
+.button_message:hover{
+	color:#fff;
+		
+}
 
 .button_signup{
 	width:100%;
@@ -277,4 +292,122 @@ body
 	background:#ddd;
 	padding-top:15px;
 	padding-bottom:15px;
+}
+
+.navbar_category{
+	width:100%;
+	background:#ddd;
+}
+
+.navbar_category_menu{
+	height:48px;
+	display:inline-block;
+	line-height:48px;
+	padding-left:30px;
+	padding-right:30px;
+	color:#666;
+}
+
+.circle_navbar{
+	width:30px;
+	height:30px;
+	background:#999;
+	border-radius:50%;
+	margin-top:35px;
+	color:#fff;
+	text-align:center;
+	line-height:30px;
+	font-size:11px;
+	display:inline-block;
+	
+}
+
+.star_icon{
+	margin-top:5px;
+	width:20px;
+	height:20px;
+	background:#999;
+	border-radius:50%;
+	color:#fff;
+	text-align:center;
+	line-height:30px;
+	font-size:11px;
+	display:inline-block;
+	background:url(../images/star.jpg) no-repeat;
+}
+
+.profile_left{
+	
+	width:100%;
+	
+	
+	float:right;
+}
+
+.profile_left_color1{
+	width:100%;
+	background:#e6e6e6;
+	float:right;
+}
+
+.profile_left_color2{
+	width:100%;
+	background:#f2f2f2;
+	float:right;
+}
+
+.profile_left_content{
+	padding-top:20px;
+	width:90%;
+	
+	float:right;
+}
+
+.profile_right{
+	
+	width:100%;
+	height:100%;
+	min-height:100%;
+	padding-top:30px;
+	line-height:25px;
+}
+
+.profile_page{
+	background:#fff;
+}
+
+.profile_nav{
+	margin-bottom:20px;
+}
+.profile_photo{
+	width:100%;
+}
+
+.profile_name{
+	font-size:32px;
+}
+
+.profile_location{
+	text-transform:uppercase;
+	font-size:18px;
+}
+
+.profile_description_title{
+	margin-top:20px;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+
+.profile_description_content{
+	line-height:25px;
+	margin-bottom:10px;
+}
+
+.profile_readmore{
+	font-size:16px;
+	font-weight:normal;
+	color:#36C;
+}
+.blue_text{
+	color:#06C;
 }
