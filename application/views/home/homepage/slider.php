@@ -41,7 +41,7 @@
             <!-- Thumbnail Item Skin Begin -->
             <div u="slides">
                 <div u="prototype" style="position: absolute; width: 900px; height: 45px; top: 0; left: 0; ">
-                    <div u="thumbnailtemplate" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; text-transform:capitalize; font-size:32px !important; font-weight:bold; color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></div>
+                    <div u="thumbnailtemplate" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; text-transform:capitalize; font-size:32px !important;  color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></div>
                 </div>
             </div>
             <!-- Thumbnail Item Skin End -->
