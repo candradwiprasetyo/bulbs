@@ -47,7 +47,6 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('user_id', $user_id[0]);
 			$this->session->set_userdata('user_type_id', $user_id[1]);
 			
-			$this->session->userdata('user_id');
 			header("Location: ../profile");
 			
 		}

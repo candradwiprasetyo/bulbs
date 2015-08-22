@@ -83,16 +83,23 @@
       
             <div style="padding-right:10px;">
             <?php
-                for($is=1;$is<=12;$is++){
+                $q_p  = mysql_query("select a.*, b.creative_wp_name
+									from projects a 
+									join creatives b on b.creative_id = a.creative_id
+									join users c on c.user_id = b.user_id
+									where c.user_id = '".$this->session->userdata('user_id')."' 
+									
+									order by project_id");
+				while($r_p = mysql_fetch_array($q_p)){ 
                 ?>
                     <div class="box-showcase2">
                         <div class="box-showcaseInner">
-                            <img src="<?= base_url(); ?>assets/images/showcase/<?= $is ?>.jpg" />
-                            <div class="titlebox-showcase">An old greenhouse</div>
+                            <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>.jpg" />
+                            <div class="titlebox-showcase"><?= $r_p['project_name'] ?></div>
                         </div>
                         <div class="box-showcaseDesc">
-                             <div class="box-showcaseDesc_name">Project Name Project Name Project Name Project Name Project Name</div>
-                            <div class="box-showcaseDesc_by">By Designer</div>
+                             <div class="box-showcaseDesc_name"><?= $r_p['project_description'] ?></div>
+                            <div class="box-showcaseDesc_by"><?= $r_p['creative_wp_name'] ?></div>
                         </div>
                     </div>
                 <?php

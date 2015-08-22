@@ -1,10 +1,5 @@
 
   
- 
- 
-  
-</div>
-  
 <div class="slider_page">
 <div class="row" style="margin-left:0px; margin-right:0px;">
     <div class="col-md-9" style="padding:0px; ">
@@ -117,7 +112,7 @@
                                             </div>
                                             <div class="col-md-6" style="padding:0px">
                                            <button class="btn btn-lg btn-default new_button_creatives  active" id="t_sign_up2" onclick="sign_up_type(3)">CREATIVES</button>
-                                            <input id="t_sign_up3" type="text" value="2" style="color:#000"/>
+                                           
                                             </div>
                                           </div>
                                           
@@ -127,7 +122,7 @@
                                         <div style="clear:both;"></div>
                                          <form action="<?=site_url('home/signup')?>" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
-                                        <input required type="text" name="i_first_name" class="form-control" placeholder="First Name" value="" title=""/>
+                                        <input required type="text" name="i_first_name" class="form-control" placeholder="First Name" value="" title=""/> <input id="t_sign_up3" name="t_sign_up3" type="hidden" value="2" style="color:#000"/>
                                         </div>
                                         <div class="form-group">
                                             <input required type="text" name="i_last_name" class="form-control" placeholder="Last Name" value="" title=""/>
@@ -152,7 +147,7 @@
                                              
                                              
                                          </div>
-                                         </form>
+                                        
                                          
                                          <div class="form-group">
                                             <input class="btn button_signup" type="submit" value="SIGN UP"/>
@@ -167,7 +162,7 @@
                                       	
                                       
                                         </div>
-                                      
+                                       </form>
                                         
  										
                                         <div style="clear:both;"></div>

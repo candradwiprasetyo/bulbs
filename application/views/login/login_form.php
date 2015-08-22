@@ -36,9 +36,8 @@
                                         </div>
                                       	
                                         
-                                        
+                                        <form action="<?=site_url('login/submit_login')?>" method="post" enctype="multipart/form-data">
                                         <div class="row">
-                                         <form action="<?=site_url('login/submit_login')?>" method="post" enctype="multipart/form-data"><div class="col-md-12">
                                             <div class="col-md-6">
                                                     <div class="form-group">
                                                     <input required type="text" name="i_username" class="form-control" placeholder="Username" value="" title=""/>

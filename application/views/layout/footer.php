@@ -1,7 +1,7 @@
-
+</div>
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
-<div class="navbar navbar-default navbar-static-top" role="navigation" style="height:60px !important; min-height:60px !important; background:#2a5da8 !important">
+<div class="navbar navbar-default navbar-static-top" role="navigation" style="height:60px !important; min-height:60px !important; background:#2a5da8 !important; font-family:'Roboto-Regular'">
       
         <div class="navbar-header">
           <a class="navbar-brand footer-copyright" href="<?=site_url('')?>">COPYRIGHT 2015 8BULBS. ALL RIGHTS RESERVED</a>
@@ -9,7 +9,7 @@
         <div class="navbar-collapse collapse " style="float:right">
          
          <ul class="nav navbar-nav ">
-            <li><a href="<?=site_url('primary_policy')?>" class="footer-menu">Privacy Policy</a></li>
+            <li><a href="<?=site_url('privacy_policy')?>" class="footer-menu">Privacy Policy</a></li>
             <li><a href="<?=site_url('terms_of_use')?>" class="footer-menu">Terms of use</a></li>
             <li><a href="<?=site_url('about_us')?>" class="footer-menu">About us</a></li>
             
@@ -23,17 +23,16 @@
 <div class="col-md-3" style="padding:0px;">
 	<div class="navbar navbar-default navbar-static-top" role="navigation" style="background:#477cbd; height:60px !important; min-height:60px !important;">
      
-         <a href="#"><div class="footer-icon" style="margin-left:30px;"></div></a>
-         <a href="#"><div class="footer-icon"></div></a>
-         <a href="#"><div class="footer-icon"></div></a>
-         <a href="#"><div class="footer-icon"></div></a>
+         <a href="#"><div class="footer-icon" style="margin-left:30px;">FB</div></a>
+         <a href="#"><div class="footer-icon">TW</div></a>
+         <a href="#"><div class="footer-icon">IG</div></a>
+         <a href="#"><div class="footer-icon">BE</div></a>
      
     </div>
 </div>
 </div>
 
 <div style="clear:both;"></div>
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

@@ -19,7 +19,7 @@
                 	<div class="row">
                     <div class="col-md-4"> 
                     <div class="form-group">
-                	<select name="i_type" size="1" class="form-control select_search"/>
+                	<select name="i_type" size="1" class="form-control select_search new_select"/>
                                              <option value="1">Concentration</option>
                                            <option value="2">-</option>       
                                            </select>  
@@ -29,7 +29,7 @@
                     
                 	<div class="col-md-4"> 
                      <div class="form-group">
-                	<select name="i_type" size="1" class="form-control select_search"/>
+                	<select name="i_type" size="1" class="form-control select_search new_select"/>
                                              <option value="1">Location</option>
                                            <option value="2">-</option>       
                                            </select>  

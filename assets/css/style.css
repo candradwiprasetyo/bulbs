@@ -33,6 +33,9 @@ body
 	color:#888;
 }
 
+.main_content{
+	min-height:700px;
+}
 .page_name{
 	width:100%;
 	height:100px;
@@ -317,8 +320,12 @@ body
 	border-radius:50%;
 	background:#fff;
 	display:inline-block;
+	line-height:30px;
+	text-align:center;
 	margin-top:15px;
 	margin-left:15px;
+	font-size:12px;
+	font-weight:bold;
 }
 
 .new_login_page{
@@ -568,9 +575,12 @@ body
 	background:#e6e6e6;
 	font-size:16px;
 	font-weight:bold;
-	color:#000;
+	color:#36C;
 }
 
+new_select{
+	-webkit-appearance:none !important;
+}
 
 /* - ---------------------------- showcase new ------------------------------------ */
 

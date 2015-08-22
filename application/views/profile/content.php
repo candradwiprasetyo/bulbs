@@ -1,3 +1,4 @@
+
 <div class="profile_page">
 <div class="row" style="margin-left:0px; margin-right:0px;">
     <div class="col-md-9" style="padding:0px; ">
@@ -19,7 +20,7 @@
                        <div class="form-group">
                              <div class="col-md-12" >
                              	<div class="row">
-                                   <img src="<?= base_url(); ?>assets/images/profile_photo.jpg" class="profile_photo" />
+                                   <img src="<?= base_url(); ?>assets/images/profile/<?= $data_creatives['creative_img']?>" class="profile_photo" />
                                 </div>
                              </div>
                         </div>
@@ -45,21 +46,15 @@
                    		<div class="form-group">
                              <div class="col-md-12" >
                              	
-                                   <div class="profile_name">Aldo Fellix Studio</div>
-                                   <div class="profile_location">JAKARTA - INDONESIA</div>
+                                   <div class="profile_name"><?= $data_creatives['creative_wp_name']?></div>
+                                   <div class="profile_location"><?= $data_creatives['location_name']?></div>
                                    <div class="profile_description_title">Description</div>
                                    <div class="profile_description_content">
-                                   		Aldo Felix Studio is a consultancy ore di culpa nonem. Cuptaque pelita veribusam
-                                        volorrum vollam, nam id unturit, vid eatio. Lore milit voluptat arum
-                                        re lam quate volum quiatis et arum harioreris a dolume remperi simet re,
-                                        net lametur re mosandem int pro con eaquodipsus volor atum fuga. Otatet
-                                        quaepel igentia nitas maionse quatqui ducidi doluptatio vel id etur maiores
-                                        exerero rescipsandam am ra quat. Alistiis dolupta tecupta tiuntotatiae
-                                        nonse doloris moluptatus magnia delen pro con.
+                                   		<?= $data_creatives['creative_wp_description']?>
                                    </div>
                                    <div class="profile_readmore">Read More</div>
                                    
-                                   
+                                   <br />
                                
                              </div>
                         </div>
@@ -76,25 +71,42 @@
       			<div class="form-group">
                              <div class="col-md-12" >
                              	
+                                <div class="row">
+                                 <div class="col-md-6" >
                                    <div class="profile_name">Projects</div>
-                                   
+                                  </div> 
+                                  
+                                  <div class="col-md-6" style="text-align:right;">
+                                   <a href="<?= site_url('project/add'); ?>" class="btn btn-primary">Add New</a>
+                                  </div> 
+                                  </div>
+                                  
                              </div>
                         </div>
       
             <div style="padding-right:10px;">
-            <?php
-                for($is=1;$is<=12;$is++){
+              <?php
+                $q_p  = mysql_query("select a.*, b.creative_wp_name
+									from projects a 
+									join creatives b on b.creative_id = a.creative_id
+									join users c on c.user_id = b.user_id
+									where c.user_id = '".$this->session->userdata('user_id')."' 
+									
+									order by project_id");
+				while($r_p = mysql_fetch_array($q_p)){ 
                 ?>
+                <a href="<?=site_url('project/view/'.$r_p['project_id'])?>">
                     <div class="box-showcase2">
                         <div class="box-showcaseInner">
-                            <img src="<?= base_url(); ?>assets/images/showcase/<?= $is ?>.jpg" />
-                            <div class="titlebox-showcase">An old greenhouse</div>
+                            <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" />
+                            <div class="titlebox-showcase"><?= $r_p['project_name'] ?></div>
                         </div>
                         <div class="box-showcaseDesc">
-                             <div class="box-showcaseDesc_name">Project Name Project Name Project Name Project Name Project Name</div>
-                            <div class="box-showcaseDesc_by">By Designer</div>
+                             <div class="box-showcaseDesc_name"><?= $r_p['project_name'] ?></div>
+                            <div class="box-showcaseDesc_by"><?= $r_p['creative_wp_name'] ?></div>
                         </div>
                     </div>
+                    </a>
                 <?php
                 }
                 ?>  
@@ -102,6 +114,7 @@
             </div>
            
             <div style="clear:both;"></div>
+            <br />
                 
         	</div>
         </div>
@@ -197,7 +210,7 @@
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span class="blue_text">Login to view</span>
+                    <span class="blue_text"><?= $data_creatives['creative_website']?></span>
                  </div>
              </div>
         </div>
@@ -212,7 +225,7 @@
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span class="blue_text">Login to view</span>
+                    <span class="blue_text"><?= $data_creatives['creative_phone']?></span>
                  </div>
              </div>
         </div>

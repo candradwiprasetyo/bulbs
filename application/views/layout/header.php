@@ -29,7 +29,6 @@
 
   <body role="document">
   
-  
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -48,7 +47,7 @@
          
          <ul class="nav navbar-nav">
             <li class="active"><a href="<?=site_url('showcase')?>">Showcase</a></li>
-            <li><a href="<?=site_url('creatives')?>">creatives</a></li>
+            <li><a href="<?=site_url('creative')?>">creatives</a></li>
             <li><a href="<?=site_url('news')?>">News</a></li>
             <li><a href="<?=site_url('workshop')?>">Workshop</a></li>
             
@@ -61,16 +60,29 @@
 
 <div class="col-md-3" style="padding:0px;">
 	<div class="navbar navbar-default navbar-static-top" role="navigation" style="background:#2a5da8">
-     
+     	
+        <?php
+		if($this->session->userdata('user_id')){
+        $data_user = $this->access->get_data_user($this->session->userdata('user_id'));
+		?>
+        <ul class="nav navbar-nav">
+            <li><a href="<?=site_url('profile/?id='.$this->session->userdata('user_id'))?>">Hi, <?= $data_user['user_name'] ?></a></li>
+            <li><a href="<?=site_url('profile/logout')?>">Logout</a></li>
+          </ul>
+        <?php
+		}else{
+		?>
          <ul class="nav navbar-nav">
-            <li><a href="<?=site_url('login/login')?>">Login / Sign up</a></li>
-            
+            <li><a href="<?=site_url('login')?>">Login / Sign up</a></li>
             
           </ul>
-     
+     	<?php
+		}
+		?>
     </div>
 </div>
 </div>
 
+<div class="main_content">
 
    

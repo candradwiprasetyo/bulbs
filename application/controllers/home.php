@@ -5,7 +5,8 @@ class Home extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('home_model');
-		
+		$this->load->library('access');
+		$this->load->library('session');
 	}
  	
 	public function index() {
@@ -33,7 +34,7 @@ class Home extends CI_Controller {
 		$id = $this->home_model->create($data);
 		
 		if($data['user_type_id'] == 2){
-			header("Location: ../complete_account?user_id=$id");
+			header("Location: ../register?user_id=$id");
 		}else{
 			header("Location: ../account");
 		}
