@@ -20,6 +20,11 @@
   src:url('http://localhost/bulbs/assets/fonts/BrauerNeue-Regular.otf') format('opentype')
 }
 
+@font-face {
+  font-family: 'new_title';
+  src:url('http://localhost/bulbs/assets/fonts/BraueNRj.otf') format('opentype')
+}
+
 
 body
 {
@@ -41,6 +46,7 @@ body
 .navbar {
 	min-height:100px;
 	margin-bottom:0px;
+	font-family: 'new_title';
 }
 .navbar-default {
 	background: #477cbd;
@@ -133,6 +139,22 @@ body
 	font-size:12px;
 }
 
+.new_button_creatives{
+	background:#2a5da8;
+	width:100%;
+	padding:10px 10px;
+	text-align:center;
+	color:#fff;
+	letter-spacing:2px;
+	font-weight:bold;
+	margin-bottom:20px;
+	font-size:12px;
+	border-radius:0px !important;
+	border:none !important;
+}
+
+
+
 .button_regular{
 	background:#bcbcbc;
 	width:100%;
@@ -142,6 +164,22 @@ body
 	letter-spacing:2px;
 	font-weight:bold;
 	font-size:12px;
+	
+}
+
+.new_button_regular{
+	background:#bcbcbc;
+	width:100%;
+	padding:10px 10px;
+	text-align:center;
+	color:#333;
+	letter-spacing:2px;
+	font-weight:bold;
+	font-size:12px;
+	border-radius:0px !important;
+	border:none !important;
+	margin-bottom:20px;
+	text-shadow:none;
 }
 
 .box{
@@ -292,6 +330,7 @@ body
 	text-align:center;
 	font-size:26px;
 	margin-bottom:20px;
+	font-family: 'new_title';
 }
 .new_label{
 	font-size:11px;
@@ -407,6 +446,7 @@ body
 
 .profile_name{
 	font-size:32px;
+	font-family: 'new_title';
 }
 
 .profile_location{
@@ -520,3 +560,130 @@ body
 	text-transform:uppercase;
 	font-size:12px;
 }
+
+.message{
+	width:100%;
+	text-align:center;
+	padding:20px;
+	background:#e6e6e6;
+	font-size:16px;
+	font-weight:bold;
+	color:#000;
+}
+
+
+/* - ---------------------------- showcase new ------------------------------------ */
+
+    .box-showcase {
+       float: left;
+       position: relative;
+       width: 25%;
+       padding-bottom: 18%;
+       margin-bottom: 100px;
+       cursor: pointer;
+    }
+
+    .box-showcase2 {
+       float: left;
+       position: relative;
+       width: 33.3%;
+       padding-bottom: 25%;
+       margin-bottom: 100px;
+       cursor: pointer;
+    }
+    .box-showcaseInner {
+       position: absolute;
+       left: 10px;
+       right: 10px;
+       top: 10px;
+       bottom: 10px;
+       overflow: hidden;
+       background: #ccc;
+    }
+
+    .box-showcaseDesc {
+       position: absolute;
+       left: 10px;
+       right: 10px;
+       overflow: hidden;
+       background: #fff;
+       top: 100%;
+       margin-top: -10px;
+       height: 100px;
+       padding: 10px;
+    }
+
+    .box-showcaseDesc_name{
+        height: 80px;
+        color: #2980b9;
+    }
+
+    .box-showcaseDesc_by{
+        height: 20px;
+        bottom: 0px;
+        position: absolute;
+        font-size: 11px;
+        font-weight: bold;
+        color: #000;
+    }
+
+    .box-showcaseInner img {
+       width: 100%;
+        opacity: 1;
+	   transition: opacity .25s ease-in-out;
+	   -moz-transition: opacity .25s ease-in-out;
+	   -webkit-transition: opacity .25s ease-in-out;
+    }
+
+    .box-showcaseInner img:hover {
+    	opacity: 0.5;
+    }
+
+    .box-showcaseInner .titlebox-showcase {
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       right: 0;
+       margin-bottom: -50px;
+       background: #000;
+       background: rgba(0, 0, 0, 0.5);
+       color: #FFF;
+       padding: 10px;
+       text-align: center;
+       -webkit-transition: all 0.3s ease-out;
+       -moz-transition: all 0.3s ease-out;
+       -o-transition: all 0.3s ease-out;
+       transition: all 0.3s ease-out;
+    }
+
+    /*.box-showcaseInner:hover .titlebox-showcase, .box-showcaseInner.touchFocus .titlebox-showcase {
+       margin-bottom: 0;
+    }*/
+    @media only screen and (max-width : 480px) {
+       /* Smartphone view: 1 tile */
+       .box-showcase {
+          width: 100%;
+          padding-bottom: 75%;
+       }
+    }
+    @media only screen and (max-width : 800px) and (min-width : 481px) {
+       /* Tablet view: 2 tiles */
+       .box-showcase {
+          width: 50%;
+          padding-bottom: 35%;
+       }
+    }
+    @media only screen and (max-width : 1050px) and (min-width : 801px) {
+       /* Small desktop / ipad view: 3 tiles */
+       .box-showcase {
+          width: 33.3%;
+          padding-bottom: 25%;
+       }
+    }
+    @media only screen and (max-width : 1290px) and (min-width : 1051px) {
+       /* Medium desktop: 4 tiles */
+       .box-showcase {
+          width: 25%;
+          padding-bottom: 18%;
+       }
+    }

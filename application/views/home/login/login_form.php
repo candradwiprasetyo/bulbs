@@ -69,7 +69,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <div class="circle_signup">?</div>Join 8Bulbs as
+                                                        <div class="circle_signup">?</div><div style="padding-top:5px;">Join 8Bulbs as</div>
                                                     </div>
                                                 </div>
                                         

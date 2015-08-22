@@ -1,4 +1,4 @@
-<div class="page_name">HOMEPAGE</div>
+
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -32,7 +32,7 @@
 	<div class="navbar navbar-default navbar-static-top" role="navigation" style="background:#2a5da8">
      
          <ul class="nav navbar-nav">
-            <li><a href="#">Login / Sign up</a></li>
+            <li><a href="<?=site_url('login/login')?>">Login / Sign up</a></li>
             
             
           </ul>

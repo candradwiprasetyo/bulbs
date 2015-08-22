@@ -1,3 +1,10 @@
+
+  
+ 
+ 
+  
+</div>
+  
 <div class="slider_page">
 <div class="row" style="margin-left:0px; margin-right:0px;">
     <div class="col-md-9" style="padding:0px; ">
@@ -41,7 +48,7 @@
             <!-- Thumbnail Item Skin Begin -->
             <div u="slides">
                 <div u="prototype" style="position: absolute; width: 900px; height: 45px; top: 0; left: 0; ">
-                    <div u="thumbnailtemplate" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; text-transform:capitalize; font-size:32px !important;  color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></div>
+                    <div u="thumbnailtemplate" style="font-family:'new_title'; position: absolute; width: 100%; height: 100%; top: 0; left: 0; text-transform:capitalize; font-size:34px !important;  color:#fff; line-height: 45px; padding-left:10px;"></div>
                 </div>
             </div>
             <!-- Thumbnail Item Skin End -->
@@ -71,6 +78,16 @@
         <!-- Trigger -->
         <script>
             jssor_sliderb_starter('sliderb_container');
+			
+			function sign_up_type(type) {
+				
+				if(type==2){
+					document.getElementById("t_sign_up3").value = "2";
+				}else{
+					document.getElementById("t_sign_up3").value = "3";
+				}
+			}
+			
         </script>
     </div>
         
@@ -81,7 +98,7 @@
     	
     	<div class="col-md-10">
         	<div class="login_page">
-            <form action="" method="post" enctype="multipart/form-data">
+           
             
              <div class="box box-cokelat">
                                 
@@ -93,30 +110,36 @@
                                         <div class="col-md-12">
                                         
                                          <div class="form-group">
-                                           	<div class="col-md-6" style="padding:0px">
-                                            	<a href="#" style="text-decoration:none;"><div class="button_creatives">CREATIVES</div></a>
+                                         <div class="btn-toggle"> 
+                                         	<div class="col-md-6" style="padding:0px">
+                                            
+                                            <button class="btn btn-lg btn-primary new_button_creatives" id="t_sign_up1" onclick="sign_up_type(2)">REGULAR</button>
                                             </div>
                                             <div class="col-md-6" style="padding:0px">
-                                            	<a href="#" style="text-decoration:none;"><div class="button_regular">REGULAR</div></a>
+                                           <button class="btn btn-lg btn-default new_button_creatives  active" id="t_sign_up2" onclick="sign_up_type(3)">CREATIVES</button>
+                                            <input id="t_sign_up3" type="text" value="2" style="color:#000"/>
                                             </div>
+                                          </div>
+                                          
                                         </div>
                                       	
                                         
                                         <div style="clear:both;"></div>
+                                         <form action="<?=site_url('home/signup')?>" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
-                                            <input required type="text" name="i_name" class="form-control" placeholder="First Name" value="" title=""/>
+                                        <input required type="text" name="i_first_name" class="form-control" placeholder="First Name" value="" title=""/>
                                         </div>
                                         <div class="form-group">
-                                            <input required type="text" name="i_name" class="form-control" placeholder="Last Name" value="" title=""/>
+                                            <input required type="text" name="i_last_name" class="form-control" placeholder="Last Name" value="" title=""/>
                                         </div>
                                          <div class="form-group">
-                                            <input required type="text" name="i_name" class="form-control" placeholder="Email Address" value="" title=""/>
+                                            <input required type="email" name="i_email" class="form-control" placeholder="Email Address" value="" title=""/>
                                         </div>
                                          <div class="form-group">
-                                            <input required type="text" name="i_name" class="form-control" placeholder="Username" value="" title=""/>
+                                            <input required type="text" name="i_username" class="form-control" placeholder="Username" value="" title=""/>
                                         </div>
                                          <div class="form-group">
-                                            <input required type="text" name="i_name" class="form-control" placeholder="Password" value="" title=""/>
+                                            <input required type="password" name="i_password" class="form-control" placeholder="Password" value="" title=""/>
                                         </div>
                                         
                                          <div class="form-group">
@@ -124,11 +147,12 @@
                                           
                                               <label>
                                                 <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
-                                                Subscrive to Bulbs Newsletter</label>
+                                                Subscribe to Bulbs Newsletter</label>
                                               
                                              
                                              
                                          </div>
+                                         </form>
                                          
                                          <div class="form-group">
                                             <input class="btn button_signup" type="submit" value="SIGN UP"/>
@@ -153,7 +177,7 @@
                                  
                             
                             </div><!-- /.box -->
-            </form>
+           
         </div>
         
         </div>

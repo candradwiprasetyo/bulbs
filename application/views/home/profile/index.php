@@ -81,70 +81,25 @@
                              </div>
                         </div>
       
-   
-<div class="grid" style="text-align:left !important"> <div class="portfoliocontent">
-				<?php
-                for($i=1;$i<=12;$i++){
-					$nama_por = array(
-								'',
-								'Amanah Fashion',
-								'Amanah Fashion',
-								'Elkabumi Caraka Daya',
-								'Internet Taqwa',
-								'POIN Online Purchase Order Inventory Online',
-								'Sapar',
-								'AIA Insurance',
-								'Wimbi Store',
-								'Daun Pandan Catering',
-								'BPM',
-								'Prima Mandiri Trans',
-								'Agenda Kota'
-								);
-					$ket_por = array(
-								'',
-								'Online Store',
-								'Online Store',
-								'Company Profile',
-								'Portal Website',
-								'Purchase Order Inventory Online Purchase Order Inventory Online',
-								'Portal Website',
-								'Event Management',
-								'Online Store',
-								'Restaurant and Catering Website',
-								'Portal Website',
-								'Truck Management',
-								'Portal Website'
-								);
-				?>
-              	
-				<figure class="effect-milo <?php if($i > 10){ echo " webdesign"; }else if($i > 5){ echo " webdevelopment"; }else{ echo " desktopapp"; }?>" style="width:30% !important">
-				<a  class="fancybox" href="<?= base_url(); ?>assets/images/showcase/<?= $i ?>.jpg" data-fancybox-group="gallery"  title="Lorem ipsum dolor sit amet"><img src="<?= base_url(); ?>assets/images/showcase/<?= $i ?>.jpg" alt="img<?= $i ?>"/>
-					<figcaption>
-						
-                        <div class="portofolio_putih">
-                        <div class="portofolio_putih_title"><?= "Project Name Lorem Ipsum
-Line 2 of Project Name" ?></div>
-                       
-                        
-                        <div class="portofolio_kiri">by Designer Name</div>
-                       
-                       
-						</div>
-                        <span class="figure_date">13 Nov 2014</span>
-						<p class="portofolio_icon">
-                   
-                        </p>
-						
-					</figcaption>	   
-          	</a>
-				</figure>           
+            <div style="padding-right:10px;">
+            <?php
+                for($is=1;$is<=12;$is++){
+                ?>
+                    <div class="box-showcase2">
+                        <div class="box-showcaseInner">
+                            <img src="<?= base_url(); ?>assets/images/showcase/<?= $is ?>.jpg" />
+                            <div class="titlebox-showcase">An old greenhouse</div>
+                        </div>
+                        <div class="box-showcaseDesc">
+                             <div class="box-showcaseDesc_name">Project Name Project Name Project Name Project Name Project Name</div>
+                            <div class="box-showcaseDesc_by">By Designer</div>
+                        </div>
+                    </div>
                 <?php
-				}
-			   ?>
-			</div>
-        </div>
+                }
+                ?>  
             
-        
+            </div>
            
             <div style="clear:both;"></div>
                 
@@ -250,7 +205,7 @@ Line 2 of Project Name" ?></div>
         <div class="form-group" style="margin-bottom:30px;">
         	<div class="row">
                 <div class="col-md-12" >
-                	<div ><strong>Phone to</strong></div>
+                	<div ><strong>Phone</strong></div>
                     
                  </div>
              </div>

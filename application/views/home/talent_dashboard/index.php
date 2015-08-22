@@ -27,6 +27,7 @@
 
 
 <div style="clear:both"></div>
+<div class="project_desc">
 <br />
 
 <section class="portfolio" id="portfolio">
@@ -99,4 +100,5 @@ Line 2 of Project Name" ?></div>
             </div>
         </div>
             </section>
+        </div>
             <div style="clear:both;"></div>
