@@ -108,10 +108,10 @@
                                          <div class="btn-toggle"> 
                                          	<div class="col-md-6" style="padding:0px">
                                             
-                                            <button class="btn btn-lg btn-primary new_button_creatives" id="t_sign_up1" onclick="sign_up_type(2)">REGULAR</button>
+                                            <button class="btn btn-lg btn-primary new_button_creatives" id="t_sign_up1" onclick="sign_up_type(2)">CREATIVES</button>
                                             </div>
                                             <div class="col-md-6" style="padding:0px">
-                                           <button class="btn btn-lg btn-default new_button_creatives  active" id="t_sign_up2" onclick="sign_up_type(3)">CREATIVES</button>
+                                           <button class="btn btn-lg btn-default new_button_creatives  active" id="t_sign_up2" onclick="sign_up_type(3)">REGULAR</button>
                                            
                                             </div>
                                           </div>

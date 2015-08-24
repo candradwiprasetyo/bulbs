@@ -56,10 +56,18 @@
 									order by project_id");
 				while($r_p = mysql_fetch_array($q_p)){ 
                 ?>
+                 <?php
+                        $data_image = getimagesize(base_url()."assets/images/project/".$r_p['project_img']);
+						$width = $data_image[0];
+						$height = $data_image[1];
+						
+						
+						$img_class = ($width <= $height) ? "img_class" : "img_class2";
+						?>
                 <a href="<?=site_url('project/view/'.$r_p['project_id'])?>">
-                    <div class="box-showcase2">
+                    <div class="box-showcase">
                         <div class="box-showcaseInner">
-                            <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" />
+                            <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="<?= $img_class?>" />
                             <div class="titlebox-showcase"><?= $r_p['project_name'] ?></div>
                         </div>
                         <div class="box-showcaseDesc">

@@ -27,9 +27,23 @@
 <div class="col-md-12" style="padding:0px;" >
    <?php
    $ic = 1;
-   $q_c = mysql_query("select a.*, b.location_name from creatives a
+   $where = '';
+   if(isset($_GET['location_id'])){
+   	$where .= "where a.location_id = '".$_GET['location_id']."'";
+   }
+   if(isset($_GET['pc_id'])){
+	   $where .= " and d.pc_id = '".$_GET['pc_id']."'";
+   }
+   
+   //echo $where;
+   $q_c = mysql_query("select a.*, b.location_name 
+   						from creatives a
    						join locations b on b.location_id = a.location_id 
-   						order by creative_id
+						join projects c on c.creative_id = a.creative_id
+						join project_detail_categories d on d.project_id = c.project_id  
+						$where
+						group by a.creative_id
+   						order by a.creative_id 
    			");
    while($r_c = mysql_fetch_array($q_c)){
    ?>
@@ -46,7 +60,7 @@
                         </div>
                         <div class="col-md-5">
                            
-                                <div class="following_name"><?= $r_c['creative_wp_name'] ?></div>
+                                <div class="following_name"><a href="<?=site_url('profile_view/?id='.$r_c['user_id'])?>"><?= $r_c['creative_wp_name'] ?></a></div>
                                 <div class="following_location" style="margin-bottom:10px;"><?= $r_c['location_name'] ?></div>
                                 <div class="blue_text"><input class="btn button_signup" type="submit" value="FOLLOWING" style="width:120px;"/></div>
                                
@@ -63,7 +77,7 @@
 						while($r_p = mysql_fetch_array($q_p)){ 
 						?>
                             <div class="col-md-4">
-                            	<img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="project_view_photo">
+                            	<a href="<?=site_url('project/view/'.$r_p['project_id'])?>"><img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="project_view_photo_right"></a>
                            	</div>
                           <?php
 						}

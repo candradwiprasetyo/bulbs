@@ -9,7 +9,7 @@
                        <div class="form-group">
                              <div class="col-md-12" >
                              	<div class="row">
-                                  	<div class="profile_nav"><?= $data['nav'] ?></div>
+                                  	<!--<div class="profile_nav"><?= $data['nav'] ?></div>-->
                                   </div>
                              </div>
                         </div>
@@ -52,7 +52,7 @@
                                    <div class="profile_description_content">
                                    		<?= $data_creatives['creative_wp_description']?>
                                    </div>
-                                   <div class="profile_readmore">Read More</div>
+                                   <!--<div class="profile_readmore">Read More</div>-->
                                    
                                    <br />
                                

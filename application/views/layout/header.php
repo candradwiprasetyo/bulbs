@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
+	<link href="<?= base_url('assets/images/favicon.ico') ?>" type="image/x-icon" rel="shortcut icon">
     <title><?= $data['title'] ?></title>
 
     <!-- Bootstrap core CSS -->
@@ -20,11 +19,14 @@
     <link href="<?= base_url('assets/css/showcase/component.css') ?>" rel="stylesheet">
     <!-- slider -->
     <link href="<?= base_url('assets/css/slider/slider.css') ?>" rel="stylesheet">
-  	<script type="text/javascript" src="<?= base_url('assets/js/slider/jquery-1.9.1.min.js') ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/js/slider/jssor.js') ?>"></script>
+    <!-- select -->
+    <link href="<?= base_url('assets/css/select/bootstrap-select.css') ?>" rel="stylesheet" type="text/css" >
+ 
+ 	 <script type="text/javascript" src="<?= base_url('assets/js/slider/jssor.js') ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/slider/jssor.slider.js') ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/slider/slider.js') ?>"></script>
-    
+   	
+     
   </head>
 
   <body role="document">

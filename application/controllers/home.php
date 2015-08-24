@@ -23,7 +23,7 @@ class Home extends CI_Controller {
 	
 	public function signup() {
 		 
-		$data['user_type_id']	 				= $this->input->post('t_sign_up3');;
+		$data['user_type_id']	 				= $this->input->post('t_sign_up3');
 		$data['user_first_name'] 				= $this->input->post('i_first_name');
 		$data['user_last_name'] 				= $this->input->post('i_last_name');
 		$data['user_email'] 					= $this->input->post('i_email');
@@ -36,7 +36,16 @@ class Home extends CI_Controller {
 		if($data['user_type_id'] == 2){
 			header("Location: ../register?user_id=$id");
 		}else{
-			header("Location: ../account");
+			header("Location: ../register?user_id=$id");
+			//header("Location: ../account");
 		}
  	}
+	
+	public function search(){
+		$location_id = $this->input->post('i_location_id');
+		$pc_id = $this->input->post('i_pc_id');
+		
+		redirect("creative?location_id=$location_id&pc_id=$pc_id");
+		
+	}
 }

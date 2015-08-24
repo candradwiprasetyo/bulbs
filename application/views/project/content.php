@@ -64,13 +64,13 @@
                 </div>
 				
                 <div style="clear:both; height:30px;"></div>
-				
+				<!--
                 <div class="img_add_image">
                     <div class="img_add_image_content">
                    <input type="file" name="i_detail_img" id="i_detail_img" />
                     </div>
                  </div>
-                 
+                 -->
                  
                  <br />
                  <button type="submit" class="btn btn-primary">SAVE</button>

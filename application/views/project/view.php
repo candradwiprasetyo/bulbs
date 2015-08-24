@@ -15,11 +15,12 @@
                                 <div class="profile_description_content">
                                                   <?= $data_project['project_description']?>
                                 </div>
+                                <a href="javascript: history.back()" class="btn btn-primary">Back</a>
                         </div>
 
                         <div class="col-md-3">
                             <div class="profile_name">&nbsp;</div>
-                            <div class="profile_location">Published on <?= $data_project['project_date']?></div>
+                            <div class="profile_location">Published on <?= $this->access->format_date($data_project['project_date']);?></div>
                             <div class="profile_description_title">Project Concentrations</div>
                             <div class="profile_description_content">
                             <?php
@@ -125,7 +126,7 @@
 									from projects a 
 									join creatives b on b.creative_id = a.creative_id
 									join users c on c.user_id = b.user_id
-									where c.user_id = '".$this->session->userdata('user_id')."' 
+									where c.user_id = '".$data_project['user_id']."' 
 									
 									order by project_id");
 				while($r_p = mysql_fetch_array($q_p)){ 

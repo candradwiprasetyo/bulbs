@@ -46,9 +46,9 @@ class Project extends CI_Controller {
 		
 		$configUpload['upload_path']    = './assets/images/project/';                 #the folder placed in the root of project
 		$configUpload['allowed_types']  = 'gif|jpg|png|bmp|jpeg';       #allowed types description
-		$configUpload['max_size']	= '100';
-		$configUpload['max_width'] = '1024';
-		$configUpload['max_height'] = '768';                       #max height
+		$configUpload['max_size']	= '';
+		$configUpload['max_width'] = '';
+		$configUpload['max_height'] = '';                       #max height
 		$configUpload['encrypt_name']   = false;   
 		$configUpload['file_name'] 		= $new_name;                      	#encrypt name of the uploaded file
 		$this->load->library('upload', $configUpload);                  #init the upload class

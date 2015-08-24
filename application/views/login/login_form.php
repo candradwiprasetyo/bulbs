@@ -1,4 +1,14 @@
-
+ <script>	
+			function sign_up_type(type) {
+				
+				if(type==2){
+					document.getElementById("t_sign_up3").value = "2";
+				}else{
+					document.getElementById("t_sign_up3").value = "3";
+				}
+			}
+			
+        </script>
 <div class="row" style="margin-left:0px; margin-right:0px;">
  
 
@@ -93,28 +103,31 @@
                                                 </div>
                                         
                                                 <div class="row">
+                                                <div class="btn-toggle"> 
                                                     <div class="col-md-3">
+                                                     
                                                         <div class="form-group">
-                                                           <a href="#" style="text-decoration:none;"><div class="button_creatives">CREATIVES</div></a>
+                                                       <button class="btn btn-lg btn-primary new_button_creatives" id="t_sign_up1" onclick="sign_up_type(2)">CREATIVES</button>
                                                         </div>
                                                     </div>
                                                 
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                           <a href="#" style="text-decoration:none;"><div class="button_regular">REGULAR</div></a>
+                                                           <button class="btn btn-lg btn-default new_button_creatives  active" id="t_sign_up2" onclick="sign_up_type(3)">REGULAR</button>
                                                         </div>
+                                                    </div>
                                                     </div>
                                                 </div>
-                                                
+                                                  <form action="<?=site_url('home/signup')?>" method="post" enctype="multipart/form-data">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                             <div class="form-group">
-                                                            <input required type="text" name="i_name" class="form-control" placeholder="First Name" value="" title=""/>
+                                                            <input required type="text" name="i_first_name" class="form-control" placeholder="First Name" value="" title=""/><input id="t_sign_up3" name="t_sign_up3" type="hidden" value="2" style="color:#000"/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <input required type="password" name="i_name" class="form-control" placeholder="Last Name" value="" title=""/>
+                                                            <input required type="text" name="i_last_name" class="form-control" placeholder="Last Name" value="" title=""/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -122,7 +135,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                             <div class="form-group">
-                                                            <input required type="text" name="i_name" class="form-control" placeholder="Email Address" value="" title=""/>
+                                                            <input required type="text" name="i_email" class="form-control" placeholder="Email Address" value="" title=""/>
                                                             </div>
                                                     </div>
                                                 </div>
@@ -130,12 +143,12 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                             <div class="form-group">
-                                                            <input required type="text" name="i_name" class="form-control" placeholder="Username" value="" title=""/>
+                                                            <input required type="text" name="i_username" class="form-control" placeholder="Username" value="" title=""/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <input required type="password" name="i_name" class="form-control" placeholder="Password" value="" title=""/>
+                                                            <input required type="password" name="i_password" class="form-control" placeholder="Password" value="" title=""/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -163,6 +176,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                </form>
                                         	 <div class="new_label" >
                                             By Signing Up, you agree to our Terms & Conditions and that you have read our Privacy Policy. </div>
 
@@ -170,7 +184,9 @@
                                             
                                             
                                             </div>
+                                            
                                         </div>
+                                       
                                       
                                         <div style="clear:both;"></div>
                                      

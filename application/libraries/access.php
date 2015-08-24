@@ -21,7 +21,12 @@ class Access
 		);
 	}
 	
-	
+	public function format_date($date){
+		$phpdate = strtotime( $date );
+		$new_date = date( 'd M Y', $phpdate );
+		
+		return $new_date;
+	}
 }
 
 # -- end file -- #

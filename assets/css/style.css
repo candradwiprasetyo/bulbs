@@ -25,6 +25,9 @@
   src:url('http://localhost/bulbs/assets/fonts/BraueNRj.otf') format('opentype')
 }
 
+a:hover{
+	text-decoration:none;
+}
 
 body
 {
@@ -117,7 +120,7 @@ body
 
 .slider_page{
 	background:#477cbd;
-	height:auto;
+	
 }
 .login_page{
 	color:#fff;
@@ -501,7 +504,13 @@ body
 }
 
 .project_view_photo{
-	width: 100%;
+	width:100%;
+	
+}
+
+.project_view_photo_right
+{
+	width:100px;
 }
 
 .project_view_profile_page{
@@ -631,13 +640,42 @@ new_select{
     .box-showcaseDesc_by{
         height: 20px;
         bottom: 0px;
-        position: absolute;
+		float:left;
         font-size: 11px;
         font-weight: bold;
         color: #000;
+		position:absolute;
     }
-
-    .box-showcaseInner img {
+	
+	 .box-showcaseDesc_date{
+        height: 20px;
+        bottom: 0px;
+		float:right;
+        font-size: 11px;
+        font-weight: bold;
+        color: #999;
+		position:absolute;
+		text-align:right;
+		right:10px;
+    }
+		
+	.box-showcaseInner img {
+       width: 100%;
+        opacity: 1;
+	   transition: opacity .25s ease-in-out;
+	   -moz-transition: opacity .25s ease-in-out;
+	   -webkit-transition: opacity .25s ease-in-out;
+    }
+	
+    .box-showcaseInner .img_class {
+       width: 100%;
+        opacity: 1;
+	   transition: opacity .25s ease-in-out;
+	   -moz-transition: opacity .25s ease-in-out;
+	   -webkit-transition: opacity .25s ease-in-out;
+    }
+	
+	 .box-showcaseInner .img_class2 {
        width: 100%;
         opacity: 1;
 	   transition: opacity .25s ease-in-out;

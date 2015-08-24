@@ -9,10 +9,15 @@
         <div class="navbar-collapse collapse " style="float:right">
          
          <ul class="nav navbar-nav ">
-            <li><a href="<?=site_url('privacy_policy')?>" class="footer-menu">Privacy Policy</a></li>
-            <li><a href="<?=site_url('terms_of_use')?>" class="footer-menu">Terms of use</a></li>
-            <li><a href="<?=site_url('about_us')?>" class="footer-menu">About us</a></li>
-            
+         <?php
+         $q_fm = mysql_query("select * from pages");
+		 while($r_fm = mysql_fetch_array($q_fm)){
+		 ?>
+            <li><a href="<?=site_url("footer_menu/?id=".$r_fm['page_id'])?>" class="footer-menu"><?= $r_fm['page_name']?></a></li>
+          
+            <?php
+		 	}
+			?>
           </ul>
           
         </div><!--/.nav-collapse -->
@@ -40,6 +45,9 @@
     <script src="<?= base_url('assets/js/jquery.js') ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/docs.min.js') ?>"></script>
+    <!-- select -->
+	<script type="text/javascript" src="<?= base_url('assets/js/select/bootstrap-select.js') ?>"></script>
+   
     
     <!-- slider -->
     
