@@ -2,7 +2,7 @@
     
         <div class="col-md-3">
        	 	<div class="row">
-                <select name="i_type" size="1" class="form-control select_search category_search new_select" placeholder="test"/>
+                <select name="i_type" size="1" class="form-control select_search category_search new_select" placeholder="test" style="-webkit-appearance:none !important;"/>
                      <option value="1">Concentration</option>
                      <option value="2">Graphic Design</option>    
                       <option value="2">Photography</option>  
@@ -12,7 +12,7 @@
         </div>
         <div class="col-md-3">
        	 	<div class="row">
-                <select name="i_type" size="1" class="form-control select_search category_search new_select"/>
+                <select name="i_type" size="1" class="form-control select_search category_search new_select" style="-webkit-appearance:none !important;"/>
                      <option value="1">Location</option>
                      <option value="2">Jakarta</option>       
                      <option value="2">Bandung</option>       
@@ -22,7 +22,7 @@
         </div>
          <div class="col-md-3">
        	 	<div class="row">
-                <select name="i_type" size="1" class="form-control select_search category_search new_select"/>
+                <select name="i_type" size="1" class="form-control select_search category_search new_select" style="-webkit-appearance:none !important;"/>
                      <option value="1">Sort By</option>
                      <option value="2">Feature</option>       
                      <option value="2">Most Recommended</option>
@@ -68,7 +68,7 @@
                     <div class="box-showcase">
                         <div class="box-showcaseInner">
                             <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="<?= $img_class?>" />
-                            <div class="titlebox-showcase"><?= $r_p['project_name'] ?></div>
+                           
                         </div>
                         <div class="box-showcaseDesc">
                              <div class="box-showcaseDesc_name"><?= $r_p['project_name'] ?></div>

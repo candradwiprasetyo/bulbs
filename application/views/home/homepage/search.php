@@ -20,7 +20,7 @@
                 	<div class="row">
                     <div class="col-md-4"> 
                     <div class="form-group">
-                	<select name="i_location_id" size="1" class="form-control select_search new_select" required/>
+                	<select name="i_location_id" size="1" class="form-control select_search new_select" required style="-webkit-appearance:none !important;"/>
                                              <option value="">Concentration</option>
                                              <?php
 											$q_pc  = mysql_query("select * from project_categories order by pc_id");
@@ -36,7 +36,7 @@
                     
                 	<div class="col-md-4"> 
                      <div class="form-group">
-                	<select name="i_pc_id" size="1" class="form-control select_search new_select" required/>
+                	<select name="i_pc_id" size="1" class="form-control select_search new_select" required style="-webkit-appearance:none !important;"/>
                                              <option value="">Location</option>
                                             <?php
 											$q_l  = mysql_query("select * from locations order by location_id");

@@ -703,6 +703,13 @@ new_select{
        -o-transition: all 0.3s ease-out;
        transition: all 0.3s ease-out;
     }
+	
+	.box-showcase_gallery {
+       position: relative;
+       width: 100%;
+       padding-bottom: 65%;
+       cursor: pointer;
+    }
 
     /*.box-showcaseInner:hover .titlebox-showcase, .box-showcaseInner.touchFocus .titlebox-showcase {
        margin-bottom: 0;

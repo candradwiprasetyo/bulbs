@@ -16,7 +16,21 @@ class Home extends CI_Controller {
 		
  		$this->load->view('layout/header', array('data' => $data));
 		//$this->load->view('layout/header', $data);
-		$this->load->view('home/index');
+		$data_img['id1'] = "project/view/".$this->home_model->get_project_id(1, 1);
+		$data_img['id2'] = "project/view/".$this->home_model->get_project_id(2, 2);
+		$data_img['id3'] = "project/view/".$this->home_model->get_project_id(3, 3);
+		$data_img['id4'] = "project/view/".$this->home_model->get_project_id(4, 4);
+		$data_img['id5'] = "project/view/".$this->home_model->get_project_id(5, 5);
+		$data_img['id6'] = "project/view/".$this->home_model->get_project_id(6, 6);
+		
+		$data_img['no1'] = $this->home_model->get_project_img(1, 1);
+		$data_img['no2'] = $this->home_model->get_project_img(2, 2);
+		$data_img['no3'] = $this->home_model->get_project_img(3, 3);
+		$data_img['no4'] = $this->home_model->get_project_img(4, 4);
+		$data_img['no5'] = $this->home_model->get_project_img(5, 5);
+		$data_img['no6'] = $this->home_model->get_project_img(6, 6);
+		
+		$this->load->view('home/index', $data_img);
 		$this->load->view('layout/footer'); 
 		
  	}
