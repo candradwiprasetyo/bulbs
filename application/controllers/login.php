@@ -11,7 +11,11 @@ class Login extends CI_Controller {
 	public function index() {
 		
 		if($this->session->userdata('logged') == 1){
-			header("Location: ../profile");
+			if($this->session->userdata('user_type_id') == 2){
+				redirect('profile');
+			}else{
+				redirect('account_regular');
+			}
 		}else{
 			$data['title'] = "Login";
 			
@@ -47,8 +51,11 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('user_id', $user_id[0]);
 			$this->session->set_userdata('user_type_id', $user_id[1]);
 			
-			header("Location: ../profile");
-			
+			if($user_id[1] == 2){
+				header("Location: ../profile");
+			}else{
+				header("Location: ../showcase_regular/");
+			}
 		}
 	
 		

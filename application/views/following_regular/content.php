@@ -34,7 +34,7 @@ if($this->session->userdata('user_type_id') == 2){
                  <div class="navbar_category">
                  	<div class="container">
                     	<div class="navbar_category_menu">&nbsp;</div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('showcase_regular'); ?>">Activity</a></div>
+                         <div class="navbar_category_menu"><a href="<?=site_url('showcase_regular'); ?>">Activity</a></div>
                         <div class="navbar_category_menu"><a href="<?=site_url('account_regular'); ?>">Profile</a></div>
                         <div class="navbar_category_menu"><a href="<?=site_url('following_regular'); ?>">Following</a></div>
                      
@@ -58,21 +58,14 @@ if($this->session->userdata('user_type_id') == 2){
 <div class="col-md-12" style="padding:0px;" >
    <?php
    $ic = 1;
-   $where = '';
-   if(isset($_GET['location_id'])){
-   	$where .= "where a.location_id = '".$_GET['location_id']."'";
-   }
-   if(isset($_GET['pc_id'])){
-	   $where .= " and d.pc_id = '".$_GET['pc_id']."'";
-   }
-   
-   //echo $where;
+  
    $q_c = mysql_query("select a.*, b.location_name 
    						from creatives a
    						join locations b on b.location_id = a.location_id 
 						join projects c on c.creative_id = a.creative_id
 						join project_detail_categories d on d.project_id = c.project_id  
-						$where
+						join tr_following e on e.user_creative_id = a.creative_id
+						where e.user_regular_id = '".$this->session->userdata('user_id')."'
 						group by a.creative_id
    						order by a.creative_id 
    			");
@@ -100,14 +93,14 @@ if($this->session->userdata('user_type_id') == 2){
                                 <div class="following_name"><a href="<?=site_url('profile_view/?id='.$r_c['user_id'])?>"><?= $r_c['creative_wp_name'] ?></a></div>
                                 <div class="following_location" style="margin-bottom:10px;"><?= $r_c['location_name'] ?></div>
                                 <div class="blue_text">
-                                <?php
+                               <?php
                                 if($this->session->userdata('user_type_id') == 3){
 									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$r_c['creative_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
 									$r_tr_f = mysql_fetch_array($q_tr_f);
 									if($r_tr_f['jumlah'] > 0){
 									?>
                                    <button class="btn btn-success" style="border-radius:0px;" disabled>Following</button>
-                                   <a href="<?=site_url('creative/unfollowing/'.$r_c['creative_id']); ?>" class="btn btn-danger" style="width:120px; border-radius:0px;">Unfollow</a>
+                                   <a href="<?=site_url('following_regular/unfollowing/'.$r_c['creative_id']); ?>" class="btn btn-danger" style="width:120px; border-radius:0px;">Unfollow</a>
                                 <?php
 								}else{
                                 ?>

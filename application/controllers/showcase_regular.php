@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Footer_menu extends CI_Controller {
+class Showcase_regular extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
-		$this->load->model('footer_menu_model');
+		$this->load->model('showcase_regular_model');
 		$this->load->library('session');
 		$this->load->library('access');
 	}
@@ -12,28 +12,23 @@ class Footer_menu extends CI_Controller {
 	public function index() {
 		
 			
+			$data['title'] = "Activity";
 			$data['nav']	= "Explore -> Interior Design -> Aldo Felix Studio";
 			$list['list'] = "test";
 			
-			$id = $_GET['id'];
-			
-			$data_menu = array();
-			$result = $this->footer_menu_model->read_id($id);
+			$data_creatives = array();
+			$result = $this->showcase_regular_model->read_id($this->session->userdata('user_id'));
 			
 			if($result){
-				$data_menu  = $result;
-				$data['title'] = $data_menu['page_name'];
+				$data_creatives  = $result;
 			}
 			
 			$this->load->view('layout/header', array('list' => $list, 'data' => $data));
-			$this->load->view('footer_menu/content', array('data_menu' => $data_menu));
+			$this->load->view('showcase_regular/content', array('data_creatives' => $data_creatives));
 			$this->load->view('layout/footer'); 
 		
 		
  	}
 	
-	public function logout(){
-		$this->session->sess_destroy();
-		redirect('home');
-	}
+
 }

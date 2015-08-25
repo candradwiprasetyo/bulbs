@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	<link href="<?= base_url('assets/images/favicon.ico') ?>" type="image/x-icon" rel="shortcut icon">
-    <title><?= $data['title'] ?></title>
+    <title><?= ucwords($data['title']). " ~ One-stop platform for hiring creative arts talent in Indonesia | 8bulbs.co" ?></title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?= base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">

@@ -50,15 +50,15 @@ class Home extends CI_Controller {
 		if($data['user_type_id'] == 2){
 			header("Location: ../register?user_id=$id");
 		}else{
-			header("Location: ../register?user_id=$id");
-			//header("Location: ../account");
+			//header("Location: ../register?user_id=$id");
+			header("Location: ../account_regular/sign_up/$id");
 		}
  	}
 	
 	public function search(){
 		$location_id = $this->input->post('i_location_id');
 		$pc_id = $this->input->post('i_pc_id');
-		
+		//echo $location_id."-".$pc_id;
 		redirect("creative?location_id=$location_id&pc_id=$pc_id");
 		
 	}

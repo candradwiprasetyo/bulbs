@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class creative extends CI_Controller {
+class Creative extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
@@ -12,7 +12,7 @@ class creative extends CI_Controller {
 	public function index() {
 		
 			
-			$data['title'] = "creative";
+			$data['title'] = "creatives";
 			$data['nav']	= "Explore -> Interior Design -> Aldo Felix Studio";
 			$list['list'] = "test";
 			
@@ -32,5 +32,21 @@ class creative extends CI_Controller {
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect('home');
+	}
+	
+	public function following($creative_id){
+		$data['user_creative_id']	 			= $creative_id;
+		$data['user_regular_id'] 				= $this->session->userdata('user_id');
+		
+		$this->creative_model->following($data);
+		
+		redirect('creative');
+	}
+	
+	public function unfollowing($creative_id){
+		
+		$this->creative_model->unfollowing($creative_id, $this->session->userdata('user_id'));
+		
+		redirect('creative');
 	}
 }

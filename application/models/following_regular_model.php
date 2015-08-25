@@ -1,6 +1,6 @@
 <?php
 
-class Creative_model extends CI_Model{
+class Following_regular_model extends CI_Model{
 
 	function __construct(){
 		$this->load->database();
@@ -40,5 +40,4 @@ class Creative_model extends CI_Model{
 		$this->db->trans_complete();
 		
 	}
-	
 }

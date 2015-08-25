@@ -87,14 +87,38 @@
                     <div class="col-md-12">
                         <div class="col-md-1">
                             <div class="row">
-                            <img src="<?= base_url(); ?>assets/images/profile/<?= $data_project['creative_img']?>" class="project_view_photo">
+                          <?php
+                           $img_class_profile = $this->access->get_valid_profile_img(base_url()."assets/images/profile/".$data_project['creative_img']);
+						  ?>
+                             <div class="box-showcase_profile">
+                                <div class="box-showcaseInnerProfile">
+                            		<img src="<?= base_url(); ?>assets/images/profile/<?= $data_project['creative_img']?>" class="<?= $img_class_profile ?>">
+                                </div>
+                            </div>
                             </div>
                         </div>
                         <div class="col-md-11">
                            
-                                <div class="profile_name"><?= $data_project['creative_wp_name']?></div>
-                                <div class="profile_location" style="margin-bottom:10px;"><?= $data_project['location_name']?></div>
-                                <div class="blue_text"><a href="<?=site_url('profile/?id='.$data_project['user_id']); ?>">View Full Profile </a></div>
+                                 <div class="following_name"><a href="<?=site_url('profile_view/?id='.$data_project['user_id'])?>"><?= $data_project['creative_wp_name'] ?></a></div>
+                                <div class="following_location" style="margin-bottom:10px;"><?= $data_project['location_name'] ?></div>
+                                <div class="blue_text">
+                                 <?php
+                                if($this->session->userdata('user_type_id') == 3){
+									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$data_project['creative_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
+									$r_tr_f = mysql_fetch_array($q_tr_f);
+									if($r_tr_f['jumlah'] > 0){
+									?>
+                                   <button class="btn btn-success" style="border-radius:0px;" disabled>Following</button>
+                                   <a href="<?=site_url('project/unfollowing/'.$data_project['creative_id'].'/'.$data_project['project_id']); ?>" class="btn btn-danger" style="width:120px; border-radius:0px;">Unfollow</a>
+                                <?php
+								}else{
+                                ?>
+								<a href="<?=site_url('project/following/'.$data_project['creative_id'].'/'.$data_project['project_id']); ?>" class="btn btn-primary" style="width:120px; border-radius:0px;">FOLLOW</a>
+                                <?php
+								}
+								}
+								?>
+                                </div>
                                
                         </div>
 

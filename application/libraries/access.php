@@ -7,7 +7,7 @@ class Access
 	{
 		$ci = & get_instance();
 		$sql = "select a.*, b.creative_id from users a 
-				join creatives b on b.user_id = a.user_id 
+				left join creatives b on b.user_id = a.user_id 
 				where a.user_id = $id
 				";
 		

@@ -20,23 +20,27 @@
                        <div class="form-group">
                              <div class="col-md-12" >
                              	<div class="row">
-                                   <img src="<?= base_url(); ?>assets/images/profile/<?= $data_creatives['creative_img']?>" class="profile_photo" />
+                                   
+                                   <?php
+                                    $img_class_profile = $this->access->get_valid_profile_img(base_url()."assets/images/profile/".$data_creatives['creative_img']);
+								   ?>
+                                   <div class="box-showcase_profile">
+                                        <div class="box-showcaseInnerProfile">
+                                            <img src="<?= base_url(); ?>assets/images/profile/<?= $data_creatives['creative_img'] ?>" class="<?= $img_class_profile ?>">
+                                        </div>
+                                    </div>
                                 </div>
                              </div>
                         </div>
                        
                         <div class="form-group">
                         	
-                                 <div class="col-md-6" >
+                                 <div class="col-md-12" >
                                      <div class="row">
-                                           <a href="#" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
+                                           <a href="<?= site_url('profile/edit'); ?>" style="text-decoration:none;"><div class="button_creatives">EDIT PROFILE</div></a>
                                      </div>
                                  </div>
-                                 <div class="col-md-6" >
-                                 	<div class="row">
-                                       <a href="#" style="text-decoration:none;"><div class="button_message">MESSAGE</div></a>
-                                     </div>
-                                 </div>
+                                
                          </div>
                          
                   </div>
@@ -132,10 +136,26 @@
         <div class="form-group" style="margin-bottom:50px;">
         	<div class="row">
                 <div class="col-md-12" >
-                    <a href="#" style="padding-right:0px;"><div class="circle_navbar" style="margin-right:10px;">FB</div></a>
-                    <a href="#" style="padding-right:0px;"><div class="circle_navbar" style="margin-right:10px;">TW</div></a>
-                    <a href="#" style="padding-right:0px;"><div class="circle_navbar" style="margin-right:10px;">IG</div></a>
-                    <a href="#" style="padding-right:0px;"><div class="circle_navbar" style="margin-right:10px;">RSS</div></a>
+                	<?php if($data_creatives['creative_facebook']){ ?>
+                    <a href="<?= $data_creatives['creative_facebook'] ?>" style="padding-right:0px;">
+                    <div class="circle_navbar" style="margin-right:10px;">FB</div>
+                    </a>
+                    <? } ?>
+                    <?php if($data_creatives['creative_twitter']){ ?>
+                    <a href="<?= $data_creatives['creative_twitter'] ?>" style="padding-right:0px;">
+                    <div class="circle_navbar" style="margin-right:10px;">TW</div>
+                    </a>
+                    <? } ?>
+                     <?php if($data_creatives['creative_instagram']){ ?>
+                    <a href="<?= $data_creatives['creative_instagram'] ?>" style="padding-right:0px;">
+                    <div class="circle_navbar" style="margin-right:10px;">IG</div>
+                    </a>
+                    <? } ?>
+                     <?php if($data_creatives['creative_rss']){ ?>
+                    <a href="<?= $data_creatives['creative_rss'] ?>" style="padding-right:0px;">
+                    <div class="circle_navbar" style="margin-right:10px;">RSS</div>
+                    </a>
+                    <? } ?>
                     <strong>SHARE</strong>
                 </div>
             </div>

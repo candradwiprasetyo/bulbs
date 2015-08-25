@@ -20,16 +20,41 @@
                        <div class="form-group">
                              <div class="col-md-12" >
                              	<div class="row">
-                                   <img src="<?= base_url(); ?>assets/images/profile/<?= $data_creatives['creative_img']?>" class="profile_photo" />
+                                  <?php
+                                    $img_class_profile = $this->access->get_valid_profile_img(base_url()."assets/images/profile/".$data_creatives['creative_img']);
+								   ?>
+                                   <div class="box-showcase_profile">
+                                        <div class="box-showcaseInnerProfile">
+                                            <img src="<?= base_url(); ?>assets/images/profile/<?= $data_creatives['creative_img'] ?>" class="<?= $img_class_profile ?>">
+                                        </div>
+                                    </div>
                                 </div>
                              </div>
                         </div>
                        
                         <div class="form-group">
-                        	
+                        	<?php
+                       if($this->session->userdata('user_type_id') == 3){
+					   ?>
                                  <div class="col-md-6" >
                                      <div class="row">
-                                           <a href="#" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
+                                     <?php
+                                     $q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$data_creatives['creative_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
+									$r_tr_f = mysql_fetch_array($q_tr_f);
+									if($r_tr_f['jumlah'] > 0){
+										
+									?> 
+                                   
+                                 
+                                   <a href="<?=site_url('profile_view/unfollowing/'.$data_creatives['creative_id'].'/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_creatives" style="background:#C30;">UNFOLLOW</div></a>
+                                <?php
+								}else{
+                                ?>
+                                           <a href="<?=site_url('profile_view/following/'.$data_creatives['creative_id'].'/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
+                                      <?php
+									}
+									
+									  ?>
                                      </div>
                                  </div>
                                  <div class="col-md-6" >
@@ -37,7 +62,21 @@
                                        <a href="#" style="text-decoration:none;"><div class="button_message">MESSAGE</div></a>
                                      </div>
                                  </div>
+                                  <?php
+					   }else{
+						   ?>
+						    <div class="col-md-6" >
+                                 	<div class="row">
+                                       <div style="height:20px;"></div>
+                                     </div>
+                                 </div>
+						   
+						   <?php
+						  }
+						 ?>
                          </div>
+                      
+                        
                          
                   </div>
                   
@@ -212,7 +251,16 @@
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span class="blue_text"><?= $data_creatives['creative_website']?></span>
+                    <span class="blue_text">
+					
+					<?php
+					 if($this->session->userdata('user_id')){
+					 	echo $data_creatives['creative_website'];
+                     }else{
+                     	echo "Login to view";
+                     }
+                     ?>
+                     </span>
                  </div>
              </div>
         </div>
@@ -227,7 +275,13 @@
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span class="blue_text"><?= $data_creatives['creative_phone']?></span>
+                    <span class="blue_text"><?php
+					 if($this->session->userdata('user_id')){
+					 	echo $data_creatives['creative_phone'];
+                     }else{
+                     	echo "Login to view";
+                     }
+                     ?></span>
                  </div>
              </div>
         </div>

@@ -1,5 +1,5 @@
 
-    <form id="form1" name="form1" method="post" action="<?=site_url('register/save_registration/'.$data['id'])?>" enctype="multipart/form-data">
+    <form id="form1" name="form1" method="post" action="<?=site_url('profile/save_profile/')?>" enctype="multipart/form-data">
     
     <div class="col-md-12" style="padding:0px; " >
     	
@@ -13,14 +13,12 @@
                                 <div class="box-body">
                                       
                                         
-                                        <div class="form-group">
-                                           <div class="message">Thanks for signup. Please complete form registration </div>
-                                         </div>
+                                        
                                 
                                         
                                          <div class="form-group">
                                            	<div class="col-md-12">
-                                            	<div class="new_title">Register</div>
+                                            	<div class="new_title">Edit Profile</div>
                                             </div>
                                         </div>
                                       	
@@ -35,8 +33,8 @@
                       								<div class="col-md-4 col-md-offset-4">
                                                             <div class="form-group">
                                                             <label>Photo Profile</label>
-                                                          
-                                                            <input type="file" name="i_img" id="i_img" required />
+                                                          <img src="<?= base_url(); ?>assets/images/profile/<?= $data_creatives['creative_img'] ?>" style="width:100%;" />
+                                                            <input type="file" name="i_img" id="i_img" />
                                                             </div>
                                                     </div>
                                                     
@@ -46,13 +44,13 @@
                                                     <div class="col-md-6">
                                                             <div class="form-group">
                                                             <label>Phone</label>
-                                                            <input required type="text" name="i_phone" class="form-control"value="" title="" id="i_phone"/>
+                                                            <input required type="text" name="i_phone" class="form-control"value="<?= $data_creatives['creative_phone']?>" title="" id="i_phone"/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                     
                                                         <div class="form-group"> <label>Website</label>
-                                                            <input required type="text" name="i_website" class="form-control"  value="" title="" id="i_website"/>
+                                                            <input required type="text" name="i_website" class="form-control"  value="<?= $data_creatives['creative_website']?>" title="" id="i_website"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -62,14 +60,14 @@
                                                     <div class="col-md-6">
                                                             <div class="form-group">
                                                             <label>Facebook</label>
-                                                            <input  type="text" name="i_facebook" class="form-control"value="" title="" id="i_phone"/>
+                                                            <input  type="text" name="i_facebook" class="form-control" value="<?= $data_creatives['creative_facebook']?>" title="" id="i_phone"/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                     
                                                         <div class="form-group"> 
                                                         	<label>Twitter</label>
-                                                            <input  type="text" name="i_twitter" class="form-control"  value="" title="" id="i_website"/>
+                                                            <input  type="text" name="i_twitter" class="form-control"  value="<?= $data_creatives['creative_twitter']?>" title="" id="i_website"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -78,14 +76,14 @@
                                                     <div class="col-md-6">
                                                             <div class="form-group">
                                                             <label>Instagram</label>
-                                                            <input  type="text" name="i_instagram" class="form-control"value="" title="" id="i_phone"/>
+                                                            <input  type="text" name="i_instagram" class="form-control" value="<?= $data_creatives['creative_instagram']?>" title="" id="i_phone"/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                     
                                                         <div class="form-group"> 
                                                         	<label>RSS</label>
-                                                            <input  type="text" name="i_rss" class="form-control"  value="" title="" id="i_website"/>
+                                                            <input  type="text" name="i_rss" class="form-control"  value="<?= $data_creatives['creative_rss']?>" title="" id="i_website"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,7 +93,7 @@
                                                     <div class="col-md-6">
                                                             <div class="form-group">
                                                             <label>Workplace Name</label>
-                                                            <input required type="text" name="i_wp_name" class="form-control" placeholder="First Name" value="" title="" id="i_wp_name"/>
+                                                            <input required type="text" name="i_wp_name" class="form-control" placeholder="Workplace Name" value="<?= $data_creatives['creative_wp_name']?>" title="" id="i_wp_name"/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -120,7 +118,7 @@
                                                     
                                                       <div class="form-group">
                                                         <label>Workplace Description</label>
-                                                <textarea name="i_description" rows="5" class="form-control" id="i_description" ></textarea>
+                                                <textarea name="i_description" rows="10" class="form-control" id="i_description" ><?= $data_creatives['creative_wp_description']?></textarea>
                                                             </div>
                                                     </div>
                                                 </div>
@@ -129,7 +127,7 @@
                           <div class="row">
                                                     <div class="col-md-6 col-md-offset-3">
                                                         <div class="form-group">
-                                                            <input class="btn button_signup" type="submit" value="SAVE"/>
+                                                            <input class="btn button_signup" type="submit" value="EDIT"/>
                                                         </div>
                                                     </div>
                                                 

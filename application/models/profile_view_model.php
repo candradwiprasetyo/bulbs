@@ -20,5 +20,25 @@ class Profile_view_model extends CI_Model{
 		return $result; 
 	}
 	
+	function following($data){
+
+		$this->db->trans_start();
+		$this->db->insert('tr_following', $data);
+		$id = $this->db->insert_id();
+		
+		$this->db->trans_complete();
+		return $id;
+	}
+	
+	function unfollowing($creative_id, $user_id){
+
+		$this->db->trans_start();
+		$this->db->where('user_creative_id', $creative_id);
+		$this->db->where('user_regular_id', $user_id);
+		$this->db->delete('tr_following');
+	
+		$this->db->trans_complete();
+		
+	}
 	
 }

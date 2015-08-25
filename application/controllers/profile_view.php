@@ -15,7 +15,7 @@ class Profile_view extends CI_Controller {
 			
 			$id = $_GET['id'];
 			
-			$data['title'] = "profile view";
+			$data['title'] = "View Profile";
 			$data['nav']	= "Explore -> Interior Design -> Aldo Felix Studio";
 			$list['list'] = "test";
 			
@@ -36,5 +36,21 @@ class Profile_view extends CI_Controller {
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect('home');
+	}
+	
+	public function following($creative_id, $user_id){
+		$data['user_creative_id']	 			= $creative_id;
+		$data['user_regular_id'] 				= $this->session->userdata('user_id');
+		
+		$this->profile_view_model->following($data);
+		
+		redirect('profile_view/?id='.$user_id);
+	}
+	
+	public function unfollowing($creative_id, $user_id){
+		
+		$this->profile_view_model->unfollowing($creative_id, $this->session->userdata('user_id'));
+		
+		redirect('profile_view/?id='.$user_id);
 	}
 }

@@ -23,7 +23,7 @@ class Project extends CI_Controller {
 	public function view($id) {
 		
 			
-			$data['title'] = "Edit project";
+			$data['title'] = "View project";
 			
 			$result = $this->project_model->read_id($id);
 			
@@ -106,5 +106,21 @@ class Project extends CI_Controller {
 		*/
 		
 		redirect('project/view/'.$id);
+	}
+	
+	public function following($creative_id, $project_id){
+		$data['user_creative_id']	 			= $creative_id;
+		$data['user_regular_id'] 				= $this->session->userdata('user_id');
+		
+		$this->project_model->following($data);
+		
+		redirect('project/view/'.$project_id);
+	}
+	
+	public function unfollowing($creative_id, $project_id){
+		
+		$this->project_model->unfollowing($creative_id, $this->session->userdata('user_id'));
+		
+		redirect('project/view/'.$project_id);
 	}
 }
