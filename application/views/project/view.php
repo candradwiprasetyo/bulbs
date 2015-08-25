@@ -127,15 +127,17 @@
 									join creatives b on b.creative_id = a.creative_id
 									join users c on c.user_id = b.user_id
 									where c.user_id = '".$data_project['user_id']."' 
-									
+									and project_id <> '".$data_project['project_id']."'
 									order by project_id");
 				while($r_p = mysql_fetch_array($q_p)){ 
+				$img_class = $this->access->get_valid_img(base_url()."assets/images/project/".$r_p['project_img']);
+						
                 ?>
                 <a href="<?=site_url('project/view/'.$r_p['project_id'])?>">
-                    <div class="box-showcase2">
+                    <div class="box-showcase">
                         <div class="box-showcaseInner">
-                            <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" />
-                            <div class="titlebox-showcase"><?= $r_p['project_name'] ?></div>
+                            <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="<?= $img_class ?>" />
+                           
                         </div>
                         <div class="box-showcaseDesc">
                              <div class="box-showcaseDesc_name"><?= $r_p['project_name'] ?></div>

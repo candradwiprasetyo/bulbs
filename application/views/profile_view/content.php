@@ -94,11 +94,13 @@
 									
 									order by project_id");
 				while($r_p = mysql_fetch_array($q_p)){ 
+				
+				 $img_class = $this->access->get_valid_img(base_url()."assets/images/project/".$r_p['project_img']);
                 ?>
                 <a href="<?=site_url('project/view/'.$r_p['project_id'])?>">
                     <div class="box-showcase2">
                         <div class="box-showcaseInner">
-                            <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" />
+                            <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="<?= $img_class?>" />
                             <div class="titlebox-showcase"><?= $r_p['project_name'] ?></div>
                         </div>
                         <div class="box-showcaseDesc">

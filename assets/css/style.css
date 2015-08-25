@@ -619,6 +619,16 @@ new_select{
        overflow: hidden;
        background: #ccc;
     }
+	
+	.box-showcaseInnerProfile {
+       position: absolute;
+       left: 0px;
+       right: 0px;
+       top: 0px;
+       bottom: 0px;
+       overflow: hidden;
+       background: #ccc;
+    }
 
     .box-showcaseDesc {
        position: absolute;
@@ -659,15 +669,10 @@ new_select{
 		right:10px;
     }
 		
-	.box-showcaseInner img {
-       width: 100%;
-        opacity: 1;
-	   transition: opacity .25s ease-in-out;
-	   -moz-transition: opacity .25s ease-in-out;
-	   -webkit-transition: opacity .25s ease-in-out;
-    }
+	
 	
     .box-showcaseInner .img_class {
+		
        width: 100%;
         opacity: 1;
 	   transition: opacity .25s ease-in-out;
@@ -676,7 +681,26 @@ new_select{
     }
 	
 	 .box-showcaseInner .img_class2 {
+		
+       height: 100%;
+        opacity: 1;
+	   transition: opacity .25s ease-in-out;
+	   -moz-transition: opacity .25s ease-in-out;
+	   -webkit-transition: opacity .25s ease-in-out;
+    }
+	
+	.box-showcaseInnerProfile .img_class {
+		
        width: 100%;
+        opacity: 1;
+	   transition: opacity .25s ease-in-out;
+	   -moz-transition: opacity .25s ease-in-out;
+	   -webkit-transition: opacity .25s ease-in-out;
+    }
+	
+	 .box-showcaseInnerProfile .img_class2 {
+		
+       height: 100%;
         opacity: 1;
 	   transition: opacity .25s ease-in-out;
 	   -moz-transition: opacity .25s ease-in-out;
@@ -684,6 +708,10 @@ new_select{
     }
 
     .box-showcaseInner img:hover {
+    	opacity: 0.5;
+    }
+	
+	.box-showcaseInnerProfile img:hover {
     	opacity: 0.5;
     }
 
@@ -708,6 +736,13 @@ new_select{
        position: relative;
        width: 100%;
        padding-bottom: 65%;
+       cursor: pointer;
+    }
+	
+	.box-showcase_profile {
+       position: relative;
+       width: 100%;
+       padding-bottom: 100%;
        cursor: pointer;
     }
 

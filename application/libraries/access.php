@@ -27,6 +27,36 @@ class Access
 		
 		return $new_date;
 	}
+	
+	public function get_valid_img($img){
+		$data_image = getimagesize($img);
+		
+		$width = $data_image[0];
+		$height = $data_image[1];
+		
+		$ratio = $width / $height;
+		if($ratio > 1.43){
+			$class = "img_class2";
+		}else{
+			$class = "img_class";
+		}
+		return $class;
+	}
+	
+	public function get_valid_profile_img($img){
+		$data_image = getimagesize($img);
+		
+		$width = $data_image[0];
+		$height = $data_image[1];
+		
+		$ratio = $width / $height;
+		if($ratio > 1){
+			$class = "img_class2";
+		}else{
+			$class = "img_class";
+		}
+		return $class;
+	}
 }
 
 # -- end file -- #

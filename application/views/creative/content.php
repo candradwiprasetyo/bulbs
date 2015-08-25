@@ -45,7 +45,9 @@
 						group by a.creative_id
    						order by a.creative_id 
    			");
+	
    while($r_c = mysql_fetch_array($q_c)){
+	   $img_class = $this->access->get_valid_profile_img(base_url()."assets/images/profile/".$r_c['creative_img']);
    ?>
         <div class="<?php if($ic%2==1){ ?> following_page1<?php }else{ ?>following_page2<?php } ?>">
        
@@ -55,7 +57,11 @@
                     <div class="col-md-12">
                         <div class="col-md-1">
                             <div class="row">
-                            <img src="<?= base_url(); ?>assets/images/profile/<?= $r_c['creative_img'] ?>" class="project_view_photo">
+                            <div class="box-showcase_profile">
+                                <div class="box-showcaseInnerProfile">
+                            		<img src="<?= base_url(); ?>assets/images/profile/<?= $r_c['creative_img'] ?>" class="<?= $img_class ?>">
+                                </div>
+                            </div>
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -75,10 +81,17 @@
 											
 											order by project_id limit 3");
 						while($r_p = mysql_fetch_array($q_p)){ 
+						$img_class = $this->access->get_valid_img(base_url()."assets/images/project/".$r_p['project_img']);
 						?>
                             <div class="col-md-4">
-                            	<a href="<?=site_url('project/view/'.$r_p['project_id'])?>"><img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="project_view_photo_right"></a>
-                           	</div>
+                             <div class="row">
+                                <div class="box-showcase_gallery">
+                                    <div class="box-showcaseInner">
+                                        <a href="<?=site_url('project/view/'.$r_p['project_id'])?>"><img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="<?= $img_class ?>"></a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                           <?php
 						}
 						  ?>

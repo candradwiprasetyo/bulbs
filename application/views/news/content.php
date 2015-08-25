@@ -16,7 +16,7 @@ $r_last = mysql_fetch_array($q_last);
                                   </div>
                              </div>
                    
-                       
+                  
                         
                     <div class="row">
                         <div class="col-md-6">
@@ -87,15 +87,11 @@ $r_last = mysql_fetch_array($q_last);
                 <a href="<?=site_url('news/view/'.$r_p['news_id'])?>">
                     <div class="box-showcase">
                         <div class="box-showcaseInner">
-                        
-                        <?php
-                        $data_image = getimagesize(base_url()."assets/images/project/".$r_p['news_img']);
-						$width = $data_image[0];
-						$height = $data_image[1];
-						
-						
-						$img_class = ($width <= $height) ? "img_class" : "img_class2";
-						?>
+                         <?php
+					   $img_class = $this->access->get_valid_img(base_url()."assets/images/news/".$r_p['news_img']);
+					   ?>
+						   
+                       
                             <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['news_img'] ?>" class="<?= $img_class?>" />
                           
                         </div>
