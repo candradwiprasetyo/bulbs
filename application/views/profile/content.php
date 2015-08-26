@@ -120,7 +120,7 @@
                              
                             <div class="box-showcaseDesc_by"><?= $r_p['creative_wp_name'] ?></div>
                             <div class="box-showcaseDesc_button"> 
-                            	<a href="<?= site_url('project/form_edit/'.$r_p['project_id']); ?>" class="btn btn-primary">Edit</a>
+                            	<a href="<?= site_url('project/form_edit/'.$r_p['project_id']); ?>" class="btn btn-info"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
                             </div>
                             
                         </div>
@@ -149,24 +149,20 @@
                 <div class="col-md-12" >
                 	<?php if($data_creatives['creative_facebook']){ ?>
                     <a href="<?= $data_creatives['creative_facebook'] ?>" style="padding-right:0px;">
-                    <div class="circle_navbar" style="margin-right:10px;">FB</div>
+                    <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-facebook"></i></div>
                     </a>
                     <? } ?>
                     <?php if($data_creatives['creative_twitter']){ ?>
                     <a href="<?= $data_creatives['creative_twitter'] ?>" style="padding-right:0px;">
-                    <div class="circle_navbar" style="margin-right:10px;">TW</div>
+                    <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-twitter"></i></div>
                     </a>
                     <? } ?>
                      <?php if($data_creatives['creative_instagram']){ ?>
                     <a href="<?= $data_creatives['creative_instagram'] ?>" style="padding-right:0px;">
-                    <div class="circle_navbar" style="margin-right:10px;">IG</div>
+                    <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-instagram"></i></div>
                     </a>
                     <? } ?>
-                     <?php if($data_creatives['creative_rss']){ ?>
-                    <a href="<?= $data_creatives['creative_rss'] ?>" style="padding-right:0px;">
-                    <div class="circle_navbar" style="margin-right:10px;">RSS</div>
-                    </a>
-                    <? } ?>
+                   
                     <strong>SHARE</strong>
                 </div>
             </div>
@@ -203,16 +199,16 @@
                     
                     <div class="row">
                 		<div class="col-md-6" >
-                        	265 Followers
+                        	<?= $data_creatives['follower'] ?> Followers
                         </div>
                         <div class="col-md-6" >
-                        	66 Followings
+                        	<?= $data_creatives['following'] ?> Followings
                         </div>
                         <div class="col-md-6" >
-                        	512 views
+                        	<?= $data_creatives['view'] ?>  views
                         </div>
                         <div class="col-md-6" >
-                        	11 likes
+                        	<?= $data_creatives['like'] ?> likes
                         </div>
                     </div>
                     
@@ -260,7 +256,7 @@
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span class="blue_text"><?= $data_creatives['creative_website']?></span>
+                    <?= $data_creatives['creative_website']?>
                  </div>
              </div>
         </div>
@@ -275,7 +271,7 @@
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span class="blue_text"><?= $data_creatives['creative_phone']?></span>
+                    <?= $data_creatives['creative_phone']?>
                  </div>
              </div>
         </div>

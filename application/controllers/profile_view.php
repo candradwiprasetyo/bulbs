@@ -22,9 +22,21 @@ class Profile_view extends CI_Controller {
 			$data_creatives = array();
 			$result = $this->profile_view_model->read_id($id);
 			
+			// simpan profile views
+			$check_profile_view = $this->profile_view_model->check_profile_view($id, $this->session->userdata('user_id'));
+			if($check_profile_view == 0){
+				$this->profile_view_model->create_profile_view($id, $this->session->userdata('user_id'));
+			}
+			
 			if($result){
 				$data_creatives  = $result;
 			}
+			
+			$data_creatives['follower'] = $this->profile_view_model->get_profile_follower($id);
+			$data_creatives['following'] = $this->profile_view_model->get_profile_following($id);
+			$data_creatives['view'] = $this->profile_view_model->get_profile_view($id);
+			$data_creatives['like'] = $this->profile_view_model->get_profile_like($id);
+			
 			
 			$this->load->view('layout/header', array('list' => $list, 'data' => $data));
 			$this->load->view('profile_view/content', array('data_creatives' => $data_creatives));
@@ -38,19 +50,35 @@ class Profile_view extends CI_Controller {
 		redirect('home');
 	}
 	
-	public function following($creative_id, $user_id){
+	public function following($creative_id){
 		$data['user_creative_id']	 			= $creative_id;
 		$data['user_regular_id'] 				= $this->session->userdata('user_id');
 		
 		$this->profile_view_model->following($data);
 		
-		redirect('profile_view/?id='.$user_id);
+		redirect('profile_view/?id='.$creative_id);
 	}
 	
-	public function unfollowing($creative_id, $user_id){
+	public function unfollowing($creative_id){
 		
 		$this->profile_view_model->unfollowing($creative_id, $this->session->userdata('user_id'));
 		
-		redirect('profile_view/?id='.$user_id);
+		redirect('profile_view/?id='.$creative_id);
+	}
+	
+	public function like($creative_id){
+		$data['user_creative_id']	 			= $creative_id;
+		$data['user_regular_id'] 				= $this->session->userdata('user_id');
+		
+		$this->profile_view_model->like($data);
+		
+		redirect('profile_view/?id='.$creative_id);
+	}
+	
+	public function dislike($creative_id){
+		
+		$this->profile_view_model->dislike($creative_id, $this->session->userdata('user_id'));
+		
+		redirect('profile_view/?id='.$creative_id);
 	}
 }

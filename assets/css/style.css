@@ -462,6 +462,7 @@ body
 .profile_location{
 	text-transform:uppercase;
 	font-size:18px;
+	margin-bottom:10px;
 }
 
 .profile_description_title{
@@ -769,7 +770,7 @@ new_select{
 	.box-showcase_cover {
        position: relative;
        width: 100%;
-       padding-bottom: 30%;
+       padding-bottom: 40%;
        cursor: pointer;
     }
 

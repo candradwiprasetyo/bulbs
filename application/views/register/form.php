@@ -106,23 +106,7 @@
                                                     <div class="col-md-6">
                                                     
                                                         <div class="form-group"> 
-                                                        	<label>RSS</label>
-                                                            <input  type="text" name="i_rss" class="form-control"  value="" title="" id="i_website"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                              
-                                              
-                          					<div class="row">
-                                                    <div class="col-md-6">
-                                                            <div class="form-group">
-                                                            <label>Workplace Name</label>
-                                                            <input required type="text" name="i_wp_name" class="form-control" placeholder="Workplace Name" value="" title="" id="i_wp_name"/>
-                                                            </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                    
-                                                        <div class="form-group"> <label>Workplace Location</label>
+                                                        	<label>Workplace Location</label>
                                                             <select name="i_location_id" id="i_location_id" class="form-control new_select">
     <?php
     $q_location = mysql_query("select * from locations order by location_name");
@@ -135,6 +119,17 @@
 </select>
                                                         </div>
                                                     </div>
+                                                </div>
+                                              
+                                              
+                          					<div class="row">
+                                                    <div class="col-md-12">
+                                                            <div class="form-group">
+                                                            <label>Workplace Name</label>
+                                                            <input required type="text" name="i_wp_name" class="form-control" placeholder="" value="" title="" id="i_wp_name"/>
+                                                            </div>
+                                                    </div>
+                                                   
                                                 </div>
                                                 
                                                 <div class="row">

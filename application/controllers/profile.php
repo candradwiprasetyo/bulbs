@@ -27,6 +27,11 @@ class Profile extends CI_Controller {
 				$data_creatives  = $result;
 			}
 			
+			$data_creatives['follower'] = $this->profile_model->get_profile_follower($this->session->userdata('user_id'));
+			$data_creatives['following'] = $this->profile_model->get_profile_following($this->session->userdata('user_id'));
+			$data_creatives['view'] = $this->profile_model->get_profile_view($this->session->userdata('user_id'));
+			$data_creatives['like'] = $this->profile_model->get_profile_like($this->session->userdata('user_id'));
+			
 			$this->load->view('layout/header', array('list' => $list, 'data' => $data));
 			$this->load->view('profile/content', array('data_creatives' => $data_creatives));
 			$this->load->view('layout/footer'); 
@@ -104,7 +109,7 @@ class Profile extends CI_Controller {
 		$data['creative_facebook']	 			= $this->input->post('i_facebook');
 		$data['creative_twitter']	 			= $this->input->post('i_twitter');
 		$data['creative_instagram']	 			= $this->input->post('i_instagram');
-		$data['creative_rss']	 				= $this->input->post('i_rss');
+		//$data['creative_rss']	 				= $this->input->post('i_rss');
 		
 		$id = $this->session->userdata('user_id');
 		echo $_FILES['i_img']['name'];

@@ -80,7 +80,7 @@
                                                     </div>
                                                  </div>
                                                  <div class="form-group">
-                                                    <input class="btn button_signup" type="submit" value="LOG IN WITH FACEBOOK"/>
+                                                     <a href="#" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -172,7 +172,7 @@
                                                             </div>
                                                          </div>
                                                          <div class="form-group">
-                                                            <input class="btn button_signup" type="submit" value="SIGN UP WITH FACEBOOK"/>
+                                                            <a href="#" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;SIGN UP WITH FACEBOOK</a>
                                                         </div>
                                                     </div>
                                                 </div>

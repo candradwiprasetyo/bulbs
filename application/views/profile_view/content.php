@@ -34,23 +34,23 @@
                        
                         <div class="form-group">
                         	<?php
-                       if($this->session->userdata('user_type_id') == 3){
+                       if($this->session->userdata('user_id')){
 					   ?>
                                  <div class="col-md-6" >
                                      <div class="row">
                                      <?php
-                                     $q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$data_creatives['creative_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
+                                     $q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$data_creatives['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
 									$r_tr_f = mysql_fetch_array($q_tr_f);
 									if($r_tr_f['jumlah'] > 0){
 										
 									?> 
                                    
                                  
-                                   <a href="<?=site_url('profile_view/unfollowing/'.$data_creatives['creative_id'].'/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_creatives" style="background:#C30;">UNFOLLOW</div></a>
+                                   <a href="<?=site_url('profile_view/unfollowing/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_creatives" style="background:#C30;">UNFOLLOW</div></a>
                                 <?php
 								}else{
                                 ?>
-                                           <a href="<?=site_url('profile_view/following/'.$data_creatives['creative_id'].'/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
+                                           <a href="<?=site_url('profile_view/following/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_creatives"><i class="fa fa-plus"></i>&nbsp;FOLLOW</div></a>
                                       <?php
 									}
 									
@@ -59,7 +59,7 @@
                                  </div>
                                  <div class="col-md-6" >
                                  	<div class="row">
-                                       <a href="#" style="text-decoration:none;"><div class="button_message">MESSAGE</div></a>
+                                       <a href="#" style="text-decoration:none;"><div class="button_message"><i class="fa fa-envelope"></i>&nbsp;MESSAGE</div></a>
                                      </div>
                                  </div>
                                   <?php
@@ -87,6 +87,27 @@
                              	
                                    <div class="profile_name"><?= $data_creatives['creative_wp_name']?></div>
                                    <div class="profile_location"><?= $data_creatives['location_name']?></div>
+                                   <div class="profile_like">
+                                   <?php
+                                   $q_pl = mysql_query("select count(*) as jumlah from profile_likes 
+								   						where user_creative_id = '".$data_creatives['user_id']."'
+														and user_regular_id = '".$this->session->userdata('user_id')."'
+														");
+								    $r_pl = mysql_fetch_array($q_pl);
+									
+									if($r_pl['jumlah'] > 0){ 
+								   ?>
+                                     <a href="<?= site_url('profile_view/dislike/'.$data_creatives['user_id']); ?>" class="btn btn-success" style="border-radius:0px; "><i class="fa fa-thumbs-up"></i>&nbsp;Like</a>
+                                    
+                                     </div>
+                                   <?php
+									}else{
+								   ?>
+                                   <a href="<?= site_url('profile_view/like/'.$data_creatives['user_id']); ?>" class="btn btn-default" style="border-radius:0px;color:#999"><i class="fa fa-thumbs-up"></i>&nbsp;Like</a></div>
+                                   <?php
+									}
+								   ?>
+                                   
                                    <div class="profile_description_title">Description</div>
                                    <div class="profile_description_content">
                                    		<?= $data_creatives['creative_wp_description']?>
@@ -169,10 +190,21 @@
         <div class="form-group" style="margin-bottom:50px;">
         	<div class="row">
                 <div class="col-md-12" >
-                    <a href="#" style="padding-right:0px;"><div class="circle_navbar" style="margin-right:10px;">FB</div></a>
-                    <a href="#" style="padding-right:0px;"><div class="circle_navbar" style="margin-right:10px;">TW</div></a>
-                    <a href="#" style="padding-right:0px;"><div class="circle_navbar" style="margin-right:10px;">IG</div></a>
-                    <a href="#" style="padding-right:0px;"><div class="circle_navbar" style="margin-right:10px;">RSS</div></a>
+                   <?php if($data_creatives['creative_facebook']){ ?>
+                    <a href="<?= $data_creatives['creative_facebook'] ?>" style="padding-right:0px;">
+                    <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-facebook"></i></div>
+                    </a>
+                    <? } ?>
+                    <?php if($data_creatives['creative_twitter']){ ?>
+                    <a href="<?= $data_creatives['creative_twitter'] ?>" style="padding-right:0px;">
+                    <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-twitter"></i></div>
+                    </a>
+                    <? } ?>
+                     <?php if($data_creatives['creative_instagram']){ ?>
+                    <a href="<?= $data_creatives['creative_instagram'] ?>" style="padding-right:0px;">
+                    <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-instagram"></i></div>
+                    </a>
+                    <? } ?>
                     <strong>SHARE</strong>
                 </div>
             </div>
@@ -209,16 +241,16 @@
                     
                     <div class="row">
                 		<div class="col-md-6" >
-                        	265 Followers
+                        	<?= $data_creatives['follower'] ?> Followers
                         </div>
                         <div class="col-md-6" >
-                        	66 Followings
+                        	<?= $data_creatives['following'] ?> Followings
                         </div>
                         <div class="col-md-6" >
-                        	512 views
+                        	<?= $data_creatives['view'] ?>  views
                         </div>
                         <div class="col-md-6" >
-                        	11 likes
+                        	<?= $data_creatives['like'] ?> likes
                         </div>
                     </div>
                     
@@ -266,16 +298,16 @@
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span class="blue_text">
+                    
 					
 					<?php
 					 if($this->session->userdata('user_id')){
 					 	echo $data_creatives['creative_website'];
                      }else{
-                     	echo "Login to view";
+                     	echo "<span class='blue_text'>Login to view</span>";
                      }
                      ?>
-                     </span>
+                     
                  </div>
              </div>
         </div>
@@ -290,13 +322,13 @@
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span class="blue_text"><?php
+                    <?php
 					 if($this->session->userdata('user_id')){
 					 	echo $data_creatives['creative_phone'];
                      }else{
-                     	echo "Login to view";
+                     	echo "<span class='blue_text'>Login to view</span>";
                      }
-                     ?></span>
+                     ?>
                  </div>
              </div>
         </div>

@@ -56,7 +56,7 @@ class Register extends CI_Controller {
 		$data['creative_facebook']	 			= $this->input->post('i_facebook');
 		$data['creative_twitter']	 			= $this->input->post('i_twitter');
 		$data['creative_instagram']	 			= $this->input->post('i_instagram');
-		$data['creative_rss']	 				= $this->input->post('i_rss');
+		//$data['creative_rss']	 				= $this->input->post('i_rss');
 		
 		// buat sesi login
 		$this->session->set_userdata('logged', 1);

@@ -117,7 +117,7 @@ if($this->session->userdata('user_type_id') == 3){
                                                 		 <div class="col-md-6">
                                                         <div class="form-group">
                                                           
-                                                             <a href="javascript: history.back()" class="btn button_signup">Back</a>
+                                                             <a href="javascript: history.back()" class="btn button_signup">BACK</a>
                                                         </div>
                                                     </div>
                                                 

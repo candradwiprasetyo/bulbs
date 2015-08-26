@@ -58,13 +58,17 @@ if($this->session->userdata('user_type_id') == 2){
 <div class="col-md-12" style="padding:0px;" >
    <?php
    $ic = 1;
-   $where = '';
+   $where = ' where creative_id <> 0 ';
    if(isset($_GET['location_id'])){
-   	$where .= "where a.location_id = '".$_GET['location_id']."'";
+   	$where .= " and a.location_id = '".$_GET['location_id']."'";
    }
    if(isset($_GET['pc_id'])){
 	   $where .= " and d.pc_id = '".$_GET['pc_id']."'";
    }
+   
+   if($this->session->userdata('user_id')){
+	   $where .= " and a.user_id <> '".$this->session->userdata('user_id')."'";
+	}
    
    //echo $where;
    $q_c = mysql_query("select a.*, b.location_name 
@@ -100,17 +104,17 @@ if($this->session->userdata('user_type_id') == 2){
                                 <div class="following_location" style="margin-bottom:10px;"><?= $r_c['location_name'] ?></div>
                                 <div class="blue_text">
                                 <?php
-                                if($this->session->userdata('user_type_id') == 3){
-									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$r_c['creative_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
+                                if($this->session->userdata('user_id')){
+									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$r_c['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
 									$r_tr_f = mysql_fetch_array($q_tr_f);
 									if($r_tr_f['jumlah'] > 0){
 									?>
                                    <button class="btn btn-success" style="border-radius:0px;" disabled>Following</button>
-                                   <a href="<?=site_url('creative/unfollowing/'.$r_c['creative_id']); ?>" class="btn btn-danger" style="width:120px; border-radius:0px;">Unfollow</a>
+                                   <a href="<?=site_url('creative/unfollowing/'.$r_c['user_id']); ?>" class="btn btn-danger" style="width:120px; border-radius:0px;">Unfollow</a>
                                 <?php
 								}else{
                                 ?>
-								<a href="<?=site_url('creative/following/'.$r_c['creative_id']); ?>" class="btn btn-primary" style="width:120px; border-radius:0px;">FOLLOW</a>
+								<a href="<?=site_url('creative/following/'.$r_c['user_id']); ?>" class="btn btn-primary" style="width:120px; border-radius:0px;">FOLLOW</a>
                                 <?php
 								}
 								}

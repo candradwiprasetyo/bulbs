@@ -107,17 +107,17 @@
                                 <div class="following_location" style="margin-bottom:10px;"><?= $data_project['location_name'] ?></div>
                                 <div class="blue_text">
                                  <?php
-                                if($this->session->userdata('user_type_id') == 3){
-									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$data_project['creative_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
+                                if($this->session->userdata('user_type_id')){
+									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$data_project['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
 									$r_tr_f = mysql_fetch_array($q_tr_f);
 									if($r_tr_f['jumlah'] > 0){
 									?>
                                    <button class="btn btn-success" style="border-radius:0px;" disabled>Following</button>
-                                   <a href="<?=site_url('project/unfollowing/'.$data_project['creative_id'].'/'.$data_project['project_id']); ?>" class="btn btn-danger" style="width:120px; border-radius:0px;">Unfollow</a>
+                                   <a href="<?=site_url('project/unfollowing/'.$data_project['user_id'].'/'.$data_project['project_id']); ?>" class="btn btn-danger" style="width:120px; border-radius:0px;">Unfollow</a>
                                 <?php
 								}else{
                                 ?>
-								<a href="<?=site_url('project/following/'.$data_project['creative_id'].'/'.$data_project['project_id']); ?>" class="btn btn-primary" style="width:120px; border-radius:0px;">FOLLOW</a>
+								<a href="<?=site_url('project/following/'.$data_project['user_id'].'/'.$data_project['project_id']); ?>" class="btn btn-primary" style="width:120px; border-radius:0px;">FOLLOW</a>
                                 <?php
 								}
 								}

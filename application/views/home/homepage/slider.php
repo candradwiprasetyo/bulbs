@@ -153,7 +153,7 @@
                                             <input class="btn button_signup" type="submit" value="SIGN UP"/>
                                         </div>
                                          <div class="form-group">
-                                            <input class="btn button_login_facebook" type="submit" value="LOG IN WITH FACEBOOK"/>
+                                            <a href="#" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
                                         </div>
                                         <div class="form-group" style="margin-bottom:50px;">
                                             By Signing Up, you agree to our Terms & Conditions

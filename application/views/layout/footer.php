@@ -29,9 +29,9 @@
 <div class="col-md-3" style="padding:0px;">
 	<div class="navbar navbar-default navbar-static-top" role="navigation" style="background:#477cbd; height:60px !important; min-height:60px !important;">
      
-         <a href="#"><div class="footer-icon" style="margin-left:30px;">FB</div></a>
-         <a href="#"><div class="footer-icon">TW</div></a>
-         <a href="#"><div class="footer-icon">IG</div></a>
+         <a href="#"><div class="footer-icon" style="margin-left:30px;"><i class="fa fa-facebook"></i></div></a>
+         <a href="#"><div class="footer-icon"><i class="fa fa-twitter"></i></div></a>
+         <a href="#"><div class="footer-icon"><i class="fa fa-instagram"></i></div></a>
      
     </div>
 </div>
