@@ -30,4 +30,24 @@ class Profile_model extends CI_Model{
 		return $id;
 	}
 	
+	function save_detail($data){
+
+		$this->db->trans_start();
+		$this->db->insert('profile_detail_categories', $data);
+		$id = $this->db->insert_id();
+		
+		$this->db->trans_complete();
+		return $id;
+	}
+
+	
+	function delete_detail($user_id){
+
+		$this->db->trans_start();
+		$this->db->where('user_id', $user_id);
+		$this->db->delete('profile_detail_categories');
+		$this->db->trans_complete();
+		
+	}
+	
 }

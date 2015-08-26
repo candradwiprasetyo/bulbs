@@ -629,6 +629,16 @@ new_select{
        overflow: hidden;
        background: #ccc;
     }
+	
+	 .box-showcaseInnerCover {
+       position: absolute;
+       left: 0px;
+       right: 0px;
+       top: 0px;
+       bottom: 0px;
+       overflow: hidden;
+       background: #ccc;
+    }
 
     .box-showcaseDesc {
        position: absolute;
@@ -669,7 +679,17 @@ new_select{
 		right:10px;
     }
 		
-	
+	 .box-showcaseDesc_button{
+        height: 20px;
+        bottom: 25px;
+		float:right;
+        font-size: 11px;
+        font-weight: bold;
+        color: #999;
+		position:absolute;
+		text-align:right;
+		right:10px;
+    }
 	
     .box-showcaseInner .img_class {
 		
@@ -745,6 +765,13 @@ new_select{
        padding-bottom: 100%;
        cursor: pointer;
     }
+	
+	.box-showcase_cover {
+       position: relative;
+       width: 100%;
+       padding-bottom: 30%;
+       cursor: pointer;
+    }
 
     /*.box-showcaseInner:hover .titlebox-showcase, .box-showcaseInner.touchFocus .titlebox-showcase {
        margin-bottom: 0;
@@ -755,6 +782,11 @@ new_select{
           width: 100%;
           padding-bottom: 75%;
        }
+	   .box-showcase2 {
+          width: 100%;
+          padding-bottom: 75%;
+       }
+	   
     }
     @media only screen and (max-width : 800px) and (min-width : 481px) {
        /* Tablet view: 2 tiles */
@@ -762,10 +794,18 @@ new_select{
           width: 50%;
           padding-bottom: 35%;
        }
+	   .box-showcase2 {
+          width: 50%;
+          padding-bottom: 35%;
+       }
     }
     @media only screen and (max-width : 1050px) and (min-width : 801px) {
        /* Small desktop / ipad view: 3 tiles */
        .box-showcase {
+          width: 33.3%;
+          padding-bottom: 25%;
+       }
+	   .box-showcase2 {
           width: 33.3%;
           padding-bottom: 25%;
        }

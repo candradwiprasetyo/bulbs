@@ -1,5 +1,9 @@
 <div class="col-md-12" style="padding:0px;" >
-      <img src="<?= base_url(); ?>assets/images/project/<?= $data_project['project_img']?>" class="img_banner_project">
+     <div class="box-showcase_cover">
+         <div class="box-showcaseInnerCover">
+              <img src="<?= base_url(); ?>assets/images/project/<?= $data_project['project_img'] ?>" style="width:100%;"/>            
+         </div>
+    </div>
 </div>
 
 <div class="col-md-12">
@@ -23,11 +27,11 @@
                             <div class="profile_location">Published on <?= $this->access->format_date($data_project['project_date']);?></div>
                             <div class="profile_description_title">Project Concentrations</div>
                             <div class="profile_description_content">
-                            <?php
+                           <?php
                             $color = array('#d05a51', '#92a495', '#3a58db', '#f1c40f', '#d35400', '#27ae60', '#8e44ad');
 							$q_pc = mysql_query("select b.pc_name 
 												from project_detail_categories a
-												join project_categories b on b.pc_id = a.pc_id 
+												join profile_categories b on b.pc_id = a.pc_id 
 												where a.project_id = '".$data_project['project_id']."'
 												order by b.pc_id 
 												");
@@ -39,7 +43,7 @@
                                <?php
 							}
 							   ?>
-                                <span class="blue_text">Show All</span>
+                              
                             </div>
                         </div>
 

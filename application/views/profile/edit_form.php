@@ -29,16 +29,39 @@
                                          	
                                           <div class="row">
                                                
-                                               <div class="row">
-                      								<div class="col-md-4 col-md-offset-4">
+                                              
+                                            
+                                             <div class="row">
+                                                	<div class="col-md-6">
                                                             <div class="form-group">
-                                                            <label>Photo Profile</label>
-                                                          <img src="<?= base_url(); ?>assets/images/profile/<?= $data_creatives['creative_img'] ?>" style="width:100%;" />
+                                                           <label>Photo Profile</label>
+                                                           <img src="<?= base_url(); ?>assets/images/profile/<?= $data_creatives['creative_img'] ?>" style="width:100%;" />
                                                             <input type="file" name="i_img" id="i_img" />
                                                             </div>
                                                     </div>
+                                                    <div class="col-md-6">
                                                     
-                                            </div>
+                                                        <div class="form-group"> 
+                                                        <label>Concentration</label>
+																<?php
+                                                                $q_p_category = mysql_query("select * from profile_categories order by pc_id");
+                                                                while($r_p_category = mysql_fetch_array($q_p_category)){
+                                                         		$q_p_valid = mysql_query("select count(pdc_id) as jumlah from profile_detail_categories where user_id = '".$data_creatives['user_id']."' and pc_id = '".$r_p_category['pc_id']."'");
+																$r_p_valid = mysql_fetch_array($q_p_valid);
+														        ?>
+                                                                    <div>
+                                                                        
+                                                                            <input type="checkbox" name="i_pc_<?= $r_p_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_p_category['pc_id'] ?>" <?php if($r_p_valid['jumlah'] > 0 ){ ?> checked="checked"<?php }?> />
+                                                                            <?= $r_p_category['pc_name']?>
+                                                                         
+                                                                  </div>
+                                                                  <?php
+                                                                }
+                                                                  ?>      
+                                                        </div>
+                                                    </div>
+                      								
+                                            	</div>
                                                 
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -125,12 +148,16 @@
                                                 
                                               
                           <div class="row">
-                                                    <div class="col-md-6 col-md-offset-3">
+                                                    <div class="col-md-6">
                                                         <div class="form-group">
                                                             <input class="btn button_signup" type="submit" value="EDIT"/>
                                                         </div>
                                                     </div>
-                                                
+                                                		 <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <input class="btn button_signup" type="submit" value="BACK" onclick="javascript: history.back"/>
+                                                        </div>
+                                                    </div>
                                                    
                                             </div>
                                         	

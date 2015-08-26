@@ -14,7 +14,7 @@
                                       
                                         
                                         <div class="form-group">
-                                           <div class="message">Thanks for signup. Please complete form registration </div>
+                                           <div class="message">Thanks for signing up. Please complete the registration form</div>
                                          </div>
                                 
                                         
@@ -31,16 +31,38 @@
                                          	
                                           <div class="row">
                                                
-                                               <div class="row">
-                      								<div class="col-md-4 col-md-offset-4">
+                                               
+                                                
+                                                <div class="row">
+                                                	<div class="col-md-6">
                                                             <div class="form-group">
-                                                            <label>Photo Profile</label>
+                                                           <label>Photo Profile</label>
                                                           
                                                             <input type="file" name="i_img" id="i_img" required />
                                                             </div>
                                                     </div>
+                                                    <div class="col-md-6">
                                                     
-                                            </div>
+                                                        <div class="form-group"> 
+                                                        <label>Concentration</label>
+																<?php
+                                                                $q_p_category = mysql_query("select * from profile_categories order by pc_id");
+                                                                while($r_p_category = mysql_fetch_array($q_p_category)){
+                                                                ?>
+                                                                    <div>
+                                                                        
+                                                                            <input type="checkbox" name="i_pc_<?= $r_p_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_p_category['pc_id'] ?>" />
+                                                                            <?= $r_p_category['pc_name']?>
+                                                                         
+                                                                  </div>
+                                                                  <?php
+                                                                }
+                                                                  ?>      
+                                                        </div>
+                                                    </div>
+                      								
+                                            	</div>
+                                                
                                                 
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -95,7 +117,7 @@
                                                     <div class="col-md-6">
                                                             <div class="form-group">
                                                             <label>Workplace Name</label>
-                                                            <input required type="text" name="i_wp_name" class="form-control" placeholder="First Name" value="" title="" id="i_wp_name"/>
+                                                            <input required type="text" name="i_wp_name" class="form-control" placeholder="Workplace Name" value="" title="" id="i_wp_name"/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">

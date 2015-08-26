@@ -32,7 +32,6 @@
          <a href="#"><div class="footer-icon" style="margin-left:30px;">FB</div></a>
          <a href="#"><div class="footer-icon">TW</div></a>
          <a href="#"><div class="footer-icon">IG</div></a>
-         <a href="#"><div class="footer-icon">BE</div></a>
      
     </div>
 </div>

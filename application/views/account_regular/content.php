@@ -1,3 +1,7 @@
+<?php
+if($this->session->userdata('logged')){
+if($this->session->userdata('user_type_id') == 3){
+?>
 <div class="col-md-12" style="padding:0px;" >
     
         <div class="col-md-9">
@@ -20,7 +24,10 @@
         </div>
      
 </div>
-
+<?php
+}
+}
+?>
 
 <div class="row" style="margin-left:0px; margin-right:0px;">
  
@@ -97,15 +104,20 @@
                                                         <div class="form-group">
                                                         <label>Password</label>
                                                             <input type="password" name="i_password" class="form-control" placeholder="" value="" title=""/>
-                                                            * Leave it blank if you dont change password
+                                                            * Leave it blank if you don't wish to change the password
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-6 col-md-offset-3">
-                                                       
+                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <input class="btn button_signup" type="submit" value="SAVE"/>
+                                                            <input class="btn button_signup" type="submit" value="EDIT"/>
+                                                        </div>
+                                                    </div>
+                                                		 <div class="col-md-6">
+                                                        <div class="form-group">
+                                                          
+                                                             <a href="javascript: history.back()" class="btn button_signup">Back</a>
                                                         </div>
                                                     </div>
                                                 

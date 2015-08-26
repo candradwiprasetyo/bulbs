@@ -57,7 +57,11 @@ class Account_regular extends CI_Controller {
 		
 		$this->account_regular_model->save_account($data, $id);
 		
-		redirect('account_regular/?did=1');
+		if($this->session->userdata('user_type_id') == 2){
+			redirect('profile/?did=1');
+		}else{
+			redirect('account_regular/?did=1');			
+		}
 	}
 	
 }

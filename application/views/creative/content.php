@@ -70,8 +70,7 @@ if($this->session->userdata('user_type_id') == 2){
    $q_c = mysql_query("select a.*, b.location_name 
    						from creatives a
    						join locations b on b.location_id = a.location_id 
-						join projects c on c.creative_id = a.creative_id
-						join project_detail_categories d on d.project_id = c.project_id  
+						join profile_detail_categories d on d.user_id = a.user_id  
 						$where
 						group by a.creative_id
    						order by a.creative_id 

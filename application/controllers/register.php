@@ -65,6 +65,19 @@ class Register extends CI_Controller {
 		
 		$this->register_model->registration($data, $id);
 		
+		// create profile detail categories
+		$data_detail['user_id'] = $id;
+		
+		$q_p_category = mysql_query("select * from profile_categories order by pc_id");
+		while($r_p_category = mysql_fetch_array($q_p_category)){
+			
+			if($this->input->post('i_pc_'.$r_p_category['pc_id'])){
+				$data_detail['pc_id'] = $r_p_category['pc_id'];
+				$this->register_model->save_detail($data_detail);
+			}
+			
+		}
+		
 		redirect('profile/?id='.$id);
 	}
 	

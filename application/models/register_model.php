@@ -16,7 +16,15 @@ class Register_model extends CI_Model{
 		return $id;
 	}
 	
-	
+	function save_detail($data){
+
+		$this->db->trans_start();
+		$this->db->insert('profile_detail_categories', $data);
+		$id = $this->db->insert_id();
+		
+		$this->db->trans_complete();
+		return $id;
+	}
 
 	
 	

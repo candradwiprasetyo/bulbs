@@ -236,7 +236,22 @@
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span>Interior Design, Architecture</span>
+                     <?php
+                            $color = array('#d05a51', '#92a495', '#3a58db', '#f1c40f', '#d35400', '#27ae60', '#8e44ad');
+							$q_pc = mysql_query("select b.pc_name 
+												from profile_detail_categories a
+												join profile_categories b on b.pc_id = a.pc_id
+												where user_id = '".$data_creatives['user_id']."'
+												order by a.pc_id 
+												");
+							while($r_pc = mysql_fetch_array($q_pc)){
+							?>
+                                <div>
+                                    <div class="circle_project" style="background-color:<?= $color[rand(0,6)] ?>"></div><?= $r_pc['pc_name'] ?>
+                                </div>
+                               <?php
+							}
+							   ?>
                  </div>
              </div>
         </div>

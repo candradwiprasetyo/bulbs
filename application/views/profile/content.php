@@ -35,9 +35,15 @@
                        
                         <div class="form-group">
                         	
-                                 <div class="col-md-12" >
+                                 <div class="col-md-6" >
                                      <div class="row">
                                            <a href="<?= site_url('profile/edit'); ?>" style="text-decoration:none;"><div class="button_creatives">EDIT PROFILE</div></a>
+                                     </div>
+                                 </div>
+                                 
+                                 <div class="col-md-6" >
+                                     <div class="row">
+                                           <a href="<?= site_url('account_regular'); ?>" style="text-decoration:none;"><div class="button_message">EDIT ACCOUNT</div></a>
                                      </div>
                                  </div>
                                 
@@ -107,11 +113,16 @@
                     <div class="box-showcase2">
                         <div class="box-showcaseInner">
                             <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="<?= $img_class?>" />
-                            <div class="titlebox-showcase"><?= $r_p['project_name'] ?></div>
+                            
                         </div>
                         <div class="box-showcaseDesc">
                              <div class="box-showcaseDesc_name"><?= $r_p['project_name'] ?></div>
+                             
                             <div class="box-showcaseDesc_by"><?= $r_p['creative_wp_name'] ?></div>
+                            <div class="box-showcaseDesc_button"> 
+                            	<a href="<?= site_url('project/form_edit/'.$r_p['project_id']); ?>" class="btn btn-primary">Edit</a>
+                            </div>
+                            
                         </div>
                     </div>
                     </a>
@@ -219,7 +230,22 @@
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span>Interior Design, Architecture</span>
+                     <?php
+                            $color = array('#d05a51', '#92a495', '#3a58db', '#f1c40f', '#d35400', '#27ae60', '#8e44ad');
+							$q_pc = mysql_query("select b.pc_name 
+												from profile_detail_categories a
+												join profile_categories b on b.pc_id = a.pc_id
+												where user_id = '".$data_creatives['user_id']."'
+												order by a.pc_id 
+												");
+							while($r_pc = mysql_fetch_array($q_pc)){
+							?>
+                                <div>
+                                    <div class="circle_project" style="background-color:<?= $color[rand(0,6)] ?>"></div><?= $r_pc['pc_name'] ?>
+                                </div>
+                               <?php
+							}
+							   ?>
                  </div>
              </div>
         </div>
