@@ -131,6 +131,6 @@ class Profile extends CI_Controller {
 			
 		}
 		
-		redirect('profile/?id='.$id);
+		redirect('profile/?id='.$id."&did=2");
 	}
 }

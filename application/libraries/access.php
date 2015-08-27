@@ -57,6 +57,16 @@ class Access
 		}
 		return $class;
 	}
+	
+	public function get_alert_success($message){
+		$result = '<div class="alert-message">
+						<div class="alert-message-item">
+							<i class="fa fa-check"></i>&nbsp';
+		$result .= $message;
+		$result .= '</div></div>';
+		
+		return $result;
+	}
 }
 
 # -- end file -- #

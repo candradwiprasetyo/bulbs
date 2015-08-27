@@ -1,3 +1,51 @@
+    
+    <?php 
+	if(isset($_GET['did']) && $_GET['did']==1){
+		echo $this->access->get_alert_success("Review Saved"); 
+	}
+	?>
+
+        <div class="md-modal md-effect-1" id="modal-1">
+
+            <form id="form1" name="form1" method="post" action="<?=site_url('profile_view/review/'.$data_creatives['user_id'])?>" enctype="multipart/form-data">
+   
+            <div class="md-content">
+               
+                <div>
+                     <div class="profile_name">Rate <?= $data_creatives['creative_wp_name'] ?></div>
+               
+                    <fieldset class="rating">
+                        <input type="radio" id="star5" name="i_rating" value="5" required/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+                        <input type="radio" id="star4" name="i_rating" value="4" required/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+                        <input type="radio" id="star3" name="i_rating" value="3" required/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2" name="i_rating" value="2" required/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+                        <input type="radio" id="star1" name="i_rating" value="1" required/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                         </fieldset>
+
+                    <div style="clear:both"></div>
+                    <br>
+
+                     <div class="profile_name" style="margin-bottom:20px;">Review <?= $data_creatives['creative_wp_name'] ?></div>
+                      <textarea name="i_description" rows="5" class="form-control" id="i_description" required ></textarea>
+                                               
+                      <div style="clear:both"></div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="btn button_signup" type="submit" value="SAVE"/>
+                       
+                        </div> 
+                         <div class="col-md-6">
+                          
+                        <button class="btn button_regular md-close" style="border-radius:0px;">CANCEL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+      
+        </div>
+
 
 <div class="profile_page">
 <div class="row" style="margin-left:0px; margin-right:0px;">
@@ -59,8 +107,8 @@
                                  </div>
                                  <div class="col-md-6" >
                                  	<div class="row">
-                                       <a href="#" style="text-decoration:none;"><div class="button_message"><i class="fa fa-envelope"></i>&nbsp;MESSAGE</div></a>
-                                     </div>
+                                          <a href="#" style="text-decoration:none;"><div class="button_message"><i class="fa fa-envelope"></i>&nbsp;MESSAGE</div></a>
+                                      </div>
                                  </div>
                                   <?php
 					   }else{
@@ -84,7 +132,7 @@
                    
                    		<div class="form-group">
                              <div class="col-md-12" >
-                             	
+                             	    
                                    <div class="profile_name"><?= $data_creatives['creative_wp_name']?></div>
                                    <div class="profile_location"><?= $data_creatives['location_name']?></div>
                                    <div class="profile_like">
@@ -97,9 +145,9 @@
 									 if($this->session->userdata('user_id')){
 									if($r_pl['jumlah'] > 0){ 
 								   ?>
-                                     <a href="<?= site_url('profile_view/dislike/'.$data_creatives['user_id']); ?>" class="btn btn-success" style="border-radius:0px; "><i class="fa fa-thumbs-up"></i>&nbsp;Like</a>
+                                     <a href="<?= site_url('profile_view/dislike/'.$data_creatives['user_id']); ?>" class="btn btn-success" style="border-radius:0px; "><i class="fa fa-thumbs-up"></i>&nbsp;You like it !</a>
                                     
-                                     </div>
+                                    
                                    <?php
 									}else{
 								   ?>
@@ -108,6 +156,7 @@
 									}
 									 }
 								   ?>
+                                   <!--<button class="md-trigger" data-modal="modal-1">Fade in &amp; Scale</button>-->
                                    </div>
                                    <div class="profile_description_title">Description</div>
                                    <div class="profile_description_content">
@@ -219,18 +268,43 @@
         	<div class="row">
                 <div class="col-md-12" >
                 	<div ><strong>User Review</strong></div>
-                    <div class="star_icon"></div>
-                    <div class="star_icon"></div>
-                    <div class="star_icon"></div>
-                    <div class="star_icon"></div>
-                    <div class="star_icon"></div>
-                    <div style="margin-top:5px; float:right">5 / 5 Stars</div>
+                    <?php
+					$q_rating = mysql_query("select sum(pr_rating) / count(pr_rating) as rata from profile_reviews where user_creative_id = '".$data_creatives['user_id']."'");
+					$r_rating = mysql_fetch_array($q_rating);
+					
+					$rata = floor($r_rating['rata']);
+					
+					$selish = 5 - $rata;
+					for($i=1; $i<=$rata; $i++){
+					?>
+                    <i class="fa fa-star" style="color:#477CBD; font-size:24px;"></i>
+                    <?php
+					}
+					for($is=1; $is<=$selish; $is++){
+					?>
+                    <i class="fa fa-star" style="color:#ccc; font-size:24px;"></i>
+                    <?php
+					}
+					?>                    
+                    <div style="margin-top:5px; float:right"><?= $rata; ?> / 5 Stars</div>
                  </div>
              </div>
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span class="blue_text">Write Review</span>
+                	<?php
+					$q_pr = mysql_query("select count(pr_id) as jumlah from profile_reviews where user_creative_id = '".$data_creatives['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
+					$r_pr = mysql_fetch_array($q_pr);
+					if($this->session->userdata('user_id')){
+					if($r_pr['jumlah'] > 0){
+						echo "You already write review";	
+					}else{
+					?>
+                    <a href="#" class="md-trigger" data-modal="modal-1" style="text-decoration:none">Write Review</a>
+                    <?php
+					}
+					}
+					?>
                  </div>
              </div>
         </div>
@@ -341,3 +415,4 @@
         </div>
 	</div>    	
 </div>
+

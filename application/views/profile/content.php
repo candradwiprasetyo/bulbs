@@ -1,4 +1,29 @@
+<?php 
+	if(isset($_GET['did']) && $_GET['did']==1){
+		echo $this->access->get_alert_success("You are logged in"); 
+	}else if(isset($_GET['did']) && $_GET['did']==2){
+		echo $this->access->get_alert_success("Your profile has been saved"); 
+	}else if(isset($_GET['did']) && $_GET['did']==3){
+		echo $this->access->get_alert_success("Your account has been saved"); 
+	}else if(isset($_GET['did']) && $_GET['did']==4){
+		echo $this->access->get_alert_success("Your project has been updated"); 
+	}
+?>
 
+<div class="col-md-9">
+       	 	<div class="row">
+                 <div class="navbar_category">
+                 	<div class="container">
+                    	<div class="navbar_category_menu">&nbsp;</div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('profile'); ?>">Profile</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('follower'); ?>">Followers</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('following'); ?>">Followings</a></div>
+                     	<div class="navbar_category_menu"><a href="<?=site_url('project/add'); ?>">Upload Work</a></div>
+                    </div>
+                 </div>
+             </div> 
+        </div>
+    
 <div class="profile_page">
 <div class="row" style="margin-left:0px; margin-right:0px;">
     <div class="col-md-9" style="padding:0px; ">
@@ -8,9 +33,9 @@
         		 <div class="col-md-12">
                        <div class="form-group">
                              <div class="col-md-12" >
-                             	<div class="row">
-                                  	<!--<div class="profile_nav"><?= $data['nav'] ?></div>-->
-                                  </div>
+                             		<div class="row">
+                                  		<!--<div class="profile_nav"><?= $data['nav'] ?></div>-->
+                                  	</div>
                              </div>
                         </div>
                   </div>
@@ -176,18 +201,31 @@
         	<div class="row">
                 <div class="col-md-12" >
                 	<div ><strong>User Review</strong></div>
-                    <div class="star_icon"></div>
-                    <div class="star_icon"></div>
-                    <div class="star_icon"></div>
-                    <div class="star_icon"></div>
-                    <div class="star_icon"></div>
-                    <div style="margin-top:5px; float:right">5 / 5 Stars</div>
+                    <?php
+					$q_rating = mysql_query("select sum(pr_rating) / count(pr_rating) as rata from profile_reviews where user_creative_id = '".$data_creatives['user_id']."'");
+					$r_rating = mysql_fetch_array($q_rating);
+					
+					$rata = floor($r_rating['rata']);
+					
+					$selish = 5 - $rata;
+					for($i=1; $i<=$rata; $i++){
+					?>
+                    <i class="fa fa-star" style="color:#477CBD; font-size:24px;"></i>
+                    <?php
+					}
+					for($is=1; $is<=$selish; $is++){
+					?>
+                    <i class="fa fa-star" style="color:#ccc; font-size:24px;"></i>
+                    <?php
+					}
+					?>                    
+                    <div style="margin-top:5px; float:right"><?= $rata; ?> / 5 Stars</div>
                  </div>
              </div>
              
              <div class="row">
                 <div class="col-md-12" >
-                    <span class="blue_text">Write Review</span>
+                   
                  </div>
              </div>
         </div>

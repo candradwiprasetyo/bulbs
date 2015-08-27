@@ -19,15 +19,18 @@
     <link href="<?= base_url('assets/css/showcase/component.css') ?>" rel="stylesheet">
     <!-- slider -->
     <link href="<?= base_url('assets/css/slider/slider.css') ?>" rel="stylesheet">
+    <script type="text/javascript" src="<?= base_url('assets/js/slider/jssor.js') ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/slider/jssor.slider.js') ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/js/slider/slider.js') ?>"></script>
     <!-- select -->
     <link href="<?= base_url('assets/css/select/bootstrap-select.css') ?>" rel="stylesheet" type="text/css" >
     <!-- font-awesome -->
     <link  href="<?= base_url('assets/css/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet">
- 
- 	<script type="text/javascript" src="<?= base_url('assets/js/slider/jssor.js') ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/js/slider/jssor.slider.js') ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/js/slider/slider.js') ?>"></script>
-   	
+    <!-- modal -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/modal/default.css') ?>" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/modal/component.css') ?>" />
+    <script src="<?= base_url('assets/js/modal/modernizr.custom.js') ?>"></script>
+ 	  
      
   </head>
 

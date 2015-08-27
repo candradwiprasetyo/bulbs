@@ -39,6 +39,8 @@
 
 <div style="clear:both;"></div>
 
+<div class="md-overlay"></div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -46,7 +48,7 @@
     <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/docs.min.js') ?>"></script>
     <!-- select -->
-	<script type="text/javascript" src="<?= base_url('assets/js/select/bootstrap-select.js') ?>"></script>
+	  <script type="text/javascript" src="<?= base_url('assets/js/select/bootstrap-select.js') ?>"></script>
    
     
     <!-- slider -->
@@ -54,11 +56,20 @@
     <!-- FlexSlider -->
 	  <script defer src="<?= base_url('assets/js/slider/jquery.flexslider.js') ?>"></script>
     
-      <script type="text/javascript">
+    <!-- modal -->
+    <script src="<?= base_url('assets/js/modal/classie.js') ?>"></script>
+    <script src="<?= base_url('assets/js/modal/modalEffects.js') ?>"></script>
+
+    <script type="text/javascript">
+
+
+
         $(function(){
           SyntaxHighlighter.all();
         });
         $(window).load(function(){
+
+        
           $('.flexslider').flexslider({
             animation: "slider",
             start: function(slider){
@@ -86,9 +97,16 @@
 			$(this).find('.btn').toggleClass('btn-default');
 			   
 		});
+
 		
-		
-		
+    window.setTimeout(function() {
+        $(".alert-message").fadeTo(300, 0).slideUp(300, function(){
+        //$(".alert-message").fadeTo(300, function(){
+          
+            $(this).remove(); 
+        });
+    }, 3000);
+
       </script>
       
   </body>

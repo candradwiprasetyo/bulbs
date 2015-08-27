@@ -81,4 +81,16 @@ class Profile_view extends CI_Controller {
 		
 		redirect('profile_view/?id='.$creative_id);
 	}
+
+	public function review($creative_id){
+		$data['user_creative_id']	 			= $creative_id;
+		$data['user_regular_id'] 				= $this->session->userdata('user_id');
+		$data['pr_rating']	 					= $this->input->post('i_rating');
+		$data['pr_description']		 			= $this->input->post('i_description');
+
+		$this->profile_view_model->review($data);
+		
+		redirect('profile_view/?id='.$creative_id."&did=1");
+	}
+
 }

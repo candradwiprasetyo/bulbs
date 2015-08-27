@@ -52,7 +52,7 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('user_type_id', $user_id[1]);
 			
 			if($user_id[1] == 2){
-				header("Location: ../profile");
+				header("Location: ../profile?did=1");
 			}else{
 				header("Location: ../showcase_regular/");
 			}

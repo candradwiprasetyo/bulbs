@@ -6,8 +6,6 @@ class Profile_view_model extends CI_Model{
 		$this->load->database();
 	}
 	
-	
-	
 	function read_id($id)
 	{
 		$this->db->select('b.*, c.location_name', 1); // ambil seluruh data
@@ -154,4 +152,15 @@ class Profile_view_model extends CI_Model{
 		$result['jumlah'] = ($result['jumlah']) ? $result['jumlah'] : 0;
 		return $result['jumlah'];
 	}
+
+	function review($data){
+
+		$this->db->trans_start();
+		$this->db->insert('profile_reviews', $data);
+		$id = $this->db->insert_id();
+		
+		$this->db->trans_complete();
+		return $id;
+	}
+	
 }

@@ -205,7 +205,7 @@ class Project extends CI_Controller {
 		}
 		*/
 		
-		redirect('profile');
+		redirect('profile/?did=4');
 	}
 	
 	public function following($creative_id, $project_id){
