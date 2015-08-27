@@ -94,7 +94,7 @@
 														and user_regular_id = '".$this->session->userdata('user_id')."'
 														");
 								    $r_pl = mysql_fetch_array($q_pl);
-									
+									 if($this->session->userdata('user_id')){
 									if($r_pl['jumlah'] > 0){ 
 								   ?>
                                      <a href="<?= site_url('profile_view/dislike/'.$data_creatives['user_id']); ?>" class="btn btn-success" style="border-radius:0px; "><i class="fa fa-thumbs-up"></i>&nbsp;Like</a>
@@ -103,11 +103,12 @@
                                    <?php
 									}else{
 								   ?>
-                                   <a href="<?= site_url('profile_view/like/'.$data_creatives['user_id']); ?>" class="btn btn-default" style="border-radius:0px;color:#999"><i class="fa fa-thumbs-up"></i>&nbsp;Like</a></div>
+                                   <a href="<?= site_url('profile_view/like/'.$data_creatives['user_id']); ?>" class="btn btn-default" style="border-radius:0px;color:#999"><i class="fa fa-thumbs-up"></i>&nbsp;Like</a>
                                    <?php
 									}
+									 }
 								   ?>
-                                   
+                                   </div>
                                    <div class="profile_description_title">Description</div>
                                    <div class="profile_description_content">
                                    		<?= $data_creatives['creative_wp_description']?>
@@ -304,7 +305,7 @@
 					 if($this->session->userdata('user_id')){
 					 	echo $data_creatives['creative_website'];
                      }else{
-                     	echo "<span class='blue_text'>Login to view</span>";
+                     	echo "<a href='".site_url('login')."'<span class='blue_text'>Login to view</span></a>";
                      }
                      ?>
                      
@@ -326,7 +327,7 @@
 					 if($this->session->userdata('user_id')){
 					 	echo $data_creatives['creative_phone'];
                      }else{
-                     	echo "<span class='blue_text'>Login to view</span>";
+                     	echo "<a href='".site_url('login')."'<span class='blue_text'>Login to view</span></a>";
                      }
                      ?>
                  </div>
