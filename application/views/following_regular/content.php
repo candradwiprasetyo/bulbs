@@ -10,8 +10,11 @@ if($this->session->userdata('user_type_id') == 2){
                  	<div class="container">
                     	<div class="navbar_category_menu">&nbsp;</div>
                         <div class="navbar_category_menu"><a href="<?=site_url('profile'); ?>">Profile</a></div>
-                        <div class="navbar_category_menu">Followers</div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('follower'); ?>">Follower</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('following'); ?>">Following</a></div>
                      	<div class="navbar_category_menu"><a href="<?=site_url('project/add'); ?>">Upload Work</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('message/view'); ?>">Message</a></div>
+                        
                     </div>
                  </div>
              </div> 
@@ -37,6 +40,7 @@ if($this->session->userdata('user_type_id') == 2){
                          <div class="navbar_category_menu"><a href="<?=site_url('showcase_regular'); ?>">Activity</a></div>
                         <div class="navbar_category_menu"><a href="<?=site_url('account_regular'); ?>">Profile</a></div>
                         <div class="navbar_category_menu"><a href="<?=site_url('following_regular'); ?>">Following</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('message/view'); ?>">Message</a></div>
                      
                     </div>
                  </div>

@@ -2,7 +2,7 @@
     
         <div class="col-md-3">
        	 	<div class="row">
-                <select name="i_type" size="1" class="form-control select_search category_search new_select" placeholder="test" style="-webkit-appearance:none !important;"/>
+                <select name="i_type" size="1" class="form-control select_search category_search new_select"  placeholder="test" style="-webkit-appearance:none !important;" /><span class="fa fa-caret-down"></span>
                      <option value="1">Concentration</option>
                      <option value="2">Graphic Design</option>    
                       <option value="2">Photography</option>  
@@ -33,7 +33,7 @@
         </div>
          <div class="col-md-3">
        	 	<div class="row">
-                 <input required type="text" name="i_name" class="form-control category_search" placeholder="Search" value="" title="" style="padding-top:24px; padding-bottom:24px;"/>
+                 <input required type="text" name="i_name" class="form-control category_search2" placeholder="Search" value="" title="" style="padding-top:24px; padding-bottom:24px;"/>
              </div> 
         </div>
      
@@ -47,11 +47,16 @@
 
 <div class="container" >
   <?php
+
+  $where = '';
+  if($this->session->userdata('user_id')){
+    $where = " where c.user_id <> '".$this->session->userdata('user_id')."'";
+  }
                 $q_p  = mysql_query("select a.*, b.creative_wp_name
 									from projects a 
 									join creatives b on b.creative_id = a.creative_id
 									join users c on c.user_id = b.user_id
-									
+								    $where	
 									
 									order by project_id");
 				while($r_p = mysql_fetch_array($q_p)){ 

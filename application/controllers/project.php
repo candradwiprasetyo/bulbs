@@ -85,7 +85,7 @@ class Project extends CI_Controller {
 		 
 		 // simpan di table
 		$data['creative_id']	 				= $data_user['creative_id'];
-		$data['project_img'] 					= $new_name;
+		$data['project_img'] 					= str_replace(" ", "_", $new_name);
 		$data['project_name']	 				= $this->input->post('i_name');
 		$data['project_description']	 		= $this->input->post('i_description');
 		$data['project_date']	 				= date("Y-m-d H:m:s");
@@ -154,7 +154,7 @@ class Project extends CI_Controller {
 				$uploadedDetails    = $this->upload->data(); 
 				
 			}
-			$data['project_img'] 					= $new_name;
+			$data['project_img'] 					= str_replace(" ", "_", $new_name);
 		}
 		 
 		 // simpan di table

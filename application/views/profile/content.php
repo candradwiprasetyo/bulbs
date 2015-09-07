@@ -19,6 +19,7 @@
                         <div class="navbar_category_menu"><a href="<?=site_url('follower'); ?>">Followers</a></div>
                         <div class="navbar_category_menu"><a href="<?=site_url('following'); ?>">Followings</a></div>
                      	<div class="navbar_category_menu"><a href="<?=site_url('project/add'); ?>">Upload Work</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('message/view'); ?>">Message</a></div>
                     </div>
                  </div>
              </div> 

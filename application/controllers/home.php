@@ -7,21 +7,24 @@ class Home extends CI_Controller {
 		$this->load->model('home_model');
 		$this->load->library('access');
 		$this->load->library('session');
+		$this->load->helper('url');
 	}
  	
 	public function index() {
+		
+		$this->load->library('facebook'); // Automatically picks appId and secret from config
 		
 		$data['title'] = "8BULBS";
 		$list['list'] = "test";
 		
  		$this->load->view('layout/header', array('data' => $data));
 		//$this->load->view('layout/header', $data);
-		$data_img['id1'] = "project/view/".$this->home_model->get_project_id(1, 1);
-		$data_img['id2'] = "project/view/".$this->home_model->get_project_id(2, 2);
-		$data_img['id3'] = "project/view/".$this->home_model->get_project_id(3, 3);
-		$data_img['id4'] = "project/view/".$this->home_model->get_project_id(4, 4);
-		$data_img['id5'] = "project/view/".$this->home_model->get_project_id(5, 5);
-		$data_img['id6'] = "project/view/".$this->home_model->get_project_id(6, 6);
+		$data_img['id1'] = "home/feature_view/".$this->home_model->get_project_id(1, 1);
+		$data_img['id2'] = "home/feature_view/".$this->home_model->get_project_id(2, 2);
+		$data_img['id3'] = "home/feature_view/".$this->home_model->get_project_id(3, 3);
+		$data_img['id4'] = "home/feature_view/".$this->home_model->get_project_id(4, 4);
+		$data_img['id5'] = "home/feature_view/".$this->home_model->get_project_id(5, 5);
+		$data_img['id6'] = "home/feature_view/".$this->home_model->get_project_id(6, 6);
 		
 		$data_img['no1'] = $this->home_model->get_project_img(1, 1);
 		$data_img['no2'] = $this->home_model->get_project_img(2, 2);
@@ -29,6 +32,15 @@ class Home extends CI_Controller {
 		$data_img['no4'] = $this->home_model->get_project_img(4, 4);
 		$data_img['no5'] = $this->home_model->get_project_img(5, 5);
 		$data_img['no6'] = $this->home_model->get_project_img(6, 6);
+		
+		if($this->session->userdata('logged') != 1){
+			$data_img['login_facebook_url'] = $this->facebook->getLoginUrl(array(
+					'redirect_uri' => site_url('login/submit_login_facebook'), 
+					'scope' => 'public_profile, email' // permissions here
+			));
+		}else{
+			$data_img['login_facebook_url'] = "";
+		}
 		
 		$this->load->view('home/index', $data_img);
 		$this->load->view('layout/footer'); 
@@ -38,6 +50,7 @@ class Home extends CI_Controller {
 	public function signup() {
 		 
 		$data['user_type_id']	 				= $this->input->post('t_sign_up3');
+		$data['user_category_id']	 			= 1;
 		$data['user_first_name'] 				= $this->input->post('i_first_name');
 		$data['user_last_name'] 				= $this->input->post('i_last_name');
 		$data['user_email'] 					= $this->input->post('i_email');
@@ -45,7 +58,7 @@ class Home extends CI_Controller {
 		$data['user_password']	 				= md5($this->input->post('i_password'));
 		$data['user_active_status']	 			= 1;
 		
-		$id = $this->home_model->create($data);
+		$id = $this->home_model->create_user($data);
 		
 		if($data['user_type_id'] == 2){
 			header("Location: ../register?user_id=$id");
@@ -61,5 +74,37 @@ class Home extends CI_Controller {
 		//echo $location_id."-".$pc_id;
 		redirect("creative?location_id=$location_id&pc_id=$pc_id");
 		
+	}
+	
+	public function slider_view($id){
+		
+		$data['title'] = "Slider View";
+		
+		$data_slider = array();
+		$result = $this->home_model->read_slider_id($id);
+		
+		if($result){
+			$data_slider  = $result;
+		}
+		
+		$this->load->view('layout/header', array('data' => $data));
+		$this->load->view('home/homepage/slider_view', $data_slider);
+		$this->load->view('layout/footer'); 
+	}
+	
+	public function feature_view($id){
+		
+		$data['title'] = "Feature View";
+		
+		$data_feature = array();
+		$result = $this->home_model->read_feature_id($id);
+		
+		if($result){
+			$data_feature  = $result;
+		}
+		
+		$this->load->view('layout/header', array('data' => $data));
+		$this->load->view('home/homepage/feature_view', $data_feature);
+		$this->load->view('layout/footer'); 
 	}
 }

@@ -23,7 +23,7 @@
                 	<select name="i_location_id" size="1" class="form-control select_search new_select" required style="-webkit-appearance:none !important;"/>
                                              <option value="">Concentration</option>
                                              <?php
-											$q_pc  = mysql_query("select * from project_categories order by pc_id");
+											$q_pc  = mysql_query("select * from profile_categories order by pc_id");
 											while($r_pc = mysql_fetch_array($q_pc)){ 
 											?>
                                            <option value="<?= $r_pc['pc_id']?>"><?= $r_pc['pc_name'] ?></option>      

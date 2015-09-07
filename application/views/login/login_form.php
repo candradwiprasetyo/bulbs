@@ -8,6 +8,13 @@
 				}
 			}
 			
+			
+			function signup_facebook(link){
+				var type = document.getElementById("t_sign_up3").value;
+				window.location.href = "<?= site_url(); ?>" + "/login/signup_facebook/" + type;
+				
+				
+			}
         </script>
 <div class="row" style="margin-left:0px; margin-right:0px;">
  
@@ -69,7 +76,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input class="btn button_signup" type="submit" value="LOG IN"/>
+                                                    <input class="btn button_signup" type="submit" value="LOG IN" />
                                                 </div>
                                             </div>
                                         
@@ -80,7 +87,7 @@
                                                     </div>
                                                  </div>
                                                  <div class="form-group">
-                                                     <a href="#" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
+                                                     <a href="<?= $login_facebook_url ?>" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -172,7 +179,7 @@
                                                             </div>
                                                          </div>
                                                          <div class="form-group">
-                                                            <a href="#" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;SIGN UP WITH FACEBOOK</a>
+                                                            <a href="#" onclick="signup_facebook('test')" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -201,4 +208,3 @@
         </div>
     </div>
 </div>
-

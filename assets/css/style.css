@@ -301,6 +301,7 @@ body
 .select_search{
 	padding-top:10px;
 	padding-bottom:10px;
+	
 }
 
 .box_content{
@@ -383,6 +384,18 @@ body
 	background:#ddd;
 	padding-top:13px;
 	padding-bottom:13px;
+	background:url(../images/select.png) #ddd no-repeat 85px;
+	background-position: center right;
+	padding-right:5px;
+}
+
+.category_search2{
+	background:#ddd;
+	padding-top:13px;
+	padding-bottom:13px;
+	background:url(../images/search.png) #ddd no-repeat 85px;
+	background-position: center right;
+	padding-right:5px;
 }
 
 .navbar_category{
@@ -462,6 +475,51 @@ body
 	padding-top:30px;
 	line-height:25px;
 }
+
+.message_page{
+	background:#fff;
+	min-height:700px;
+}
+
+.message_left{
+	width:100%;
+	float:right;
+	min-height:700px;
+	background:#F2F2F2;
+	/*overflow-x:hidden;
+	overflow-y:scroll;
+	height:700px;*/
+}
+
+.message_right{
+	min-height:700px;
+}
+
+.message_right_content{
+	padding-top:20px;
+}
+.message_name{
+	font-weight:bold;
+	font-size:16px;
+}
+
+.message_comment{
+	
+	bottom:0;
+	
+	width:100%;
+	background:#E6E6E6;
+	padding-bottom:60px;
+}
+
+
+.chat_content{
+	padding:20px;
+}
+.chat_content:hover{
+	background:#F2F2F2;
+}
+
 
 .profile_page{
 	background:#fff;
@@ -610,10 +668,27 @@ body
 
 new_select{
 	-webkit-appearance:none !important;
+	background:url(../images/select.png) no-repeat;
 }
 
 /* - ---------------------------- showcase new ------------------------------------ */
-
+	.box-showcase_slider{
+		position: relative;
+       width: 100%;
+       padding-bottom: 65%;
+       cursor: pointer;
+	}
+	
+	.box-showcaseInner_slider {
+       position: absolute;
+       left: 0px;
+       right: 0px;
+       top: 0px;
+       bottom: 0px;
+       overflow: hidden;
+       background: #ccc;
+    }
+	
     .box-showcase {
        float: left;
        position: relative;
@@ -797,6 +872,13 @@ new_select{
     /*.box-showcaseInner:hover .titlebox-showcase, .box-showcaseInner.touchFocus .titlebox-showcase {
        margin-bottom: 0;
     }*/
+	
+	
+	
+	/*-------------------carousel ----------------------*/
+	
+	
+	
 
     /* ------------------------------- rating star ---------------------------- */
 

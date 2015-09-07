@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-md-9">
                                 <div class="profile_name"><?= $data_news['news_name'] ?></div>
-                                <div class="profile_location">by <?= $data_news['creative_wp_name'] ?>o</div>
+                                <div class="profile_location">by <?= $data_news['creative_wp_name'] ?></div>
                                 <div class="profile_description_title">Project Info</div>
                                 <div class="profile_description_content">
                                <?= $data_news['news_description'] ?>

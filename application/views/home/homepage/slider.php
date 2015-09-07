@@ -1,12 +1,11 @@
-
   
 <div class="slider_page">
 <div class="row" style="margin-left:0px; margin-right:0px;">
     <div class="col-md-9" style="padding:0px; ">
-    	
+      
         
         
-             
+          <?php /*
     <div id="sliderb_container" style="position: relative; top: 0px; left: 0px; width: 1200px !important; height: 700px !important; overflow: hidden; ">
 
        
@@ -71,28 +70,86 @@
         </span>
         <a style="display: none" href="http://www.jssor.com">Bootstrap Slider</a>
         <!-- Trigger -->
-        <script>
-            jssor_sliderb_starter('sliderb_container');
-			
-			function sign_up_type(type) {
-				
-				if(type==2){
-					document.getElementById("t_sign_up3").value = "2";
-				}else{
-					document.getElementById("t_sign_up3").value = "3";
-				}
-			}
-			
-        </script>
+       
     </div>
+  */
+  ?>
+    
+  
+ <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+      <?php
+      $no_slider = 0;
+	  $q_slider = mysql_query("select * from sliders order by slider_id desc");
+	  while($r_slider = mysql_fetch_array($q_slider)){
+	  ?>
+        <li data-target="#myCarousel" data-slide-to="<?= $no_slider ?>" <?php if($no_slider == 0){ ?> class="active"><?php } ?></li>
+        <?php
+		$no_slider++;
+	  }
+		?>
+      </ol>
+      
+      <div class="carousel-inner">
+      
+      <?php
+	  $no_slider2 = 1;
+      $q_slider2 = mysql_query("select * from sliders order by slider_id desc");
+	  while($r_slider2 = mysql_fetch_array($q_slider2)){
+	  ?>
+        <div class="item <?php if($no_slider2 == 1){ echo "active"; } ?>">
+          <div class="box-showcase_slider">
+          <div class="box-showcaseInner_slider">
+            <img src="<?= base_url(); ?>assets/images/slider/<?= $r_slider2['slider_img'] ?>" alt="First slide" style="width:100%;">
+          </div>
+           </div>
+          <div class="container">
+            <div class="carousel-caption">
+              <div class="title">Features</div>
+              <p class="desc"><?= $r_slider2['slider_name'] ?></p>
+              <div class="read_more"><a href="<?= site_url() ?>/home/slider_view/<?= $r_slider2['slider_id'] ?>" role="button" style="color:#fff;">Read more</a></div>
+            </div>
+          </div>
+        </div>
+      <?php
+	  $no_slider2++;
+	  }
+	  ?>
+      </div>
+      
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div><!-- /.carousel -->
+    
+    
+    </div>
+ <script>
+           // jssor_sliderb_starter('sliderb_container');
+      
+      function sign_up_type(type) {
         
-	
-    </div>
-
+        if(type==2){
+          document.getElementById("t_sign_up3").value = "2";
+        }else{
+          document.getElementById("t_sign_up3").value = "3";
+        }
+      }
+      
+      function signup_facebook(link){
+        var type = document.getElementById("t_sign_up3").value;
+        window.location.href = "<?= site_url(); ?>" + "/login/signup_facebook/" + type;
+        
+        
+      }
+      
+        </script>
     <div class="col-md-3" style="padding:0px; " >
-    	
-    	<div class="col-md-10">
-        	<div class="login_page">
+      
+      <div class="col-md-10">
+          <div class="login_page">
            
             
              <div class="box box-cokelat">
@@ -106,7 +163,7 @@
                                         
                                          <div class="form-group">
                                          <div class="btn-toggle"> 
-                                         	<div class="col-md-6" style="padding:0px">
+                                          <div class="col-md-6" style="padding:0px">
                                             
                                             <button class="btn btn-lg btn-primary new_button_creatives" id="t_sign_up1" onclick="sign_up_type(2)">CREATIVES</button>
                                             </div>
@@ -117,7 +174,7 @@
                                           </div>
                                           
                                         </div>
-                                      	
+                                        
                                         
                                         <div style="clear:both;"></div>
                                          <form action="<?=site_url('home/signup')?>" method="post" enctype="multipart/form-data">
@@ -153,18 +210,18 @@
                                             <input class="btn button_signup" type="submit" value="SIGN UP"/>
                                         </div>
                                          <div class="form-group">
-                                            <a href="#" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
+                                            <a href="#" onclick="signup_facebook('test')" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
                                         </div>
                                         <div class="form-group" style="margin-bottom:50px;">
                                             By Signing Up, you agree to our Terms & Conditions
                                         and that you have read our Privacy Policy.
                                         </div>
-                                      	
+                                        
                                       
                                         </div>
                                        </form>
                                         
- 										
+                    
                                         <div style="clear:both;"></div>
                                      
                                 </div><!-- /.box-body -->

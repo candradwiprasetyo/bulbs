@@ -8,6 +8,7 @@
                         <div class="navbar_category_menu"><a href="<?=site_url('showcase_regular'); ?>">Activity</a></div>
                         <div class="navbar_category_menu"><a href="<?=site_url('account_regular'); ?>">Profile</a></div>
                         <div class="navbar_category_menu"><a href="<?=site_url('following_regular'); ?>">Following</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('message/view'); ?>">Message</a></div>
                      
                     </div>
                  </div>

@@ -1,4 +1,3 @@
-
     <form id="form1" name="form1" method="post" action="<?=site_url('register/save_registration/'.$data['id'])?>" enctype="multipart/form-data">
     
     <div class="col-md-12" style="padding:0px; " >
@@ -37,8 +36,15 @@
                                                 	<div class="col-md-6">
                                                             <div class="form-group">
                                                            <label>Photo Profile</label>
-                                                          
-                                                            <input type="file" name="i_img" id="i_img" required />
+                                                           <?php
+                                                           if($user_category_id == 2){
+                                                           ?>
+                                                          <img src="<?= base_url()."assets/images/profile/".$creative_img ?>" style="width:100%;" />
+                                                          <?php
+                                                          }
+                                                          ?>
+                                                            <input type="file" name="i_img" id="i_img" <?php if($user_category_id == 1){ echo "required"; }
+                                                           ?>/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -84,7 +90,7 @@
                                                     <div class="col-md-6">
                                                             <div class="form-group">
                                                             <label>Facebook</label>
-                                                            <input  type="text" name="i_facebook" class="form-control"value="" title="" id="i_phone"/>
+                                                            <input  type="text" name="i_facebook" class="form-control" value="<?= $creative_facebook ?>" title="" id="i_phone"/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">

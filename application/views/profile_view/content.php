@@ -26,7 +26,8 @@
                     <br>
 
                      <div class="profile_name" style="margin-bottom:20px;">Review <?= $data_creatives['creative_wp_name'] ?></div>
-                      <textarea name="i_description" rows="5" class="form-control" id="i_description" required ></textarea>
+                      <textarea name="i_description" rows="5" class="form-control" id="i_description" required placeholder="Write a few words about your experience
+with the creative..." ></textarea>
                                                
                       <div style="clear:both"></div>
                     <br>
@@ -107,7 +108,7 @@
                                  </div>
                                  <div class="col-md-6" >
                                  	<div class="row">
-                                          <a href="#" style="text-decoration:none;"><div class="button_message"><i class="fa fa-envelope"></i>&nbsp;MESSAGE</div></a>
+                                          <a href="<?=site_url('message/view/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_message"><i class="fa fa-envelope"></i>&nbsp;MESSAGE</div></a>
                                       </div>
                                  </div>
                                   <?php

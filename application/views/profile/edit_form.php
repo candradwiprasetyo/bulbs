@@ -150,7 +150,7 @@
                                                     </div>
                                                 		 <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <input class="btn button_signup" type="submit" value="BACK" onclick="javascript: history.back"/>
+                                                            <input class="btn button_signup" type="button" value="BACK" onclick="javascript: history.back()"/>
                                                         </div>
                                                     </div>
                                                    

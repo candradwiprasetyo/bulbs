@@ -42,6 +42,9 @@ class Profile extends CI_Controller {
  	}
 	
 	public function logout(){
+		$this->load->library('facebook');
+        // Logs off session from website
+        $this->facebook->destroySession();
 		$this->session->sess_destroy();
 		redirect('home');
 	}
@@ -97,6 +100,8 @@ class Profile extends CI_Controller {
 		}
 		
 		$data['creative_img'] 					= $new_name;
+		$data['creative_img'] 					= str_replace(" ", "_", $data['creative_img']);
+		
 		}
 		 
 		 // simpan di table

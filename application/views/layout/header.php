@@ -19,6 +19,9 @@
     <link href="<?= base_url('assets/css/showcase/component.css') ?>" rel="stylesheet">
     <!-- slider -->
     <link href="<?= base_url('assets/css/slider/slider.css') ?>" rel="stylesheet">
+    <!-- carousel -->
+    <link href="<?= base_url('assets/css/carousel/carousel.css') ?>" rel="stylesheet">
+    
     <script type="text/javascript" src="<?= base_url('assets/js/slider/jssor.js') ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/slider/jssor.slider.js') ?>"></script>
     <script type="text/javascript" src="<?= base_url('assets/js/slider/slider.js') ?>"></script>
@@ -35,6 +38,9 @@
   </head>
 
   <body role="document">
+  
+ 
+  
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
 <div class="navbar navbar-default navbar-static-top" role="navigation">

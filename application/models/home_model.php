@@ -6,7 +6,29 @@ class Home_model extends CI_Model{
 		$this->load->database();
 	}
 	
-	function create($data){
+	
+	function read_slider_id($id)
+	{
+		$this->db->select('a.*', 1); // ambil seluruh data
+		$this->db->where('a.slider_id', $id);
+		$query = $this->db->get('sliders a', 1); // parameter limit harus 1
+		$result = null; // inisialisasi variabel. biasakanlah, untuk mencegah warning dari php.
+		foreach($query->result_array() as $row)	$result = ($row); // render dulu dunk!
+		return $result; 
+	}
+	
+	function read_feature_id($id)
+	{
+		$this->db->select('a.*', 1); // ambil seluruh data
+		$this->db->where('a.feature_id', $id);
+		$query = $this->db->get('features a', 1); // parameter limit harus 1
+		$result = null; // inisialisasi variabel. biasakanlah, untuk mencegah warning dari php.
+		foreach($query->result_array() as $row)	$result = ($row); // render dulu dunk!
+		return $result; 
+	}
+	
+	
+	function create_user($data){
 		$this->db->trans_start();
 		$this->db->insert('users', $data);
 		$id = $this->db->insert_id();
@@ -22,26 +44,26 @@ class Home_model extends CI_Model{
 
 	function get_project_img($limit)
 	{
-		$sql = "select project_img from projects  order by project_id limit $limit
+		$sql = "select feature_img from features  order by feature_id limit $limit
 				";
 		
 		$query = $this->db->query($sql);
 		
 		$result = null;
 		foreach ($query->result_array() as $row) $result = ($row);
-		return $result['project_img'];
+		return $result['feature_img'];
 	}
 	
 	function get_project_id($limit)
 	{
-		$sql = "select project_id from projects  order by project_id limit $limit
+		$sql = "select feature_id from features  order by feature_id limit $limit
 				";
 		
 		$query = $this->db->query($sql);
 		
 		$result = null;
 		foreach ($query->result_array() as $row) $result = ($row);
-		return $result['project_id'];
+		return $result['feature_id'];
 	}
 
 	

@@ -103,11 +103,25 @@
                         </div>
                         <div class="col-md-11">
                            
-                                 <div class="following_name"><a href="<?=site_url('profile_view/?id='.$data_project['user_id'])?>"><?= $data_project['creative_wp_name'] ?></a></div>
+                                <div class="following_name">
+                                  <?php
+
+                                  if($this->session->userdata('user_id') == $data_project['user_id']){
+                                  ?>
+                                  <a href="<?=site_url('profile') ?>"><?= $data_project['creative_wp_name'] ?></a>
+                                  
+                                  <?php
+                                  }else{ 
+                                  ?>
+                                  <a href="<?=site_url('profile_view/?id='.$data_project['user_id'])?>"><?= $data_project['creative_wp_name'] ?></a>
+                                  <?php
+                                  }
+                                  ?>
+                                </div>
                                 <div class="following_location" style="margin-bottom:10px;"><?= $data_project['location_name'] ?></div>
                                 <div class="blue_text">
                                  <?php
-                                if($this->session->userdata('user_type_id')){
+                                if($this->session->userdata('user_id') != "" && $this->session->userdata('user_id') != $data_project['user_id']){
 									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$data_project['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
 									$r_tr_f = mysql_fetch_array($q_tr_f);
 									if($r_tr_f['jumlah'] > 0){

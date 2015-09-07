@@ -16,8 +16,17 @@ class Register extends CI_Controller {
 		
 			$data['title'] = "Register";
 			
+			$data_creatives = array();
+			$result = $this->register_model->read_id($data['id']);
+			
+			if($result){
+				$data_creatives  = $result;
+			}
+			
+			//print_r($data_creatives);
+			
 			$this->load->view('layout/header', array('data' => $data));
-			$this->load->view('register/form', $data);
+			$this->load->view('register/form', $data_creatives);
 			$this->load->view('layout/footer'); 
 		
  	}
@@ -27,30 +36,35 @@ class Register extends CI_Controller {
 	public function save_registration($id) {
 		
 		// upload gambar
-		$new_name = time()."_".$_FILES['i_img']['name'];
-		
-		$configUpload['upload_path']    = './assets/images/profile/';                 #the folder placed in the root of project
-		$configUpload['allowed_types']  = 'gif|jpg|png|bmp|jpeg';       #allowed types description
-		$config['max_size']	= '100';
-		$config['max_width'] = '1024';
-		$config['max_height'] = '768';                       #max height
-		$configUpload['encrypt_name']   = false;   
-		$configUpload['file_name'] 		= $new_name;                      	#encrypt name of the uploaded file
-		$this->load->library('upload', $configUpload);                  #init the upload class
-		if(!$this->upload->do_upload('i_img')){
-			$uploadedDetails    = $this->upload->display_errors();
-		}else{
-			$uploadedDetails    = $this->upload->data(); 
-			$this->_createThumbnail($uploadedDetails['file_name']);
- 
-           	$thumbnail_name = $uploadedDetails['raw_name']. '_thumb' .$uploadedDetails['file_ext'];   
+		if($_FILES['i_img']['name']){
+			$new_name = time()."_".$_FILES['i_img']['name'];
+			
+			$configUpload['upload_path']    = './assets/images/profile/';                 #the folder placed in the root of project
+			$configUpload['allowed_types']  = 'gif|jpg|png|bmp|jpeg';       #allowed types description
+			$config['max_size']	= '100';
+			$config['max_width'] = '1024';
+			$config['max_height'] = '768';                       #max height
+			$configUpload['encrypt_name']   = false;   
+			$configUpload['file_name'] 		= $new_name;                      	#encrypt name of the uploaded file
+			$this->load->library('upload', $configUpload);                  #init the upload class
+			if(!$this->upload->do_upload('i_img')){
+				$uploadedDetails    = $this->upload->display_errors();
+			}else{
+				$uploadedDetails    = $this->upload->data(); 
+				$this->_createThumbnail($uploadedDetails['file_name']);
+	 
+	           	$thumbnail_name = $uploadedDetails['raw_name']. '_thumb' .$uploadedDetails['file_ext'];   
+			}
+			
+			$data['creative_img'] 					= $new_name;
+                         $data['creative_img'] 	= str_replace(" ", "_", $data['creative_img']);
 		}
-		 
+			 
 		 // simpan di table
 		$data['creative_wp_name']	 			= $this->input->post('i_wp_name');
 		$data['location_id'] 					= $this->input->post('i_location_id');
 		$data['creative_wp_description'] 		= $this->input->post('i_description');
-		$data['creative_img'] 					= $new_name;
+		
 		$data['creative_website']	 			= $this->input->post('i_website');
 		$data['creative_phone']	 				= $this->input->post('i_phone');
 		$data['creative_facebook']	 			= $this->input->post('i_facebook');
