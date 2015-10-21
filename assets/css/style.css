@@ -58,6 +58,8 @@ body
 
 .main_content{
 	min-height:700px;
+	margin-top:98px;
+	
 }
 .page_name{
 	width:100%;
@@ -77,6 +79,7 @@ body
 .navbar-default {
 	background: #477cbd;
 	box-shadow:none;
+	border-radius: 0px;
 }
 
 .navbar-default .navbar-brand {
@@ -120,6 +123,8 @@ body
 .navbar-static-top {
   border-width:0;
   z-index:1000;
+  position:fixed;
+  width:100%;
 }
 
 .navbar-default .navbar-nav > .active > a {
@@ -140,7 +145,7 @@ body
 
 .slider_page{
 	background:#477cbd;
-	
+	margin-top:98px;
 }
 .login_page{
 	color:#fff;
@@ -280,10 +285,47 @@ body
 }
 .search_page{
 	background:#2a5da8;
-	padding-top:40px;
-	padding-bottom:20px;
+	padding-top:20px;
+	padding-bottom:0px;
+	padding-right:20px;
+	position:fixed;
+	float:right;
+	z-index:9999;
+	width:75%;
+	right:25%;
+	padding-left:20px;
 }
 
+.icon_home_page{
+	
+	background:#fff;
+	padding-bottom:60px;
+	padding-top:60px;
+}
+
+.icon_home_title{
+	text-align:center;
+	color:#2A5DA8;
+	letter-spacing:2px;
+	font-size:20px;
+	font-weight:bold;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+
+.icon_home_desc{
+	text-align:center;
+	font-size:16px;
+}
+.gallery_page{
+	padding-top:40px;
+	padding-bottom:40px;
+}
+.gallery_page_title{
+	font-size:28px;
+	padding-left:10px;
+	font-family: 'new_title';
+}
 .footer_page{
 	background:#2a5da8;
 	padding-top:40px;
@@ -296,6 +338,7 @@ body
 	letter-spacing:2px;
 	font-size:20px;
 	color:#fff;
+	line-height:40px;
 }
 
 .select_search{

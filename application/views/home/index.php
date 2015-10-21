@@ -2,7 +2,7 @@
 /**/
 // homepage
 include 'homepage/slider.php';
-include 'homepage/search.php';
+include 'homepage/icon_home.php';
 include 'homepage/gallery.php';
 /*
 // login page

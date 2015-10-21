@@ -13,7 +13,7 @@
          
           <a class="navbar-brand" href="#"> <img src="<?php echo base_url('assets/images/logo.png'); ?>" /></a>
         </div>
-        <div class="navbar-collapse collapse" style="float:right">
+        <div class="navbar-collapse collapse" >
          
          <ul class="nav navbar-nav">
             <li class="active"><a href="#">Showcase</a></li>

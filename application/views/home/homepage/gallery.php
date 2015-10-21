@@ -1,5 +1,7 @@
+<div class="gallery_page">
 <div class="container">
     <div class="row" style="margin-top:10px;">
+    	<div class="gallery_page_title">Featured Works</div>
         <div class="col-md-6">
         	
             	<div class="row">
@@ -83,5 +85,6 @@
             
         </div>
     </div>
+</div>
 </div>
 <br />

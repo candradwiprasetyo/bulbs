@@ -2,7 +2,7 @@
 
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
-<div class="navbar navbar-default navbar-static-top" role="navigation" style="height:60px !important; min-height:60px !important; background:#2a5da8 !important; font-family:'Roboto-Regular'">
+<div class="navbar navbar-default" role="navigation" style="height:60px !important; min-height:60px !important; background:#2a5da8 !important; font-family:'Roboto-Regular'">
       
         <div class="navbar-header">
           <a class="navbar-brand footer-copyright" href="<?=site_url('')?>">COPYRIGHT 2015 8BULBS. ALL RIGHTS RESERVED</a>
@@ -27,7 +27,7 @@
 </div>
 
 <div class="col-md-3" style="padding:0px;">
-	<div class="navbar navbar-default navbar-static-top" role="navigation" style="background:#477cbd; height:60px !important; min-height:60px !important;">
+	<div class="navbar navbar-default" role="navigation" style="background:#477cbd; height:60px !important; min-height:60px !important;">
      
          <a href="#"><div class="footer-icon" style="margin-left:30px;"><i class="fa fa-facebook"></i></div></a>
          <a href="#"><div class="footer-icon"><i class="fa fa-twitter"></i></div></a>
