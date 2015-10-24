@@ -84,6 +84,12 @@
                 </div>
             
         </div>
+
+       <div class="col-md-4 col-md-offset-4">
+                                                        <div class="form-group">
+                                                            <a href="<?= site_url('showcase'); ?>" class="btn button_signup">VIEW MORE IN SHOWCASE</a>
+                                                        </div>
+                                                    </div>
     </div>
 </div>
 </div>

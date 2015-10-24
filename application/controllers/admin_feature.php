@@ -17,7 +17,7 @@ class Admin_feature extends CI_Controller {
 	public function index() {
 		
 			$data_head['title'] = "feature ";
-			$data_head['add_button'] = site_url().'/admin_feature/form/';
+			$data_head['add_button'] = site_url().'admin_feature/form/';
 			
 			$data_user = array();
 			$result = $this->access->get_data_user_admin($this->session->userdata('user_id'));
@@ -37,7 +37,7 @@ class Admin_feature extends CI_Controller {
 	public function form($id = 0) {
 		
 			$data_head['title'] = "feature ";
-			$data_head['action'] = site_url().'/admin_feature/form_action/'.$id;
+			$data_head['action'] = site_url().'admin_feature/form_action/'.$id;
 			$data_head['close_button'] = site_url().'/admin_feature/';
 			
 			$data_user = array();

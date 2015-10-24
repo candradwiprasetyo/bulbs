@@ -30,7 +30,7 @@
                                                
                                                 <td style="text-align:center;">
 
-                                                    <a href="<?= site_url() ?>/admin_feature/form/<?= $row['feature_id']?>" class="btn btn-default" ><i class="fa fa-pencil"></i></a>
+                                                    <a href="<?= site_url() ?>admin_feature/form/<?= $row['feature_id']?>" class="btn btn-default" ><i class="fa fa-pencil"></i></a>
                                                   <!--  <a href="javascript:void(0)" onclick="confirm_delete(<?= $row['feature_id']; ?>, <?= site_url().'/admin_feature/delete/'; ?>)" class="btn btn-default" ><i class="fa fa-trash-o"></i></a>-->
 
                                                 </td> 

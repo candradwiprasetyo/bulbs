@@ -1,6 +1,7 @@
-
+<?= $this->access->get_navbar_category(); ?>
 <form id="form1" name="form1" method="post" action="<?= $data_project['action'] ?>" enctype="multipart/form-data">
 <div class="col-md-12" style="padding:0px;" >
+
 <?php
 if($data_project['project_img']){
 ?>

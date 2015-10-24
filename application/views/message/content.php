@@ -1,7 +1,21 @@
 <div class="message_page">
 	<div class="row" style="margin-left:0px; margin-right:0px;">
+    
     	<div class="col-md-9" style="padding:0px; ">
+        <?php
+		if($this->session->userdata('user_type_id') == 2){
+		?>
+        <?= $this->access->get_navbar_category(); ?>
+        <?php
+        }else if($this->session->userdata('user_type_id') == 3){
+		?>
+        <?= $this->access->get_navbar_category_regular(); ?>
+        <?php
+        }
+		?>
     		<div class="message_left">
+            
+            
             	
         		<div class="profile_left_color2">
         			<div class="profile_left_content">

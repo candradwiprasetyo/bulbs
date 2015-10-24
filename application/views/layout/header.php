@@ -33,7 +33,9 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/modal/default.css') ?>" />
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/modal/component.css') ?>" />
     <script src="<?= base_url('assets/js/modal/modernizr.custom.js') ?>"></script>
- 	  
+   
+
+    
      
   </head>
 
@@ -43,7 +45,7 @@
   
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
-<div class="navbar navbar-default navbar-static-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation" style="width:75%;">
       
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -57,11 +59,11 @@
         </div>
         <div class="navbar-collapse collapse">
          
-         <ul class="nav navbar-nav">
+         <ul class="nav navbar-nav" style="float:right;">
             <li class="active"><a href="<?=site_url('showcase')?>">Showcase</a></li>
             <li><a href="<?=site_url('creative')?>">creatives</a></li>
             <li><a href="<?=site_url('news')?>">News</a></li>
-            <li><a href="<?=site_url('workshop')?>">Workshop</a></li>
+            <li><a href="<?=site_url('workshop')?>">Events</a></li>
             
           </ul>
           

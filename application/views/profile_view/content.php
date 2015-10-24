@@ -95,7 +95,7 @@ with the creative..." ></textarea>
 									?> 
                                    
                                  
-                                   <a href="<?=site_url('profile_view/unfollowing/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_creatives" style="background:#C30;">UNFOLLOW</div></a>
+                                   <a href="<?=site_url('profile_view/unfollowing/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_unfollow">FOLLOWING</div></a>
                                 <?php
 								}else{
                                 ?>
@@ -241,8 +241,9 @@ with the creative..." ></textarea>
         <div class="form-group" style="margin-bottom:50px;">
         	<div class="row">
                 <div class="col-md-12" >
+                <strong>SHARE</strong>
                    <?php if($data_creatives['creative_facebook']){ ?>
-                    <a href="<?= $data_creatives['creative_facebook'] ?>" style="padding-right:0px;">
+                    <a href="<?= $data_creatives['creative_facebook'] ?>" style="padding-right:0px;  margin-left:20px;">
                     <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-facebook"></i></div>
                     </a>
                     <? } ?>
@@ -256,61 +257,12 @@ with the creative..." ></textarea>
                     <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-instagram"></i></div>
                     </a>
                     <? } ?>
-                    <strong>SHARE</strong>
+                    
                 </div>
             </div>
         </div>
         
-       
-        	
-        
-        
-        <div class="form-group" style="margin-bottom:30px;">
-        	<div class="row">
-                <div class="col-md-12" >
-                	<div ><strong>User Review</strong></div>
-                    <?php
-					$q_rating = mysql_query("select sum(pr_rating) / count(pr_rating) as rata from profile_reviews where user_creative_id = '".$data_creatives['user_id']."'");
-					$r_rating = mysql_fetch_array($q_rating);
-					
-					$rata = floor($r_rating['rata']);
-					
-					$selish = 5 - $rata;
-					for($i=1; $i<=$rata; $i++){
-					?>
-                    <i class="fa fa-star" style="color:#477CBD; font-size:24px;"></i>
-                    <?php
-					}
-					for($is=1; $is<=$selish; $is++){
-					?>
-                    <i class="fa fa-star" style="color:#ccc; font-size:24px;"></i>
-                    <?php
-					}
-					?>                    
-                    <div style="margin-top:5px; float:right"><?= $rata; ?> / 5 Stars</div>
-                 </div>
-             </div>
-             
-             <div class="row">
-                <div class="col-md-12" >
-                	<?php
-					$q_pr = mysql_query("select count(pr_id) as jumlah from profile_reviews where user_creative_id = '".$data_creatives['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
-					$r_pr = mysql_fetch_array($q_pr);
-					if($this->session->userdata('user_id')){
-					if($r_pr['jumlah'] > 0){
-						echo "You already write review";	
-					}else{
-					?>
-                    <a href="#" class="md-trigger" data-modal="modal-1" style="text-decoration:none">Write Review</a>
-                    <?php
-					}
-					}
-					?>
-                 </div>
-             </div>
-        </div>
-        
-        <div class="form-group" style="margin-bottom:30px;">
+       <div class="form-group" style="margin-bottom:30px;">
         	<div class="row">
                 <div class="col-md-12" >
                 	<div ><strong>Statistics</strong></div>
@@ -333,7 +285,7 @@ with the creative..." ></textarea>
                  </div>
              </div>
         </div>
-        
+        	
         <div class="form-group" style="margin-bottom:30px;">
         	<div class="row">
                 <div class="col-md-12" >
@@ -344,22 +296,24 @@ with the creative..." ></textarea>
              
              <div class="row">
                 <div class="col-md-12" >
-                     <?php
+                    <?php
                             $color = array('#d05a51', '#92a495', '#3a58db', '#f1c40f', '#d35400', '#27ae60', '#8e44ad');
 							$q_pc = mysql_query("select b.pc_name 
 												from profile_detail_categories a
 												join profile_categories b on b.pc_id = a.pc_id
 												where user_id = '".$data_creatives['user_id']."'
 												order by a.pc_id 
+												limit 3
 												");
+							$concentration = '';
 							while($r_pc = mysql_fetch_array($q_pc)){
-							?>
-                                <div>
-                                    <div class="circle_project" style="background-color:<?= $color[rand(0,6)] ?>"></div><?= $r_pc['pc_name'] ?>
-                                </div>
-                               <?php
+							 
+							$concentration .= $r_pc['pc_name'].", ";
+                                
 							}
-							   ?>
+							
+							echo substr($concentration,0, -2);
+							?>
                  </div>
              </div>
         </div>
@@ -410,7 +364,50 @@ with the creative..." ></textarea>
         </div>
         
          
-        
+         <div class="form-group" style="margin-bottom:30px;">
+        	<div class="row">
+                <div class="col-md-12" >
+                	<div ><strong>User Review</strong></div>
+                    <?php
+					$q_rating = mysql_query("select sum(pr_rating) / count(pr_rating) as rata from profile_reviews where user_creative_id = '".$data_creatives['user_id']."'");
+					$r_rating = mysql_fetch_array($q_rating);
+					
+					$rata = floor($r_rating['rata']);
+					
+					$selish = 5 - $rata;
+					for($i=1; $i<=$rata; $i++){
+					?>
+                    <i class="fa fa-star" style="color:#477CBD; font-size:24px;"></i>
+                    <?php
+					}
+					for($is=1; $is<=$selish; $is++){
+					?>
+                    <i class="fa fa-star" style="color:#ccc; font-size:24px;"></i>
+                    <?php
+					}
+					?>                    
+                    <div style="margin-top:5px; float:right"><?= $rata; ?> / 5 Stars</div>
+                 </div>
+             </div>
+             
+             <div class="row">
+                <div class="col-md-12" >
+                	<?php
+					$q_pr = mysql_query("select count(pr_id) as jumlah from profile_reviews where user_creative_id = '".$data_creatives['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
+					$r_pr = mysql_fetch_array($q_pr);
+					if($this->session->userdata('user_id')){
+					if($r_pr['jumlah'] > 0){
+						echo "You're already writen a review";	
+					}else{
+					?>
+                    <a href="#" class="md-trigger" data-modal="modal-1" style="text-decoration:none">Write Review</a>
+                    <?php
+					}
+					}
+					?>
+                 </div>
+             </div>
+        </div>
         
             
         </div>

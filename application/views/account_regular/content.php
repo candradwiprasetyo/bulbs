@@ -4,18 +4,8 @@ if($this->session->userdata('user_type_id') == 3){
 ?>
 <div class="col-md-12" style="padding:0px;" >
     
-        <div class="col-md-9">
-       	 	<div class="row">
-                 <div class="navbar_category">
-                 	<div class="container">
-                    	<div class="navbar_category_menu">&nbsp;</div> 
-                        <div class="navbar_category_menu"><a href="<?=site_url('showcase_regular'); ?>">Activity</a></div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('account_regular'); ?>">Profile</a></div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('following_regular'); ?>">Following</a></div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('message/view'); ?>">Message</a></div>
-                    </div>
-                 </div>
-             </div> 
+        <div class="col-md-9" style="padding:0px;">
+       	 	<?= $this->access->get_navbar_category_regular(); ?>
         </div>
        
          <div class="col-md-3">
@@ -112,13 +102,13 @@ if($this->session->userdata('user_type_id') == 3){
                                                 <div class="row">
                                                      <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <input class="btn button_signup" type="submit" value="EDIT"/>
+                                                            <input class="btn button_signup" type="submit" value="SAVE DETAILS"/>
                                                         </div>
                                                     </div>
                                                 		 <div class="col-md-6">
                                                         <div class="form-group">
                                                           
-                                                             <a href="javascript: history.back()" class="btn button_signup">BACK</a>
+                                                              <input class="btn button_cancel" type="button" value="CANCEL" onclick="javascript: history.back()"/>
                                                         </div>
                                                     </div>
                                                 

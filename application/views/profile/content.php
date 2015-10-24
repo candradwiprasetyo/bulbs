@@ -10,24 +10,12 @@
 	}
 ?>
 
-<div class="col-md-9">
-       	 	<div class="row">
-                 <div class="navbar_category">
-                 	<div class="container">
-                    	<div class="navbar_category_menu">&nbsp;</div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('profile'); ?>">Profile</a></div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('follower'); ?>">Followers</a></div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('following'); ?>">Followings</a></div>
-                     	<div class="navbar_category_menu"><a href="<?=site_url('project/add'); ?>">Upload Work</a></div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('message/view'); ?>">Message</a></div>
-                    </div>
-                 </div>
-             </div> 
-        </div>
+
     
 <div class="profile_page">
 <div class="row" style="margin-left:0px; margin-right:0px;">
     <div class="col-md-9" style="padding:0px; ">
+    <?= $this->access->get_navbar_category(); ?>
     	<div class="profile_left">
         <div class="profile_left_color1">
         	<div class="profile_left_content">
@@ -173,8 +161,9 @@
         <div class="form-group" style="margin-bottom:50px;">
         	<div class="row">
                 <div class="col-md-12" >
+                <strong>SHARE</strong>
                 	<?php if($data_creatives['creative_facebook']){ ?>
-                    <a href="<?= $data_creatives['creative_facebook'] ?>" style="padding-right:0px;">
+                    <a href="<?= $data_creatives['creative_facebook'] ?>" style="padding-right:0px; margin-left:20px;">
                     <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-facebook"></i></div>
                     </a>
                     <? } ?>
@@ -189,48 +178,12 @@
                     </a>
                     <? } ?>
                    
-                    <strong>SHARE</strong>
+                    
                 </div>
             </div>
         </div>
         
        
-        	
-        
-        
-        <div class="form-group" style="margin-bottom:30px;">
-        	<div class="row">
-                <div class="col-md-12" >
-                	<div ><strong>User Review</strong></div>
-                    <?php
-					$q_rating = mysql_query("select sum(pr_rating) / count(pr_rating) as rata from profile_reviews where user_creative_id = '".$data_creatives['user_id']."'");
-					$r_rating = mysql_fetch_array($q_rating);
-					
-					$rata = floor($r_rating['rata']);
-					
-					$selish = 5 - $rata;
-					for($i=1; $i<=$rata; $i++){
-					?>
-                    <i class="fa fa-star" style="color:#477CBD; font-size:24px;"></i>
-                    <?php
-					}
-					for($is=1; $is<=$selish; $is++){
-					?>
-                    <i class="fa fa-star" style="color:#ccc; font-size:24px;"></i>
-                    <?php
-					}
-					?>                    
-                    <div style="margin-top:5px; float:right"><?= $rata; ?> / 5 Stars</div>
-                 </div>
-             </div>
-             
-             <div class="row">
-                <div class="col-md-12" >
-                   
-                 </div>
-             </div>
-        </div>
-        
         <div class="form-group" style="margin-bottom:30px;">
         	<div class="row">
                 <div class="col-md-12" >
@@ -253,7 +206,7 @@
                     
                  </div>
              </div>
-        </div>
+        </div>	
         
         <div class="form-group" style="margin-bottom:30px;">
         	<div class="row">
@@ -272,18 +225,21 @@
 												join profile_categories b on b.pc_id = a.pc_id
 												where user_id = '".$data_creatives['user_id']."'
 												order by a.pc_id 
+												limit 3
 												");
+							$concentration = '';
 							while($r_pc = mysql_fetch_array($q_pc)){
-							?>
-                                <div>
-                                    <div class="circle_project" style="background-color:<?= $color[rand(0,6)] ?>"></div><?= $r_pc['pc_name'] ?>
-                                </div>
-                               <?php
+							 
+							$concentration .= $r_pc['pc_name'].", ";
+                                
 							}
-							   ?>
+							
+							echo substr($concentration,0, -2);
+							?>
                  </div>
              </div>
         </div>
+
         
         <div class="form-group" style="margin-bottom:30px;">
         	<div class="row">
@@ -316,7 +272,38 @@
         </div>
         
          
-        
+         <div class="form-group" style="margin-bottom:30px;">
+        	<div class="row">
+                <div class="col-md-12" >
+                	<div ><strong>User Review</strong></div>
+                    <?php
+					$q_rating = mysql_query("select sum(pr_rating) / count(pr_rating) as rata from profile_reviews where user_creative_id = '".$data_creatives['user_id']."'");
+					$r_rating = mysql_fetch_array($q_rating);
+					
+					$rata = floor($r_rating['rata']);
+					
+					$selish = 5 - $rata;
+					for($i=1; $i<=$rata; $i++){
+					?>
+                    <i class="fa fa-star" style="color:#477CBD; font-size:24px;"></i>
+                    <?php
+					}
+					for($is=1; $is<=$selish; $is++){
+					?>
+                    <i class="fa fa-star" style="color:#ccc; font-size:24px;"></i>
+                    <?php
+					}
+					?>                    
+                    <div style="margin-top:5px; float:right"><?= $rata; ?> / 5 Stars</div>
+                 </div>
+             </div>
+             
+             <div class="row">
+                <div class="col-md-12" >
+                   
+                 </div>
+             </div>
+        </div>
         
             
         </div>

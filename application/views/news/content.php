@@ -5,7 +5,7 @@ $r_last = mysql_fetch_array($q_last);
 
 <div class="col-md-12">
     <div class="row">
-        <div class="project_desc">
+        <div class="project_main">
             <div class="container">
                 <div class="col-md-12">
                 

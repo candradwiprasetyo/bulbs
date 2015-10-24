@@ -18,7 +18,7 @@
                                         
                                          <div class="form-group">
                                            	<div class="col-md-12">
-                                            	<div class="new_title">Edit Profile</div>
+                                            	<div class="new_title">Change Your Account Settings</div>
                                             </div>
                                         </div>
                                       	
@@ -34,9 +34,24 @@
                                              <div class="row">
                                                 	<div class="col-md-6">
                                                             <div class="form-group">
-                                                           <label>Photo Profile</label>
-                                                           <img src="<?= base_url(); ?>assets/images/profile/<?= $data_creatives['creative_img'] ?>" style="width:100%;" />
-                                                            <input type="file" name="i_img" id="i_img" />
+                                                           
+                                                            <div class="col-md-5">
+                                                          <div class="row">
+														  <img src="<?= base_url(); ?>assets/images/profile/<?= $data_creatives['creative_img'] ?>" style="width:100%;" />
+                                                          </div>
+                                                          </div>
+                                                          
+                                                          <div class="col-md-7">
+                                                          <label>Photo Profile</label>
+                                                          <div>Please select an image that is 300x300
+pixels or bigger. </div>
+<div class="fileUpload btn button_signup">
+    <span>CHOOSE FILE</span>
+   <input class="upload" type="file" name="i_img" id="i_img"/>
+</div>
+                                                          
+                                                          
+														  </div>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -145,12 +160,12 @@
                           <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <input class="btn button_signup" type="submit" value="EDIT"/>
+                                                            <input class="btn button_signup" type="submit" value="SAVE DETAILS"/>
                                                         </div>
                                                     </div>
                                                 		 <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <input class="btn button_signup" type="button" value="BACK" onclick="javascript: history.back()"/>
+                                                            <input class="btn button_cancel" type="button" value="CANCEL" onclick="javascript: history.back()"/>
                                                         </div>
                                                     </div>
                                                    

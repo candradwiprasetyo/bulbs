@@ -92,6 +92,55 @@ class Access
 		
 		return $result;
 	}
+	
+	public function get_navbar_category() {
+			
+			
+			$result = '
+			
+       	 		
+                 	<div class="navbar_category">
+                 		<div class="row">
+							<div class="navbar_category_menu">&nbsp;</div>
+							<div class="navbar_category_menu"><a href="'.site_url('profile').'">Profile</a></div>
+							<div class="navbar_category_menu"><a href="'.site_url('follower').'">Follower</a></div>
+							<div class="navbar_category_menu"><a href="'.site_url('following').'">Following</a></div>
+							<div class="navbar_category_menu"><a href="'.site_url('project/add').'">Upload Work</a></div>
+							
+                    		<div class="navbar_category_icon"><a href="'.site_url('profile/edit').'"><i class="fa fa-gear"></i></a></div>
+							<div class="navbar_category_icon"><a href="'.site_url('message/view').'"><i class="fa fa-envelope-o"></i></a></div>
+                 	</div>
+             	</div> 
+        	';
+			
+			return $result;
+			
+		
+ 	}
+	
+	public function get_navbar_category_regular() {
+			
+			
+			$result = '
+			
+       	 		
+                 	<div class="navbar_category">
+                 		<div class="row">
+							<div class="navbar_category_menu">&nbsp;</div>
+							<div class="navbar_category_menu"><a href="'.site_url('profile').'">Profile</a></div>
+							
+							<div class="navbar_category_menu"><a href="'.site_url('following').'">Following</a></div>
+							
+                    		<div class="navbar_category_icon"><a href="'.site_url('profile/edit').'"><i class="fa fa-gear"></i></a></div>
+							<div class="navbar_category_icon"><a href="'.site_url('message/view').'"><i class="fa fa-envelope-o"></i></a></div>
+                 	</div>
+             	</div> 
+        	';
+			
+			return $result;
+			
+		
+ 	}
 
 	
 }

@@ -3,24 +3,12 @@ if($this->session->userdata('logged')){
 if($this->session->userdata('user_type_id') == 2){
 ?>
 <div class="col-md-12" style="padding:0px;" >
-    
-        <div class="col-md-9">
-       	 	<div class="row">
-                 <div class="navbar_category">
-                 	<div class="container">
-                    	<div class="navbar_category_menu">&nbsp;</div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('profile'); ?>">Profile</a></div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('follower'); ?>">Followers</a></div>
-                        <div class="navbar_category_menu"><a href="<?=site_url('following'); ?>">Followings</a></div>
-                     	<div class="navbar_category_menu"><a href="<?=site_url('project/add'); ?>">Upload Work</a></div>
-                    </div>
-                 </div>
-             </div> 
-        </div>
-       
+    	<div class="col-md-9" style="padding:0px;">
+		<?= $this->access->get_navbar_category(); ?>
+       </div>
          <div class="col-md-3">
        	 	<div class="row">
-                 <input required type="text" name="i_name" class="form-control category_search" placeholder="Search" value="" title="" style="padding-top:24px; padding-bottom:24px;"/>
+                 <input required type="text" name="i_name" class="form-control category_search2" placeholder="Search" value="" title="" style="padding-top:24px; padding-bottom:24px;"/>
              </div> 
         </div>
      
@@ -31,6 +19,7 @@ if($this->session->userdata('user_type_id') == 2){
 <div class="col-md-12" style="padding:0px;" >
     
         <div class="col-md-9">
+        
        	 	<div class="row">
                  <div class="navbar_category">
                  	<div class="container">
@@ -46,7 +35,7 @@ if($this->session->userdata('user_type_id') == 2){
        
          <div class="col-md-3">
        	 	<div class="row">
-                 <input required type="text" name="i_name" class="form-control category_search" placeholder="Search" value="" title="" style="padding-top:24px; padding-bottom:24px;"/>
+                 <input required type="text" name="i_name" class="form-control category_search2" placeholder="Search" value="" title="" style="padding-top:24px; padding-bottom:24px;"/>
              </div> 
         </div>
      
@@ -97,12 +86,12 @@ if($this->session->userdata('user_type_id') == 2){
 									$r_tr_f = mysql_fetch_array($q_tr_f);
 									if($r_tr_f['jumlah'] > 0){
 									?>
-                                   <button class="btn btn-success" style="border-radius:0px;" disabled>Following</button>
-                                   <a href="<?=site_url('follower/unfollowing/'.$r_c['user_id']); ?>" class="btn btn-danger" style="width:120px; border-radius:0px;">Unfollow</a>
+                                  
+                                   <a href="<?=site_url('follower/unfollowing/'.$r_c['user_id']); ?>" class="btn button_unfollow" style="width:120px; border-radius:0px;">FOLLOWING</a>
                                 <?php
 								}else{
                                 ?>
-								<a href="<?=site_url('follower/following/'.$r_c['user_id']); ?>" class="btn btn-primary" style="width:120px; border-radius:0px;">FOLLOW</a>
+								<a href="<?=site_url('follower/following/'.$r_c['user_id']); ?>" class="btn button_follow" style="width:120px; border-radius:0px;">FOLLOW</a>
                                 <?php
 								}
 								}

@@ -101,14 +101,31 @@
                                                     <div class="new_title">Sign Up to 8Bulbs</div>
                                                 </div>
                                         	</div>
-                                      	
+
+                                           
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <div class="circle_signup">?</div><div style="padding-top:5px;">Join 8Bulbs as</div>
+
+                                                        <a href="#" class="tooltip_new"><div class="circle_signup">?</div>
+                                                            
+                                                            <span>
+                                                                <img class="callout" src="<?= site_url()?>assets/images/callout.png" />
+                                                                <div class="title">Join as a creative</div> if you want to publish
+                                                                your own portfolios qui senis<br>
+                                                                <div class="title">Join as a regular user</div> Es audit lam qui
+                                                                omnim laboruptae qui senis explia que
+                                                                verspedis eos ma dolorum qui omnis.
+                                                            </span>
+                                                        </a>
+
+                                                        <div style="padding-top:5px;">Join 8Bulbs as</div>
                                                     </div>
                                                 </div>
                                         
+                                                
+                                              
+
                                                 <div class="row">
                                                 <div class="btn-toggle"> 
                                                     <div class="col-md-3">
@@ -164,7 +181,7 @@
                                                         <div class="form-group">
                                                             <div class="new_label" >
                                                                 <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
-                                                                Subscribe to 8Bulbs Newsletter
+                                                                Subscribe to 8Bulbs* Newsletter
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -179,7 +196,7 @@
                                                             </div>
                                                          </div>
                                                          <div class="form-group">
-                                                            <a href="#" onclick="signup_facebook('test')" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
+                                                            <a href="#" onclick="signup_facebook('test')" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;SIGN UP WITH FACEBOOK</a>
                                                         </div>
                                                     </div>
                                                 </div>

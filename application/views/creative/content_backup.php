@@ -1,16 +1,27 @@
 <?php
-if($this->session->userdata('logged')){
+/*if($this->session->userdata('logged')){
 if($this->session->userdata('user_type_id') == 2){
 ?>
 <div class="col-md-12" style="padding:0px;" >
     
-        <div class="col-md-9" style="padding:0px;">
-		<?= $this->access->get_navbar_category(); ?>
-       </div>
+        <div class="col-md-9">
+       	 	<div class="row">
+                 <div class="navbar_category">
+                 	<div class="container">
+                    	<div class="navbar_category_menu">&nbsp;</div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('profile'); ?>">Profile</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('follower'); ?>">Followers</a></div>
+                         <div class="navbar_category_menu"><a href="<?=site_url('following'); ?>">Followings</a></div>
+                     	<div class="navbar_category_menu"><a href="<?=site_url('project/add'); ?>">Upload Work</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('message/view'); ?>">Message</a></div>
+                    </div>
+                 </div>
+             </div> 
+        </div>
        
          <div class="col-md-3">
        	 	<div class="row">
-                 <input required type="text" name="i_name" class="form-control category_search2" placeholder="Search" value="" title="" style="padding-top:24px; padding-bottom:24px;"/>
+                 <input required type="text" name="i_name" class="form-control category_search" placeholder="Search" value="" title="" style="padding-top:24px; padding-bottom:24px;"/>
              </div> 
         </div>
      
@@ -20,31 +31,55 @@ if($this->session->userdata('user_type_id') == 2){
 ?>
 <div class="col-md-12" style="padding:0px;" >
     
-        <div class="col-md-9" style="padding:0px;">
-       	 	<?= $this->access->get_navbar_category_regular(); ?>
+        <div class="col-md-9">
+       	 	<div class="row">
+                 <div class="navbar_category">
+                 	<div class="container">
+                    	<div class="navbar_category_menu">&nbsp;</div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('showcase_regular'); ?>">Activity</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('account_regular'); ?>">Profile</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('following_regular'); ?>">Following</a></div>
+                        <div class="navbar_category_menu"><a href="<?=site_url('message/view'); ?>">Message</a></div>
+                     
+                    </div>
+                 </div>
+             </div> 
         </div>
        
          <div class="col-md-3">
        	 	<div class="row">
-                 <input required type="text" name="i_name" class="form-control category_search2" placeholder="Search" value="" title="" style="padding-top:24px; padding-bottom:24px;"/>
+                 <input required type="text" name="i_name" class="form-control category_search" placeholder="Search" value="" title="" style="padding-top:24px; padding-bottom:24px;"/>
              </div> 
         </div>
      
 </div>
 <?php
 }
-}
+}*/
 ?>
 
 <div class="col-md-12" style="padding:0px;" >
    <?php
    $ic = 1;
-  
+   $where = ' where creative_id <> 0 ';
+   if(isset($_GET['location_id'])){
+   	$where .= " and a.location_id = '".$_GET['location_id']."'";
+   }
+   if(isset($_GET['pc_id'])){
+	   $where .= " and d.pc_id = '".$_GET['pc_id']."'";
+   }
+   
+   if($this->session->userdata('user_id')){
+	   $where .= " and a.user_id <> '".$this->session->userdata('user_id')."'";
+	}
+   
+   //echo $where;
    $q_c = mysql_query("select a.*, b.location_name 
-   						from tr_following z 
-						join creatives a on a.user_id = z.user_creative_id
-						join locations b on b.location_id = a.location_id
-						where z.user_regular_id = '".$this->session->userdata('user_id')."'
+   						from creatives a
+   						join locations b on b.location_id = a.location_id 
+						join profile_detail_categories d on d.user_id = a.user_id  
+						$where
+						group by a.creative_id
    						order by a.creative_id 
    			");
 	
@@ -71,18 +106,18 @@ if($this->session->userdata('user_type_id') == 2){
                                 <div class="following_name"><a href="<?=site_url('profile_view/?id='.$r_c['user_id'])?>"><?= $r_c['creative_wp_name'] ?></a></div>
                                 <div class="following_location" style="margin-bottom:10px;"><?= $r_c['location_name'] ?></div>
                                 <div class="blue_text">
-                               <?php
-                                if($this->session->userdata('user_type_id')){
+                                <?php
+                                if($this->session->userdata('user_id')){
 									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$r_c['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
 									$r_tr_f = mysql_fetch_array($q_tr_f);
 									if($r_tr_f['jumlah'] > 0){
 									?>
                                    
-                                   <a href="<?=site_url('following/unfollowing/'.$r_c['user_id']); ?>" class="btn button_unfollow" style="width:120px; border-radius:0px;">FOLLOWING</a>
+                                   <a href="<?=site_url('creative/unfollowing/'.$r_c['user_id']); ?>" class="btn button_unfollow" style="width:120px; border-radius:0px;">FOLLOWING</a>
                                 <?php
 								}else{
                                 ?>
-								<a href="<?=site_url('following/following/'.$r_c['user_id']); ?>" class="btn button_follow" style="width:120px; border-radius:0px;">FOLLOW</a>
+								<a href="<?=site_url('creative/following/'.$r_c['user_id']); ?>" class="btn button_follow" style="width:120px; border-radius:0px;">FOLLOW</a>
                                 <?php
 								}
 								}

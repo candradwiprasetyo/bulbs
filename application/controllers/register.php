@@ -123,4 +123,20 @@ class Register extends CI_Controller {
  
     }
 	
+	function sendmail()
+	{
+		$this->load->library('email'); // load email library
+		$this->email->from('bisnisiob@gmail.com', 'Bisnis IOB');
+		$this->email->to('candradwiprasetyo@gmail.com');
+		//$this->email->cc('test2@gmail.com'); 
+		$this->email->subject('Bisnis IOB');
+		$this->email->message('Your Message');
+		//$this->email->attach('/path/to/file1.png'); // attach file
+		//$this->email->attach('/path/to/file2.pdf');
+		if ($this->email->send())
+			echo "Mail Sent!";
+		else
+			echo "There is error in sending mail!";
+	}
+	
 }
