@@ -262,6 +262,17 @@
                                          <div class="form-group">
                                             <input required type="password" name="i_password" class="form-control" placeholder="Password" value="" title=""/>
                                         </div>
+                                        <div class="form-group">
+                                        <div class="row">
+                                        <div class="col-md-6">
+                                        
+                                                           <?php echo $captcha_img;?> 
+                                        </div>
+                                         <div class="col-md-6">
+                                                           <input required type="password" name="i_captcha" class="form-control" placeholder="captcha" value="" title=""/>
+                                        </div>
+                                        </div>
+                                        </div>
                                         
                                          <div class="form-group">
                                            

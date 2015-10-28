@@ -36,7 +36,7 @@ class Register extends CI_Controller {
 	public function save_registration($id) {
 		
 		// upload gambar
-		if($_FILES['i_img']['name']){
+		if(isset($_FILES['i_img']['name'])){
 			$new_name = time()."_".$_FILES['i_img']['name'];
 			
 			$configUpload['upload_path']    = './assets/images/profile/';                 #the folder placed in the root of project
@@ -92,7 +92,7 @@ class Register extends CI_Controller {
 			
 		}
 		
-		redirect('profile/?id='.$id);
+		redirect('creative?reg=1');
 	}
 	
 	function _createThumbnail($filename)

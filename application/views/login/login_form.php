@@ -37,9 +37,18 @@
 												?>
                                             	<div class="message"><?= $message ?></div>
                                             	<?php
-												}else if(isset($_GET['err'])){
+												}else if(isset($_GET['err']) && $_GET['err'] == 1){
 												?>
                                             	<div class="message">Wrong username or password. Please try again !</div>
+                                            	<?php
+												}else if(isset($_GET['err']) && $_GET['err'] == 2){
+												?>
+                                            	<div class="message">Username is already exist. Please use another username</div>
+                                            	<?php
+												}
+												else if(isset($_GET['err']) && $_GET['err'] == 3){
+												?>
+                                            	<div class="message">Wrong captcha ! Please try again</div>
                                             	<?php
 												}
 												?>
@@ -157,22 +166,35 @@
                                                 </div>
                                                 
                                                 <div class="row">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                             <div class="form-group">
                                                             <input required type="text" name="i_email" class="form-control" placeholder="Email Address" value="" title=""/>
+                                                            </div>
+                                                    </div>
+                                                     <div class="col-md-6">
+                                                            <div class="form-group">
+                                                            <input required type="text" name="i_username" class="form-control" placeholder="Username" value="" title=""/>
                                                             </div>
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                            <div class="form-group">
-                                                            <input required type="text" name="i_username" class="form-control" placeholder="Username" value="" title=""/>
-                                                            </div>
-                                                    </div>
+                                                  
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <input required type="password" name="i_password" class="form-control" placeholder="Password" value="" title=""/>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                     <div class="col-md-3">
+                                                        <div class="form-group">
+                                                           <?php echo $captcha_img;?> 
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                          <input required type="password" name="i_captcha" class="form-control" placeholder="Type captcha" value="" title=""/>
                                                         </div>
                                                     </div>
                                                 </div>

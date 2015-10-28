@@ -87,6 +87,7 @@ class Profile_view extends CI_Controller {
 		$data['user_regular_id'] 				= $this->session->userdata('user_id');
 		$data['pr_rating']	 					= $this->input->post('i_rating');
 		$data['pr_description']		 			= $this->input->post('i_description');
+		$data['pr_date']						= date("Y-m-d H:i:s");
 
 		$this->profile_view_model->review($data);
 		

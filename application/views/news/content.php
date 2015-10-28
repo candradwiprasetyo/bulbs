@@ -25,7 +25,7 @@ $r_last = mysql_fetch_array($q_last);
 
                         <div class="col-md-6">
                            
-                            <div class="news_date"><strong>Workshop</strong> Published on <?= $this->access->format_date($r_last['news_date']);?></div>
+                            <div class="news_date"><strong>News</strong> Published on <?= $this->access->format_date($r_last['news_date']);?></div>
                              <div class="profile_name"><a href="<?=site_url('news/view/'.$r_last['news_id'])?>"><?= $r_last['news_name'] ?></a></div>
                                 <div class="profile_location">&nbsp;</div>
                                

@@ -33,7 +33,7 @@ with the creative..." ></textarea>
                     <br>
                     <div class="row">
                         <div class="col-md-6">
-                            <input class="btn button_signup" type="submit" value="SAVE"/>
+                            <input class="btn button_signup" type="submit" value="SUBMIT"/>
                        
                         </div> 
                          <div class="col-md-6">
@@ -408,6 +408,52 @@ with the creative..." ></textarea>
                  </div>
              </div>
         </div>
+        
+        <?php
+        $q_review = mysql_query("select a.*, b.user_first_name, b.user_last_name
+												from profile_reviews a
+												join  users b on b.user_id = a.user_regular_id
+												where user_creative_id = '".$data_creatives['user_id']."'
+												order by a.pr_id desc 
+												limit 5
+												");
+							
+		while($r_review = mysql_fetch_array($q_review)){
+		?>
+        <div class="form-group" style="margin-bottom:30px;">
+        
+        	<div class="row">
+                <div class="col-md-6" >
+                	<div ><strong><a href="
+					<?php
+					if($r_review['user_regular_id'] == $this->session->userdata('user_id')){
+						echo site_url().'profile'; 
+					}else{
+						echo site_url().'profile_view/?id='.$r_review['user_regular_id'];
+						
+					}
+					?>
+					">
+                    <?= $r_review['user_first_name']." ".$r_review['user_last_name']; ?>
+                    </a></strong></div>
+                 </div>
+                 
+                <div class="col-md-6" >
+                	<div style="text-align:right"><?= $this->access->format_date($r_review['pr_date'] )?></div>
+                 </div>
+             </div>
+             
+             <div class="row">
+                <div class="col-md-12" >
+                <?= $r_review['pr_description'] ?>
+                 </div>
+             </div>
+        
+        </div>
+		
+        <?php
+		}
+		?>
         
             
         </div>

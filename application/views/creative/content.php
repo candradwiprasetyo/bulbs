@@ -1,5 +1,21 @@
 
 <div class="container" >
+<br />
+<?php
+if(isset($_GET['reg']) && $_GET['reg'] == 1){
+?>
+<div class="box-body">
+    <div class="form-group">
+        <div class="col-md-12">
+            <div class="new_title">Expand Your Network</div>
+            <div style="text-align:center; padding-bottom:20px;">Below are some of the top creatives that are already on 8Bulbs.<br />Follow them to connect and expand your network.</div>
+        </div>
+    </div>
+</div>
+<?php
+}
+?>
+
    <?php
    $ic = 1;
    $where = ' where creative_id <> 0 ';
@@ -100,4 +116,20 @@
    $ic++;
    }
    ?>
+   <div style="clear:both;"></div>
+   <?php
+if(isset($_GET['reg']) && $_GET['reg'] == 1){
+?>
+   <div class="row" style="padding-top:20px;">
+   <div class="col-md-4 col-md-offset-4">
+                                                        <div class="form-group">
+                                                            <a href="<?= site_url() ?>profile" class="btn button_unfollow">SKIP THIS STEP</a>
+                                                        </div>
+                                                    </div>
+   </div>
+   
+   <?php
+}
+   ?>
+   
 </div>

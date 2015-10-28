@@ -93,6 +93,9 @@
         		</div>
                 
                 <!-- message comment -->
+                <?php
+                if($data_creatives['user_id']){
+				?>
                 <form id="form1" name="form1" method="post" action="<?=site_url('message/send/'.$data_creatives['user_id'])?>" enctype="multipart/form-data">
                 <div class="message_comment">
                 	
@@ -109,6 +112,9 @@
         			
                 </div>
                 </form>
+                <?php
+				}
+				?>
                 <!-- end message comment-->
                 
         	</div>

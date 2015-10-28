@@ -66,7 +66,18 @@ class Home_model extends CI_Model{
 		return $result['feature_id'];
 	}
 
-	
+	function get_exist_username($username)
+	{
+		$sql = "select count(user_id) as result from users where user_username = '$username'
+				";
+		
+		$query = $this->db->query($sql);
+		
+		$result = null;
+		foreach ($query->result_array() as $row) $result = ($row);
+		
+		return ($result['result']) ? $result['result'] : 0;
+	}
 	
 	
 	

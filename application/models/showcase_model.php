@@ -20,5 +20,28 @@ class Showcase_model extends CI_Model{
 		return $result; 
 	}
 	
+	function multiple1() {
+		$query = "select * from profile_categories order by pc_id";
+        $query = $this->db->query($query);
+       // query();
+        if ($query->num_rows() == 0)
+            return array();
+        $data = $query->result_array();
+        foreach ($data as $index => $row) {}
+        return $data;
+	}
+	
+	function multiple2() {
+		$query = "select * from locations order by location_id";
+        $query = $this->db->query($query);
+       // query();
+        if ($query->num_rows() == 0)
+            return array();
+        $data = $query->result_array();
+        foreach ($data as $index => $row) {}
+        return $data;
+	}
+
+	
 	
 }

@@ -13,6 +13,28 @@ class Login extends CI_Controller {
 		
 		$this->load->library('facebook'); // Automatically picks appId and secret from config
 		
+		// captcha
+		$this->load->helper('captcha');
+		$vals = array(
+			'image' => 'test', 
+			'img_path' => './assets/capimg/',
+			'img_url' => site_url().'assets/capimg/'
+			);
+		
+		$cap = create_captcha($vals);
+		
+		$data = array(
+			'captcha_time'	=> $cap['time'],
+			'ip_address'	=> $this->input->ip_address(),
+			'word'	=> $cap['word']
+			);
+		
+		$query = $this->db->insert_string('captcha', $data);
+		$this->db->query($query);
+		
+		$this->session->set_userdata('keycode',md5($cap['word']));
+		$data['captcha_img'] = $cap['image'];
+		
 		if($this->session->userdata('logged') == 1){
 			if($this->session->userdata('user_type_id') == 2){
 				redirect('profile');
@@ -46,6 +68,8 @@ class Login extends CI_Controller {
  	}
 	
 	public function submit_login() {
+		
+		
 		
 		$username 	= $this->input->post('i_first_name');
 		$password 	= $this->input->post('i_password');

@@ -17,6 +17,32 @@ class Home extends CI_Controller {
 		$data['title'] = "8BULBS";
 		$list['list'] = "test";
 		
+		// captcha
+		$this->load->helper('captcha');
+		$vals = array(
+			'image' => 'test', 
+			'img_path' => './assets/capimg/',
+			'img_url' => site_url().'assets/capimg/',
+			 'img_width'	=> 100,
+			'img_height' => 30,
+			'expiration' => 7200
+			);
+		
+		$cap = create_captcha($vals);
+		
+		$data_cap = array(
+			'captcha_time'	=> $cap['time'],
+			'ip_address'	=> $this->input->ip_address(),
+			'word'	=> $cap['word']
+			
+			);
+		
+		$query = $this->db->insert_string('captcha', $data_cap);
+		$this->db->query($query);
+		
+		$this->session->set_userdata('keycode',md5($cap['word']));
+		$data_img['captcha_img'] = $cap['image'];
+		
  		$this->load->view('layout/header', array('data' => $data));
 		//$this->load->view('layout/header', $data);
 		$data_img['id1'] = "home/feature_view/".$this->home_model->get_project_id(1, 1);
@@ -48,6 +74,10 @@ class Home extends CI_Controller {
  	}
 	
 	public function signup() {
+		
+		$this->load->helper(array('form','url'));
+
+		$captcha = $this->input->post('i_captcha');
 		 
 		$data['user_type_id']	 				= $this->input->post('t_sign_up3');
 		$data['user_category_id']	 			= 1;
@@ -58,13 +88,26 @@ class Home extends CI_Controller {
 		$data['user_password']	 				= md5($this->input->post('i_password'));
 		$data['user_active_status']	 			= 1;
 		
-		$id = $this->home_model->create_user($data);
+		if(md5($captcha)==$this->session->userdata('keycode')){
 		
-		if($data['user_type_id'] == 2){
-			header("Location: ../register?user_id=$id");
+			$get_exist_username = $this->home_model->get_exist_username($data['user_username']);
+			
+			if($get_exist_username > 0){
+				redirect("login?err=2");
+			}else{
+			
+				$id = $this->home_model->create_user($data);
+				
+				if($data['user_type_id'] == 2){
+					header("Location: ../register?user_id=$id");
+				}else{
+					//header("Location: ../register?user_id=$id");
+					header("Location: ../account_regular/sign_up/$id");
+				}
+			}
+		
 		}else{
-			//header("Location: ../register?user_id=$id");
-			header("Location: ../account_regular/sign_up/$id");
+			redirect("login?err=3");
 		}
  	}
 	

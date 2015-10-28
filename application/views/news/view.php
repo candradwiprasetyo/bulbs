@@ -21,7 +21,7 @@
                         <div class="col-md-3">
                             <div class="profile_name">&nbsp;</div>
                             <div class="profile_location">Published on <?php echo $this->access->format_date($data_news['news_date']);  ?></div>
-                            <div class="profile_description_title">Posted In <?= $data_news['news_type_name'] ?></div>
+                            <!--<div class="profile_description_title">Posted In <?= $data_news['news_type_name'] ?></div>-->
                             <div class="profile_description_content">
                               
                             </div>
