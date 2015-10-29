@@ -91,7 +91,7 @@
                                         
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <div class="new_label" style="text-align:right; padding-bottom:5px;">
+                                                    <div class="new_label" style="text-align:right; padding-bottom:5px; ">
                                                     Forgot password ?
                                                     </div>
                                                  </div>
@@ -213,8 +213,8 @@
                                                 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <div class="new_label" style="text-align:right;height:20px;">
-                                                           
+                                                            <div class="new_label" style="text-align:right; height:20px;">
+                                                           	&nbsp;
                                                             </div>
                                                          </div>
                                                          <div class="form-group">

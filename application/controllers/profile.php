@@ -104,22 +104,41 @@ class Profile extends CI_Controller {
 		
 		}
 		 
-		 // simpan di table
+		 // simpan profile
 		$data['creative_wp_name']	 			= $this->input->post('i_wp_name');
 		$data['location_id'] 					= $this->input->post('i_location_id');
 		$data['creative_wp_description'] 		= $this->input->post('i_description');
 		
 		$data['creative_website']	 			= $this->input->post('i_website');
 		$data['creative_phone']	 				= $this->input->post('i_phone');
-		$data['creative_facebook']	 			= $this->input->post('i_facebook');
-		$data['creative_twitter']	 			= $this->input->post('i_twitter');
-		$data['creative_instagram']	 			= $this->input->post('i_instagram');
+		$data['creative_facebook']	 			= '';//$this->input->post('i_facebook');
+		$data['creative_twitter']	 			= '';//$this->input->post('i_twitter');
+		$data['creative_instagram']	 			= '';//$this->input->post('i_instagram');
 		//$data['creative_rss']	 				= $this->input->post('i_rss');
 		
+		// simpan account
+		$data_account['user_first_name']			= $this->input->post('i_first_name');
+		$data_account['user_last_name']				= $this->input->post('i_last_name');
+		$data_account['user_email']					= $this->input->post('i_email');
+		$data_account['user_username']				= $this->input->post('i_username');
+		
 		$id = $this->session->userdata('user_id');
-		echo $_FILES['i_img']['name'];
+		
+		if($this->input->post('i_current_password') && $this->input->post('i_new_password')){
+			$get_current_password = $this->profile_model->get_current_password($id);
+			
+			if($get_current_password == md5($this->input->post('i_current_password'))){
+				$data_account['user_password']				= md5($this->input->post('i_new_password'));
+			}
+		}
+		
+		
+		
+		//echo $_FILES['i_img']['name'];
 		
 		$this->profile_model->save_profile($data, $id);
+		$this->profile_model->save_account($data_account, $id);
+		
 		
 		// hapus profile detail categories
 		$this->profile_model->delete_detail($id);
@@ -137,5 +156,6 @@ class Profile extends CI_Controller {
 		}
 		
 		redirect('profile/?id='.$id."&did=2");
+		
 	}
 }

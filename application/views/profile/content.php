@@ -47,21 +47,20 @@
                              </div>
                         </div>
                        
+                       
                         <div class="form-group">
                         	
-                                 <div class="col-md-6" >
+                                 <div class="col-md-12" >
                                      <div class="row">
                                            <a href="<?= site_url('profile/edit'); ?>" style="text-decoration:none;"><div class="button_creatives">EDIT PROFILE</div></a>
                                      </div>
                                  </div>
                                  
-                                 <div class="col-md-6" >
-                                     <div class="row">
-                                           <a href="<?= site_url('account_regular'); ?>" style="text-decoration:none;"><div class="button_message">EDIT ACCOUNT</div></a>
-                                     </div>
-                                 </div>
+                                
                                 
                          </div>
+                         
+                         
                          
                   </div>
                   

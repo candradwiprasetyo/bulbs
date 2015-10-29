@@ -71,6 +71,7 @@ class Admin_category extends CI_Controller {
 		 
 		 // simpan di table
 		$data['pc_name']	 				= $this->input->post('i_name');
+		$data['pc_color']	 				= $this->input->post('i_color');
 		
 		
 		if($id){

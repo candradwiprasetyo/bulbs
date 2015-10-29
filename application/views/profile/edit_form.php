@@ -81,31 +81,39 @@ pixels or bigger. </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                             <div class="form-group">
-                                                            <label>Phone</label>
-                                                            <input required type="text" name="i_phone" class="form-control"value="<?= $data_creatives['creative_phone']?>" title="" id="i_phone"/>
+                                                            <label>First Name</label>
+                                                            <input required type="text" name="i_first_name" class="form-control" placeholder="First Name" value="<?= $data_creatives['user_first_name'] ?>" title=""/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                    
-                                                        <div class="form-group"> <label>Website</label>
-                                                            <input required type="text" name="i_website" class="form-control"  value="<?= $data_creatives['creative_website']?>" title="" id="i_website"/>
+                                                        <div class="form-group">
+                                                        <label>Last Name</label>
+                                                            <input required type="text" name="i_last_name" class="form-control" placeholder="Last Name" value="<?= $data_creatives['user_last_name'] ?>" title=""/>
                                                         </div>
                                                     </div>
                                                 </div>
-                                              
-                                              
-                                               <div class="row">
+                                                
+                                                  <div class="row">
+                                                    <div class="col-md-12">
+                                                            <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input required type="text" name="i_email" class="form-control" placeholder="Email Address" value="<?= $data_creatives['user_email'] ?>" title=""/>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row">
                                                     <div class="col-md-6">
                                                             <div class="form-group">
-                                                            <label>Facebook</label>
-                                                            <input  type="text" name="i_facebook" class="form-control" value="<?= $data_creatives['creative_facebook']?>" title="" id="i_phone"/>
+                                                            <label>Change Password</label>
+                                                            <input  type="password" name="i_current_password" class="form-control" placeholder="Current Password" value="" title=""/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                    
-                                                        <div class="form-group"> 
-                                                        	<label>Twitter</label>
-                                                            <input  type="text" name="i_twitter" class="form-control"  value="<?= $data_creatives['creative_twitter']?>" title="" id="i_website"/>
+                                                        <div class="form-group">
+                                                        <label></label>
+                                                            <input type="password" name="i_new_password" class="form-control" placeholder="New Password" value="" title=""/>
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -113,24 +121,39 @@ pixels or bigger. </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                             <div class="form-group">
-                                                            <label>Instagram</label>
-                                                            <input  type="text" name="i_instagram" class="form-control" value="<?= $data_creatives['creative_instagram']?>" title="" id="i_phone"/>
+                                                            <label>Username</label>
+                                                            <input  type="text" name="i_username" class="form-control" value="<?= $data_creatives['user_username']?>" title="" id="i_phone"/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                     
                                                         <div class="form-group"> 
-                                                        	<label>Workplace Location</label>
+                                                        	<label>Location</label>
                                                             <select name="i_location_id" id="i_location_id" class="form-control new_select">
     <?php
     $q_location = mysql_query("select * from locations order by location_name");
 	while($r_location = mysql_fetch_array($q_location)){
 		?>
-        <option value="<?= $r_location['location_id']?>"><?= $r_location['location_name']?></option>
+        <option value="<?= $r_location['location_id']?>" <?php if($data_creatives['location_id'] == $r_location['location_id']){ ?> selected="selected"<?php } ?>><?= $r_location['location_name']?></option>
         <?php
 	}
 	?>                                            
 </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                            <div class="form-group">
+                                                            <label>Phone No.</label>
+                                                            <input required type="text" name="i_phone" class="form-control"value="<?= $data_creatives['creative_phone']?>" title="" id="i_phone"/>
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                    
+                                                        <div class="form-group"> <label>Web Address (URL)</label>
+                                                            <input required type="text" name="i_website" class="form-control"  value="<?= $data_creatives['creative_website']?>" title="" id="i_website"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -150,7 +173,7 @@ pixels or bigger. </div>
                                                     <div class="col-md-12 ">
                                                     
                                                       <div class="form-group">
-                                                        <label>Workplace Description</label>
+                                                        <label>Bio</label>
                                                 <textarea name="i_description" rows="10" class="form-control" id="i_description" ><?= $data_creatives['creative_wp_description']?></textarea>
                                                             </div>
                                                     </div>

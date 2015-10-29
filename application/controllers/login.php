@@ -89,7 +89,7 @@ class Login extends CI_Controller {
 			if($user_id[1] == 2){
 					redirect("profile?did=1");
 			}else{
-					redirect("showcase_regular/");
+					redirect("showcase/");
 			}
 		}
 	

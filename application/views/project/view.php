@@ -129,7 +129,7 @@
                 <div class="col-md-12" >
                     <?php
                             $color = array('#d05a51', '#92a495', '#3a58db', '#f1c40f', '#d35400', '#27ae60', '#8e44ad');
-							$q_pc = mysql_query("select b.pc_name 
+							$q_pc = mysql_query("select b.pc_name, b.pc_color
 												from project_detail_categories a
 												join profile_categories b on b.pc_id = a.pc_id
 												where a.project_id = '".$data_project['project_id']."'
@@ -141,7 +141,7 @@
 							?>
 							 
 							
-                            <div class="circle_project"></div><?= $r_pc['pc_name']?><br />
+                            <div class="circle_project" style="background:<?= $r_pc['pc_color']?>"></div><?= $r_pc['pc_name']?><br />
 							<?php    
 							}
 							

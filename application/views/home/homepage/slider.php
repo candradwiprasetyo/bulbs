@@ -9,7 +9,9 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
      
 		<div class="row">
-        	 <div class="col-md-6">
+        <div class="col-md-1">
+        </div>
+        	 <div class="col-md-5">
              	<div class="form-group">
                 
              	<div class="search_quote">Find Creatives in Your Area</div>
@@ -292,7 +294,7 @@
                                          <div class="form-group">
                                             <a href="#" onclick="signup_facebook('test')" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
                                         </div>
-                                        <div class="form-group" style="margin-bottom:50px;">
+                                        <div class="form-group" style="margin-bottom:30px;">
                                             By Signing Up, you agree to our Terms & Conditions
                                         and that you have read our Privacy Policy.
                                         </div>

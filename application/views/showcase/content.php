@@ -60,7 +60,7 @@ function open_concentration(){
 				while($r_multiple1  = mysql_fetch_array($q_multiple1)){
 				?>
                 <div>
-                <input id="multiple1_<?= $no_multiple1 ?>" type="checkbox" name="i_multiple1_<?= $no_multiple1 ?>" value="<?= $r_multiple1['pc_id'] ?>" class="checkbox_multiple" 
+                <input id="multiple1_<?= $no_multiple1 ?>" type="checkbox" name="i_multiple1_<?= $no_multiple1 ?>" value="<?= $r_multiple1['pc_id'] ?>" class="checkbox_multiple_input" 
 				<?php
                 if($this->session->userdata('sess_multiple1_'.$r_multiple1['pc_id'])){
 				?> checked="checked" <?php } ?>>
@@ -84,7 +84,7 @@ function open_concentration(){
 				while($r_multiple2  = mysql_fetch_array($q_multiple2)){
 				?>
                 <div>
-                <input id="multiple2_<?= $no_multiple2 ?>" type="checkbox" name="i_multiple2_<?= $no_multiple2 ?>" value="<?= $r_multiple2['location_id'] ?>" class="checkbox_multiple"
+                <input id="multiple2_<?= $no_multiple2 ?>" type="checkbox" name="i_multiple2_<?= $no_multiple2 ?>" value="<?= $r_multiple2['location_id'] ?>" class="checkbox_multiple_input"
                 <?php
                 if($this->session->userdata('sess_multiple2_'.$r_multiple2['location_id'])){
 				?> checked="checked" <?php } ?>
@@ -103,13 +103,13 @@ function open_concentration(){
      <div class="col-md-3">
     	<div class="form-group"> 
             <div class="radio_multiple">
-                <input id="i_radio1" type="radio" name="i_radio" value="1" checked="checked">
+                <input id="i_radio1" type="radio" name="i_radio" value="1" checked="checked" class="radio_multiple_input">
                 <label for="i_radio1" class="label_multiple">Featured</label>
                 <br />
-                <input id="i_radio2" type="radio" name="i_radio" value="2">
+                <input id="i_radio2" type="radio" name="i_radio" value="2" class="radio_multiple_input">
                 <label for="i_radio2" class="label_multiple">Most Recommended</label>
                 <br />
-                <input id="i_radio3" type="radio" name="i_radio" value="3">
+                <input id="i_radio3" type="radio" name="i_radio" value="3" class="radio_multiple_input">
                 <label for="i_radio3" class="label_multiple">Most Recent</label>
             </div>
                                            

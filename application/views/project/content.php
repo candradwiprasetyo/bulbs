@@ -44,17 +44,24 @@ if($data_project['project_img']){
                          <div class="row">
                         	 <div class="col-md-6">
                               <div class="form-group">
-                                <div class="profile_name"> 
-                                <label>Project Name</label>
-                                <input required type="text" name="i_name" class="form-control" value="<?= $data_project['project_name'] ?>" title="" id="i_name"/></div>
-                                </div>
+                              
+                               
+                                    <label>Project Name</label>
+                                    <input required type="text" name="i_name" class="form-control" value="<?= $data_project['project_name'] ?>" title="" id="i_name"/>
+                               
+                               </div>
+                              </div>
+                         </div>
+                         
+                         <div class="row">
+                              
+                              <div class="col-md-12">  
                                 
-                                <div class="profile_description_title">Project Info</div>
-                             </div>
-                             <div style="clear:both;"></div>
-                             <div class="col-md-12">
+                                <div class="form-group">
+                               	 <label>Project Info</label>
                                 <div class="profile_description_content">
                                   <textarea name="i_description" cols="" rows="10" class="form-control"><?= $data_project['project_description'] ?></textarea>                
+                                </div>
                                 </div>
                                 </div>
                         </div>

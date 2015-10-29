@@ -10,7 +10,7 @@ class Profile_model extends CI_Model{
 	
 	function read_id($id)
 	{
-		$this->db->select('b.*, c.location_name', 1); // ambil seluruh data
+		$this->db->select('a.*, b.*, c.location_name', 1); // ambil seluruh data
 		$this->db->join('creatives b', 'b.user_id = a.user_id');
 		$this->db->join('locations c', 'c.location_id = b.location_id');
 		$this->db->where('a.user_id', $id);
@@ -25,6 +25,16 @@ class Profile_model extends CI_Model{
 		$this->db->trans_start();
 		$this->db->where('user_id', $id);
 		$this->db->update('creatives', $data);
+	
+		$this->db->trans_complete();
+		return $id;
+	}
+	
+	function save_account($data_account, $id){
+
+		$this->db->trans_start();
+		$this->db->where('user_id', $id);
+		$this->db->update('users', $data_account);
 	
 		$this->db->trans_complete();
 		return $id;
@@ -112,6 +122,19 @@ class Profile_model extends CI_Model{
 		
 		$result['jumlah'] = ($result['jumlah']) ? $result['jumlah'] : 0;
 		return $result['jumlah'];
+	}
+	
+	function get_current_password($user_id)
+	{
+		$sql = "select user_password as result from users where user_id = '$user_id' 
+				";
+		
+		$query = $this->db->query($sql);
+		
+		$result = null;
+		foreach ($query->result_array() as $row) $result = ($row);
+		
+		return $result['result'];
 	}
 	
 }

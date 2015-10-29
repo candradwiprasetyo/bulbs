@@ -28,6 +28,12 @@
                                          <label>Name</label>
                                     <input required type="text" name="i_name" class="form-control" placeholder="category title" value="<?= @$data['pc_name'] ?>" title="Fill category title"/>
                                 			</div>
+                                            
+                                             <!-- Color Picker -->
+                                    <div class="form-group">
+                                        <label>Color</label>                                         
+                                        <input required name="i_color" type="text" class="form-control my-colorpicker1" value="<?= @$data['pc_color'] ?>"/>
+                                    </div><!-- /.form group -->
                                        
                                       
                                         </div>

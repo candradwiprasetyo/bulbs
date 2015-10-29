@@ -16,6 +16,7 @@
                                                 <th width="5%">No</th>
                                                 
                                                 <th>Name</th>
+                                                <th>Color</th>
                                                 <th>Config</th>
                                             </tr>
                                         </thead>
@@ -27,6 +28,7 @@
                                                 <td><?= $no?></td>
                                               
                                                 <td><?= $row['pc_name']?></td>
+                                                <td><div style="width:30px; height:30px; background:<?= $row['pc_color']?>"></div></td>
                                                
                                                 <td style="text-align:center;">
 
@@ -46,7 +48,7 @@
                                         </tbody>
                                           <tfoot>
                                             <tr>
-                                                <td colspan="3"><a href="<?= $data_head['add_button'] ?>" class="btn btn-success " >Add</a></td>
+                                                <td colspan="4"><a href="<?= $data_head['add_button'] ?>" class="btn btn-success " >Add</a></td>
                                                
                                             </tr>
                                         </tfoot>
