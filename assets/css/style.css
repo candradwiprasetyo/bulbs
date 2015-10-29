@@ -136,7 +136,7 @@ body
 
 
 
-@media only screen and (max-width : 1000px){
+@media only screen and (max-width : 991px){
 .navbar-nav{
 	margin: 0px -15px;
 	
@@ -204,13 +204,14 @@ body
 .navbar-nav-login li{
 	height:40px !important;
 	line-height:40px !important;
+	display:inline-block !important;
 }
 
 .navbar-nav-login li a{
 	height:40px !important;
 	line-height:40px !important;
 	padding-top: 0px;
-padding-bottom: 0px;
+	padding-bottom: 0px;
 }
 }
  
@@ -232,6 +233,12 @@ padding-bottom: 0px;
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
 	background-color:#154B95 !important;
+}
+
+.navbar-nav-login li{
+	height:40px !important;
+	line-height:40px !important;
+	display:inline-block !important;
 }
 }
 
