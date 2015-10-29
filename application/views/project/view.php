@@ -128,7 +128,7 @@
              <div class="row" style="padding:0; margin:0; margin-bottom:20px;">
                 <div class="col-md-12" >
                     <?php
-                            $color = array('#d05a51', '#92a495', '#3a58db', '#f1c40f', '#d35400', '#27ae60', '#8e44ad');
+                           
 							$q_pc = mysql_query("select b.pc_name, b.pc_color
 												from project_detail_categories a
 												join profile_categories b on b.pc_id = a.pc_id

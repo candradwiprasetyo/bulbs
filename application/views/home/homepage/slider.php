@@ -1,7 +1,5 @@
-  
-<div class="slider_page">
-
 <div class="col-md-9" style="padding:0px;">
+<div class="row">
  <form action="<?=site_url('home/search')?>" method="post" enctype="multipart/form-data">
 <div class="search_page">
 
@@ -70,6 +68,11 @@
 </div>
 </form>
 </div>
+</div>
+  
+<div class="slider_page">
+
+
 
 <div class="row" style="margin-left:0px; margin-right:0px;">
     <div class="col-md-9" style="padding:0px; ">

@@ -125,6 +125,38 @@
                 <a href="<?=site_url('project/view/'.$r_p['project_id'])?>">
                     <div class="box-showcase2">
                         <div class="box-showcaseInner">
+                        
+                        	<div class="circle_showcase_frame">
+                       
+                        <?php
+                            
+							$q_pc = mysql_query("select b.pc_name, b.pc_color
+												from project_detail_categories a
+												join profile_categories b on b.pc_id = a.pc_id
+												where a.project_id = '".$r_p['project_id']."'
+												order by a.pc_id 
+												limit 3
+												");
+							$no_color = 1;
+							while($r_pc = mysql_fetch_array($q_pc)){
+							
+							switch($no_color){
+								case 1: $style = "style='background:".$r_pc['pc_color']."; z-index:9999'"; break;
+								case 2: $style = "style='background:".$r_pc['pc_color']."; left:10px; z-index:9998'"; break;
+								case 3: $style = "style='background:".$r_pc['pc_color']."; left:20px; z-index:9997'"; break;
+							}
+							
+							?>
+							
+                            
+                        	<div class="circle_showcase" <?= $style?>></div>
+                            
+                            <?php
+							$no_color++;
+							}
+							?>
+                        </div>
+                        
                             <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="<?= $img_class?>" />
                             
                         </div>
