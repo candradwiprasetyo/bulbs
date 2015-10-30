@@ -1,3 +1,11 @@
+<script>
+if (document.documentElement.clientWidth <= 768) {
+	// scripts
+	window.location.href = "<?= site_url() ?>profile_mobile";
+}
+</script>
+
+
 <?php 
 	if(isset($_GET['did']) && $_GET['did']==1){
 		echo $this->access->get_alert_success("You are logged in"); 
@@ -15,9 +23,12 @@
 <div class="profile_page">
 <div class="row" style="margin-left:0px; margin-right:0px;">
     <div class="col-md-9" style="padding:0px; ">
+    <div class="row" style="margin-left:0px; margin-right:0px;">
     <?= $this->access->get_navbar_category(); ?>
     	<div class="profile_left">
+        <div class="row" style="margin-left:0px; margin-right:0px;">
         <div class="profile_left_color1">
+        <div class="row" style="margin-left:0px; margin-right:0px;">
         	<div class="profile_left_content">
         		 <div class="col-md-12">
                        <div class="form-group">
@@ -29,6 +40,7 @@
                         </div>
                   </div>
                   
+                <div class="col-md-10 col-md-offset-1">
                 <div class="col-md-4">
                   
                        <div class="form-group">
@@ -81,15 +93,18 @@
                                
                              </div>
                         </div>
-                   
+                   </div>
                    </div>
     
         	</div>
         </div>
+        </div>
         
-        <div class="profile_left_color2">
+         <div class="profile_left_color2">
+          <div class="row" style="margin-left:0px; margin-right:0px;">
         	<div class="profile_left_content">
         		
+                <div class="col-md-11 col-md-offset-1">
              
       			<div class="form-group">
                              <div class="col-md-12" >
@@ -184,6 +199,11 @@
         </div>
         
         </div>
+        </div>
+        </div>
+       </div>
+        
+        </div>
 	</div>
     
      <div class="col-md-3">
@@ -193,21 +213,10 @@
         	<div class="row">
                 <div class="col-md-12" >
                 <strong>SHARE</strong>
-                	<?php if($data_creatives['creative_facebook']){ ?>
-                    <a href="<?= $data_creatives['creative_facebook'] ?>" style="padding-right:0px; margin-left:20px;">
+                	
+                    <a href="#" style="padding-right:0px; margin-left:20px;">
                     <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-facebook"></i></div>
                     </a>
-                    <? } ?>
-                    <?php if($data_creatives['creative_twitter']){ ?>
-                    <a href="<?= $data_creatives['creative_twitter'] ?>" style="padding-right:0px;">
-                    <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-twitter"></i></div>
-                    </a>
-                    <? } ?>
-                     <?php if($data_creatives['creative_instagram']){ ?>
-                    <a href="<?= $data_creatives['creative_instagram'] ?>" style="padding-right:0px;">
-                    <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-instagram"></i></div>
-                    </a>
-                    <? } ?>
                    
                     
                 </div>
@@ -311,21 +320,43 @@
 					$q_rating = mysql_query("select sum(pr_rating) / count(pr_rating) as rata from profile_reviews where user_creative_id = '".$data_creatives['user_id']."'");
 					$r_rating = mysql_fetch_array($q_rating);
 					
-					$rata = floor($r_rating['rata']);
+					$rata = ($r_rating['rata']);
 					
-					$selish = 5 - $rata;
+					
+					$selisih = 5 - $rata;
+					
+					$selisih_bulat = floor($selisih);
+					
+					$setengah = $selisih - $selisih_bulat;
+					//echo $setengah;
+					
+					
 					for($i=1; $i<=$rata; $i++){
 					?>
                     <i class="fa fa-star" style="color:#477CBD; font-size:24px;"></i>
                     <?php
 					}
-					for($is=1; $is<=$selish; $is++){
 					?>
-                    <i class="fa fa-star" style="color:#ccc; font-size:24px;"></i>
+                    
+                    <?php
+					if($setengah > 0){
+					for($ise=1; $ise<=1; $ise++){
+					?>
+                    <i class="fa fa-star-half-empty" style="color:#477CBD; font-size:24px;"></i>
+                    <?php
+					}
+					}
+					?>  
+					
+					<?php
+					
+					for($is=1; $is<=$selisih; $is++){
+					?>
+                    <i class="fa fa-star-o" style="color:#477CBD; font-size:24px;"></i>
                     <?php
 					}
 					?>                    
-                    <div style="margin-top:5px; float:right"><?= $rata; ?> / 5 Stars</div>
+                    <div style="margin-top:5px; float:right"><?= number_format($rata,1); ?> / 5 Stars</div>
                  </div>
              </div>
              

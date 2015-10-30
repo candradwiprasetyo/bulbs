@@ -12,7 +12,7 @@ class Workshop extends CI_Controller {
 	public function index() {
 		
 			
-			$data['title'] = "workshop";
+			$data['title'] = "event";
 			$data['nav']	= "Explore -> Interior Design -> Aldo Felix Studio";
 			$list['list'] = "test";
 			
@@ -29,7 +29,7 @@ class Workshop extends CI_Controller {
 	}
 	
 	public function view($id) {
-			$data['title'] = "View workshop";
+			$data['title'] = "View event";
 			
 			$result = $this->workshop_model->read_id($id);
 			

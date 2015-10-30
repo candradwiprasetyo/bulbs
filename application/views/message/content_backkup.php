@@ -1,4 +1,3 @@
-
 <div class="message_page">
 	<div class="row" style="margin-left:0px; margin-right:0px;">
     
@@ -16,28 +15,26 @@
 		?>
         
     		<div class="message_left">
+            
+            
+            	
         		<div class="profile_left_color2">
-        			<div class="profile_left_content" style="padding-bottom:20px;">
-                    	
-                    	<div class="col-md-11 col-md-offset-1">
+        			<div class="profile_left_content">
                     	<?php
                         if($data_creatives['user_id']){
 						?>
-        				<div class="message_chat_name" >Conversation with <?= $data_creatives['creative_wp_name']?></div>
-                      
+        				<div class="profile_name">Conversation with <?= $data_creatives['creative_wp_name']?></div>
                         <?php
 						}else{
 						?>
-                        <div class="message_chat_name" >Message not found</div>
+                        <div class="profile_name">Message not found</div>
                         <?php
 						}
 						?>
-                        </div>
-                        </div>
-                   
+                    </div>
         		</div>
                 
-                <div class="profile_left_color2" style="overflow-y:auto; overflow-x:hidden; height:600px;">
+                <div class="profile_left_color2">
                 	<!-- start chat -->
                     <?php
 					if($data_creatives['user_id']){
@@ -52,33 +49,30 @@
 					while($r_message = mysql_fetch_array($q_message)){ 
 					?>
         			<div class="profile_left_content">
-                    	
-                    	<div class="col-md-11 col-md-offset-1">
-        				<div class="row" style="margin:0; padding:0">
-                        <div class="col-xs-2 foto_message" style="padding:0; padding-bottom:20px;">
-                                   
-                                      <?php
-                                       $img_class_message = $this->access->get_valid_profile_img(base_url()."assets/images/profile/".$r_message['creative_img']);
-                                      ?>
-                                         <div class="box-showcase_profile">
-                                            <div class="box-showcaseInnerProfile">
-                                               <img src="<?= base_url(); ?>assets/images/profile/<?= $r_message['creative_img']?>" class="<?= $img_class_message ?>">
-                                            </div>
-                                        </div>
-                                    
+        				<div class="col-xs-1">
+                            <div class="row">
+							  <?php
+                               $img_class_message = $this->access->get_valid_profile_img(base_url()."assets/images/profile/".$r_message['creative_img']);
+                              ?>
+                                 <div class="box-showcase_profile">
+                                    <div class="box-showcaseInnerProfile">
+                                        <img src="<?= base_url(); ?>assets/images/profile/<?= $r_message['creative_img']?>" class="<?= $img_class_message ?>">
+                                    </div>
                                 </div>
-                                <div class="col-xs-10" >
-                                			
-                                 <div class="col-md-7">
+                            </div>
+                        </div>
+                       	 <div class="col-xs-11">
+                           	
+                            	<div class="col-xs-7">
                                     <div class="form-group">
                                         <div class="following_name">
                                             <?= $r_message['creative_wp_name'] ?>
                                          </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-xs-5">
                                 	<div class="form-group">
-                                        <div >
+                                        <div  style="text-align:right;">
                                             <?= $this->access->format_date($r_message['md_date']); ?>
                                          </div>
                                     </div>
@@ -89,18 +83,15 @@
                                 <?= $r_message['md_comment'] ?>
                                 	</div>
                                 </div>
-                                </div>
-                        
+                                
+                        </div>
                     </div>
-                    </div>
-                   </div>
                     <?php
 					}
 					}
 					?>
                     <!-- end chat-->
         		</div>
-                <div style="clear:both;"></div>
                 
                 <!-- message comment -->
                 <?php
@@ -110,9 +101,7 @@
                 <div class="message_comment">
                 	
                 		<div class="profile_left_content">
-                        <div class="row" style="padding:0; margin:0">
-                    	
-                         	<div class="col-md-11 col-md-offset-1">
+                         	<div class="col-md-12" style="padding-left:0px;">
                                 <div class="form-group">
                                     <textarea required name="i_comment" cols="" rows="5" class="form-control" placeholder="Write your message..."></textarea>
                                 </div>
@@ -121,7 +110,7 @@
                                 </div>
                             </div>
                         </div>
-        			</div>
+        			
                 </div>
                 </form>
                 <?php

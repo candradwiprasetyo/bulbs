@@ -7,8 +7,9 @@
     	<div class="profile_left">
         
         <div class="profile_left_color2">
+        <div class="row" style="margin-left:0px; margin-right:0px;">
         	<div class="profile_left_content">
-        		<div class="col-md-12" >
+        		<div class="col-md-11 col-md-offset-1" >
              			<div class="col-md-12" >
                        
       						<div class="form-group">
@@ -41,6 +42,7 @@
                         
               </div>
         	</div>
+        </div>
         </div>
         
         </div>

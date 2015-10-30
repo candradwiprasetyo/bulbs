@@ -731,6 +731,3 @@ perspective effects (not including the modals and the overlay).
 	transition: all 0.5s 0.1s;
 }
 
-@media screen and (max-width: 32em) {
-	body { font-size: 75%; }
-}

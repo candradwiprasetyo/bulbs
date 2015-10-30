@@ -1,5 +1,51 @@
+<div class="menu_mobile">
+
+<div class="col-xs-3">
+    <div class="row">
+    	<a href="<?=site_url('showcase')?>">
+        <div class="menu">
+            <i class="fa fa-folder-open fa-2x"></i>
+            <div class="menu_caption">Showcase</div>
+        </div>
+        </a>
+    </div>
+</div>
+<div class="col-xs-3">
+    <div class="row">
+    <a href="<?=site_url('creative')?>">
+        <div class="menu">
+            <i class="fa fa-users fa-2x"></i>
+            <div class="menu_caption">Creatives</div>
+        </div>
+    </a>
+    </div>
+</div>
+<div class="col-xs-3">
+    <div class="row">
+    <a href="<?=site_url('news')?>">
+        <div class="menu">
+            <i class="fa fa-newspaper-o fa-2x"></i>
+            <div class="menu_caption">News</div>
+        </div>
+        </a>
+    </div>
+</div>
+<div class="col-xs-3">
+    <div class="row">
+    <a href="<?=site_url('workshop')?>">
+        <div class="menu">
+            <i class="fa fa-calendar-plus-o fa-2x"></i>
+            <div class="menu_caption">Events</div>
+        </div>
+        </a>
+    </div>
+</div>
 </div>
 
+
+
+
+</div>
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
 <div class="navbar navbar-default" role="navigation" style="height:60px !important; min-height:60px !important; background:#2a5da8 !important; font-family:'Roboto-Regular'">
@@ -40,6 +86,8 @@
 <div style="clear:both;"></div>
 
 <div class="md-overlay"></div>
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

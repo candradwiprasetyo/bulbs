@@ -12,7 +12,7 @@ $r_last = mysql_fetch_array($q_last);
                 	
                              <div class="col-md-12" >
                                  <div class="row">
-                                   <div class="profile_name" style="margin-bottom:10px;">Featured Posts</div>
+                                   <div class="profile_name" style="margin-bottom:10px;">Next Event</div>
                                   </div>
                              </div>
                    
@@ -20,30 +20,56 @@ $r_last = mysql_fetch_array($q_last);
                         
                     <div class="row">
                         <div class="col-md-6">
+                        <div class="form-group">
                                <img src="<?= base_url(); ?>assets/images/workshop/<?= $r_last['workshop_img'] ?>" style="width:100%;" />
+                               </div>
                         </div>
 
                         <div class="col-md-6">
-                           
-                            <div class="workshop_date"><strong>Workshop</strong> Published on <?= $this->access->format_date($r_last['workshop_date']);?></div>
+                           <div class="form-group">
+                            <div class="news_date"><strong>Event by Aldo Felix Studio</strong> </div>
+                            </div>
                              <div class="profile_name"><a href="<?=site_url('workshop/view/'.$r_last['workshop_id'])?>"><?= $r_last['workshop_name'] ?></a></div>
                                 <div class="profile_location">&nbsp;</div>
                                
-                                <div class="profile_description_content">
-                                <?php
-                                $desc = explode(" ", $r_last['workshop_description']);
-								$jumlah = count($desc);
-								$limit = ($jumlah < 100) ? $limit = $jumlah : $limit = 100;
-								
-								for($d=0; $d<=$limit-1; $d++){
-									if($desc[$d]){
-										echo $desc[$d]." ";	
-									}
-								}
-								?>
-                                                  
-                                </div>
-                                <div  class="blue_text"><a href="<?=site_url('workshop/view/'.$r_last['workshop_id'])?>">Read More</a></div>
+                               
+                                <div class="form-group" style="margin-bottom:30px;">
+                                    <div class="row">
+                                        <div class="col-xs-6" >
+                                            <div ><strong>Concentrations</strong></div>
+                                            Graphic Design, Photography, Interior Design
+                                         </div>
+                                         <div class="col-xs-6" >
+                                            <div ><strong>Price</strong></div>
+                                            IDR 500K (Price Includes Lunch)
+                                         </div>
+                                     </div>
+                            	</div>
+                                
+                                <div class="form-group" style="margin-bottom:30px;">
+                                    <div class="row">
+                                        <div class="col-xs-6" >
+                                            <div ><strong>Date / Time</strong></div>
+                                            August 19, 2015 / 03:00 PM
+                                         </div>
+                                         <div class="col-xs-6" >
+                                            <div ><strong>Place</strong></div>
+                                            Tanamera Coffee Serpong<br />
+Scientia Boulevard<br />
+Gading Serpong
+                                         </div>
+                                     </div>
+                            	</div>
+                                
+                                <div class="form-group" style="margin-bottom:30px;">
+                                    <div class="row">
+                                        <div class="col-xs-6" >
+                                           <a href="#" style="text-decoration:none;"><div class="button_unfollow" style="background-color:#C63">REGISTER NOW</div></a>
+                                         </div>
+                                         
+                                     </div>
+                            	</div>
+                               
                         </div>
 
                     </div>
@@ -66,7 +92,7 @@ $r_last = mysql_fetch_array($q_last);
                          <div class="form-group">
                              <div class="col-md-12" >
                                 
-                                   <div class="profile_name">Recent Posts</div>
+                                   <div class="profile_name">Other Event</div>
                                    
                              </div>
                         </div>
