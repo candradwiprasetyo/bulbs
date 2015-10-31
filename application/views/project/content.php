@@ -1,3 +1,6 @@
+<link href="<?= base_url(); ?>assets/css/dropzone/style.css" rel="stylesheet" />
+
+
 <?= $this->access->get_navbar_category(); ?>
 <form id="form1" name="form1" method="post" action="<?= $data_project['action'] ?>" enctype="multipart/form-data">
 <div class="col-md-12" style="padding:0px;" >
@@ -14,7 +17,11 @@ if($data_project['project_img']){
 <div class="col-md-12">
         <div class="project_desc">
             <div class="container">
-            <input type="file" name="i_img" id="i_img" /> 
+           
+             <div class="fileUpload_project btn button_upload">
+                <span>Change Cover Images</span>
+               <input class="upload_project" type="file" name="i_img" id="i_img"/>
+            </div>
             </div>
         </div>
 </div>   
@@ -24,7 +31,10 @@ if($data_project['project_img']){
       <div class="img_cover_image">
       	<div class="img_cover_image_content">
         
-      	  <input type="file" name="i_img" id="i_img" />
+      	   <div class="fileUpload_project btn button_upload">
+                <span>+ Add Cover Images</span>
+               <input class="upload_project" type="file" name="i_img" id="i_img"/>
+            </div>
       	
         </div>
       </div>
@@ -124,3 +134,6 @@ if($data_project['project_img']){
     </div>
 </div>
 </form>
+
+
+		

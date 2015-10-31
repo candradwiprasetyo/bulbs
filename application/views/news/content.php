@@ -12,7 +12,7 @@ $r_last = mysql_fetch_array($q_last);
                 	
                              <div class="col-md-12" >
                                  <div class="row">
-                                   <div class="profile_name" style="margin-bottom:10px;">Featured Posts</div>
+                                   <div class="profile_name" style="margin-bottom:10px;">News</div>
                                   </div>
                              </div>
                    
@@ -66,7 +66,7 @@ $r_last = mysql_fetch_array($q_last);
                          <div class="form-group">
                              <div class="col-md-12" >
                                 
-                                   <div class="profile_name">Recent Posts</div>
+                                   <div class="profile_name">Recent News</div>
                                    
                              </div>
                         </div>

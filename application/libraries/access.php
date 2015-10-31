@@ -43,6 +43,8 @@ class Access
 	}
 	
 	public function get_valid_img($img){
+		
+		if($img){
 		$data_image = getimagesize($img);
 		
 		$width = $data_image[0];
@@ -60,6 +62,7 @@ class Access
 			$class = "img_class";
 		}
 		return $class;
+		}
 	}
 	
 	public function get_valid_profile_img($img){

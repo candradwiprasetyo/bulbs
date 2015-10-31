@@ -34,8 +34,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/css/modal/component.css') ?>" />
     <script src="<?= base_url('assets/js/modal/modernizr.custom.js') ?>"></script>
    
-
-    
+	
      
   </head>
 
@@ -43,10 +42,9 @@
   
 
  
-  
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
-<div class="navbar navbar-default navbar-static-top" role="navigation">
+<div class="navbar navbar-default navbar-static-top" role="navigation" id="navbar1">
       
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -56,7 +54,7 @@
             <span class="icon-bar"></span>
           </button>
          
-          <a class="navbar-brand" href="<?=site_url('')?>"> <img src="<?php echo base_url('assets/images/logo.png'); ?>" /></a>
+          <a class="navbar-brand" id="navbar_brand_resize" href="<?=site_url('')?>"> <img src="<?php echo base_url('assets/images/logo.png'); ?>" /></a>
         </div>
         <div class="navbar-collapse collapse">
          
@@ -68,7 +66,7 @@
             
           </ul>
           
-        </div><!--/.nav-collapse -->
+        </div>
      
     </div>
 </div>
@@ -98,6 +96,7 @@
 </div>
 </div>
 <div style="clear:both"></div>
-<div class="main_content">
+
+<div class="main_content" id="main_content">
 
    

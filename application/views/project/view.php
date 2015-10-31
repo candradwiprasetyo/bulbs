@@ -65,7 +65,7 @@
                         
                         <div class="col-md-10" >
                        
-                        	<img src="<?= base_url(); ?>assets/images/project/<?= $data_project['project_img'] ?>" style="width:100%;"/>                                
+                        	<img src="<?= base_url(); ?>assets/images/profile/<?= $data_project['creative_img'] ?>" style="width:100%;"/>                                
                         
                         </div>
                         

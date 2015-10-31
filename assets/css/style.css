@@ -64,8 +64,12 @@ body
 .main_content{
 	min-height:600px;
 	margin-top:98px;
-	
 }
+
+.tiny_main_content{
+	margin-top:58px !important;
+}
+
 .page_name{
 	width:100%;
 	height:100px;
@@ -77,7 +81,7 @@ body
 	font-size:24px;
 }
 .navbar {
-	min-height:100px;
+	
 	margin-bottom:0px;
 	font-family: 'new_title';
 }
@@ -85,6 +89,11 @@ body
 	background: #477cbd;
 	box-shadow:none;
 	border-radius: 0px;
+	transition: height 500ms;
+}
+
+.tiny_header {
+	height:60px;
 }
 
 .navbar-default .navbar-brand {
@@ -92,6 +101,21 @@ body
 	height:100px;
 	line-height:100px;
 	margin-left:50px;
+	transition: height 500ms;
+}
+
+.tiny_navbar-brand {
+	height:60px !important;
+	line-height:60px !important;
+	padding-top:0 !important;
+	padding-bottom:0 !important;
+}
+
+.tiny_li{
+	height:60px !important;
+	line-height:60px !important;
+	padding-top:0 !important;
+	padding-bottom:0 !important;
 }
 
 .navbar-default .navbar-brand:hover{
@@ -138,6 +162,13 @@ body
 	
 }
 
+.carousel-control.left{
+	background:none;
+}
+
+.carousel-control.right{
+	background:none;
+}
 
 
 @media only screen and (max-width : 991px){
@@ -160,6 +191,8 @@ body
 	width:100% !important;
 	right:0% !important;
 }
+
+
 
 .main_content{
 	margin-top:0px !important;
@@ -217,6 +250,11 @@ body
 	padding-top: 0px;
 	padding-bottom: 0px;
 }
+.carousel-caption{
+	left:0 !important;
+	padding-left:0 !important;
+	
+}
 }
  
 @media (max-width: 767px){
@@ -253,7 +291,9 @@ body
 	display:block !important;
 }
 
-
+.icon_home_img{
+	width:100% !important;
+}
 
 }
 
@@ -342,7 +382,7 @@ body
 
 .slider_page{
 	background:#477cbd;
-	margin-top:98px;
+	
 	position:relative;
 }
 .login_page{
@@ -517,6 +557,13 @@ body
 	padding:10px 10px;
 	color:#fff;
 }
+
+.button_upload{
+	
+	border-radius:0px;
+	font-size:20px;
+	padding:10px 10px;
+}
 .button_signup:hover{
 	color:#fff;
 	background:#19488e;
@@ -570,16 +617,17 @@ body
 }
 .search_page{
 	background:#2a5da8;
-	padding-top:20px;
+	padding-top:15px;
 	padding-bottom:0px;
-	padding-right:20px;
+	padding-right:15px;
 	position:fixed;
 	float:right;
 	z-index:9999;
 	width:75%;
 	right:25%;
-	padding-left:20px;
+	padding-left:15px;
 }
+
 
 .icon_home_page{
 	
@@ -1325,6 +1373,24 @@ new_select{
     margin-top: 10px;
 	}
 	.fileUpload input.upload {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+		cursor: pointer;
+		opacity: 0;
+		filter: alpha(opacity=0);
+	}
+	
+	.fileUpload_project {
+		position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+	
+	}
+	.fileUpload_project input.upload_project {
 		position: absolute;
 		top: 0;
 		right: 0;

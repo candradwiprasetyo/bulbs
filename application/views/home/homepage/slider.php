@@ -1,7 +1,7 @@
 <div class="col-md-9" style="padding:0px;">
 <div class="row" style="margin:0px; padding:0px;">
  <form action="<?=site_url('home/search')?>" method="post" enctype="multipart/form-data">
-<div class="search_page">
+<div class="search_page" id="search_page">
 
 	
       <!-- Main jumbotron for a primary marketing message or call to action -->

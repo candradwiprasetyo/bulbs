@@ -36,6 +36,10 @@ class Home extends CI_Controller {
 			'word'	=> $cap['word']
 			
 			);
+			
+			// First, delete old captchas
+		$expiration = time()-7200; // Two hour limit
+		$this->db->query("DELETE FROM captcha WHERE captcha_time < ".$expiration);	
 		
 		$query = $this->db->insert_string('captcha', $data_cap);
 		$this->db->query($query);

@@ -43,12 +43,14 @@
                                                           
                                                           <div class="col-md-7">
                                                           <label>Photo Profile</label>
-                                                          <div>Please select an image that is 300x300
-pixels or bigger. </div>
+                                                          <div>Please select an image that is 300x300pixels or bigger. </div>
 <div class="fileUpload btn button_signup">
     <span>CHOOSE FILE</span>
    <input class="upload" type="file" name="i_img" id="i_img"/>
 </div>
+
+
+
                                                           
                                                           
 														  </div>

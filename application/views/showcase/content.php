@@ -157,8 +157,6 @@ function open_concentration(){
 								    $where $parameter
 									group by a.project_id
 									order by a.project_id");
-									
-									
 				while($r_p = mysql_fetch_array($q_p)){ 
                 ?>
                  <?php

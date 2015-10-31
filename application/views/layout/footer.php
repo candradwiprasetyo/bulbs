@@ -60,7 +60,7 @@
          $q_fm = mysql_query("select * from pages");
 		 while($r_fm = mysql_fetch_array($q_fm)){
 		 ?>
-            <li><a href="<?=site_url("footer_menu/?id=".$r_fm['page_id'])?>" class="footer-menu"><?= $r_fm['page_name']?></a></li>
+            <li style="padding-top:15px;"><a href="<?=site_url("footer_menu/?id=".$r_fm['page_id'])?>" class="footer-menu"><?= $r_fm['page_name']?></a></li>
           
             <?php
 		 	}
@@ -107,6 +107,15 @@
     <!-- modal -->
     <script src="<?= base_url('assets/js/modal/classie.js') ?>"></script>
     <script src="<?= base_url('assets/js/modal/modalEffects.js') ?>"></script>
+    
+   
+        
+         <!-- dropzone -->
+		<script src="<?= base_url() ?>assets/js/dropzone/jquery.knob.js"></script>
+		<script src="<?= base_url() ?>assets/js/dropzone/jquery.ui.widget.js"></script>
+		<script src="<?= base_url() ?>assets/js/dropzone/jquery.iframe-transport.js"></script>
+		<script src="<?= base_url() ?>assets/js/dropzone/jquery.fileupload.js"></script>
+		<script src="<?= base_url() ?>assets/js/dropzone/script.js"></script>
 
     <script type="text/javascript">
 
@@ -154,6 +163,15 @@
             $(this).remove(); 
         });
     }, 3000);
+	
+	$(window).on("scroll touchmove", function () {
+		$('#navbar1').toggleClass('tiny_header', $(document).scrollTop() > 0);
+		$('#navbar_brand_resize').toggleClass('tiny_navbar-brand', $(document).scrollTop() > 0);
+		$('.navbar-nav > li > a').toggleClass('tiny_li', $(document).scrollTop() > 0);
+		$('#main_content').toggleClass('tiny_main_content', $(document).scrollTop() > 0);
+		
+		
+	});
 
       </script>
       

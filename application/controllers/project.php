@@ -19,6 +19,7 @@ class Project extends CI_Controller {
 			$data_project['project_img'] = "";
 			
 			$data_project['action'] = site_url('project/save/');
+			$data_project['action_upload'] = site_url('project/upload/');
 			
 			$this->load->view('layout/header', array('data' => $data));
 			$this->load->view('project/content', array('data_project' => $data_project));
@@ -64,9 +65,14 @@ class Project extends CI_Controller {
 	public function save() {
 		
 		// upload gambar
-		$new_name = time()."_".$_FILES['i_img']['name'];
 		
 		$data_user = $this->access->get_data_user($this->session->userdata('user_id'));
+		
+		$new_name = '';
+		if($_FILES['i_img']['name']){
+		$new_name = time()."_".$_FILES['i_img']['name'];
+		
+		
 		
 		$configUpload['upload_path']    = './assets/images/project/';                 #the folder placed in the root of project
 		$configUpload['allowed_types']  = 'gif|jpg|png|bmp|jpeg';       #allowed types description
@@ -81,6 +87,7 @@ class Project extends CI_Controller {
 		}else{
 			$uploadedDetails    = $this->upload->data(); 
 			
+		}
 		}
 		 
 		 // simpan di table
@@ -131,6 +138,8 @@ class Project extends CI_Controller {
 		
 		redirect('project/view/'.$id);
 	}
+	
+
 	
 	public function edit($id) {
 		
