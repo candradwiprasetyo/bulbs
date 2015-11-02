@@ -145,9 +145,12 @@
 												join creatives c on c.user_id = a.user_creative_id
 												where a.user_regular_id = '".$this->session->userdata('user_id')."'
 												order by m_id desc");*/
-						$q_chat = mysql_query("select * from creatives 
-												where user_id <> '".$this->session->userdata('user_id')."'
-												order by creative_id");						
+						$q_chat = mysql_query("select b.*, c.*
+												from messages a
+												join users b on b.user_id =  a.user_creative_id
+												join creatives c on c.user_id = b.user_id
+												where user_regular_id = '".$this->session->userdata('user_id')."'
+												order by m_id");						
 						while($r_chat = mysql_fetch_array($q_chat)){ 
 						?>
                         <a href="<?=site_url('message/view/'.$r_chat['user_id'])?>">

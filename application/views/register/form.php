@@ -111,28 +111,10 @@ pixels or bigger. </div>
                                                 </div>
                                               
                                               
-                                               <div class="row">
-                                                    <div class="col-md-6">
-                                                            <div class="form-group">
-                                                           
-                                                            <input placeholder="Facebook"  type="text" name="i_facebook" class="form-control" value="<?= $creative_facebook ?>" title="" id="i_phone"/>
-                                                            </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                    
-                                                        <div class="form-group"> 
-                                                            <input placeholder="Twitter"  type="text" name="i_twitter" class="form-control"  value="" title="" id="i_website"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                             
                                                 
                                                 <div class="row">
-                                                    <div class="col-md-6">
-                                                            <div class="form-group">
-                                                           
-                                                            <input placeholder="Instagram"  type="text" name="i_instagram" class="form-control"value="" title="" id="i_phone"/>
-                                                            </div>
-                                                    </div>
+                                                    
                                                     <div class="col-md-6">
                                                     
                                                         <div class="form-group"> 
@@ -149,18 +131,19 @@ pixels or bigger. </div>
 </select>
                                                         </div>
                                                     </div>
-                                                </div>
-                                              
-                                              
-                          					<div class="row">
-                                                    <div class="col-md-12">
+                                                    
+                                                     <div class="col-md-6">
                                                             <div class="form-group">
                                                             
                                                             <input placeholder="Workplace Name" required type="text" name="i_wp_name" class="form-control"  value="" title="" id="i_wp_name"/>
                                                             </div>
                                                     </div>
-                                                   
+                                                    
+                                                    
                                                 </div>
+                                              
+                                              
+                          					
                                                 
                                                 <div class="row">
                                                     <div class="col-md-12 ">

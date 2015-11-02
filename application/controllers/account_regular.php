@@ -7,6 +7,11 @@ class Account_regular extends CI_Controller {
 		$this->load->model('account_regular_model');
 		$this->load->library('session');
 		$this->load->library('access');
+		
+		$logged = $this->session->userdata('logged');
+		if($logged == ""){
+			redirect('login');
+		}
 	}
  	
 	public function index() {

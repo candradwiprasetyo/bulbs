@@ -269,11 +269,11 @@
                                         </div>
                                         <div class="form-group">
                                         <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-7">
                                         
                                                            <?php echo $captcha_img;?> 
                                         </div>
-                                         <div class="col-md-6">
+                                         <div class="col-md-5">
                                                            <input required type="password" name="i_captcha" class="form-control" placeholder="captcha" value="" title=""/>
                                         </div>
                                         </div>

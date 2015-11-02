@@ -23,7 +23,7 @@ class Home extends CI_Controller {
 			'image' => 'test', 
 			'img_path' => './assets/capimg/',
 			'img_url' => site_url().'assets/capimg/',
-			 'img_width'	=> 100,
+			 'img_width'	=> 120,
 			'img_height' => 30,
 			'expiration' => 7200
 			);
