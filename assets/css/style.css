@@ -174,6 +174,9 @@ body
 
 
 @media only screen and (max-width : 991px){
+	.navbar-default .navbar-brand {
+		margin-left:15px;
+	}
 .navbar-nav{
 	margin: 0px 0px;
 	
@@ -206,7 +209,6 @@ body
 .navbar-default .navbar-brand {
 	    height: 100px;
     line-height: 100px;
-    margin-left: 15px;
 	background:url(../images/logo.png) no-repeat 0px 30px;
 }
 
@@ -310,6 +312,7 @@ body
 
 .footer-copyright{
 	width:100%;
+	margin-left:0px !important;
 }
 
 .navbar-icon-footer{

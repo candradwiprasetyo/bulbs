@@ -555,7 +555,7 @@ with the creative..." ></textarea>
         </div>
         
         <?php
-        $q_review = mysql_query("select a.*, b.user_first_name, b.user_last_name
+        $q_review = mysql_query("select a.*, b.user_first_name, b.user_last_name, b.user_type_id
 												from profile_reviews a
 												join  users b on b.user_id = a.user_regular_id
 												where user_creative_id = '".$data_creatives['user_id']."'
@@ -569,18 +569,24 @@ with the creative..." ></textarea>
         
         	<div class="row">
                 <div class="col-md-6" >
-                	<div ><strong><a href="
-					<?php
-					if($r_review['user_regular_id'] == $this->session->userdata('user_id')){
-						echo site_url().'profile'; 
+                	<div ><strong><?php
+					if($r_review['user_type_id'] == 3){
+						?>
+						<?= $r_review['user_first_name']." ".$r_review['user_last_name']; ?>
+						<?php
+					
 					}else{
-						echo site_url().'profile_view/?id='.$r_review['user_regular_id'];
-						
-					}
+					if($r_review['user_regular_id'] == $this->session->userdata('user_id')){
 					?>
-					">
-                    <?= $r_review['user_first_name']." ".$r_review['user_last_name']; ?>
-                    </a></strong></div>
+					<a href="<?= site_url().'profile'; ?>"><?= $r_review['user_first_name']." ".$r_review['user_last_name']; ?></a>
+                    <?php
+					}else{
+                    ?>
+					<a href="<?=  site_url().'profile_view/?id='.$r_review['user_regular_id']; ?>"><?= $r_review['user_first_name']." ".$r_review['user_last_name']; ?></a>
+                    <?php
+					}
+					}
+					?></strong></div>
                  </div>
                  
                 <div class="col-md-6" >

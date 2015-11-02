@@ -47,7 +47,8 @@
 </div>
 
 
-<div style="clear:both;"></div>
+
+</div>
 
 <div class="col-md-12" style="padding:0px; ">
 <div class="navbar-footer_frame">
@@ -71,7 +72,7 @@
 			?>
           </ul>
           
-        </div><!--/.nav-collapse -->
+        </div>
      
     </div>
 </div>
@@ -79,7 +80,7 @@
 <div class="col-md-3" style="padding:0px;">
 	<div class="navbar navbar-default navbar-icon-footer" role="navigation" style="background:#477cbd; height:60px !important; min-height:60px !important; ">
      
-         <a href="#" ><div class="footer-icon" style="margin-left:30px;"><i class="fa fa-facebook"></i></div></a>
+         <a href="#" ><div class="footer-icon"><i class="fa fa-facebook"></i></div></a>
          <a href="#" ><div class="footer-icon"><i class="fa fa-twitter"></i></div></a>
          <a href="#" ><div class="footer-icon"><i class="fa fa-instagram"></i></div></a>
      
@@ -88,7 +89,7 @@
 </div>
 </div>
 
-<div style="clear:both;"></div>
+
 
 <div class="md-overlay"></div>
 

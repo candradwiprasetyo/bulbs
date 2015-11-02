@@ -362,12 +362,66 @@ if (document.documentElement.clientWidth <= 768) {
                  </div>
              </div>
              
-             <div class="row">
-                <div class="col-md-12" >
+             
+             
+             
+        </div>
+        
+         <?php
+        $q_review = mysql_query("select a.*, b.user_first_name, b.user_last_name, b.user_type_id
+												from profile_reviews a
+												join  users b on b.user_id = a.user_regular_id
+												where user_creative_id = '".$data_creatives['user_id']."'
+												order by a.pr_id desc 
+												limit 5
+												");
+							
+		while($r_review = mysql_fetch_array($q_review)){
+		?>
+        <div class="form-group" style="margin-bottom:30px;">
+        
+        	<div class="row">
+                <div class="col-md-6" >
+                	<div ><strong>
+					<?php
+					if($r_review['user_type_id'] == 3){
+						?>
+						<?= $r_review['user_first_name']." ".$r_review['user_last_name']; ?>
+						<?php
+					
+					}else{
+					if($r_review['user_regular_id'] == $this->session->userdata('user_id')){
+					?>
+					<a href="<?= site_url().'profile'; ?>"><?= $r_review['user_first_name']." ".$r_review['user_last_name']; ?></a>
+                    <?php
+					}else{
+                    ?>
+					<a href="<?=  site_url().'profile_view/?id='.$r_review['user_regular_id']; ?>"><?= $r_review['user_first_name']." ".$r_review['user_last_name']; ?></a>
+                    <?php
+					}
+					}
+					?>
+					
                    
+                   </strong></div>
+                 </div>
+                 
+                <div class="col-md-6" >
+                	<div style="text-align:right"><?= $this->access->format_date($r_review['pr_date'] )?></div>
                  </div>
              </div>
+             
+             <div class="row">
+                <div class="col-md-12" >
+                <?= $r_review['pr_description'] ?>
+                 </div>
+             </div>
+        
         </div>
+		
+        <?php
+		}
+		?>
         
             
         </div>

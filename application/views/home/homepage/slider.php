@@ -228,7 +228,11 @@
             
              <div class="box box-cokelat">
                                 
-                               
+                                <?php
+                                        $logged = $this->session->userdata('logged');
+										if(!$logged){
+											
+										?>
                                 <div class="box-body">
                                     
                       
@@ -251,6 +255,7 @@
                                         
                                         
                                         <div style="clear:both;"></div>
+                                       
                                          <form action="<?=site_url('home/signup')?>" method="post" enctype="multipart/form-data">
                                         <div class="form-group">
                                         <input required type="text" name="i_first_name" class="form-control" placeholder="First Name" value="" title=""/> <input id="t_sign_up3" name="t_sign_up3" type="hidden" value="2" style="color:#000"/>
@@ -305,19 +310,25 @@
                                       
                                         </div>
                                        </form>
+                                      
                                         
                     
                                         <div style="clear:both;"></div>
                                      
                                 </div><!-- /.box-body -->
                                 
-                                 
+                                  <?php
+										}
+									   ?>
                             
                             </div><!-- /.box -->
            
         </div>
         
         </div>
+        
+        
+        
     </div>
 </div>
 </div>
