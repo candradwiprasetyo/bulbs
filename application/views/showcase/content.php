@@ -214,3 +214,4 @@ function open_concentration(){
                 ?>  
 
 </div>
+<br />

@@ -136,6 +136,17 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
 
 <div class="col-md-12">
 
+<div class="form-group" style="margin-bottom:50px;">
+                        <div class="row">
+                            <div class="col-md-12" >
+                            <strong>SHARE</strong>
+                                <a href="http://www.facebook.com/sharer.php?u=<?= site_url().'profile_view?id='.$this->session->userdata('user_id'); ?>" target="_blank" style="padding-right:0px; margin-left:20px;">
+                                <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-facebook"></i></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
  <div class="form-group" style="margin-bottom:30px;">
         	<div class="row">
                 <div class="col-md-12" >

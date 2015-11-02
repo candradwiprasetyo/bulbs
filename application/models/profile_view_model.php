@@ -152,6 +152,40 @@ class Profile_view_model extends CI_Model{
 		$result['jumlah'] = ($result['jumlah']) ? $result['jumlah'] : 0;
 		return $result['jumlah'];
 	}
+	
+	function get_follow_status($creative_id, $regular_id)
+	{
+		$sql = "select count(tr_following_id) as jumlah 
+				from tr_following
+				where user_creative_id = '$creative_id'
+				and user_regular_id = '$regular_id' 
+				";
+		
+		$query = $this->db->query($sql);
+		
+		$result = null;
+		foreach ($query->result_array() as $row) $result = ($row);
+		
+		$result['jumlah'] = ($result['jumlah'] > 0) ? $result['jumlah'] : 0;
+		return $result['jumlah'];
+	}
+	
+	function get_like_status($creative_id, $regular_id)
+	{
+		$sql = "select count(pl_id) as jumlah 
+				from profile_likes
+				where user_creative_id = '$creative_id'
+				and user_regular_id = '$regular_id' 
+				";
+		
+		$query = $this->db->query($sql);
+		
+		$result = null;
+		foreach ($query->result_array() as $row) $result = ($row);
+		
+		$result['jumlah'] = ($result['jumlah'] > 0) ? $result['jumlah'] : 0;
+		return $result['jumlah'];
+	}
 
 	function review($data){
 

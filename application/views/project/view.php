@@ -1,4 +1,55 @@
-    
+<script type="text/javascript">
+$(function() {
+	$(".follow").click(function(){
+		var element = $(this);
+		var noteid = element.attr("id");
+		var info = 'id=' + noteid;
+		
+		
+		$.get( 
+                  "<?= site_url()?>project/get_follow_status",
+                  { id: noteid },
+                  function(data) {
+                     var follow_status = data;
+					 
+					if(follow_status == 0){
+						 
+						var question = confirm("Are you sure want to follow ?");
+						if(question==true){
+						 
+							 $.ajax({
+								   type: "POST",
+								   url: "<?= site_url()?>project/follow_ajax",
+								   data: info,
+								   success: function(){}
+								 });
+								
+							$(".follow").html('<div class="button_unfollow">FOLLOWING</div>');
+						}
+					}else{
+						
+						$.ajax({
+								   type: "POST",
+								   url: "<?= site_url()?>project/follow_ajax",
+								   data: info,
+								   success: function(){}
+								 });
+								 
+								$(".follow").html('<div class="button_creatives">FOLLOW</div>');
+						
+					}
+					
+					
+                  }
+        );
+		
+		return false;
+	});
+});
+
+
+
+</script>      
   
 
 <div class="profile_page">
@@ -87,11 +138,11 @@
 									?> 
                                    
                                  
-                                   <a href="<?=site_url('profile_view/unfollowing/'.$data_project['user_id']); ?>" style="text-decoration:none;"><div class="button_unfollow">FOLLOWING</div></a>
+                                   <a href="#" class="follow" id="<?= $data_project['user_id'] ?>" style="text-decoration:none;"><div class="button_unfollow">FOLLOWING</div></a>
                                 <?php
 								}else{
                                 ?>
-                                           <a href="<?=site_url('profile_view/following/'.$data_project['user_id']); ?>" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
+                                           <a href="#" class="follow" id="<?= $data_project['user_id'] ?>" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
                                       <?php
 									}
 									

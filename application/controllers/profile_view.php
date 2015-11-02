@@ -15,12 +15,14 @@ class Profile_view extends CI_Controller {
 			
 			$id = $_GET['id'];
 			
-			$data['title'] = "View Profile";
+			
 			$data['nav']	= "Explore -> Interior Design -> Aldo Felix Studio";
 			$list['list'] = "test";
 			
 			$data_creatives = array();
 			$result = $this->profile_view_model->read_id($id);
+			
+			$data['title'] = $result['creative_wp_name'];
 			
 			// simpan profile views
 			$check_profile_view = $this->profile_view_model->check_profile_view($id, $this->session->userdata('user_id'));
@@ -37,6 +39,8 @@ class Profile_view extends CI_Controller {
 			$data_creatives['view'] = $this->profile_view_model->get_profile_view($id);
 			$data_creatives['like'] = $this->profile_view_model->get_profile_like($id);
 			
+			$data_creatives['follow_status'] = $this->profile_view_model->get_follow_status($id,  $this->session->userdata('user_id'));
+			
 			
 			$this->load->view('layout/header', array('list' => $list, 'data' => $data));
 			$this->load->view('profile_view/content', array('data_creatives' => $data_creatives));
@@ -50,6 +54,30 @@ class Profile_view extends CI_Controller {
 		redirect('home');
 	}
 	
+	public function get_follow_status(){
+		if( $_REQUEST["id"] ) {
+
+		   $id = $_REQUEST['id'];
+		   
+		   $get_follow_status = $this->profile_view_model->get_follow_status($id,  $this->session->userdata('user_id'));
+		   
+		   echo $get_follow_status;
+		}
+	
+	}
+	
+	public function get_like_status(){
+		if( $_REQUEST["id"] ) {
+
+		   $id = $_REQUEST['id'];
+		   
+		   $get_follow_status = $this->profile_view_model->get_like_status($id,  $this->session->userdata('user_id'));
+		   
+		   echo $get_follow_status;
+		}
+	
+	}
+	
 	public function following($creative_id){
 		$data['user_creative_id']	 			= $creative_id;
 		$data['user_regular_id'] 				= $this->session->userdata('user_id');
@@ -58,6 +86,43 @@ class Profile_view extends CI_Controller {
 		
 		redirect('profile_view/?id='.$creative_id);
 	}
+	
+	public function follow_ajax(){
+		$data['user_creative_id']	 			= $this->input->post('id');
+		$data['user_regular_id'] 				= $this->session->userdata('user_id');
+		
+		$get_follow_status = $this->profile_view_model->get_follow_status($data['user_creative_id'], $data['user_regular_id']);
+		
+		if($get_follow_status > 0){
+			$this->profile_view_model->unfollowing($data['user_creative_id'], $data['user_regular_id']);
+		}else{
+			$this->profile_view_model->following($data);
+		}
+		//redirect('profile_view/?id='.$creative_id);
+	}
+	
+	public function like_ajax(){
+		$data['user_creative_id']	 			= $this->input->post('id');
+		$data['user_regular_id'] 				= $this->session->userdata('user_id');
+		
+		$get_follow_status = $this->profile_view_model->get_like_status($data['user_creative_id'], $data['user_regular_id']);
+		
+		if($get_follow_status > 0){
+			$this->profile_view_model->dislike($data['user_creative_id'], $data['user_regular_id']);
+		}else{
+			$this->profile_view_model->like($data);
+		}
+		//redirect('profile_view/?id='.$creative_id);
+	}
+	
+	public function unfollow_ajax(){
+		
+		$this->profile_view_model->unfollowing($this->input->post('id'), $this->session->userdata('user_id'));
+		
+		//redirect('profile_view/?id='.$creative_id);
+	}
+	
+	
 	
 	public function unfollowing($creative_id){
 		

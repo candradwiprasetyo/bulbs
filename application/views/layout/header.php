@@ -35,13 +35,13 @@
     <script src="<?= base_url('assets/js/modal/modernizr.custom.js') ?>"></script>
    
 	
-     
+     <script src="<?= base_url('assets/js/jquery.js') ?>"></script>
   </head>
 
   <body role="document">
   
 
- 
+
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
 <div class="navbar navbar-default navbar-static-top" role="navigation" id="navbar1">
@@ -54,7 +54,7 @@
             <span class="icon-bar"></span>
           </button>
          
-          <a class="navbar-brand" id="navbar_brand_resize" href="<?=site_url('')?>"> <img src="<?php echo base_url('assets/images/logo.png'); ?>" /></a>
+          <a class="navbar-brand" id="navbar_brand_resize" href="<?=site_url('')?>"> <img src="<?php echo base_url('assets/images/logo_trans.png'); ?>" /></a>
         </div>
         <div class="navbar-collapse collapse">
          
@@ -96,6 +96,7 @@
 </div>
 </div>
 <div style="clear:both"></div>
+
 
 <div class="main_content" id="main_content">
 

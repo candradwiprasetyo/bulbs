@@ -1,9 +1,97 @@
-<script>
+<script type="text/javascript">
 if (document.documentElement.clientWidth <= 768) {
 	// scripts
 	window.location.href = "<?= site_url() ?>profile_view_mobile?id=<?= $_GET['id']?>";
 }
-</script>    
+
+$(function() {
+	$(".follow").click(function(){
+		var element = $(this);
+		var noteid = element.attr("id");
+		var info = 'id=' + noteid;
+		
+		
+		$.get( 
+                  "<?= site_url()?>profile_view/get_follow_status",
+                  { id: noteid },
+                  function(data) {
+                     var follow_status = data;
+					 
+					if(follow_status == 0){
+						 
+						var question = confirm("Are you sure want to follow ?");
+						if(question==true){
+						 
+							 $.ajax({
+								   type: "POST",
+								   url: "<?= site_url()?>profile_view/follow_ajax",
+								   data: info,
+								   success: function(){}
+								 });
+								
+							$(".follow").html('<div class="button_unfollow">FOLLOWING</div>');
+						}
+					}else{
+						
+						$.ajax({
+								   type: "POST",
+								   url: "<?= site_url()?>profile_view/follow_ajax",
+								   data: info,
+								   success: function(){}
+								 });
+								 
+								$(".follow").html('<div class="button_creatives">FOLLOW</div>');
+						
+					}
+					
+					
+                  }
+        );
+		
+		return false;
+	});
+	
+	$(".like").click(function(){
+		var element = $(this);
+		var noteid = element.attr("id");
+		var info = 'id=' + noteid;
+		
+		
+		$.get( 
+                  "<?= site_url()?>profile_view/get_like_status",
+                  { id: noteid },
+                  function(data) {
+                     var follow_status = data;
+					 
+				
+						
+						$.ajax({
+								   type: "POST",
+								   url: "<?= site_url()?>profile_view/like_ajax",
+								   data: info,
+								   success: function(){}
+								 });
+								 
+								 if(follow_status == 0){
+									$(".like").html('<div class="btn btn-success" style="border-radius:0px;"><i class="fa fa-thumbs-up"></i>&nbsp;You like it !</div>');
+								 }else{
+								 	$(".like").html('<div class="btn btn-default" style="border-radius:0px;"><i class="fa fa-thumbs-up"></i>&nbsp;Like</div>');
+								 }
+						
+				
+					
+                  }
+        );
+		
+		return false;
+	});
+});
+
+
+
+</script>   
+
+ 
     <?php 
 	if(isset($_GET['did']) && $_GET['did']==1){
 		echo $this->access->get_alert_success("Review Saved"); 
@@ -103,15 +191,18 @@ with the creative..." ></textarea>
 									?> 
                                    
                                  
-                                   <a href="<?=site_url('profile_view/unfollowing/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_unfollow">FOLLOWING</div></a>
+                                   <a href="#" class="follow" id="<?= $data_creatives['user_id'] ?>" style="text-decoration:none;"><div class="button_unfollow">FOLLOWING</div></a>
                                 <?php
 								}else{
                                 ?>
-                                           <a href="<?=site_url('profile_view/following/'.$data_creatives['user_id']); ?>" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
+                                          <!-- <a href="<?=site_url('profile_view/following/'.$data_creatives['user_id']); ?>" style="text-decoration:none;" class="follow" id="<?= $data_creatives['user_id'] ?>"><div class="button_creatives">FOLLOW</div></a>-->
+                                           <a href="#" class="follow" id="<?= $data_creatives['user_id'] ?>" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
+
                                       <?php
 									}
 									
 									  ?>
+                                  
                                      </div>
                                  </div>
                                  <div class="col-md-6" >
@@ -154,13 +245,16 @@ with the creative..." ></textarea>
 									 if($this->session->userdata('user_id')){
 									if($r_pl['jumlah'] > 0){ 
 								   ?>
-                                     <a href="<?= site_url('profile_view/dislike/'.$data_creatives['user_id']); ?>" class="btn btn-success" style="border-radius:0px; "><i class="fa fa-thumbs-up"></i>&nbsp;You like it !</a>
+                                     <a href="#" class="like" id="<?= $data_creatives['user_id'] ?>" style="text-decoration:none;"><div class="btn btn-success" style="border-radius:0px;"><i class="fa fa-thumbs-up"></i>&nbsp;You like it !</div></a>
+                                    
                                     
                                     
                                    <?php
 									}else{
 								   ?>
-                                   <a href="<?= site_url('profile_view/like/'.$data_creatives['user_id']); ?>" class="btn btn-default" style="border-radius:0px;color:#999"><i class="fa fa-thumbs-up"></i>&nbsp;Like</a>
+                                   <a href="#" class="like" id="<?= $data_creatives['user_id'] ?>" style="text-decoration:none;"><div class="btn btn-default" style="border-radius:0px;"><i class="fa fa-thumbs-up"></i>&nbsp;Like</div></a>
+                                 
+                                   
                                    <?php
 									}
 									 }
@@ -285,7 +379,7 @@ with the creative..." ></textarea>
         	<div class="row">
                 <div class="col-md-12" >
                 <strong>SHARE</strong>
-                   <a href="#" style="padding-right:0px; margin-left:20px;">
+                    <a href="http://www.facebook.com/sharer.php?u=<?= site_url().'profile_view?id='.$data_creatives['user_id']; ?>" target="_blank" style="padding-right:0px; margin-left:20px;">
                     <div class="circle_navbar" style="margin-right:10px;"><i class="fa fa-facebook"></i></div>
                     </a>
                 </div>

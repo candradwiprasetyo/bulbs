@@ -67,7 +67,7 @@ body
 }
 
 .tiny_main_content{
-	margin-top:58px !important;
+	margin-top:48px !important;
 }
 
 .page_name{
@@ -93,27 +93,29 @@ body
 }
 
 .tiny_header {
-	height:60px;
+	height:50px;
 }
 
 .navbar-default .navbar-brand {
 	color:#fff;
 	height:100px;
 	line-height:100px;
-	margin-left:50px;
-	transition: height 500ms;
+	margin-left:100px;
+	
+	background:url(../images/logo.png) no-repeat 0px 40px;
 }
 
 .tiny_navbar-brand {
-	height:60px !important;
-	line-height:60px !important;
+	height:50px !important;
+	line-height:50px !important;
 	padding-top:0 !important;
 	padding-bottom:0 !important;
+	background:url(../images/logo_mobile.png) no-repeat 0px 5px !important;
 }
 
 .tiny_li{
-	height:60px !important;
-	line-height:60px !important;
+	height:50px !important;
+	line-height:50px !important;
 	padding-top:0 !important;
 	padding-bottom:0 !important;
 }
@@ -173,7 +175,7 @@ body
 
 @media only screen and (max-width : 991px){
 .navbar-nav{
-	margin: 0px -15px;
+	margin: 0px 0px;
 	
 }
 .navbar-static-top {
@@ -202,15 +204,15 @@ body
 }
 
 .navbar-default .navbar-brand {
-	    height: 60px;
-    line-height: 60px;
-    margin-left: 0px;
+	    height: 100px;
+    line-height: 100px;
+    margin-left: 15px;
+	background:url(../images/logo.png) no-repeat 0px 30px;
 }
 
 .navbar-login{
 	background:#154b95 !important;
 	height:40px !important;
-	padding-left:15px;
 	min-height: 40px;
 }
 
@@ -258,6 +260,9 @@ body
 }
  
 @media (max-width: 767px){
+.navbar-default .navbar-toggle .icon-bar{
+	background-color:#FFF;
+}
 .navbar-menu{
 	float:none;
 }
@@ -295,6 +300,26 @@ body
 	width:100% !important;
 }
 
+.navbar-footer_frame{
+	margin-bottom:95px;
+}
+
+.navbar-footer{
+	text-align:center;
+}
+
+.footer-copyright{
+	width:100%;
+}
+
+.navbar-icon-footer{
+	text-align:center;
+}
+
+.navbar-collapse{
+	padding:0px;
+}
+
 }
 
 .menu_mobile{
@@ -305,7 +330,6 @@ body
 	width:100%;
 	z-index:9999;
 	display:none;
-	
 }
 
 .menu_mobile .menu{
@@ -1547,7 +1571,7 @@ a.tooltip_new span .title{
 	margin-right: 10px;
 	position: absolute;
 	left: 0;
-	bottom: 0px;
+	bottom: 2px;
 	background-color: #fff;
 }
 
@@ -1570,7 +1594,7 @@ a.tooltip_new span .title{
     color: #666;
     font-size: 20px;
     text-align: center;
-    line-height: 12px;
+    line-height: 14px;
 }
 
 .checkbox_multiple_input:checked + label:before {

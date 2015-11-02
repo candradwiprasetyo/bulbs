@@ -237,4 +237,31 @@ class Project extends CI_Controller {
 		
 		redirect('project/view/'.$project_id);
 	}
+	
+	public function get_follow_status(){
+		if( $_REQUEST["id"] ) {
+
+		   $id = $_REQUEST['id'];
+		   
+		   $get_follow_status = $this->project_model->get_follow_status($id,  $this->session->userdata('user_id'));
+		   
+		   echo $get_follow_status;
+		}
+	
+	}
+	
+	
+	public function follow_ajax(){
+		$data['user_creative_id']	 			= $this->input->post('id');
+		$data['user_regular_id'] 				= $this->session->userdata('user_id');
+		
+		$get_follow_status = $this->project_model->get_follow_status($data['user_creative_id'], $data['user_regular_id']);
+		
+		if($get_follow_status > 0){
+			$this->project_model->unfollowing($data['user_creative_id'], $data['user_regular_id']);
+		}else{
+			$this->project_model->following($data);
+		}
+		//redirect('profile_view/?id='.$creative_id);
+	}
 }

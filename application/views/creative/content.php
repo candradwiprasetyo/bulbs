@@ -1,4 +1,66 @@
-
+<script type="text/javascript">
+$(function() {
+<?php
+	$q_c_ajax = mysql_query("select a.*, b.location_name 
+   						from creatives a
+   						join locations b on b.location_id = a.location_id 
+						join profile_detail_categories d on d.user_id = a.user_id  
+						
+						group by a.creative_id
+   						order by a.creative_id 
+   			");
+	
+   while($r_c_ajax = mysql_fetch_array($q_c_ajax)){
+?>
+	$(".follow_<?= $r_c_ajax['user_id']?>").click(function(){
+		var element = $(this);
+		var noteid = element.attr("id");
+		var info = 'id=' + noteid;
+		
+		
+		$.get( 
+                  "<?= site_url()?>creative/get_follow_status",
+                  { id: noteid },
+                  function(data) {
+                     var follow_status = data;
+					 
+					if(follow_status == 0){
+						 
+						var question = confirm("Are you sure want to follow ?");
+						if(question==true){
+						 
+							 $.ajax({
+								   type: "POST",
+								   url: "<?= site_url()?>creative/follow_ajax",
+								   data: info,
+								   success: function(){}
+								 });
+								
+							$(".follow_<?= $r_c_ajax['user_id']?>").html('<div class="button_unfollow">FOLLOWING</div>');
+						}
+					}else{
+						
+						$.ajax({
+								   type: "POST",
+								   url: "<?= site_url()?>creative/follow_ajax",
+								   data: info,
+								   success: function(){}
+								 });
+								 
+								$(".follow_<?= $r_c_ajax['user_id']?>").html('<div class="button_creatives">FOLLOW</div>');
+						
+					}
+					
+					
+                  }
+        );
+		return false;
+	});
+	<?php
+   }
+	?>
+});
+</script>
 <div class="container" >
 <br />
 <?php
@@ -95,11 +157,11 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
 									if($r_tr_f['jumlah'] > 0){
 									?>
                                    
-                                   <a href="<?=site_url('creative/unfollowing/'.$r_c['user_id']); ?>" class="btn button_unfollow_creative" style="width:120px; border-radius:0px;">FOLLOWING</a>
+                                 <a href="#" class="follow_<?= $r_c['user_id']?>" id="<?= $r_c['user_id'] ?>" style="text-decoration:none;"><div class="button_unfollow">FOLLOWING</div></a>
                                 <?php
 								}else{
                                 ?>
-								<a href="<?=site_url('creative/following/'.$r_c['user_id']); ?>" class="btn button_follow_creative" style="width:120px; border-radius:0px;">FOLLOW</a>
+								   <a href="#" class="follow_<?= $r_c['user_id']?>" id="<?= $r_c['user_id'] ?>" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
                                 <?php
 								}
 								}
@@ -133,3 +195,4 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
    ?>
    
 </div>
+<br />

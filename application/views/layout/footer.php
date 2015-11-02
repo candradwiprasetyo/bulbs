@@ -44,18 +44,22 @@
 
 
 
-
 </div>
+
+
+<div style="clear:both;"></div>
+
 <div class="col-md-12" style="padding:0px; ">
+<div class="navbar-footer_frame">
 <div class="col-md-9" style="padding:0px; ">
-<div class="navbar navbar-default" role="navigation" style="height:60px !important; min-height:60px !important; background:#2a5da8 !important; font-family:'Roboto-Regular'">
+<div class="navbar navbar-default navbar-footer" role="navigation" style="height:60px !important; min-height:60px !important; background:#2a5da8 !important; font-family:'Roboto-Regular'">
       
         <div class="navbar-header">
-          <a class="navbar-brand footer-copyright" href="<?=site_url('')?>">COPYRIGHT 2015 8BULBS. ALL RIGHTS RESERVED</a>
+          <a class="navbar-brand footer-copyright" href="<?=site_url('')?>" style="background:none;">COPYRIGHT 2015 8BULBS. ALL RIGHTS RESERVED</a>
         </div>
         <div class="navbar-collapse collapse " style="float:right">
          
-         <ul class="nav navbar-nav ">
+         <ul class="nav navbar-nav navbar-footer">
          <?php
          $q_fm = mysql_query("select * from pages");
 		 while($r_fm = mysql_fetch_array($q_fm)){
@@ -73,13 +77,14 @@
 </div>
 
 <div class="col-md-3" style="padding:0px;">
-	<div class="navbar navbar-default" role="navigation" style="background:#477cbd; height:60px !important; min-height:60px !important;">
+	<div class="navbar navbar-default navbar-icon-footer" role="navigation" style="background:#477cbd; height:60px !important; min-height:60px !important; ">
      
          <a href="#" ><div class="footer-icon" style="margin-left:30px;"><i class="fa fa-facebook"></i></div></a>
          <a href="#" ><div class="footer-icon"><i class="fa fa-twitter"></i></div></a>
          <a href="#" ><div class="footer-icon"><i class="fa fa-instagram"></i></div></a>
      
     </div>
+</div>
 </div>
 </div>
 
@@ -92,7 +97,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="<?= base_url('assets/js/jquery.js') ?>"></script>
+    
     <script src="<?= base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/docs.min.js') ?>"></script>
     <!-- select -->
@@ -123,6 +128,10 @@
 
         $(function(){
           SyntaxHighlighter.all();
+		  
+		  
+		  
+		  
         });
         $(window).load(function(){
 
@@ -172,7 +181,9 @@
 		
 		
 	});
-
+	
+	// button follow
+	
       </script>
       
   </body>
