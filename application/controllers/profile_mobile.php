@@ -7,6 +7,11 @@ class Profile_mobile extends CI_Controller {
 		$this->load->model('profile_mobile_model');
 		$this->load->library('session');
 		$this->load->library('access');
+		
+		$logged = $this->session->userdata('logged');
+		if($logged == ""){
+			redirect('login');
+		}
 	}
  	
 	public function index() {

@@ -60,7 +60,7 @@
          $q_fm = mysql_query("select * from pages");
 		 while($r_fm = mysql_fetch_array($q_fm)){
 		 ?>
-            <li style="padding-top:15px;"><a href="<?=site_url("footer_menu/?id=".$r_fm['page_id'])?>" class="footer-menu"><?= $r_fm['page_name']?></a></li>
+            <li  style="padding-top:15px;"><a href="<?=site_url("footer_menu/?id=".$r_fm['page_id'])?>" class="footer-menu" style="height:45px !important;"><?= $r_fm['page_name']?></a></li>
           
             <?php
 		 	}
@@ -75,9 +75,9 @@
 <div class="col-md-3" style="padding:0px;">
 	<div class="navbar navbar-default" role="navigation" style="background:#477cbd; height:60px !important; min-height:60px !important;">
      
-         <a href="#"><div class="footer-icon" style="margin-left:30px;"><i class="fa fa-facebook"></i></div></a>
-         <a href="#"><div class="footer-icon"><i class="fa fa-twitter"></i></div></a>
-         <a href="#"><div class="footer-icon"><i class="fa fa-instagram"></i></div></a>
+         <a href="#" ><div class="footer-icon" style="margin-left:30px;"><i class="fa fa-facebook"></i></div></a>
+         <a href="#" ><div class="footer-icon"><i class="fa fa-twitter"></i></div></a>
+         <a href="#" ><div class="footer-icon"><i class="fa fa-instagram"></i></div></a>
      
     </div>
 </div>

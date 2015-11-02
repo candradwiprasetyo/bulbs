@@ -448,7 +448,7 @@ with the creative..." ></textarea>
 					$r_pr = mysql_fetch_array($q_pr);
 					if($this->session->userdata('user_id')){
 					if($r_pr['jumlah'] > 0){
-						echo "You're already writen a review";	
+						echo "You're already written a review";	
 					}else{
 					?>
                     <a href="#" class="md-trigger" data-modal="modal-1" style="text-decoration:none">Write Review</a>

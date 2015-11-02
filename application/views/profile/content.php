@@ -156,9 +156,9 @@ if (document.documentElement.clientWidth <= 768) {
 							while($r_pc = mysql_fetch_array($q_pc)){
 							
 							switch($no_color){
-								case 1: $style = "style='background:".$r_pc['pc_color']."; z-index:9999'"; break;
-								case 2: $style = "style='background:".$r_pc['pc_color']."; left:10px; z-index:9998'"; break;
-								case 3: $style = "style='background:".$r_pc['pc_color']."; left:20px; z-index:9997'"; break;
+								case 1: $style = "style='background:".$r_pc['pc_color']."; z-index:999'"; break;
+								case 2: $style = "style='background:".$r_pc['pc_color']."; left:10px; z-index:998'"; break;
+								case 3: $style = "style='background:".$r_pc['pc_color']."; left:20px; z-index:997'"; break;
 							}
 							
 							?>

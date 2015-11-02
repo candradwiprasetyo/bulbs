@@ -203,7 +203,7 @@
                                                         <div class="form-group">
                                                             <div class="new_label" >
                                                                 <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
-                                                                Subscribe to 8Bulbs* Newsletter
+                                                                Subscribe to 8Bulbs Newsletter
                                                             </div>
                                                         </div>
                                                         <div class="form-group">

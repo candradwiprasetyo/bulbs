@@ -9,9 +9,13 @@
 		echo $this->access->get_alert_success("Your project has been updated"); 
 	}
 ?>
-
-<?= $this->access->get_navbar_category(); ?>
-
+<?php
+if($this->session->userdata('user_type_id')==2){
+	echo $this->access->get_navbar_category(); 
+}else if($this->session->userdata('user_type_id')==3){
+	echo $this->access->get_navbar_category_regular(); 
+}
+?>
 <div class="md-modal md-effect-1" id="modal-1">
 
             <form id="form1" name="form1" method="post" action="<?=site_url('profile_view/review/'.$data_creatives['user_id'])?>" enctype="multipart/form-data">
@@ -314,7 +318,7 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
 					$r_pr = mysql_fetch_array($q_pr);
 					if($this->session->userdata('user_id')){
 					if($r_pr['jumlah'] > 0){
-						echo "You're already writen a review";	
+						echo "You're already written a review";	
 					}else{
 					?>
                     <a href="#" class="md-trigger" data-modal="modal-1" style="text-decoration:none">Write Review</a>
@@ -404,7 +408,7 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
                              
                             <div class="box-showcaseDesc_by"><?= $r_p['creative_wp_name'] ?></div>
                             <div class="box-showcaseDesc_button"> 
-                            	<a href="<?= site_url('project/form_edit/'.$r_p['project_id']); ?>" class="btn btn-info"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
+                            
                             </div>
                             
                         </div>

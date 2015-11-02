@@ -7,6 +7,11 @@ class Login extends CI_Controller {
 		$this->load->model('login_model');
 		$this->load->library('session');
 		$this->load->helper('url');
+		
+		$logged = $this->session->userdata('logged');
+		if($logged){
+			redirect('profile');
+		}
 	}
  	
 	public function index() {

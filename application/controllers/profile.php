@@ -7,6 +7,12 @@ class Profile extends CI_Controller {
 		$this->load->model('profile_model');
 		$this->load->library('session');
 		$this->load->library('access');
+		
+		
+		$logged = $this->session->userdata('logged');
+		if($logged == ""){
+			redirect('login');
+		}
 	}
  	
 	public function index() {

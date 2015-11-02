@@ -284,7 +284,7 @@
                                           
                                               <label>
                                                 <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
-                                                Subscribe to Bulbs Newsletter</label>
+                                                Subscribe to 8Bulbs Newsletter</label>
                                               
                                              
                                              
