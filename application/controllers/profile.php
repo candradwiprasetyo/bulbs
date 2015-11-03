@@ -12,6 +12,10 @@ class Profile extends CI_Controller {
 		$logged = $this->session->userdata('logged');
 		if($logged == ""){
 			redirect('login');
+		}else{
+			if($this->session->userdata('user_type_id') == 3){
+				redirect('account_regular');
+			}
 		}
 	}
  	
@@ -20,7 +24,7 @@ class Profile extends CI_Controller {
 			$logged = $this->session->userdata('logged');
 			$user_type_id = $this->session->userdata('user_type_id');
 			
-			if($logged != "" && $user_type_id == 2){
+		if($logged){
 			
 			$data['title'] = "Profile";
 			$data['nav']	= "Explore -> Interior Design -> Aldo Felix Studio";

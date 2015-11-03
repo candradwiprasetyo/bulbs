@@ -382,7 +382,7 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
 					$r_pr = mysql_fetch_array($q_pr);
 					if($this->session->userdata('user_id')){
 					if($r_pr['jumlah'] > 0){
-						echo "You're already written a review";	
+						echo "You've already written a review";	
 					}else{
 					?>
                     <a href="#" class="md-trigger" data-modal="modal-1" style="text-decoration:none">Write Review</a>

@@ -194,7 +194,7 @@
                                                     
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                          <input required type="password" name="i_captcha" class="form-control" placeholder="Type captcha" value="" title=""/>
+                                                          <input required type="text" name="i_captcha" class="form-control" placeholder="Type captcha" value="" title=""/>
                                                         </div>
                                                     </div>
                                                 </div>

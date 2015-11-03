@@ -279,7 +279,7 @@
                                                            <?php echo $captcha_img;?> 
                                         </div>
                                          <div class="col-md-5">
-                                                           <input required type="password" name="i_captcha" class="form-control" placeholder="captcha" value="" title=""/>
+                                                           <input required type="text" name="i_captcha" class="form-control" placeholder="captcha" value="" title=""/>
                                         </div>
                                         </div>
                                         </div>
