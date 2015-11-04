@@ -49,7 +49,7 @@ function open_concentration(){
 	
 <form action="<?=site_url('showcase/action_search')?>" method="post" enctype="multipart/form-data">
 <div id = 'container_select' <?php if($this->session->userdata('parameter')){ ?> style="display:block"<?php }?>>
-<div class="row">
+<div class="row" style="margin:0px; padding:0px;">
 <div class="col-md-12">
 	<div class="col-md-3">
     	<div class="form-group"> 

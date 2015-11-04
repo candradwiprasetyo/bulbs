@@ -95,7 +95,7 @@ class Showcase extends CI_Controller {
 		if( $data_multiple2){ $parameter .= " and (".$data_multiple2." ) ";  }
 		if( $data_search){ $parameter .= " and (".$data_search." ) ";  }
 		
-		echo $parameter;
+		//echo $parameter;
 		
 		$this->session->set_userdata('parameter', $parameter);
 		

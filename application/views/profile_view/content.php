@@ -17,31 +17,20 @@ $(function() {
                   function(data) {
                      var follow_status = data;
 					 
-					if(follow_status == 0){
+					
 						 
-						var question = confirm("Are you sure want to follow ?");
-						if(question==true){
-						 
+					
 							 $.ajax({
 								   type: "POST",
 								   url: "<?= site_url()?>profile_view/follow_ajax",
 								   data: info,
 								   success: function(){}
 								 });
-								
+
+					if(follow_status == 0){
 							$(".follow").html('<div class="button_unfollow">FOLLOWING</div>');
-						}
 					}else{
-						
-						$.ajax({
-								   type: "POST",
-								   url: "<?= site_url()?>profile_view/follow_ajax",
-								   data: info,
-								   success: function(){}
-								 });
-								 
-								$(".follow").html('<div class="button_creatives">FOLLOW</div>');
-						
+						  $(".follow").html('<div class="button_creatives">FOLLOW</div>');
 					}
 					
 					
@@ -245,14 +234,16 @@ with the creative..." ></textarea>
 									 if($this->session->userdata('user_id')){
 									if($r_pl['jumlah'] > 0){ 
 								   ?>
-                                     <a href="#" class="like" id="<?= $data_creatives['user_id'] ?>" style="text-decoration:none;"><div class="btn btn-success" style="border-radius:0px;"><i class="fa fa-thumbs-up"></i>&nbsp;You like it !</div></a>
+                                     <!--<a href="#" class="like" id="<?= $data_creatives['user_id'] ?>" style="text-decoration:none;"><div class="btn btn-success" style="border-radius:0px;"><i class="fa fa-thumbs-up"></i>&nbsp;You like it !</div></a>-->
                                     
                                     
                                     
                                    <?php
 									}else{
 								   ?>
+                                <!--   
                                    <a href="#" class="like" id="<?= $data_creatives['user_id'] ?>" style="text-decoration:none;"><div class="btn btn-default" style="border-radius:0px;"><i class="fa fa-thumbs-up"></i>&nbsp;Like</div></a>
+                                   -->
                                  
                                    
                                    <?php

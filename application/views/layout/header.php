@@ -42,7 +42,7 @@
 
 <div class="col-md-12" style="padding:0px; ">
 <div class="col-md-9" style="padding:0px; ">
-<div class="navbar navbar-default navbar-static-top" role="navigation" id="navbar1">
+<div class="navbar navbar-default navbar-static-top" role="navigation" id="navbar1" style="background: #477CBD !important;">
       
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -73,12 +73,25 @@
 	<div class="navbar navbar-default navbar-static-top navbar-login" role="navigation" style="background:#2a5da8">
      	
         <?php
-		if($this->session->userdata('user_id')){
+		if($this->session->userdata('logged')){
         $data_user = $this->access->get_data_user($this->session->userdata('user_id'));
 		?>
         <ul class="nav navbar-nav navbar-nav-login" style="float:none">
             <li><a href="<?=site_url('profile/?id='.$this->session->userdata('user_id'))?>">Hi, <?= $data_user['user_name'] ?></a></li>
+            
+            <?php
+            if($this->session->userdata('user_type_id')==2){
+			?>
             <li><a href="<?=site_url('profile/logout')?>">Logout</a></li>
+            <?php
+			}else{
+			?>
+             <li><a href="<?=site_url('account_regular/logout')?>">Logout</a></li>
+            <?php
+			}
+			?>
+            
+            
           </ul>
         <?php
 		}else{

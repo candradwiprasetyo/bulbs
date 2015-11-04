@@ -8,15 +8,16 @@ class Project extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('access');
 		
-		$logged = $this->session->userdata('logged');
-		if($logged == ""){
-			redirect('login');
-		}
+		
 	}
  	
 	public function add() {
 		
-			
+			$logged = $this->session->userdata('logged');
+			if($logged == ""){
+				redirect('login');
+			}else{
+
 			$data['title'] = "Add project";
 			
 			$data_project['project_name'] = "";
@@ -29,37 +30,45 @@ class Project extends CI_Controller {
 			$this->load->view('layout/header', array('data' => $data));
 			$this->load->view('project/content', array('data_project' => $data_project));
 			$this->load->view('layout/footer'); 
+			}
 		
  	}
 	
 	public function form_edit($id) {
 		
+			$logged = $this->session->userdata('logged');
+			if($logged == ""){
+				redirect('login');
+			}else{
+
+				$data['title'] = "Edit project";
 			
-			$data['title'] = "Edit project";
-			
-			$result = $this->project_model->read_edit_id($id);
-			if($result){
-				$data_project  = $result;
+				$result = $this->project_model->read_edit_id($id);
+				if($result){
+					$data_project  = $result;
+				}
+				
+				$data_project['action'] = site_url('project/edit/'.$id);
+				
+				$this->load->view('layout/header', array('data' => $data));
+				$this->load->view('project/content', array('data_project' => $data_project));
+				$this->load->view('layout/footer'); 
 			}
-			
-			$data_project['action'] = site_url('project/edit/'.$id);
-			
-			$this->load->view('layout/header', array('data' => $data));
-			$this->load->view('project/content', array('data_project' => $data_project));
-			$this->load->view('layout/footer'); 
 		
  	}
 	
 	public function view($id) {
 		
 			
-			$data['title'] = "View project";
+			
 			
 			$result = $this->project_model->read_id($id);
 			
 			if($result){
 				$data_project  = $result;
 			}
+
+			$data['title'] = $data_project['project_name'];
 			
 			$this->load->view('layout/header', array('data' => $data));
 			$this->load->view('project/view', array('data_project' => $data_project));

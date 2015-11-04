@@ -103,7 +103,7 @@ if($this->session->userdata('user_type_id') == 2){
 						while($r_p = mysql_fetch_array($q_p)){ 
 						$img_class = $this->access->get_valid_img(base_url()."assets/images/project/".$r_p['project_img']);
 						?>
-                            <div class="col-md-4">
+                            <div class="col-xs-4">
                              <div class="row">
                                 <div class="box-showcase_gallery">
                                     <div class="box-showcaseInner">

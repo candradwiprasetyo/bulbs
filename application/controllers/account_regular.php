@@ -8,13 +8,15 @@ class Account_regular extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('access');
 		
+		
+	}
+ 	
+	public function index() {
+
 		$logged = $this->session->userdata('logged');
 		if($logged == ""){
 			redirect('login');
 		}
-	}
- 	
-	public function index() {
 		
 			$logged = $this->session->userdata('logged');
 			if($logged){
@@ -67,6 +69,14 @@ class Account_regular extends CI_Controller {
 		}else{
 			redirect('account_regular/?did=1');			
 		}
+	}
+	
+	public function logout(){
+		$this->load->library('facebook');
+        // Logs off session from website
+        $this->facebook->destroySession();
+		$this->session->sess_destroy();
+		redirect('home');
 	}
 	
 }

@@ -12,10 +12,8 @@ $(function() {
                   function(data) {
                      var follow_status = data;
 					 
-					if(follow_status == 0){
-						 
-						var question = confirm("Are you sure want to follow ?");
-						if(question==true){
+					
+						
 						 
 							 $.ajax({
 								   type: "POST",
@@ -23,18 +21,12 @@ $(function() {
 								   data: info,
 								   success: function(){}
 								 });
-								
+
+					if(follow_status == 0){
+             		
 							$(".follow").html('<div class="button_unfollow">FOLLOWING</div>');
-						}
-					}else{
 						
-						$.ajax({
-								   type: "POST",
-								   url: "<?= site_url()?>project/follow_ajax",
-								   data: info,
-								   success: function(){}
-								 });
-								 
+					}else{
 								$(".follow").html('<div class="button_creatives">FOLLOW</div>');
 						
 					}

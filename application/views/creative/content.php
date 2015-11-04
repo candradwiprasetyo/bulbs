@@ -23,11 +23,6 @@ $(function() {
                   { id: noteid },
                   function(data) {
                      var follow_status = data;
-					 
-					if(follow_status == 0){
-						 
-						var question = confirm("Are you sure want to follow ?");
-						if(question==true){
 						 
 							 $.ajax({
 								   type: "POST",
@@ -35,21 +30,17 @@ $(function() {
 								   data: info,
 								   success: function(){}
 								 });
-								
-							$(".follow_<?= $r_c_ajax['user_id']?>").html('<div class="button_unfollow">FOLLOWING</div>');
-						}
+               
+          if(follow_status == 0){
+              $(".follow_<?= $r_c_ajax['user_id']?>").html('<div class="button_unfollow">FOLLOWING</div>');
 					}else{
+              $(".follow_<?= $r_c_ajax['user_id']?>").html('<div class="button_creatives">FOLLOW</div>');
+					}	
 						
-						$.ajax({
-								   type: "POST",
-								   url: "<?= site_url()?>creative/follow_ajax",
-								   data: info,
-								   success: function(){}
-								 });
 								 
-								$(".follow_<?= $r_c_ajax['user_id']?>").html('<div class="button_creatives">FOLLOW</div>');
+							
 						
-					}
+					
 					
 					
                   }

@@ -618,14 +618,28 @@ body
 	border-radius:0px;
 	letter-spacing:2px;
 	font-weight:bold;
-	font-size:12px;
+	font-size: 11px;
 	padding:10px 10px;
 	color:#fff;
 	white-space:normal;
 }
+
+
 .button_login_facebook:hover{
 	color:#fff;
 	background:#294684;
+}
+
+@media only screen and (max-width : 1340px) and (min-width : 1100px) {
+	.button_login_facebook{
+		font-size: 8px;
+	}
+}
+
+@media only screen and (max-width : 1100px) and (min-width : 991px) {
+	.button_login_facebook{
+		font-size: 6px;
+	}
 }
 
 
@@ -888,7 +902,7 @@ body
 .profile_left_content{
 	padding-top:20px;
 	width:100%;
-	
+	min-height:300px;
 }
 
 .profile_right{

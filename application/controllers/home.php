@@ -8,6 +8,11 @@ class Home extends CI_Controller {
 		$this->load->library('access');
 		$this->load->library('session');
 		$this->load->helper('url');
+		
+		$logged = $this->session->userdata('logged');
+		if($logged){
+			redirect('showcase');
+		}
 	}
  	
 	public function index() {
