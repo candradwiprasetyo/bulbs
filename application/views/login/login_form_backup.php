@@ -14,14 +14,7 @@
 				window.location.href = "<?= site_url(); ?>" + "/login/signup_facebook/" + type;
 				
 				
-		}
-			
-$(document).ready(function(){  /* when the page has loaded... */
-  $('.boxSet').click(function(){  /* ...bind click event to .boxSet elements */
-    $('.boxSet').removeClass('hilite'); /* On click, remove any 'hilite' class */
-    $(this).addClass('hilite'); /* ...and add 'hilite' class to clicked element */ 
-   });
-});
+			}
         </script>
 <div class="row" style="margin-left:0px; margin-right:0px;">
  
@@ -143,25 +136,26 @@ $(document).ready(function(){  /* when the page has loaded... */
                                               
 
                                                 <div class="row">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                       
-                                                       <div class="btn btn-lg button_option_registration boxSet hilite" onclick="sign_up_type(2)">CREATIVES</div>
-                                                	</div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
+                                                <div class="btn-toggle"> 
+                                                    <div class="col-md-3">
                                                      
-                                                       <div class="btn btn-lg button_option_registration boxSet" onclick="sign_up_type(3)">REGULAR</div>
-                                                	</div>
-                                                </div>
+                                                        <div class="form-group">
+                                                       <button class="btn btn-lg btn-primary new_button_creatives" id="t_sign_up1" onclick="sign_up_type(2)">CREATIVES</button>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                           <button class="btn btn-lg btn-default new_button_creatives  active" id="t_sign_up2" onclick="sign_up_type(3)">REGULAR</button>
+                                                        </div>
+                                                    </div>
+                                                    </div>
                                                 </div>
                                                   <form action="<?=site_url('home/signup')?>" method="post" enctype="multipart/form-data">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                             <div class="form-group">
-                                                            <input required type="text" name="i_first_name" class="form-control" placeholder="First Name" value="" title=""/>
-                                                            <input id="t_sign_up3" name="t_sign_up3" type="hidden" value="2" style="color:#000"/>
+                                                            <input required type="text" name="i_first_name" class="form-control" placeholder="First Name" value="" title=""/><input id="t_sign_up3" name="t_sign_up3" type="hidden" value="2" style="color:#000"/>
                                                             </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -250,4 +244,3 @@ $(document).ready(function(){  /* when the page has loaded... */
         </div>
     </div>
 </div>
-

@@ -218,6 +218,13 @@
         
         
       }
+	  
+	  $(document).ready(function(){  /* when the page has loaded... */
+  $('.boxSet').click(function(){  /* ...bind click event to .boxSet elements */
+    $('.boxSet').removeClass('hilite'); /* On click, remove any 'hilite' class */
+    $(this).addClass('hilite'); /* ...and add 'hilite' class to clicked element */ 
+   });
+});
       
         </script>
     <div class="col-md-3" style="padding:0px; " >
@@ -239,22 +246,25 @@
                                        
                                         <div class="col-md-12">
                                         
-                                         <div class="form-group">
-                                         <div class="btn-toggle"> 
-                                          <div class="col-md-6" style="padding:0px">
-                                            
-                                            <button class="btn btn-lg btn-primary new_button_creatives" id="t_sign_up1" onclick="sign_up_type(2)">CREATIVES</button>
-                                            </div>
-                                            <div class="col-md-6" style="padding:0px">
-                                           <button class="btn btn-lg btn-default new_button_creatives  active" id="t_sign_up2" onclick="sign_up_type(3)">REGULAR</button>
-                                           
-                                            </div>
-                                          </div>
-                                          
-                                        </div>
+                                        <div class="col-md-6">
+                                        		<div class="row">
+                                                    <div class="form-group">
+                                                       
+                                                       <div class="btn btn-lg button_option_registration boxSet hilite" onclick="sign_up_type(2)">CREATIVES</div>
+                                                	</div>
+                                                </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                	<div class="row">
+                                                    	<div class="form-group">
+                                                     
+                                                       		<div class="btn btn-lg button_option_registration boxSet" onclick="sign_up_type(3)">REGULAR</div>
+                                                         </div>
+                                                	</div>
+                                                </div>
+                                         
                                         
                                         
-                                        <div style="clear:both;"></div>
                                        
                                          <form action="<?=site_url('home/signup')?>" method="post" enctype="multipart/form-data">
                                         <div class="form-group">

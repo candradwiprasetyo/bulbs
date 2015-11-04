@@ -468,6 +468,7 @@ body
 
 
 
+
 .button_regular{
 	background:#bcbcbc;
 	width:100%;
@@ -536,6 +537,22 @@ body
 
 .button_unfollow:hover{
 	background:#8b8e91;
+	color:#fff;
+}
+
+.button_option_registration{
+	width:100%;
+	background:#aaa;
+	border-radius:0px;
+	letter-spacing:2px;
+	font-weight:bold;
+	font-size:12px;
+	padding:10px 10px;
+	color:#fff;
+	text-align:center;
+}
+
+.button_option_registration:hover{
 	color:#fff;
 }
 
@@ -1146,6 +1163,17 @@ body
 	color:#36C;
 }
 
+.message_error{
+	width:100%;
+	text-align:center;
+	padding:20px;
+	background:#e6e6e6;
+	font-size:16px;
+	font-weight:bold;
+	color:#F00;
+}
+
+
 new_select{
 	-webkit-appearance:none !important;
 	background:url(../images/select.png) no-repeat;
@@ -1473,6 +1501,39 @@ new_select{
 		border-radius:50%;
 		position:absolute;
 	}
+	
+	/*------------------ buton option registration----------------*/
+	
+.option_btn {
+  
+    font-size: 18px;
+    border: 2px solid gray;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+}
+.option_btn:focus {
+    font-size: 18px;
+    border: 2px solid green;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+}
+.option_btn:target {
+    font-size: 18px;
+    border: 2px solid red;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+div.boxSet {
+	cursor:pointer;
+	}
+div.boxSet.hilite {background:#19488e; color:#fff;} 
+	
 
     /*.box-showcaseInner:hover .titlebox-showcase, .box-showcaseInner.touchFocus .titlebox-showcase {
        margin-bottom: 0;

@@ -241,9 +241,7 @@ if (document.documentElement.clientWidth <= 768) {
                         <div class="col-md-6" >
                         	<?= $data_creatives['view'] ?>  views
                         </div>
-                        <div class="col-md-6" >
-                        	<?= $data_creatives['like'] ?> likes
-                        </div>
+                       
                     </div>
                     
                  </div>

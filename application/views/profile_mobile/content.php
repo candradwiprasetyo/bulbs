@@ -58,39 +58,36 @@
  <div class="profile_left_color2" style="padding-bottom:20px;">
 
 <div class="profile_mobile">
- <div class="row">
-<div class="col-xs-6">
-    <div class="row">
-    	<a href="<?=site_url('profile_mobile')?>">
-        <div class="menu">
-      
-            <div class="menu_caption">Projects</div>
+     <div class="row">
+        <div class="col-xs-6">
+            <div class="row">
+                <a href="<?=site_url('profile_mobile')?>">
+                <div class="menu">
+              
+                    <div class="menu_caption">Projects</div>
+                </div>
+                </a>
+            </div>
         </div>
-        </a>
+        <div class="col-xs-6">
+                <div class="row">
+                <a href="<?=site_url('profile_mobile?tab=2')?>">
+                    <div class="menu">
+                       
+                        <div class="menu_caption">Profile</div>
+                    </div>
+                </a>
+                </div>
+        </div>
     </div>
 </div>
-<div class="col-xs-6">
-    <div class="row">
-    <a href="<?=site_url('profile_mobile?tab=2')?>">
-        <div class="menu">
-           
-            <div class="menu_caption">Profile</div>
-        </div>
-    </a>
-    </div>
-</div>
-</div>
-</div>
- </div>
- 
- 
- 
+
 <?php
 if(isset($_GET['tab']) && $_GET['tab'] == 2){
 ?>
 
 <div class="profile_statistic_mobile">
-<div class="col-xs-3">
+<div class="col-xs-4">
     <div class="row">
     	
         <div class="menu">
@@ -100,7 +97,7 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
        
     </div>
 </div>
-<div class="col-xs-3">
+<div class="col-xs-4">
     <div class="row">
     
         <div class="menu">
@@ -111,7 +108,7 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
     </div>
 </div>
 
-<div class="col-xs-3">
+<div class="col-xs-4">
     <div class="row">
    
         <div class="menu">
@@ -122,16 +119,7 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
     </div>
 </div>
 
-<div class="col-xs-3">
-    <div class="row">
-   
-        <div class="menu">
-           <div class="menu_count"><?= $data_creatives['like'] ?></div>
-            <div class="menu_caption">Likes</div>
-        </div>
-    
-    </div>
-</div>
+
 </div>
 
 <div class="col-md-12">
@@ -335,3 +323,8 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
 <?php
 }
 ?>
+
+ </div>
+ 
+ 
+ 
