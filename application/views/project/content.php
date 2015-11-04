@@ -1,4 +1,4 @@
-<link href="<?= base_url(); ?>assets/css/dropzone/style.css" rel="stylesheet" />
+<link href="<?= base_url(); ?>assets/css/dropzone/jquery.ezdz.min.css" rel="stylesheet" />
 
 
 <?= $this->access->get_navbar_category(); ?>
@@ -8,36 +8,36 @@
 <?php
 if($data_project['project_img']){
 ?>
+
 <div class="box-showcase_cover">
      <div class="box-showcaseInnerCover">
           <img src="<?= base_url(); ?>assets/images/project/<?= $data_project['project_img'] ?>" style="width:100%;"/>      
             
      </div>
 </div>
-<div class="col-md-12">
-        <div class="project_desc">
-            <div class="container">
+
+ <div class="img_cover_image">
+               
+               <input required class="upload_project" type="file" name="i_img" id="i_img" accept="image/png, image/jpeg" />
            
-             <div class="fileUpload_project btn button_upload">
-                <span>Change Cover Images</span>
-               <input class="upload_project" type="file" name="i_img" id="i_img"/>
-            </div>
-            </div>
-        </div>
 </div>   
 <?php
 }else{
 ?>
+
       <div class="img_cover_image">
-      	<div class="img_cover_image_content">
-        
-      	   <div class="fileUpload_project btn button_upload">
-                <span>+ Add Cover Images</span>
-               <input class="upload_project" type="file" name="i_img" id="i_img"/>
-            </div>
       	
-        </div>
+               
+                <input required class="upload_project" type="file" name="i_img" id="i_img" accept="image/png, image/jpeg" />
+            
       </div>
+      
+      
+     
+      
+      
+      
+   
 <?php
 }
 ?>
@@ -134,6 +134,39 @@ if($data_project['project_img']){
     </div>
 </div>
 </form>
+<script src="<?= base_url(); ?>assets/js/dropzone/jquery.ezdz.min.js"></script>
+<script>
+        $('[type="file"]').ezdz({
+			<?php
+			if(@$data_project['project_id']){
+			?>
+			 text: 'Change Images',
+			<?php
+			}else{
+			?>
+            text: '+ Add Images',
+			<?php
+			}
+			?>
+            validators: {
+                maxWidth:  2000,
+                maxHeight: 1600
+            },
+            reject: function(file, errors) {
+                if (errors.mimeType) {
+                    alert(file.name + ' must be an image.');
+                }
 
+                if (errors.maxWidth) {
+                    alert(file.name + ' must be width:2000px max.');
+                }
+
+                if (errors.maxHeight) {
+                    alert(file.name + ' must be height:1600px max.');
+                }
+            }
+        }
+		);
+    </script>
 
 		

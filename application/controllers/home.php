@@ -8,6 +8,7 @@ class Home extends CI_Controller {
 		$this->load->library('access');
 		$this->load->library('session');
 		$this->load->helper('url');
+		$this->load->library('recaptcha');
 		
 		$logged = $this->session->userdata('logged');
 		if($logged){
@@ -22,7 +23,8 @@ class Home extends CI_Controller {
 		$data['title'] = "8BULBS";
 		$list['list'] = "test";
 		
-		// captcha
+		// captcha lama
+		/*
 		$this->load->helper('captcha');
 		$vals = array(
 			'image' => 'test', 
@@ -51,6 +53,7 @@ class Home extends CI_Controller {
 		
 		$this->session->set_userdata('keycode',md5($cap['word']));
 		$data_img['captcha_img'] = $cap['image'];
+		*/
 		
  		$this->load->view('layout/header', array('data' => $data));
 		//$this->load->view('layout/header', $data);
@@ -86,7 +89,7 @@ class Home extends CI_Controller {
 		
 		$this->load->helper(array('form','url'));
 
-		$captcha = $this->input->post('i_captcha');
+		//$captcha = $this->input->post('i_captcha');
 		 
 		$data['user_type_id']	 				= $this->input->post('t_sign_up3');
 		$data['user_category_id']	 			= 1;
@@ -97,7 +100,14 @@ class Home extends CI_Controller {
 		$data['user_password']	 				= md5($this->input->post('i_password'));
 		$data['user_active_status']	 			= 1;
 		
-		if(md5($captcha)==$this->session->userdata('keycode')){
+		// Catch the user's answer
+		$captcha_answer = $this->input->post('g-recaptcha-response');
+		
+		// Verify user's answer
+		$response = $this->recaptcha->verifyResponse($captcha_answer);
+		
+		// Processing ...	
+		if ($response['success']) {
 		
 			$get_exist_username = $this->home_model->get_exist_username($data['user_username']);
 			
@@ -118,6 +128,7 @@ class Home extends CI_Controller {
 		}else{
 			redirect("login?err=3");
 		}
+		
  	}
 	
 	public function search(){

@@ -44,7 +44,6 @@
 
 
 
-</div>
 
 
 
@@ -116,12 +115,6 @@
     
    
         
-         <!-- dropzone -->
-		<script src="<?= base_url() ?>assets/js/dropzone/jquery.knob.js"></script>
-		<script src="<?= base_url() ?>assets/js/dropzone/jquery.ui.widget.js"></script>
-		<script src="<?= base_url() ?>assets/js/dropzone/jquery.iframe-transport.js"></script>
-		<script src="<?= base_url() ?>assets/js/dropzone/jquery.fileupload.js"></script>
-		<script src="<?= base_url() ?>assets/js/dropzone/script.js"></script>
 
     <script type="text/javascript">
 

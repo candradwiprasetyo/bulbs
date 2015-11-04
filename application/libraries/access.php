@@ -103,6 +103,16 @@ class Access
 		return $result;
 	}
 	
+	public function get_alert_error($message){
+		$result = '<div class="alert-message">
+						<div class="alert-message-item_error">
+							<i class="fa fa-check"></i>&nbsp';
+		$result .= $message;
+		$result .= '</div></div>';
+		
+		return $result;
+	}
+	
 	public function get_navbar_category() {
 			
 			
@@ -110,7 +120,7 @@ class Access
 			
        	 		
                  	<div class="navbar_category">
-                 		<div class="row">
+                 		<div class="row" style="padding:0; margin:0px;">
 							
 							<div class="col-md-11 col-md-offset-1">
 							<div class="navbar_category_menu"><a href="'.site_url('profile').'">Profile</a></div>

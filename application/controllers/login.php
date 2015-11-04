@@ -7,6 +7,7 @@ class Login extends CI_Controller {
 		$this->load->model('login_model');
 		$this->load->library('session');
 		$this->load->helper('url');
+		$this->load->library('recaptcha');
 		
 		$logged = $this->session->userdata('logged');
 		if($logged){
@@ -18,7 +19,8 @@ class Login extends CI_Controller {
 		
 		$this->load->library('facebook'); // Automatically picks appId and secret from config
 		
-		// captcha
+		// captcha lama
+		/*
 		$this->load->helper('captcha');
 		$vals = array(
 			'image' => 'test', 
@@ -39,6 +41,7 @@ class Login extends CI_Controller {
 		
 		$this->session->set_userdata('keycode',md5($cap['word']));
 		$data['captcha_img'] = $cap['image'];
+		*/
 		
 		if($this->session->userdata('logged') == 1){
 			if($this->session->userdata('user_type_id') == 2){

@@ -7,6 +7,7 @@ class Profile_view extends CI_Controller {
 		$this->load->model('profile_view_model');
 		$this->load->library('session');
 		$this->load->library('access');
+		$this->load->library('recaptcha');
 	}
  	
 	public function index() {
@@ -148,15 +149,28 @@ class Profile_view extends CI_Controller {
 	}
 
 	public function review($creative_id){
-		$data['user_creative_id']	 			= $creative_id;
-		$data['user_regular_id'] 				= $this->session->userdata('user_id');
-		$data['pr_rating']	 					= $this->input->post('i_rating');
-		$data['pr_description']		 			= $this->input->post('i_description');
-		$data['pr_date']						= date("Y-m-d H:i:s");
-
-		$this->profile_view_model->review($data);
 		
-		redirect('profile_view/?id='.$creative_id."&did=1");
+		// Catch the user's answer
+		$captcha_answer = $this->input->post('g-recaptcha-response');
+		
+		// Verify user's answer
+		$response = $this->recaptcha->verifyResponse($captcha_answer);
+		
+		// Processing ...	
+		if ($response['success']) {
+		
+			$data['user_creative_id']	 			= $creative_id;
+			$data['user_regular_id'] 				= $this->session->userdata('user_id');
+			$data['pr_rating']	 					= $this->input->post('i_rating');
+			$data['pr_description']		 			= $this->input->post('i_description');
+			$data['pr_date']						= date("Y-m-d H:i:s");
+	
+			$this->profile_view_model->review($data);
+			
+			redirect('profile_view/?id='.$creative_id."&did=1");
+		}else{
+			redirect('profile_view/?id='.$creative_id."&err=1");
+		}
 	}
 
 }

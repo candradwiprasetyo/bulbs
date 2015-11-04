@@ -80,6 +80,7 @@ class Project extends CI_Controller {
 		
 		// upload gambar
 		
+		
 		$data_user = $this->access->get_data_user($this->session->userdata('user_id'));
 		
 		$new_name = '';
@@ -125,32 +126,9 @@ class Project extends CI_Controller {
 			
 		}
 		
-		/*
-		
-		if($_FILES['i_detail_img']['name']){
-			$img_detail_name = time()."_".$_FILES['i_detail_img']['name'];
-		
-			$configUploadDetail['upload_path']    = './assets/images/project/';                 #the folder placed in the root of project
-			$configUploadDetail['allowed_types']  = 'gif|jpg|png|bmp|jpeg';       #allowed types description
-			$configUploadDetail['max_size']	= '100';
-			$configUploadDetail['max_width'] = '1024';
-			$configUploadDetail['max_height'] = '768';                       #max height
-			$configUploadDetail['encrypt_name']   = false;   
-			$configUploadDetail['file_name'] 		= $img_detail_name;                      	#encrypt name of the uploaded file
-			$this->load->library('upload', $configUploadDetail);                  #init the upload class
-			if(!$this->upload->do_upload('i_detail_img')){
-				$uploadedDetails2    = $this->upload->display_errors();
-			}else{
-				$uploadedDetails2    = $this->upload->data(); 
-				
-			}
-			
-			$data_detail_img['pdi_img'] 					= $img_detail_name;
-			$this->project_model->save_detail_img($data_detail_img);
-		}
-		*/
 		
 		redirect('project/view/'.$id);
+		
 	}
 	
 

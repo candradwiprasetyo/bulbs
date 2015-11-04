@@ -84,6 +84,8 @@ $(function() {
     <?php 
 	if(isset($_GET['did']) && $_GET['did']==1){
 		echo $this->access->get_alert_success("Review Saved"); 
+	}else if(isset($_GET['err']) && $_GET['err']==1){
+		echo $this->access->get_alert_error("Wrong Captcha. Please try again "); 
 	}
 	?>
 
@@ -105,13 +107,14 @@ $(function() {
                          </fieldset>
 
                     <div style="clear:both"></div>
-                    <br>
+                   
 
-                     <div class="profile_name" style="margin-bottom:20px;">Review <?= $data_creatives['creative_wp_name'] ?></div>
-                      <textarea name="i_description" rows="5" class="form-control" id="i_description" required placeholder="Write a few words about your experience
-with the creative..." ></textarea>
+                     <div class="profile_name" style="margin-bottom:0px;">Review <?= $data_creatives['creative_wp_name'] ?></div>
+                      <textarea name="i_description" rows="5" class="form-control" id="i_description" required placeholder="Write a few words about your experience with the creative..." ></textarea>
                                                
                       <div style="clear:both"></div>
+                      <br />
+                       <?php echo $this->recaptcha->render(); ?>
                     <br>
                     <div class="row">
                         <div class="col-md-6">

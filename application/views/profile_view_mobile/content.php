@@ -183,33 +183,33 @@ with the creative..." ></textarea>
  
  <div class="profile_left_color2" style="padding-bottom:20px;">
 
-<div class="profile_mobile">
- <div class="row">
-<div class="col-xs-6">
-    <div class="row">
-    	<a href="<?=site_url().'profile_view_mobile?id='.$_GET['id'].'&tab=1'; ?>">
-        <div class="menu">
-      
-            <div class="menu_caption">Projects</div>
+        <div class="profile_mobile">
+             <div class="row">
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <a href="<?=site_url().'profile_view_mobile?id='.$_GET['id'].'&tab=1'; ?>">
+                            <div class="menu">
+                                <div class="menu_caption">Projects</div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+            
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <a href="<?=site_url().'profile_view_mobile?id='.$_GET['id'].'&tab=2'; ?>">
+                                <div class="menu">
+                                   
+                                    <div class="menu_caption">Profile</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+            </div>
         </div>
-        </a>
-    </div>
-</div>
-<div class="col-xs-6">
-    <div class="row">
-    <a href="<?=site_url().'profile_view_mobile?id='.$_GET['id'].'&tab=2'; ?>">
-        <div class="menu">
-           
-            <div class="menu_caption">Profile</div>
-        </div>
-    </a>
-    </div>
-</div>
-</div>
-</div>
- </div>
- 
- 
+        
+        
+        
  
 <?php
 if(isset($_GET['tab']) && $_GET['tab'] == 2){
@@ -480,3 +480,7 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
 <?php
 }
 ?>
+        
+ </div>
+ 
+ 

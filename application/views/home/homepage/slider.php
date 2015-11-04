@@ -274,13 +274,11 @@
                                         </div>
                                         <div class="form-group">
                                         <div class="row">
-                                        <div class="col-md-7">
+                                        <div class="col-md-12">
                                         
-                                                           <?php echo $captcha_img;?> 
+                                                           <?php echo $this->recaptcha->render(); ?>
                                         </div>
-                                         <div class="col-md-5">
-                                                           <input required type="text" name="i_captcha" class="form-control" placeholder="captcha" value="" title=""/>
-                                        </div>
+                                         
                                         </div>
                                         </div>
                                         

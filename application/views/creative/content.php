@@ -94,7 +94,7 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
    			");
 	
    while($r_c = mysql_fetch_array($q_c)){
-	   $img_class = $this->access->get_valid_profile_img(base_url()."assets/images/profile/".$r_c['creative_img']);
+	   $img_class_profile = $this->access->get_valid_profile_img(base_url()."assets/images/profile/".$r_c['creative_img']);
    ?>
       <a href="<?=site_url('profile_view/?id='.$r_c['user_id'])?>">
                     <div class="box-showcase_creative">
@@ -131,7 +131,7 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
                             <div class="row">
                             <div class="box-showcase_profile">
                                 <div class="box-showcaseInnerProfile">
-                            		<img src="<?= base_url(); ?>assets/images/profile/<?= $r_c['creative_img'] ?>" class="<?= $img_class ?>">
+                            		<img src="<?= base_url(); ?>assets/images/profile/<?= $r_c['creative_img'] ?>" class="<?= $img_class_profile ?>">
                                 </div>
                             </div>
                             </div>
