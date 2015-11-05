@@ -448,7 +448,9 @@ $(function() {
 					
 					<?php
 					 if($this->session->userdata('user_id')){
-					 	echo $data_creatives['creative_website'];
+					 	?>
+                        <a href="http://<?= $data_creatives['creative_website']?>"><?= $data_creatives['creative_website']?></a>
+                        <?php
                      }else{
                      	echo "<a href='".site_url('login')."'<span class='blue_text'>Login to view</span></a>";
                      }

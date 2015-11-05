@@ -934,6 +934,20 @@ body
 	padding-bottom:20px;
 }
 
+.profile_left_color2_message{
+	width:100%;
+	background:#f2f2f2;
+	padding-bottom:20px;
+}
+
+
+.profile_left_color2_message2{
+	width:100%;
+	background:#f2f2f2;
+	padding-bottom:20px;
+	min-height:300px;
+}
+
 .profile_left_content{
 	padding-top:20px;
 	width:100%;
@@ -951,12 +965,12 @@ body
 
 .message_page{
 	background:#fff;
-	min-height:700px;
+	min-height:600px;
 }
 
 .message_left{
 	width:100%;
-	min-height:1000px;
+	min-height:600px;
 	background:#F2F2F2;
 	/*overflow-x:hidden;
 	overflow-y:scroll;
@@ -964,7 +978,7 @@ body
 }
 
 .message_right{
-	min-height:1000px;
+	min-height:600px;
 }
 
 .message_right_content{
@@ -975,10 +989,20 @@ body
 	font-size:16px;
 }
 
+.message_date{
+	text-align:right;
+}
+
+@media only screen and (max-width : 991px){
+.message_date{
+	text-align:left;
+}
+}
+
 .message_comment{
 	
 	bottom:0;
-	position:absolute;
+	
 	width:100%;
 	background:#E6E6E6;
 	padding-bottom:60px;

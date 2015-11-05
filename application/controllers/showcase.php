@@ -48,7 +48,7 @@ class Showcase extends CI_Controller {
 			$data_multiple1	 				.= " d.pc_id = ".$this->input->post('i_multiple1_'.$row1['pc_id']);
 			
 			// buat sesi concentration
-			$this->session->set_userdata('sess_multiple1_'.$row1['pc_id'], 1);
+			//$this->session->set_userdata('sess_multiple1_'.$row1['pc_id'], 1);
 			
 			$no1++;
 		}
@@ -71,7 +71,7 @@ class Showcase extends CI_Controller {
 			$data_multiple2	 				.= " b.location_id = ".$this->input->post('i_multiple2_'.$row2['location_id']);
 			
 			// buat sesi location
-			$this->session->set_userdata('sess_multiple2_'.$row2['location_id'], 1);
+			//$this->session->set_userdata('sess_multiple2_'.$row2['location_id'], 1);
 			
 			$no2++;
 		}
@@ -84,10 +84,10 @@ class Showcase extends CI_Controller {
 		$this->session->unset_userdata('sess_search');
 		
 		if($this->input->post('i_search_keyword')){
-			$data_search = " a.project_name like '%".$this->input->post('i_search_keyword')."%'";
+			$data_search = " a.project_name like '%".$this->input->post('i_search_keyword')."%' or b.creative_wp_name like '%".$this->input->post('i_search_keyword')."%'";
 			
 			// buat sesi search
-			$this->session->set_userdata('sess_search', $this->input->post('i_search_keyword'));
+			//$this->session->set_userdata('sess_search', $this->input->post('i_search_keyword'));
 		}
 		
 		$parameter = '';

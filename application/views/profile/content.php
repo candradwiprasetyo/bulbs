@@ -291,7 +291,7 @@ if (document.documentElement.clientWidth <= 768) {
              
              <div class="row">
                 <div class="col-md-12" >
-                    <?= $data_creatives['creative_website']?>
+                    <a href="http://<?= $data_creatives['creative_website']?>"><?= $data_creatives['creative_website']?></a>
                  </div>
              </div>
         </div>

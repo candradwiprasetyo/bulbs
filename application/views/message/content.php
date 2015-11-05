@@ -16,14 +16,14 @@
 		?>
         
     		<div class="message_left">
-        		<div class="profile_left_color2">
+        		<div class="profile_left_color2_message">
         			<div class="profile_left_content" style="padding-bottom:20px;">
                     	
                     	<div class="col-md-11 col-md-offset-1">
                     	<?php
                         if($data_creatives['user_id']){
 						?>
-        				<div class="message_chat_name" >Conversation with <?= $data_creatives['creative_wp_name']?></div>
+        				<div class="message_chat_name" >Conversation with <a href="<?= site_url() ?>profile_view?id=<?= $data_creatives['user_id'] ?>"><?= $data_creatives['creative_wp_name']?></a></div>
                       
                         <?php
 						}else{
@@ -37,11 +37,11 @@
                    
         		</div>
                 
-                <div class="profile_left_color2" style="overflow-y:auto; overflow-x:hidden; height:600px;">
+                <div class="profile_left_color2_message2">
                 	<!-- start chat -->
                     <?php
 					if($data_creatives['user_id']){
-                    $q_message = mysql_query("select a.*, c.creative_img, c.creative_wp_name
+                    $q_message = mysql_query("select a.*, c.creative_img, c.creative_wp_name, c.user_id
 												from message_details a
 												join messages b on b.message_id = a.message_id
 												join creatives c on c.user_id = a.user_id
@@ -51,11 +51,11 @@
 												");
 					while($r_message = mysql_fetch_array($q_message)){ 
 					?>
-        			<div class="profile_left_content">
+        			
                     	
                     	<div class="col-md-11 col-md-offset-1">
         				<div class="row" style="margin:0; padding:0">
-                        <div class="col-xs-2 foto_message" style="padding:0; padding-bottom:20px;">
+                        <div class="col-xs-1 foto_message" style="padding:0; padding-bottom:20px;">
                                    
                                       <?php
                                        $img_class_message = $this->access->get_valid_profile_img(base_url()."assets/images/profile/".$r_message['creative_img']);
@@ -67,18 +67,24 @@
                                         </div>
                                     
                                 </div>
-                                <div class="col-xs-10" >
+                                <div class="col-xs-11" >
                                 			
                                  <div class="col-md-7">
                                     <div class="form-group">
-                                        <div class="following_name">
-                                            <?= $r_message['creative_wp_name'] ?>
+                                        <div class="message_name">
+                                            <?php
+											if($r_message['user_id']==$this->session->userdata('user_id')){
+											 	echo $r_message['creative_wp_name'];
+											}else{
+												echo '<a href="'.site_url().'profile_view?id='.$r_message['user_id'].'">'.$r_message['creative_wp_name'].'</a>';
+											}
+											 ?>
                                          </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-5" >
                                 	<div class="form-group">
-                                        <div >
+                                        <div class="message_date">
                                             <?= $this->access->format_date($r_message['md_date']); ?>
                                          </div>
                                     </div>
@@ -91,7 +97,7 @@
                                 </div>
                                 </div>
                         
-                    </div>
+                  
                     </div>
                    </div>
                     <?php

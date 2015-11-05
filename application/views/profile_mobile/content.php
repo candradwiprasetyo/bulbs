@@ -172,7 +172,7 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
         	<div class="row">
                 <div class="col-xs-6" >
                 	<div ><strong>Website</strong></div>
-                    <?= $data_creatives['creative_website']?>
+                    <a href="http://<?= $data_creatives['creative_website']?>"><?= $data_creatives['creative_website']?></a>
                  </div>
                  <div class="col-xs-" >
                 	<div ><strong>Phone</strong></div>

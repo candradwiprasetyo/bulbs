@@ -100,6 +100,11 @@ class Home extends CI_Controller {
 		$data['user_password']	 				= md5($this->input->post('i_password'));
 		$data['user_active_status']	 			= 1;
 		
+		
+		
+		if($this->session->userdata('captcha') == $this->input->post('i_captcha')){
+			
+		/*
 		// Catch the user's answer
 		$captcha_answer = $this->input->post('g-recaptcha-response');
 		
@@ -108,6 +113,7 @@ class Home extends CI_Controller {
 		
 		// Processing ...	
 		if ($response['success']) {
+			*/
 		
 			$get_exist_username = $this->home_model->get_exist_username($data['user_username']);
 			
@@ -169,5 +175,18 @@ class Home extends CI_Controller {
 		$this->load->view('layout/header', array('data' => $data));
 		$this->load->view('home/homepage/feature_view', $data_feature);
 		$this->load->view('layout/footer'); 
+	}
+	
+	public function create_captcha(){
+		$captcha=substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"),0,5); // string yg akan diacak membentuk captcha 0-z dan sebanyak 6 karakter
+		//$_SESSION['captcha']=$captcha;
+		$this->session->set_userdata('captcha', $captcha);
+		
+		$gambar=ImageCreate(100,35); // ukuran kotak width=60 dan height=20
+		$wk=ImageColorAllocate($gambar, 138, 190, 207); // membuat warna kotak -> Navajo White
+		$wt=ImageColorAllocate($gambar, 255, 255, 255); // membuat warna tulisan -> Putih
+		ImageFilledRectangle($gambar, 0, 0, 50, 100, $wk);
+		ImageString($gambar, 10, 30, 10, $captcha, $wt);
+		ImageJPEG($gambar);
 	}
 }

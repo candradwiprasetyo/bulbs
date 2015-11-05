@@ -192,10 +192,18 @@ $(document).ready(function(){  /* when the page has loaded... */
                                                         </div>
                                                     </div>
                                                     
-                                                     <div class="col-md-6">
+                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                          
-                                                           <?php echo $this->recaptcha->render(); ?>
+                                                          <img src="<?= site_url() ?>login/create_captcha" />
+                                                         
+                                                           <?php //echo $this->recaptcha->render(); ?>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                           <input required type="text" name="i_captcha" class="form-control" placeholder="Captcha" value="" title=""/>
+                                                           <?php //echo $this->recaptcha->render(); ?>
                                                         </div>
                                                     </div>
                                                     

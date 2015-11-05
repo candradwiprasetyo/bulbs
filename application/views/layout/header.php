@@ -77,7 +77,7 @@
         $data_user = $this->access->get_data_user($this->session->userdata('user_id'));
 		?>
         <ul class="nav navbar-nav navbar-nav-login" style="float:none">
-            <li><a href="<?=site_url('profile/?id='.$this->session->userdata('user_id'))?>">Hi, <?= $data_user['user_name'] ?></a></li>
+            <li><a href="<?=site_url('profile'); ?>">Hi, <?= $data_user['user_name'] ?></a></li>
             
             <?php
             if($this->session->userdata('user_type_id')==2){

@@ -247,4 +247,17 @@ class Login extends CI_Controller {
         
 	}
 	
+	public function create_captcha(){
+		$captcha=substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyz"),0,5); // string yg akan diacak membentuk captcha 0-z dan sebanyak 6 karakter
+		//$_SESSION['captcha']=$captcha;
+		$this->session->set_userdata('captcha', $captcha);
+		
+		$gambar=ImageCreate(150,35); // ukuran kotak width=60 dan height=20
+		$wk=ImageColorAllocate($gambar, 138, 190, 207); // membuat warna kotak -> Navajo White
+		$wt=ImageColorAllocate($gambar, 255, 255, 255); // membuat warna tulisan -> Putih
+		ImageFilledRectangle($gambar, 0, 0, 50, 100, $wk);
+		ImageString($gambar, 10, 50, 10, $captcha, $wt);
+		ImageJPEG($gambar);
+	}
+	
 }
