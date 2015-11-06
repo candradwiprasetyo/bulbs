@@ -89,7 +89,7 @@ if (document.documentElement.clientWidth <= 768) {
                                    </div>
                                    <!--<div class="profile_readmore">Read More</div>-->
                                    
-                                   <br />
+                                   
                                
                              </div>
                         </div>
@@ -115,7 +115,7 @@ if (document.documentElement.clientWidth <= 768) {
                                   </div> 
                                   
                                   <div class="col-md-6" style="text-align:right;">
-                                   <a href="<?= site_url('project/add'); ?>" class="btn btn-primary">Add New</a>
+                                   <a href="<?= site_url('project/add'); ?>" class="btn my_button">ADD NEW</a>
                                   </div> 
                                   </div>
                                   
@@ -180,7 +180,7 @@ if (document.documentElement.clientWidth <= 768) {
                              
                             <div class="box-showcaseDesc_by"><?= $r_p['creative_wp_name'] ?></div>
                             <div class="box-showcaseDesc_button"> 
-                            	<a href="<?= site_url('project/form_edit/'.$r_p['project_id']); ?>" class="btn btn-info"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
+                            	<a href="<?= site_url('project/form_edit/'.$r_p['project_id']); ?>" class="btn my_button"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
                             </div>
                             
                         </div>

@@ -241,7 +241,7 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
 											
 											where b.creative_id = '".$r_c['creative_id']."' 
 											
-											order by project_id limit 3");
+											order by project_id limit 4");
 						while($r_p = mysql_fetch_array($q_p)){ 
 						$img_class = $this->access->get_valid_img(base_url()."assets/images/project/".$r_p['project_img']);
 						?>

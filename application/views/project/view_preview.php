@@ -77,7 +77,8 @@ $(function() {
                              
                         		<?= $data_project['project_description']?>
       						
-                        </div><a href="javascript: history.back()" class="btn my_button">BACK</a>
+                        </div><a href="<?= site_url() ?>project/add" class="btn  my_button">UPLOAD AGAIN</a>
+                        <a href="<?= site_url() ?>profile" class="btn  my_button">BACK TO PROFILE</a>
                        
                         
                         <br />

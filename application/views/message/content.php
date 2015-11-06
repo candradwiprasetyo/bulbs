@@ -123,7 +123,7 @@
                                     <textarea required name="i_comment" cols="" rows="5" class="form-control" placeholder="Write your message..."></textarea>
                                 </div>
                                 <div class="form-group">
-                                	<input class="btn btn-primary" type="submit" value="SEND MESSAGE"/>
+                                	<input class="btn my_button" type="submit" value="SEND MESSAGE"/>
                                 </div>
                             </div>
                         </div>

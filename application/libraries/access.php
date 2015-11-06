@@ -124,7 +124,7 @@ class Access
 							
 							<div class="col-md-11 col-md-offset-1" style="padding:0">
 							<div class="navbar_category_menu"><a href="'.site_url('profile').'">Profile</a></div>
-							<div class="navbar_category_menu"><a href="'.site_url('follower').'">Follower</a></div>
+							<div class="navbar_category_menu"><a href="'.site_url('follower').'">Followers</a></div>
 							<div class="navbar_category_menu"><a href="'.site_url('following').'">Following</a></div>
 							<div class="navbar_category_menu"><a href="'.site_url('project/add').'">Upload Work</a></div>
 							

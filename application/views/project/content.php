@@ -120,11 +120,12 @@ if($data_project['project_img']){
                  </div>
                  -->
                  
-                 <br />
-                 <button type="submit" class="btn btn-primary">SAVE</button>
+                
+                 <div class="col-md-12">
+                 <button type="submit" class="btn my_button">SAVE</button>
                   
-                                <a href="javascript: history.back()" class="btn btn-primary">BACK</a>
-                  
+                                <a href="javascript: history.back()" class="btn my_button_cancel">BACK</a>
+                  </div>
                  <div style="clear:both; height:50px;"></div>
             </div>
             

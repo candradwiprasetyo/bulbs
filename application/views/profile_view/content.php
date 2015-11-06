@@ -261,8 +261,7 @@ $(function() {
                                    </div>
                                    <!--<div class="profile_readmore">Read More</div>-->
                                    
-                                   <br />
-                               <br />
+                                 
                              </div>
                         </div>
                    
@@ -272,7 +271,7 @@ $(function() {
         </div>
         </div>
         
-        <div class="profile_left_color2">
+        <div class="profile_left_color2" style="min-height:300px;">
         	<div class="profile_left_content">
            <div class="row" style="margin-left:0px; margin-right:0px;">
         		<div class="col-md-11 col-md-offset-1">

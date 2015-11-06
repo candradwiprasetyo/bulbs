@@ -930,7 +930,6 @@ body
 .profile_left_color2{
 	width:100%;
 	background:#f2f2f2;
-	min-height:800px;
 	padding-bottom:20px;
 }
 
@@ -1524,6 +1523,40 @@ new_select{
 		height:18px;
 		border-radius:50%;
 		position:absolute;
+	}
+	
+	.my_button{
+		background:#477cbd;
+		padding:10px 10px;
+		text-align:center;
+		color:#fff;
+		letter-spacing:2px;
+		font-weight:bold;
+		font-size:12px;
+		border-radius:0px;
+		text-shadow:none;
+	}
+	
+	.my_button:hover{
+		background: #2A5DA8;
+		color:#fff;
+	}
+	
+	.my_button_cancel{
+		background:#a0a1a2;
+		padding:10px 10px;
+		text-align:center;
+		color:#fff;
+		letter-spacing:2px;
+		font-weight:bold;
+		font-size:12px;
+		border-radius:0px;
+		text-shadow:none;
+	}
+	
+	.my_button_cancel:hover{
+		background: #8b8e91;
+		color:#fff;
 	}
 	
 	/*------------------ buton option registration----------------*/

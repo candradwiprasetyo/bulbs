@@ -76,6 +76,29 @@ class Project extends CI_Controller {
 		
  	}
 	
+	public function view_preview($id) {
+		
+			
+			$logged = $this->session->userdata('logged');
+			if($logged == ""){
+				redirect('login');
+			}else{
+			
+			$result = $this->project_model->read_id($id);
+			
+			if($result){
+				$data_project  = $result;
+			}
+
+			$data['title'] = $data_project['project_name'];
+			
+			$this->load->view('layout/header', array('data' => $data));
+			$this->load->view('project/view_preview', array('data_project' => $data_project));
+			$this->load->view('layout/footer'); 
+			}
+		
+ 	}
+	
 	public function save() {
 		
 		// upload gambar
@@ -127,7 +150,7 @@ class Project extends CI_Controller {
 		}
 		
 		
-		redirect('project/view/'.$id);
+		redirect('project/view_preview/'.$id);
 		
 	}
 	
