@@ -183,8 +183,8 @@ class Home extends CI_Controller {
 		$this->session->set_userdata('captcha', $captcha);
 		
 		$gambar=ImageCreate(100,35); // ukuran kotak width=60 dan height=20
-		$wk=ImageColorAllocate($gambar, 255, 255, 255); // membuat warna kotak -> Navajo White
-		$wt=ImageColorAllocate($gambar, 0, 0, 0); // membuat warna tulisan -> Putih
+		$wk=ImageColorAllocate($gambar, 138, 190, 207); // membuat warna kotak -> Navajo White
+		$wt=ImageColorAllocate($gambar, 255, 255, 255); // membuat warna tulisan -> Putih
 		ImageFilledRectangle($gambar, 0, 0, 50, 100, $wk);
 		ImageString($gambar, 10, 30, 10, $captcha, $wt);
 		ImageJPEG($gambar);

@@ -49,6 +49,8 @@ $(function() {
 					}else{
               $(".follow_<?= $r_c_ajax['user_id']?>").html('<div class="button_creatives">FOLLOW</div>');
 					}	
+					
+					$(".start_follow").html('<a href="<?= site_url() ?>profile" class="btn button_unfollow">CONTINUE</a>');
 						
 								 
 							
@@ -249,7 +251,8 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
                              <div class="row">
                                 <div class="box-showcase_gallery">
                                     <div class="box-showcaseInner" style="bottom:0px;">
-                                        <a href="<?=site_url('project/view/'.$r_p['project_id'])?>"><img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="<?= $img_class ?>"></a>
+                                        <a href="<?=site_url('project/view/'.$r_p['project_id'])?>">
+                                        <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="<?= $img_class ?>"></a>
                                     </div>
                                 </div>
                                 </div>
@@ -310,7 +313,9 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
    <div class="row" style="padding-top:20px;">
    <div class="col-md-4 col-md-offset-4">
                                                         <div class="form-group">
+                                                        	<div class="start_follow">
                                                             <a href="<?= site_url() ?>profile" class="btn button_unfollow">SKIP THIS STEP</a>
+                                                            </div>
                                                         </div>
                                                     </div>
    </div>

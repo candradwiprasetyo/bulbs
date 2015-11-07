@@ -68,7 +68,7 @@
 														        ?>
                                                                     <div>
                                                                         
-                                                                            <input type="checkbox" name="i_pc_<?= $r_p_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_p_category['pc_id'] ?>" <?php if($r_p_valid['jumlah'] > 0 ){ ?> checked="checked"<?php }?> />
+                                                                            <input type="checkbox" name="i_pc_<?= $r_p_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_p_category['pc_id'] ?>" <?php if($r_p_valid['jumlah'] > 0 ){ ?> checked="checked"<?php }?> class="rbutton"  />
                                                                             <?= $r_p_category['pc_name']?>
                                                                          
                                                                   </div>
@@ -164,7 +164,7 @@
                           					<div class="row">
                                                     <div class="col-md-12">
                                                             <div class="form-group">
-                                                            <label>Workplace Name</label>
+                                                            <label>Company Name</label>
                                                             <input required type="text" name="i_wp_name" class="form-control" placeholder="" value="<?= $data_creatives['creative_wp_name']?>" title="" id="i_wp_name"/>
                                                             </div>
                                                     </div>
@@ -217,3 +217,25 @@
     </div>
 </div>
 </form>
+
+<script type="text/javascript">
+	$(function() {
+			var $inputs = $('input.rbutton');
+			$inputs.change(function() {
+				if ($('input.rbutton:checked').length == 3) {
+					$inputs.not(':checked').prop('disabled', true);
+				} else {
+					$inputs.prop('disabled', false);
+				}
+			});
+		});
+		
+		$(window).load(function(){
+			var $inputs = $('input.rbutton');
+			if ($('input.rbutton:checked').length == 3) {
+					$inputs.not(':checked').prop('disabled', true);
+				} else {
+					$inputs.prop('disabled', false);
+				}
+		});
+    </script>

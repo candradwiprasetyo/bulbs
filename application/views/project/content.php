@@ -1,3 +1,5 @@
+
+
 <link href="<?= base_url(); ?>assets/css/dropzone/jquery.ezdz.min.css" rel="stylesheet" />
 
 
@@ -18,7 +20,7 @@ if($data_project['project_img']){
 
  <div class="img_cover_image">
                
-               <input required class="upload_project" type="file" name="i_img" id="i_img" accept="image/png, image/jpeg" />
+               <input class="upload_project" type="file" name="i_img" id="i_img" accept="image/png, image/jpeg" />
            
 </div>   
 <?php
@@ -97,7 +99,7 @@ if($data_project['project_img']){
 							?>
                                 <div>
                                     <label>
-                                        <input type="checkbox" name="i_pc_<?= $r_project_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_project_category['pc_id'] ?>"  <?php echo $checked ?> />
+                                        <input type="checkbox" name="i_pc_<?= $r_project_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_project_category['pc_id'] ?>"  <?php echo $checked ?> class="rbutton" />
                                        	<?= $r_project_category['pc_name']?>
                                      </label>
                               </div>
@@ -168,6 +170,26 @@ if($data_project['project_img']){
             }
         }
 		);
+		
+		$(function() {
+			var $inputs = $('input.rbutton');
+			$inputs.change(function() {
+				if ($('input.rbutton:checked').length == 3) {
+					$inputs.not(':checked').prop('disabled', true);
+				} else {
+					$inputs.prop('disabled', false);
+				}
+			});
+		});
+		
+		$(window).load(function(){
+			var $inputs = $('input.rbutton');
+			if ($('input.rbutton:checked').length == 3) {
+					$inputs.not(':checked').prop('disabled', true);
+				} else {
+					$inputs.prop('disabled', false);
+				}
+		});
     </script>
 
 		

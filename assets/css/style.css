@@ -1559,6 +1559,17 @@ new_select{
 		color:#fff;
 	}
 	
+	.img_zoom{
+		-webkit-transition: all 2s ease; -moz-transition: all 2s ease; -ms-transition: all 2s ease; transition: all 2s ease;
+		
+	}
+	
+	.img_zoom:hover{
+		-moz-transform:scale(2); 
+-webkit-transform:scale(2);
+-o-transform:scale(2);
+	}
+	
 	/*------------------ buton option registration----------------*/
 	
 .option_btn {

@@ -168,12 +168,13 @@
     }, 3000);
 	
 	$(window).on("scroll touchmove", function () {
+        if (document.documentElement.clientWidth > 768) {
 		$('#navbar1').toggleClass('tiny_header', $(document).scrollTop() > 0);
 		$('#navbar_brand_resize').toggleClass('tiny_navbar-brand', $(document).scrollTop() > 0);
 		$('.navbar-nav > li > a').toggleClass('tiny_li', $(document).scrollTop() > 0);
 		$('#main_content').toggleClass('tiny_main_content', $(document).scrollTop() > 0);
 		
-		
+		}
 	});
 	
 	// button follow

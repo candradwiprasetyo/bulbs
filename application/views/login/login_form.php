@@ -213,7 +213,7 @@ $(document).ready(function(){  /* when the page has loaded... */
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <div class="new_label" >
-                                                                <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
+                                                                <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0" checked="checked">
                                                                 Subscribe to 8Bulbs Newsletter
                                                             </div>
                                                         </div>

@@ -82,7 +82,7 @@ pixels or bigger. </div>
                                                                 ?>
                                                                     <div>
                                                                         
-                                                                            <input type="checkbox" name="i_pc_<?= $r_p_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_p_category['pc_id'] ?>" />
+                                                                            <input type="checkbox" name="i_pc_<?= $r_p_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_p_category['pc_id'] ?>" class="rbutton"  />
                                                                             <?= $r_p_category['pc_name']?>
                                                                          
                                                                   </div>
@@ -135,7 +135,7 @@ pixels or bigger. </div>
                                                      <div class="col-md-6">
                                                             <div class="form-group">
                                                             
-                                                            <input placeholder="Workplace Name" required type="text" name="i_wp_name" class="form-control"  value="" title="" id="i_wp_name"/>
+                                                            <input placeholder="Company Name" required type="text" name="i_wp_name" class="form-control"  value="" title="" id="i_wp_name"/>
                                                             </div>
                                                     </div>
                                                     
@@ -187,3 +187,25 @@ pixels or bigger. </div>
     </div>
 </div>
 </form>
+
+<script type="text/javascript">
+	$(function() {
+			var $inputs = $('input.rbutton');
+			$inputs.change(function() {
+				if ($('input.rbutton:checked').length == 3) {
+					$inputs.not(':checked').prop('disabled', true);
+				} else {
+					$inputs.prop('disabled', false);
+				}
+			});
+		});
+		
+		$(window).load(function(){
+			var $inputs = $('input.rbutton');
+			if ($('input.rbutton:checked').length == 3) {
+					$inputs.not(':checked').prop('disabled', true);
+				} else {
+					$inputs.prop('disabled', false);
+				}
+		});
+    </script>

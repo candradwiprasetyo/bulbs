@@ -100,7 +100,7 @@ if (document.documentElement.clientWidth <= 768) {
         </div>
         </div>
         
-         <div class="profile_left_color2">
+         <div class="profile_left_color2" style="min-height:300px;">
           <div class="row" style="margin-left:0px; margin-right:0px;">
         	<div class="profile_left_content">
         		
