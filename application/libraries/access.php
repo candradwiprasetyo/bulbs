@@ -42,6 +42,30 @@ class Access
 		return $new_date;
 	}
 	
+	public function format_real_date($date){
+
+	$date = explode("-", $date);
+	$new_date = $date[2]."/".$date[1]."/".$date[0];
+
+	return $new_date;
+	}
+	
+	public function format_back_date($date){
+
+	$date = explode("/", $date);
+	$back_date =  $date[2]."-".$date[1]."-".$date[0];
+
+	return $back_date;
+
+}
+	
+	public function format_datetime($date){
+		$phpdate = strtotime( $date );
+		$new_date = date( 'F d, Y', $phpdate );
+		$new_time = date('h:i A', $phpdate);
+		return $new_date." / ".$new_time;
+	}
+	
 	public function get_valid_img($img){
 		
 		if(@getimagesize($img)){

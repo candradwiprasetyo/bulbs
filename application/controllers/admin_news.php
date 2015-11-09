@@ -1,10 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin_slider extends CI_Controller {
+class Admin_news extends CI_Controller {
 	
 	function __construct(){
 		parent::__construct();
-		$this->load->model('admin_slider_model');
+		$this->load->model('admin_news_model');
 		$this->load->library('session');
 		$this->load->library('access');
 		
@@ -16,8 +16,8 @@ class Admin_slider extends CI_Controller {
  	
 	public function index() {
 		
-			$data_head['title'] = "slider ";
-			$data_head['add_button'] = site_url().'admin_slider/form/';
+			$data_head['title'] = "News ";
+			$data_head['add_button'] = site_url().'admin_news/form/';
 			
 			$data_user = array();
 			$result = $this->access->get_data_user_admin($this->session->userdata('user_id'));
@@ -26,19 +26,19 @@ class Admin_slider extends CI_Controller {
 				$data_user  = $result;
 			}
 			
-			$list =  $this->admin_slider_model->list_data();
+			$list =  $this->admin_news_model->list_data();
 			
 			$this->load->view('admin_layout/header', array( 'data_head' => $data_head, 'data_user' => $data_user));
-			$this->load->view('admin_slider/list', array('data_head' => $data_head, 'list' => $list));
+			$this->load->view('admin_news/list', array('data_head' => $data_head, 'list' => $list));
 			$this->load->view('admin_layout/footer'); 
 	
  	}
 	
 	public function form($id = 0) {
 		
-			$data_head['title'] = "slider ";
-			$data_head['action'] = site_url().'admin_slider/form_action/'.$id;
-			$data_head['close_button'] = site_url().'admin_slider/';
+			$data_head['title'] = "News ";
+			$data_head['action'] = site_url().'admin_news/form_action/'.$id;
+			$data_head['close_button'] = site_url().'admin_news/';
 			
 			$data_user = array();
 			$result_user = $this->access->get_data_user_admin($this->session->userdata('user_id'));
@@ -51,16 +51,16 @@ class Admin_slider extends CI_Controller {
 			$data = array();
 			$data['row_id'] = "";
 			if($id){
-				$result = $this->admin_slider_model->read_id($id);
+				$result = $this->admin_news_model->read_id($id);
 				if($result){
 					$data  = $result;
-					$data['row_id'] = $data['slider_id'];
+					$data['row_id'] = $data['news_id'];
 				}
 			}
 			
 			
 			$this->load->view('admin_layout/header', array( 'data_head' => $data_head, 'data_user' => $data_user));
-			$this->load->view('admin_slider/form', array('data_head' => $data_head, 'data' => $data));
+			$this->load->view('admin_news/form', array('data_head' => $data_head, 'data' => $data));
 			$this->load->view('admin_layout/footer'); 
 		
  	}
@@ -71,9 +71,9 @@ class Admin_slider extends CI_Controller {
 		if($_FILES['i_img']['name']){
 
 			if($id){
-				$get_img = $this->admin_slider_model->get_img("sliders", "slider_img", "slider_id = '$id'");
+				$get_img = $this->admin_news_model->get_img("news", "news_img", "news_id = '$id'");
 			
-				$oldfile   = "assets/images/slider/".$get_img;
+				$oldfile   = "assets/images/news/".$get_img;
 			
 				if( file_exists( $oldfile ) ){
 	    			unlink( $oldfile );
@@ -82,7 +82,7 @@ class Admin_slider extends CI_Controller {
 
 			$new_name = $this->upload_img('i_img');
 
-			$data['slider_img'] 					= str_replace(" ", "_", $new_name);
+			$data['news_img'] 					= str_replace(" ", "_", $new_name);
 
 		}
 
@@ -90,39 +90,41 @@ class Admin_slider extends CI_Controller {
 
 		 
 		 // simpan di table
-		$data['slider_name']	 				= $this->input->post('i_name');
-		$data['slider_desc'] 					= $this->input->post('editor');
+		 $data['user_id']	 				= $this->session->userdata('user_id');
+		$data['news_name']	 				= $this->input->post('i_name');
+		$data['news_description'] 			= $this->input->post('editor');
+		
 		
 		
 		if($id){
-			$this->admin_slider_model->update($data, $id);
+			$this->admin_news_model->update($data, $id);
 		}else{
-			$data['slider_date'] = date("Y-m-d H:m:s");
-			$this->admin_slider_model->create($data);
+			$data['news_date'] = date("Y-m-d H:i:s");
+			$this->admin_news_model->create($data);
 		}
 		
-		redirect('admin_slider/?did=2');
+		redirect('admin_news/?did=2');
 		
 	}
 	
 	public function delete($id){
 		
-		$get_img = $this->admin_slider_model->get_img("sliders", "slider_img", "slider_id = '$id'");
+		$get_img = $this->admin_news_model->get_img("news", "news_img", "news_id = '$id'");
 			
-		$oldfile   = "assets/images/slider/".$get_img;
+		$oldfile   = "assets/images/news/".$get_img;
 			
 		if( file_exists( $oldfile ) ){
 	    	unlink( $oldfile );
 		}
 		
-		$this->admin_slider_model->delete($id);
-		redirect('admin_slider/?did=3');
+		$this->admin_news_model->delete($id);
+		redirect('admin_news/?did=3');
 	}
 
 	public function upload_img($img){
 		$new_name = time()."_".$_FILES[$img]['name'];
 			
-			$configUpload['upload_path']    = './assets/images/slider/';                 #the folder placed in the root of project
+			$configUpload['upload_path']    = './assets/images/news/';                 #the folder placed in the root of project
 			$configUpload['allowed_types']  = 'gif|jpg|png|bmp|jpeg';       #allowed types description
 			$config['max_size']	= '100';
 			$config['max_width'] = '1024';

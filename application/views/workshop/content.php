@@ -1,5 +1,8 @@
 <?php
-$q_last  = mysql_query("select * from workshops where workshop_id = '".$data_workshop['last_id']."'");
+$q_last  = mysql_query("select a.*, b.creative_wp_name
+						from workshops a
+						join creatives b on b.user_id = a.user_id 
+						where a.workshop_id = '".$data_workshop['last_id']."'");
 $r_last = mysql_fetch_array($q_last);
 ?>
 
@@ -27,7 +30,7 @@ $r_last = mysql_fetch_array($q_last);
 
                         <div class="col-md-6">
                            <div class="form-group">
-                            <div class="news_date"><strong>Event by Aldo Felix Studio</strong> </div>
+                            <div class="news_date"><strong>Event by <?= $r_last['creative_wp_name'] ?></strong> </div>
                             </div>
                              <div class="profile_name"><a href="<?=site_url('workshop/view/'.$r_last['workshop_id'])?>"><?= $r_last['workshop_name'] ?></a></div>
                                 <div class="profile_location">&nbsp;</div>
@@ -37,11 +40,30 @@ $r_last = mysql_fetch_array($q_last);
                                     <div class="row">
                                         <div class="col-xs-6" >
                                             <div ><strong>Concentrations</strong></div>
-                                            Graphic Design, Photography, Interior Design
+                                             <?php
+											   
+												$q_pc = mysql_query("select b.pc_name, b.pc_color
+																	from workshop_details a
+																	join profile_categories b on b.pc_id = a.pc_id
+																	where a.workshop_id = '".$r_last['workshop_id']."'
+																	order by a.pc_id 
+																	limit 3
+																	");
+												$concentration = '';
+												while($r_pc = mysql_fetch_array($q_pc)){
+												?>
+												 
+												
+												<div class="circle_project" style="background:<?= $r_pc['pc_color']?>"></div><?= $r_pc['pc_name']?><br />
+												<?php    
+												}
+												
+												
+												?>
                                          </div>
                                          <div class="col-xs-6" >
                                             <div ><strong>Price</strong></div>
-                                            IDR 500K (Price Includes Lunch)
+                                            <?= $r_last['workshop_price']?>
                                          </div>
                                      </div>
                             	</div>
@@ -50,13 +72,11 @@ $r_last = mysql_fetch_array($q_last);
                                     <div class="row">
                                         <div class="col-xs-6" >
                                             <div ><strong>Date / Time</strong></div>
-                                            August 19, 2015 / 03:00 PM
+                                           <?= $this->access->format_date($r_last['workshop_date'])." / ".$r_last['workshop_time'] ?>
                                          </div>
                                          <div class="col-xs-6" >
                                             <div ><strong>Place</strong></div>
-                                            Tanamera Coffee Serpong<br />
-Scientia Boulevard<br />
-Gading Serpong
+                                           <?= $r_last['workshop_place']?>
                                          </div>
                                      </div>
                             	</div>
@@ -64,7 +84,7 @@ Gading Serpong
                                 <div class="form-group" style="margin-bottom:30px;">
                                     <div class="row">
                                         <div class="col-xs-6" >
-                                           <a href="#" style="text-decoration:none;"><div class="button_unfollow" style="background-color:#C63">REGISTER NOW</div></a>
+                                           <a href="<?= $r_last['workshop_link']?>" style="text-decoration:none;"><div class="button_unfollow" style="background-color:#C63">REGISTER NOW</div></a>
                                          </div>
                                          
                                      </div>

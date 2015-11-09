@@ -28,7 +28,7 @@ class Workshop_model extends CI_Model{
 	function read_id($id)
 	{
 		$sql = "
-			select a.*, b.creative_wp_name
+			select a.*, b.creative_wp_name, b.creative_img
 			from workshops a
 			join creatives b on b.user_id = a.user_id
 			

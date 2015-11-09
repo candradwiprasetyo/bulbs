@@ -30,7 +30,7 @@
                    <?php //if(isset($_SESSION['menu_active'])) { echo $_SESSION['menu_active']; }?>
                     <ul class="sidebar-menu">
                   
-                    <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "class='active'"; } ?>>
+                    <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 1){ echo "class='active'"; } ?>>
                             <a href="<?= site_url('admin_slider') ?>">
                                 <i class="fa fa-circle"></i>
                                 <span>Slideshow</span>
@@ -41,7 +41,7 @@
                    
                  
                   
-                        <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 4){ echo "class='active'"; } ?>>
+                        <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 2){ echo "class='active'"; } ?>>
                             <a href="<?= site_url('admin_category') ?>">
                                 <i class="fa  fa-circle"></i>
                                 <span>Category</span>
@@ -52,34 +52,50 @@
                   
                   
                  
-                 <!--
-                  <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 6){ echo "class='active'"; } ?>>
+                <!--
+                  <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 3){ echo "class='active'"; } ?>>
                             <a href="<?= site_url('admin_location') ?>">
                                 <i class="fa  fa-circle"></i>
                                 <span>Location</span>
                                
                             </a>
                             
-                  </li>
-                  -->
+                  </li>-->
                   
-                   	<li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 7){ echo "class='active'"; } ?>>
+                  
+                   	<li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 4){ echo "class='active'"; } ?>>
                             <a href="<?= site_url('admin_feature') ?>">
                                 <i class="fa fa-circle"></i>
                                 <span>Feature Project</span>
                             </a>     
                  	 </li>
-                     <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 8){ echo "class='active'"; } ?>>
+                     <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 5){ echo "class='active'"; } ?>>
                             <a href="<?= site_url('admin_page_content') ?>">
                                 <i class="fa  fa-circle"></i>
                                 <span>Page Content</span>
                             </a>     
                  	 </li>
                         
-                   
+                   <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 6){ echo "class='active'"; } ?>>
+                            <a href="<?= site_url('admin_news') ?>">
+                                <i class="fa fa-circle"></i>
+                                <span>News</span>
+                               
+                            </a>
+                            
+                  </li>
+                  
+                  <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 7){ echo "class='active'"; } ?>>
+                            <a href="<?= site_url('admin_workshop') ?>">
+                                <i class="fa fa-circle"></i>
+                                <span>Events</span>
+                               
+                            </a>
+                            
+                  </li>
                  
                  
-                  <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 9){ echo "class='active'"; } ?>>
+                  <li <?php if(isset($_SESSION['menu_active']) && $_SESSION['menu_active'] == 8){ echo "class='active'"; } ?>>
                             <a href="<?= site_url('admin_member') ?>">
                                 <i class="fa fa-users"></i>
                                 <span>Member</span>
