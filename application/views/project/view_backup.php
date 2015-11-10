@@ -118,7 +118,7 @@
                                   }
                                   ?>
                                 </div>
-                                <div class="following_location" style="margin-bottom:10px;"><?= $data_project['location_name'] ?></div>
+                                <div class="following_location" style="margin-bottom:10px;"><?= ($data_project['location_id']!=0) ? $data_project['location_name'] : $data_project['other_location']?></div>
                                 <div class="blue_text">
                                  <?php
                                 if($this->session->userdata('user_id') != "" && $this->session->userdata('user_id') != $data_project['user_id']){

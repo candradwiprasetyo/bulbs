@@ -76,7 +76,7 @@ if($this->session->userdata('user_type_id') == 2){
    //echo $where;
    $q_c = mysql_query("select a.*, b.location_name 
    						from creatives a
-   						join locations b on b.location_id = a.location_id 
+   						left join locations b on b.location_id = a.location_id 
 						join profile_detail_categories d on d.user_id = a.user_id  
 						$where
 						group by a.creative_id
@@ -104,7 +104,7 @@ if($this->session->userdata('user_type_id') == 2){
                         <div class="col-md-5">
                            
                                 <div class="following_name"><a href="<?=site_url('profile_view/?id='.$r_c['user_id'])?>"><?= $r_c['creative_wp_name'] ?></a></div>
-                                <div class="following_location" style="margin-bottom:10px;"><?= $r_c['location_name'] ?></div>
+                                <div class="following_location" style="margin-bottom:10px;"><?= ($r_c['location_id']!=0) ? $r_c['location_name'] : $r_c['other_location']?></div>
                                 <div class="blue_text">
                                 <?php
                                 if($this->session->userdata('user_id')){

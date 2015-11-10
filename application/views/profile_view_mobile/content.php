@@ -123,7 +123,7 @@ with the creative..." ></textarea>
                         <div class="col-xs-8">
                            
                                 <div class="following_name"><?= $data_creatives['creative_wp_name']?></div>
-                                <div class="following_location" style="margin-bottom:10px;"><?= $data_creatives['location_name']?></div>
+                                <div class="following_location" style="margin-bottom:10px;"><?= ($data_creatives['location_id']!=0) ? $data_creatives['location_name'] : $data_creatives['other_location']?></div>
                                 
                                 
                                  <div class="form-group">

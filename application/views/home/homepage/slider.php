@@ -245,15 +245,17 @@
                       
                                        
                                         <div class="col-md-12">
+                                        <div class="row" style="padding:0; margin:0">
                                         
-                                        <div class="col-md-6">
-                                        		<div class="row">
-                                                    <div class="form-group">
-                                                       
-                                                       <div class="btn btn-lg button_option_registration boxSet hilite" onclick="sign_up_type(2)">CREATIVES</div>
-                                                	</div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                           
+                                                           <div class="btn btn-lg button_option_registration boxSet hilite" onclick="sign_up_type(2)">CREATIVES</div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                </div>
+                                                
                                                 <div class="col-md-6">
                                                 	<div class="row">
                                                     	<div class="form-group">
@@ -263,69 +265,73 @@
                                                 	</div>
                                                 </div>
                                          
+                                        </div>
+                                         <div class="row" style="padding:0; margin:0">
                                         
-                                        
-                                       
-                                         <form action="<?=site_url('home/signup')?>" method="post" enctype="multipart/form-data">
-                                        <div class="form-group">
-                                        <input required type="text" name="i_first_name" class="form-control" placeholder="First Name" value="" title=""/> <input id="t_sign_up3" name="t_sign_up3" type="hidden" value="2" style="color:#000"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <input required type="text" name="i_last_name" class="form-control" placeholder="Last Name" value="" title=""/>
-                                        </div>
-                                         <div class="form-group">
-                                            <input required type="email" name="i_email" class="form-control" placeholder="Email Address" value="" title=""/>
-                                        </div>
-                                         <div class="form-group">
-                                            <input required type="text" name="i_username" class="form-control" placeholder="Username" value="" title=""/>
-                                        </div>
-                                         <div class="form-group">
-                                            <input required type="password" name="i_password" class="form-control" placeholder="Password" value="" title=""/>
-                                        </div>
-                                        <div class="form-group">
-                                        <div class="row">
-                                        <div class="col-md-6">
-                                        <img src="<?= site_url() ?>home/create_captcha" />
-                                                           <?php //echo $this->recaptcha->render(); ?>
-                                        </div>
-                                        
-                                        <div class="col-md-6">
-                                         <input required type="text" name="i_captcha" class="form-control" placeholder="Captcha" value="" title=""/>
-                                        </div>
-                                         
-                                        </div>
-                                        </div>
-                                        
-                                         <div class="form-group">
-                                           
-                                          
-                                              <label>
-                                                <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0" checked="checked">
-                                                Subscribe to 8Bulbs Newsletter</label>
+                                               
+                                                 <form action="<?=site_url('home/signup')?>" method="post" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                <input required type="text" name="i_first_name" class="form-control" placeholder="First Name" value="" title=""/> <input id="t_sign_up3" name="t_sign_up3" type="hidden" value="2" style="color:#000"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input required type="text" name="i_last_name" class="form-control" placeholder="Last Name" value="" title=""/>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <input required type="email" name="i_email" class="form-control" placeholder="Email Address" value="" title=""/>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <input required type="text" name="i_username" class="form-control" placeholder="Username" value="" title=""/>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <input required type="password" name="i_password" class="form-control" placeholder="Password" value="" title=""/>
+                                                </div>
+                                                <div class="form-group">
+                                                <div class="row">
+                                                <div class="col-md-6">
+                                                <img src="<?= site_url() ?>home/create_captcha" />
+                                                                   <?php //echo $this->recaptcha->render(); ?>
+                                                </div>
+                                                
+                                                <div class="col-md-6">
+                                                 <input required type="text" name="i_captcha" class="form-control" placeholder="Captcha" value="" title=""/>
+                                                </div>
+                                                 
+                                                </div>
+                                                </div>
+                                                
+                                                 <div class="form-group">
+                                                   
+                                                  
+                                                      <label>
+                                                        <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0" checked="checked">
+                                                        Subscribe to 8Bulbs Newsletter</label>
+                                                      
+                                                     
+                                                     
+                                                 </div>
+                                                
+                                                 
+                                                 <div class="form-group">
+                                                    <input class="btn button_signup" type="submit" value="SIGN UP"/>
+                                                </div>
+                                                 <div class="form-group">
+                                                    <a href="#" onclick="signup_facebook('test')" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
+                                                </div>
+                                                <div class="form-group" style="margin-bottom:30px;">
+                                                    By Signing Up, you agree to our Terms & Conditions
+                                                and that you have read our Privacy Policy.
+                                                </div>
+                                                
                                               
-                                             
-                                             
-                                         </div>
-                                        
-                                         
-                                         <div class="form-group">
-                                            <input class="btn button_signup" type="submit" value="SIGN UP"/>
+                                               </form>
+                                      </div>
+                                      	
                                         </div>
-                                         <div class="form-group">
-                                            <a href="#" onclick="signup_facebook('test')" class="btn button_login_facebook"><i class="fa fa-facebook fa-fw"></i>&nbsp;LOG IN WITH FACEBOOK</a>
-                                        </div>
-                                        <div class="form-group" style="margin-bottom:30px;">
-                                            By Signing Up, you agree to our Terms & Conditions
-                                        and that you have read our Privacy Policy.
-                                        </div>
-                                        
-                                      
-                                        </div>
-                                       </form>
-                                      
                                         
                     
                                         <div style="clear:both;"></div>
+                                        
+                                        
                                      
                                 </div><!-- /.box-body -->
                                 

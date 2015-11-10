@@ -82,7 +82,9 @@ if (document.documentElement.clientWidth <= 768) {
                              <div class="col-md-12" >
                              	
                                    <div class="profile_name"><?= $data_creatives['creative_wp_name']?></div>
-                                   <div class="profile_location"><?= $data_creatives['location_name']?></div>
+                                   <div class="profile_location">
+								   <?= ($data_creatives['location_id']!=0) ? $data_creatives['location_name'] : $data_creatives['other_location']?>
+                                   </div>
                                    <div class="profile_description_title">Description</div>
                                    <div class="profile_description_content">
                                    		<?= $data_creatives['creative_wp_description']?>

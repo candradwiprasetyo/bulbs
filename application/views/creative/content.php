@@ -16,7 +16,7 @@ $(function() {
 <?php
 	$q_c_ajax = mysql_query("select a.*, b.location_name 
    						from creatives a
-   						join locations b on b.location_id = a.location_id 
+   						left join locations b on b.location_id = a.location_id 
 						join profile_detail_categories d on d.user_id = a.user_id  
 						
 						group by a.creative_id
@@ -222,7 +222,7 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
    //echo $where;
    $q_c = mysql_query("select a.*, b.location_name 
    						from creatives a
-   						join locations b on b.location_id = a.location_id 
+   						left join locations b on b.location_id = a.location_id 
 						join profile_detail_categories d on d.user_id = a.user_id  
 						$where $parameter
 						group by a.creative_id
@@ -276,7 +276,10 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
                         <div class="col-xs-9">
                            
                                 <div class="creative_name"><a href="<?=site_url('profile_view/?id='.$r_c['user_id'])?>"><?= $r_c['creative_wp_name'] ?></a></div>
-                                <div class="creative_location" style="margin-bottom:5px;"><?= $r_c['location_name'] ?></div>
+                                <div class="creative_location" style="margin-bottom:5px;">
+								
+                                <?= ($r_c['location_id']!=0) ? $r_c['location_name'] : $r_c['other_location']?>
+                                </div>
                                 <div class="blue_text">
                                 <?php
                                 if($this->session->userdata('user_id')){

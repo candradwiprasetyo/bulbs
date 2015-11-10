@@ -131,20 +131,24 @@
                                                     
                                                         <div class="form-group"> 
                                                         	<label>Location</label>
-                                                            <select name="i_location_id" id="i_location_id" class="form-control new_select">
+                                                            <select name="i_location_id" id="i_location_id" class="form-control new_select" onchange="select_city(this.value)">
     <?php
+	
     $q_location = mysql_query("select * from locations order by location_name");
 	while($r_location = mysql_fetch_array($q_location)){
 		?>
-        <option value="<?= $r_location['location_id']?>" <?php if($data_creatives['location_id'] == $r_location['location_id']){ ?> selected="selected"<?php } ?>><?= $r_location['location_name']?></option>
+        <option value="<?= $r_location['location_id']?>" <?php if($data_creatives['location_id'] == $r_location['location_id']){ ?> selected="selected"<?php } ?> ><?= $r_location['location_name']?></option>
         <?php
 	}
-	?>                                            
+	?>                                     
+    <option value="0"  <?php if($data_creatives['location_id']==0){ ?> selected="selected"<?php } ?>>Others</option>       
 </select>
+
+  <input type="text" name="i_other_location" id="i_other_location" class="form-control" placeholder="Other location" value="<?= $data_creatives['other_location']?>" title="" style="<?php if($data_creatives['location_id']!=0){  ?>display:none;<?php } ?> margin-top:10px;"/>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+                                               
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                             <div class="form-group">
@@ -238,4 +242,15 @@
 					$inputs.prop('disabled', false);
 				}
 		});
+		
+		function select_city(id){
+				var other_city = document.getElementById("i_other_location");
+				if(id == 0){
+					other_city.style.display = 'inline';
+				}else{
+					other_city.style.display = 'none';
+				}
+				
+				
+			}
     </script>

@@ -4,7 +4,7 @@ $(function() {
 	$q_c_ajax = mysql_query("select a.*, b.location_name 
    						from tr_following z 
 						join creatives a on a.user_id = z.user_regular_id
-						join locations b on b.location_id = a.location_id
+						left join locations b on b.location_id = a.location_id
 						where z.user_creative_id = '".$this->session->userdata('user_id')."'
    						order by a.creative_id desc
    			");
@@ -98,7 +98,7 @@ if($this->session->userdata('user_type_id') == 2){
    $q_c = mysql_query("select a.*, b.location_name 
    						from tr_following z 
 						join creatives a on a.user_id = z.user_regular_id
-						join locations b on b.location_id = a.location_id
+						left join locations b on b.location_id = a.location_id
 						where z.user_creative_id = '".$this->session->userdata('user_id')."'
    						order by a.creative_id desc
    			");
@@ -149,7 +149,7 @@ if($this->session->userdata('user_type_id') == 2){
                         <div class="col-xs-9">
                            
                                 <div class="creative_name"><a href="<?=site_url('profile_view/?id='.$r_c['user_id'])?>"><?= $r_c['creative_wp_name'] ?></a></div>
-                                <div class="creative_location" style="margin-bottom:5px;"><?= $r_c['location_name'] ?></div>
+                                <div class="creative_location" style="margin-bottom:5px;"><?= ($r_c['location_id']!=0) ? $r_c['location_name'] : $r_c['other_location']?></div>
                                 <div class="blue_text">
                                 <?php
                                 if($this->session->userdata('user_id')){

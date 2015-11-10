@@ -226,7 +226,11 @@ $(function() {
                              <div class="col-md-12" >
                              	    
                                    <div class="profile_name"><?= $data_creatives['creative_wp_name']?></div>
-                                   <div class="profile_location"><?= $data_creatives['location_name']?></div>
+                                   <div class="profile_location">
+								   
+								   <?= ($data_creatives['location_id']!=0) ? $data_creatives['location_name'] : $data_creatives['other_location']?>
+                                   
+                                   </div>
                                    <div class="profile_like">
                                    <?php
                                    $q_pl = mysql_query("select count(*) as jumlah from profile_likes 

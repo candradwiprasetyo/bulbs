@@ -142,6 +142,12 @@ class Profile extends CI_Controller {
 			}
 		}
 		
+		if($data['location_id']==0){
+			$data['other_location'] = $this->input->post('i_other_location');
+		}else{
+			$data['other_location'] = '';
+		}
+		
 		
 		
 		//echo $_FILES['i_img']['name'];
