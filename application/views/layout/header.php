@@ -54,7 +54,7 @@
          
           <a class="navbar-brand" id="navbar_brand_resize" href="<?=site_url('')?>"> <img src="<?php echo base_url('assets/images/logo_trans.png'); ?>" /></a>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse" style="background: #477CBD !important;">
          
          <ul class="nav navbar-nav navbar-menu">
             <li class="active"><a href="<?=site_url('showcase')?>">Showcase</a></li>

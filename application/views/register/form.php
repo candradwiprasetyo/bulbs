@@ -119,7 +119,7 @@ pixels or bigger. </div>
                                                     
                                                         <div class="form-group"> 
                                                         	
-                                                            <select name="i_location_id" id="i_location_id" class="form-control new_select">
+                                                            <select name="i_location_id" id="i_location_id" class="form-control new_select" onchange="select_city(this.value)">
     <?php
     $q_location = mysql_query("select * from locations order by location_name");
 	while($r_location = mysql_fetch_array($q_location)){
@@ -127,8 +127,12 @@ pixels or bigger. </div>
         <option value="<?= $r_location['location_id']?>"><?= $r_location['location_name']?></option>
         <?php
 	}
-	?>                                            
+	?>         
+    <option value="0">Others</option>                                     
 </select>
+
+ <input type="text" name="i_other_location" id="i_other_location" class="form-control" placeholder="Other location" value="" title="" style="display:none; margin-top:10px;"/>
+ 
                                                         </div>
                                                     </div>
                                                     
@@ -208,4 +212,15 @@ pixels or bigger. </div>
 					$inputs.prop('disabled', false);
 				}
 		});
+		
+		function select_city(id){
+				var other_city = document.getElementById("i_other_location");
+				if(id == 0){
+					other_city.style.display = 'inline';
+				}else{
+					other_city.style.display = 'none';
+				}
+				
+				
+			}
     </script>

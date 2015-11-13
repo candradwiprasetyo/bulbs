@@ -72,6 +72,12 @@ class Register extends CI_Controller {
 		$data['creative_instagram']	 			= '';//$this->input->post('i_instagram');
 		//$data['creative_rss']	 				= $this->input->post('i_rss');
 		
+		if($data['location_id']==0){
+			$data['other_location'] = $this->input->post('i_other_location');
+		}else{
+			$data['other_location'] = '';
+		}
+		
 		// buat sesi login
 		$this->session->set_userdata('logged', 1);
 		$this->session->set_userdata('user_id', $id);

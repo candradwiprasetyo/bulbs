@@ -24,7 +24,9 @@ class Workshop extends CI_Controller {
 			}
 			
 			$this->load->view('layout/header', array('list' => $list, 'data' => $data));
-			$this->load->view('workshop/content', array('data_workshop' => $data_workshop));
+			if($data_workshop['last_id']){
+				$this->load->view('workshop/content', array('data_workshop' => $data_workshop));
+			}
 			$this->load->view('layout/footer'); 
 	}
 	

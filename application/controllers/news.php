@@ -24,7 +24,9 @@ class News extends CI_Controller {
 			}
 			
 			$this->load->view('layout/header', array('list' => $list, 'data' => $data));
-			$this->load->view('news/content', array('data_news' => $data_news));
+			if($data_news['last_id']){
+				$this->load->view('news/content', array('data_news' => $data_news));
+			}
 			$this->load->view('layout/footer'); 
 	}
 	

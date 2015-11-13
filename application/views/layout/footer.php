@@ -63,10 +63,15 @@
          <?php
          $q_fm = mysql_query("select * from pages");
 		 while($r_fm = mysql_fetch_array($q_fm)){
+			 if($r_fm['page_id']==3){ ?>
+              <li  style="padding-top:15px;"><a href="about_us" class="footer-menu" style="height:45px !important;">About Us</a></li>
+             <?php
+			 }else{
 		 ?>
             <li  style="padding-top:15px;"><a href="<?=site_url("footer_menu/?id=".$r_fm['page_id'])?>" class="footer-menu" style="height:45px !important;"><?= $r_fm['page_name']?></a></li>
           
             <?php
+			 }
 		 	}
 			?>
           </ul>

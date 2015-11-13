@@ -1,6 +1,6 @@
 <div class="col-md-9" style="padding:0px;">
 <div class="row" style="margin:0px; padding:0px;">
- <form action="<?=site_url('home/search')?>" method="post" enctype="multipart/form-data">
+<form action="<?=site_url('home/search')?>" method="post" enctype="multipart/form-data">
 <div class="search_page" id="search_page">
 
 	
@@ -319,7 +319,7 @@
                                                 </div>
                                                 <div class="form-group" style="margin-bottom:30px;">
                                                     By Signing Up, you agree to our Terms & Conditions
-                                                and that you have read our Privacy Policy.
+                                                and that you have read our <a href="<?= site_url() ?>footer_menu/?id=1" style="color:#fff; font-weight:bold;">Privacy Policy</a>.
                                                 </div>
                                                 
                                               

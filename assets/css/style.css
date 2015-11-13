@@ -713,6 +713,13 @@ body
 	padding-top:60px;
 }
 
+.about_us_page{
+	
+	background:#fff;
+	padding-bottom:300px;
+	padding-top:60px;
+}
+
 .icon_home_title{
 	text-align:center;
 	color:#2A5DA8;
@@ -727,6 +734,37 @@ body
 	text-align:center;
 	font-size:16px;
 }
+
+.about_us_desc{
+	text-transform:uppercase;
+	font-family: 'new_title';
+	font-size:16px;
+	margin-top:20px;
+}
+
+.about_us_banner{
+	padding-top:60px;
+	padding-bottom:60px;
+	background:url(../images/about_us/banner.png) repeat;
+	color:#fff;
+	margin-top:50px;
+	text-align:center;
+	font-size:26px;
+	font-family: 'new_title';
+	line-height:40px;
+	letter-spacing:1.5px;
+}
+
+.about_us_banner2{
+	letter-spacing:1.5px;
+	padding-top:60px;
+	padding-bottom:60px;
+	text-align:center;
+	font-size:26px;
+	font-family: 'new_title';
+	line-height:40px;
+}
+
 .gallery_page{
 	padding-top:40px;
 	padding-bottom:40px;
