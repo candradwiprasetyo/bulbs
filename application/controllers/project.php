@@ -107,26 +107,34 @@ class Project extends CI_Controller {
 		$data_user = $this->access->get_data_user($this->session->userdata('user_id'));
 		
 		$new_name = '';
+
 		if($_FILES['i_img']['name']){
 		$new_name = time()."_".$_FILES['i_img']['name'];
 		
 		
-		
+		/*
 		$configUpload['upload_path']    = './assets/images/project/';                 #the folder placed in the root of project
 		$configUpload['allowed_types']  = 'gif|jpg|png|bmp|jpeg';       #allowed types description
 		$configUpload['max_size']	= '';
 		$configUpload['max_width'] = '';
 		$configUpload['max_height'] = '';                       #max height
 		$configUpload['encrypt_name']   = false;   
-		$configUpload['file_name'] 		= $new_name;                      	#encrypt name of the uploaded file
+		$configUpload['file_name'] 		= $new_name;
 		$this->load->library('upload', $configUpload);                  #init the upload class
+		$this->upload->initialize($configUpload); 
 		if(!$this->upload->do_upload('i_img')){
 			$uploadedDetails    = $this->upload->display_errors();
 		}else{
 			$uploadedDetails    = $this->upload->data(); 
 			
 		}
+		*/
+			move_uploaded_file(
+	            $_FILES['i_img']['tmp_name'],
+	            'assets/images/project/'.$new_name
+	        );
 		}
+		 
 		 
 		 // simpan di table
 		$data['creative_id']	 				= $data_user['creative_id'];
@@ -137,8 +145,8 @@ class Project extends CI_Controller {
 		
 		$id = $this->project_model->save($data);
 		$data_detail['project_id'] = $id;
-		$data_detail_img['project_id'] = $id;
 		
+		// save profile categories
 		$q_project_category = mysql_query("select * from profile_categories order by pc_id");
 		while($r_project_category = mysql_fetch_array($q_project_category)){
 			
@@ -148,9 +156,35 @@ class Project extends CI_Controller {
 			}
 			
 		}
+
+		// save detail images
+		
+
+		$new_name_detail = '';
+		if($_FILES['i_img_detail']['name']){
+		$new_name_detail = time()."_".$_FILES['i_img_detail']['name'];
+
+			move_uploaded_file(
+	            $_FILES['i_img_detail']['tmp_name'],
+	            'assets/images/project/detail/'.$new_name_detail
+	        );
+		}
+
+		
+		// save images
+		$data_detail_img['project_id'] = $id;
+		$data_detail_img['pdi_type'] = 1;
+		$data_detail_img['pdi_value'] = str_replace(" ", "_", $new_name_detail);
+		$this->project_model->save_detail_images($data_detail_img);
+
+		// save text
+		$data_detail_img['pdi_type'] = 2;
+		$data_detail_img['pdi_value'] = $this->input->post('i_description');
+		$this->project_model->save_detail_images($data_detail_img);
 		
 		
 		redirect('project/view_preview/'.$id);
+		
 		
 	}
 	

@@ -452,6 +452,28 @@ body
 	font-size:12px;
 }
 
+.button_creatives:hover{
+	background:#19488e;
+}
+
+.button_save{
+	border-radius: 0px;
+	background:#00a65a;
+	width:100%;
+	padding:10px 10px;
+	text-align:center;
+	color:#fff;
+	letter-spacing:2px;
+	font-weight:bold;
+	font-size:12px;
+}
+
+.button_save:hover{
+	background:#00a65a;
+	color: #fff;
+}
+
+
 .new_button_creatives{
 	background:#2a5da8;
 	width:100%;
@@ -1163,8 +1185,28 @@ body
 	width:100%;
 	height:100%;
 	background:#ccc;
-	padding:50px;
+	
 	font-size:32px;
+}
+
+.img_cover_image_right{
+	width:100%;
+	height:100%;
+	background:#ccc;
+	font-size:12px;
+}
+
+.ezdz-dropzone div{
+	height: 100%;
+    bottom:50%;
+    line-height: 200px !important;
+    min-height: 200px;
+    color: #666 !important;
+}
+
+.ezdz-dropzone{
+	border:none !important;
+	font-size: 12px !important;
 }
 
 .img_cover_image_content{

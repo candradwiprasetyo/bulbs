@@ -39,6 +39,16 @@ class Project_model extends CI_Model{
 		$this->db->trans_complete();
 		return $id;
 	}
+
+	function save_detail_images($data){
+
+		$this->db->trans_start();
+		$this->db->insert('project_detail_images', $data);
+		$id = $this->db->insert_id();
+		
+		$this->db->trans_complete();
+		return $id;
+	}
 	
 	function save_detail_img($data){
 

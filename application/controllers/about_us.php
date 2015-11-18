@@ -22,9 +22,7 @@ class About_us extends CI_Controller {
 		
 		$data['title'] = "8BULBS";
 		$list['list'] = "test";
-		
-		
-		
+
  		$this->load->view('layout/header', array('data' => $data));
 		$this->load->view('about_us/content');
 		$this->load->view('layout/footer'); 
