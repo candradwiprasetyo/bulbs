@@ -63,11 +63,35 @@ $(function() {
                         </div>
 						
                         <div class="col-md-12" >
+
+                          <div class="form-group">
+                            <img src="<?= site_url() ?>assets/images/project/<?= $data_project['project_img']?>" style="width:100%;">
+                          </div>
                         
-                        	<div class="form-group">
-                            
-                             	<img src="<?= base_url(); ?>assets/images/project/<?= $data_project['project_img'] ?>" style="width:100%;"/>                                
-                             </div>
+                        	 <?php
+
+                          $q_detail_tmp = mysql_query("select 
+                                                        a.* from project_detail_images a
+                                                        join projects b on b.project_id = a.project_id
+                                                        where b.project_id = '".$data_project['project_id']."' 
+                                                        order by pdi_id");
+                          while($r_detail_tmp = mysql_fetch_array($q_detail_tmp)){ 
+                          if($r_detail_tmp['pdi_type']==1){
+                          ?>
+                          <div class="form-group">
+                            <img src="<?= site_url() ?>assets/images/project/detail/<?= $r_detail_tmp['pdi_value']?>" style="width:100%;">
+                          </div>
+                          <?php
+                          }else{
+                          ?>
+                          <div class="form-group">
+                           <?= $r_detail_tmp['pdi_value']?>
+                          </div>
+                          <?php
+                          }
+                        }
+                          ?>
+                          
                         	
                         </div>
                         
@@ -75,7 +99,7 @@ $(function() {
                        
                         <div class="form-group">
                              
-                        		<?= $data_project['project_description']?>
+                        		
       						
                         </div><a href="javascript: history.back()" class="btn my_button">BACK</a>
                        
@@ -211,6 +235,7 @@ $(function() {
 									join users c on c.user_id = b.user_id
 									where c.user_id = '".$data_project['user_id']."' 
 									and project_id <> '".$data_project['project_id']."'
+									and a.project_active_status = 1
 									order by project_id desc
 									limit 6");
 				while($r_p = mysql_fetch_array($q_p)){ 

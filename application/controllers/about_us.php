@@ -10,10 +10,7 @@ class About_us extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->library('recaptcha');
 		
-		$logged = $this->session->userdata('logged');
-		if($logged){
-			redirect('showcase');
-		}
+		
 	}
  	
 	public function index() {

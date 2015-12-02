@@ -418,7 +418,7 @@ if(isset($_GET['tab']) && $_GET['tab'] == 2){
 									join creatives b on b.creative_id = a.creative_id
 									join users c on c.user_id = b.user_id
 									where c.user_id = '".$_GET['id']."' 
-									
+									and a.project_active_status = 1
 									order by project_id");
 				while($r_p = mysql_fetch_array($q_p)){ 
 				

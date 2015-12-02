@@ -155,6 +155,7 @@ function open_concentration(){
 									join users c on c.user_id = b.user_id
 									left join project_detail_categories d on d.project_id = a.project_id
 								    $where $parameter
+									and a.project_active_status = 1
 									group by a.project_id
 									order by a.project_id");
 				while($r_p = mysql_fetch_array($q_p)){ 

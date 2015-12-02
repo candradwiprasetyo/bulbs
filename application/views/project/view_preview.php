@@ -63,21 +63,42 @@ $(function() {
                         </div>
 						
                         <div class="col-md-12" >
+
+                           <div class="form-group">
+                            <img src="<?= site_url() ?>assets/images/project/<?= $data_project['project_img']?>" style="width:100%;">
+                          </div>
                         
-                        	<div class="form-group">
-                            
-                             	<img src="<?= base_url(); ?>assets/images/project/<?= $data_project['project_img'] ?>" style="width:100%;"/>                                
-                             </div>
+                        	 <?php
+
+                          $q_detail_tmp = mysql_query("select 
+                                                        a.* from project_detail_images a
+                                                        join projects b on b.project_id = a.project_id
+                                                        where b.project_id = '".$data_project['project_id']."' 
+                                                        order by pdi_id");
+                          while($r_detail_tmp = mysql_fetch_array($q_detail_tmp)){ 
+                          if($r_detail_tmp['pdi_type']==1){
+                          ?>
+                          <div class="form-group">
+                            <img src="<?= site_url() ?>assets/images/project/detail/<?= $r_detail_tmp['pdi_value']?>" style="width:100%;">
+                          </div>
+                          <?php
+                          }else{
+                          ?>
+                          <div class="form-group">
+                           <?= $r_detail_tmp['pdi_value']?>
+                          </div>
+                          <?php
+                          }
+                        }
+                          ?>
                         	
                         </div>
                         
                         <div class="col-md-12" >
                        
-                        <div class="form-group">
-                             
-                        		<?= $data_project['project_description']?>
-      						
-                        </div><a href="<?= site_url() ?>project/add" class="btn  my_button">UPLOAD AGAIN</a>
+                       
+
+                        <a href="<?= site_url() ?>project/add" class="btn  my_button">UPLOAD AGAIN</a>
                         <a href="<?= site_url() ?>profile" class="btn  my_button">BACK TO PROFILE</a>
                        
                         
@@ -118,47 +139,6 @@ $(function() {
                          <div class="col-md-10" >
                         	<div class="form-group">
                             
-                             	<?php
-                       if($this->session->userdata('user_id')){
-					   ?>
-                                 <div class="col-md-6" >
-                                     <div class="row">
-                                     <?php
-                                     $q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$data_project['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
-									$r_tr_f = mysql_fetch_array($q_tr_f);
-									if($r_tr_f['jumlah'] > 0){
-										
-									?> 
-                                   
-                                 
-                                   <a href="#" class="follow" id="<?= $data_project['user_id'] ?>" style="text-decoration:none;"><div class="button_unfollow">FOLLOWING</div></a>
-                                <?php
-								}else{
-                                ?>
-                                           <a href="#" class="follow" id="<?= $data_project['user_id'] ?>" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
-                                      <?php
-									}
-									
-									  ?>
-                                     </div>
-                                 </div>
-                                 <div class="col-md-6" >
-                                 	<div class="row">
-                                          <a href="<?=site_url('message/view/'.$data_project['user_id']); ?>" style="text-decoration:none;"><div class="button_message">MESSAGE</div></a>
-                                      </div>
-                                 </div>
-                                  <?php
-					   }else{
-						   ?>
-						    <div class="col-md-6" >
-                                 	<div class="row">
-                                       <div style="height:20px;"></div>
-                                     </div>
-                                 </div>
-						   
-						   <?php
-						  }
-						 ?>               
                              </div>
                         	</div>
                     
@@ -212,6 +192,7 @@ $(function() {
 									join users c on c.user_id = b.user_id
 									where c.user_id = '".$data_project['user_id']."' 
 									and project_id <> '".$data_project['project_id']."'
+									and a.project_active_status = 1
 									order by project_id desc
 									limit 6");
 				while($r_p = mysql_fetch_array($q_p)){ 

@@ -7,8 +7,6 @@ class Project extends CI_Controller {
 		$this->load->model('project_model');
 		$this->load->library('session');
 		$this->load->library('access');
-		
-		
 	}
  	
 	public function add() {
@@ -19,6 +17,12 @@ class Project extends CI_Controller {
 			}else{
 
 			$data['title'] = "Add project";
+
+			// hapus semua tmp
+			$project_tmp_id	 		= $this->project_model->get_project_tmp_id($this->session->userdata('user_id'));
+			$this->project_model->delete_project_detail_categories_tmp($project_tmp_id);
+			$this->project_model->delete_project_detail_tmp($project_tmp_id);
+			$this->project_model->delete_tmp($this->session->userdata('user_id'));
 			
 			$data_project['project_name'] = "";
 			$data_project['project_description'] = "";
@@ -29,6 +33,32 @@ class Project extends CI_Controller {
 			
 			$this->load->view('layout/header', array('data' => $data));
 			$this->load->view('project/content', array('data_project' => $data_project));
+			$this->load->view('layout/footer'); 
+			}
+		
+ 	}
+
+ 	public function add_next() {
+		
+			$logged = $this->session->userdata('logged');
+			if($logged == ""){
+				redirect('login');
+			}else{
+
+			$data['title'] = "Add project";
+			
+			$result_tmp = $this->project_model->read_tmp_id();
+				if($result_tmp){
+					$data_project  = $result_tmp;
+				}
+
+		
+			$data_project['project_description'] = "";
+			
+			$data_project['action'] = site_url('project/save_next/');
+			
+			$this->load->view('layout/header', array('data' => $data));
+			$this->load->view('project/content_next', array('data_project' => $data_project));
 			$this->load->view('layout/footer'); 
 			}
 		
@@ -101,15 +131,17 @@ class Project extends CI_Controller {
 	
 	public function save() {
 		
+		// tambah gambar
+		if(isset($_POST['i_button_save'])){
+
+			$data_user = $this->access->get_data_user($this->session->userdata('user_id'));
 		// upload gambar
-		
-		
-		$data_user = $this->access->get_data_user($this->session->userdata('user_id'));
 		
 		$new_name = '';
 
 		if($_FILES['i_img']['name']){
 		$new_name = time()."_".$_FILES['i_img']['name'];
+		$new_name = str_replace(" ", "_", $new_name);
 		
 		
 		/*
@@ -129,6 +161,7 @@ class Project extends CI_Controller {
 			
 		}
 		*/
+		
 			move_uploaded_file(
 	            $_FILES['i_img']['tmp_name'],
 	            'assets/images/project/'.$new_name
@@ -142,6 +175,7 @@ class Project extends CI_Controller {
 		$data['project_name']	 				= $this->input->post('i_name');
 		$data['project_description']	 		= $this->input->post('i_description');
 		$data['project_date']	 				= date("Y-m-d H:m:s");
+		$data['project_active_status']			= 1;
 		
 		$id = $this->project_model->save($data);
 		$data_detail['project_id'] = $id;
@@ -163,6 +197,7 @@ class Project extends CI_Controller {
 		$new_name_detail = '';
 		if($_FILES['i_img_detail']['name']){
 		$new_name_detail = time()."_".$_FILES['i_img_detail']['name'];
+		$new_name_detail = str_replace(" ", "_", $new_name_detail);
 
 			move_uploaded_file(
 	            $_FILES['i_img_detail']['tmp_name'],
@@ -184,11 +219,220 @@ class Project extends CI_Controller {
 		
 		
 		redirect('project/view_preview/'.$id);
-		
-		
+			
+		}else{
+
+			// simpan data project_tmp
+			$data_tmp['project_name']	 				= $this->input->post('i_name');
+
+			$new_name = '';
+
+			if($_FILES['i_img']['name']){
+				$new_name = time()."_".$_FILES['i_img']['name'];
+				$new_name = str_replace(" ", "_", $new_name);
+				move_uploaded_file(
+		            $_FILES['i_img']['tmp_name'],
+		            'assets/images/project/'.$new_name
+		        );
+			}
+
+			$data_tmp['project_img']	 				= $new_name;
+			$data_tmp['user_id']	 				= $this->session->userdata('user_id');
+			$id_tmp = $this->project_model->save_tmp($data_tmp);
+
+			// save profile categories
+			$data_detail_cat['project_tmp_id'] = $id_tmp;
+			$q_project_category = mysql_query("select * from profile_categories order by pc_id");
+			while($r_project_category = mysql_fetch_array($q_project_category)){
+				
+				if($this->input->post('i_pc_'.$r_project_category['pc_id'])){
+					$data_detail_cat['pc_id'] = $r_project_category['pc_id'];
+					$this->project_model->save_detail_categories_tmp($data_detail_cat);
+				}
+				
+			}
+
+			$data_detail_tmp['project_tmp_id'] = $id_tmp;
+			// save images details
+			$new_name_detail = '';
+			if(isset($_FILES['i_img_detail']['name']) && $_FILES['i_img_detail']['name'] != "" ){
+
+				$new_name_detail = time()."_".$_FILES['i_img_detail']['name'];
+				$new_name_detail = str_replace(" ", "_", $new_name_detail);
+
+				move_uploaded_file(
+		            $_FILES['i_img_detail']['tmp_name'],
+		            'assets/images/project/detail/'.$new_name_detail
+		        );
+				
+				$data_detail_tmp['pdt_type'] = 1;
+				$data_detail_tmp['pdt_value'] = str_replace(" ", "_", $new_name_detail);
+				
+				$this->project_model->save_detail_tmp($data_detail_tmp);
+				
+			}
+
+			// save text
+			if($this->input->post('i_description')){
+				$data_detail_tmp['pdt_type'] = 2;
+				$data_detail_tmp['pdt_value'] = $this->input->post('i_description');
+				
+				$this->project_model->save_detail_tmp($data_detail_tmp);
+			}
+
+			if(isset($_POST['i_button_add_image'])){
+				redirect('project/add_next/?type=1#frame_img');
+			}else if(isset($_POST['i_button_add_text'])){
+				redirect('project/add_next/?type=2#frame_text');
+			}
+		}
 	}
 	
+	public function save_next() {
+		
+		// tambah gambar
+		if(isset($_POST['i_button_save'])){
+			
+		$data_user = $this->access->get_data_user($this->session->userdata('user_id'));
+		// upload gambar
+		
 
+		if($_FILES['i_img']['name']){
+			$new_name = time()."_".$_FILES['i_img']['name'];
+			$new_name = str_replace(" ", "_", $new_name);
+		
+			move_uploaded_file(
+	            $_FILES['i_img']['tmp_name'],
+	            'assets/images/project/'.$new_name
+	        );
+		}else{
+			$new_name	 = $this->project_model->get_project_tmp_img($this->session->userdata('user_id'));
+			
+		}
+		 
+		
+		 // simpan di table
+		$data['creative_id']	 				= $data_user['creative_id'];
+		$data['project_img'] 					= str_replace(" ", "_", $new_name);
+		$data['project_name']	 				= $this->input->post('i_name');
+		$data['project_description']	 		= $this->input->post('i_description');
+		$data['project_date']	 				= date("Y-m-d H:m:s");
+		$data['project_active_status']			= 1;
+		
+		$id = $this->project_model->save($data);
+		$data_detail['project_id'] = $id;
+		
+		// save profile categories
+		$q_project_category = mysql_query("select * from profile_categories order by pc_id");
+		while($r_project_category = mysql_fetch_array($q_project_category)){
+			
+			if($this->input->post('i_pc_'.$r_project_category['pc_id'])){
+				$data_detail['pc_id'] = $r_project_category['pc_id'];
+				$this->project_model->save_detail($data_detail);
+			}
+		}
+
+		$data_old_tmp['project_id'] = $id;
+		// looping data tmp kemudian masukkan ke data project_detail_images
+		
+		$q_tmp = mysql_query("select a.* from project_detail_tmp a
+                                                        join projects_tmp b on b.project_tmp_id = a.project_tmp_id
+                                                        where b.user_id = '".$this->session->userdata('user_id')."' 
+                                                        order by pdt_id asc");
+		while($r_tmp = mysql_fetch_array($q_tmp)){
+			
+			$data_old_tmp['pdi_type'] = $r_tmp['pdt_type'];
+			$data_old_tmp['pdi_value'] = $r_tmp['pdt_value'];
+			$this->project_model->save_detail_images($data_old_tmp);
+		}
+
+
+		$data_detail_img['project_id'] = $id;
+		// save detail images
+		
+		
+		$new_name_detail = '';
+		if(isset($_FILES['i_img_detail']['name']) && $_FILES['i_img_detail']['name'] != "" ){
+
+			$new_name_detail = time()."_".$_FILES['i_img_detail']['name'];
+			$new_name_detail = str_replace(" ", "_", $new_name_detail);
+
+			move_uploaded_file(
+	            $_FILES['i_img_detail']['tmp_name'],
+	            'assets/images/project/detail/'.$new_name_detail
+	        );
+
+	        // save images
+			
+			$data_detail_img['pdi_type'] = 1;
+			$data_detail_img['pdi_value'] = str_replace(" ", "_", $new_name_detail);
+			$this->project_model->save_detail_images($data_detail_img);
+		}
+
+		
+		
+
+		// save text
+		if($this->input->post('i_description')){
+			$data_detail_img['pdi_type'] = 2;
+			$data_detail_img['pdi_value'] = $this->input->post('i_description');
+			$this->project_model->save_detail_images($data_detail_img);
+		}
+
+
+		
+		
+		// hapus semua tmp
+		
+		$project_tmp_id	 		= $this->project_model->get_project_tmp_id($this->session->userdata('user_id'));
+		$this->project_model->delete_project_detail_categories_tmp($project_tmp_id);
+		$this->project_model->delete_project_detail_tmp($project_tmp_id);
+		$this->project_model->delete_tmp($this->session->userdata('user_id'));
+		
+		redirect('project/view_preview/'.$id);
+		
+			
+		}else{
+
+
+			// ambil data project_tmp
+			$project_tmp_id	 				= $this->project_model->get_project_tmp_id($this->session->userdata('user_id'));
+			
+			$data_detail_tmp['project_tmp_id'] = $project_tmp_id;
+
+			$new_name_detail = '';
+			
+			// save images
+			if(isset($_FILES['i_img_detail']['name']) && $_FILES['i_img_detail']['name'] != "" ){
+
+				$new_name_detail = time()."_".$_FILES['i_img_detail']['name'];
+				$new_name_detail = str_replace(" ", "_", $new_name_detail);
+
+				move_uploaded_file(
+		            $_FILES['i_img_detail']['tmp_name'],
+		            'assets/images/project/detail/'.$new_name_detail
+		        );
+				
+				$data_detail_tmp['pdt_type'] = 1;
+				$data_detail_tmp['pdt_value'] = str_replace(" ", "_", $new_name_detail);
+				$this->project_model->save_detail_tmp($data_detail_tmp);
+				
+			}
+
+			// save text
+			if($this->input->post('i_description')){
+				$data_detail_tmp['pdt_type'] = 2;
+				$data_detail_tmp['pdt_value'] = $this->input->post('i_description');
+				$this->project_model->save_detail_tmp($data_detail_tmp);
+			}
+
+			if(isset($_POST['i_button_add_image'])){
+				redirect('project/add_next/?type=1#frame_img');
+			}else if(isset($_POST['i_button_add_text'])){
+				redirect('project/add_next/?type=2#frame_text');
+			}
+		}
+	}
 	
 	public function edit($id) {
 		
@@ -308,4 +552,11 @@ class Project extends CI_Controller {
 		}
 		//redirect('profile_view/?id='.$creative_id);
 	}
+	
+	public function delete($id){
+		
+		$this->project_model->delete($id);
+		redirect('profile/?did=5');
+	}
+
 }

@@ -26,9 +26,11 @@ class Profile_view extends CI_Controller {
 			$data['title'] = $result['creative_wp_name'];
 			
 			// simpan profile views
-			$check_profile_view = $this->profile_view_model->check_profile_view($id, $this->session->userdata('user_id'));
-			if($check_profile_view == 0){
-				$this->profile_view_model->create_profile_view($id, $this->session->userdata('user_id'));
+			if($this->session->userdata('logged')){
+				$check_profile_view = $this->profile_view_model->check_profile_view($id, $this->session->userdata('user_id'));
+				if($check_profile_view == 0){
+					$this->profile_view_model->create_profile_view($id, $this->session->userdata('user_id'));
+				}
 			}
 			
 			if($result){

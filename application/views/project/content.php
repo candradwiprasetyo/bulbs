@@ -47,13 +47,13 @@
 
                               <div class="row">
                                 <div class="col-md-4" >
-                                  <input class="btn button_save" type="submit" value="SAVE"/>
+                                  <input class="btn button_save" type="submit" value="SAVE" name="i_button_save"/>
                                 </div>
                                 <div class="col-md-4" >
-                                  <a href="#" class="follow" id="" style="text-decoration:none;"><div class="button_creatives"><i class="fa fa-picture-o"> </i> + ADD IMAGE CONTENT </div></a>
+                                  <input class="btn button_creatives" type="submit" value="+ ADD IMAGE CONTENT" name="i_button_add_image"/>
                                 </div>
                                 <div class="col-md-4" >
-                                  <a href="#" class="follow" id="" style="text-decoration:none;"><div class="button_creatives"><i class="fa fa-font"> </i> + ADD TEXT CONTENT</div></a>
+                                 <input class="btn button_creatives" type="submit" value="+ ADD TEXT CONTENT" name="i_button_add_text"/>
                                 </div>
                               </div>
                           

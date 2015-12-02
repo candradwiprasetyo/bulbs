@@ -17,7 +17,7 @@ $(function() {
 	$q_c_ajax = mysql_query("select a.*, b.location_name 
    						from creatives a
    						left join locations b on b.location_id = a.location_id 
-						join profile_detail_categories d on d.user_id = a.user_id  
+						left join profile_detail_categories d on d.user_id = a.user_id  
 						
 						group by a.creative_id
    						order by a.creative_id 
@@ -223,7 +223,7 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
    $q_c = mysql_query("select a.*, b.location_name 
    						from creatives a
    						left join locations b on b.location_id = a.location_id 
-						join profile_detail_categories d on d.user_id = a.user_id  
+						left join profile_detail_categories d on d.user_id = a.user_id  
 						$where $parameter
 						group by a.creative_id
    						order by a.creative_id 
@@ -242,7 +242,7 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
 											join creatives b on b.creative_id = a.creative_id
 											
 											where b.creative_id = '".$r_c['creative_id']."' 
-											
+											and a.project_active_status = 1
 											order by project_id limit 4");
 						while($r_p = mysql_fetch_array($q_p)){ 
 						$img_class = $this->access->get_valid_img(base_url()."assets/images/project/".$r_p['project_img']);

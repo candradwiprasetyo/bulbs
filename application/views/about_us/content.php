@@ -1,6 +1,7 @@
 
 
 <div class="about_us_page">
+
 <div class="container">
     <div class="row">
    		 <div class="col-md-12">
@@ -38,6 +39,7 @@ professionals from previous clients.</div>
 </div>
 
 <div class="about_us_banner">
+    <div class="about_us_page_banner"></div>
 <div class="container">
 We've created a platform to boost Indonesia's creative industries.<br />
 This core purpose is the motivation behind who we are,<br />

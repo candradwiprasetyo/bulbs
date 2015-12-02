@@ -37,6 +37,7 @@ class Register extends CI_Controller {
 		
 		// upload gambar
 		if(isset($_FILES['i_img']['name'])){
+
 			$new_name = time()."_".$_FILES['i_img']['name'];
 			
 			$configUpload['upload_path']    = './assets/images/profile/';                 #the folder placed in the root of project
@@ -51,13 +52,15 @@ class Register extends CI_Controller {
 				$uploadedDetails    = $this->upload->display_errors();
 			}else{
 				$uploadedDetails    = $this->upload->data(); 
-				$this->_createThumbnail($uploadedDetails['file_name']);
+				//$this->_createThumbnail($uploadedDetails['file_name']);
 	 
-	           	$thumbnail_name = $uploadedDetails['raw_name']. '_thumb' .$uploadedDetails['file_ext'];   
+	           	//$thumbnail_name = $uploadedDetails['raw_name']. '_thumb' .$uploadedDetails['file_ext'];   
 			}
 			
-			$data['creative_img'] 					= $new_name;
-                         $data['creative_img'] 	= str_replace(" ", "_", $data['creative_img']);
+			$data['creative_img'] 			= $new_name;
+            $data['creative_img'] 			= str_replace(" ", "_", $data['creative_img']);
+            
+            
 		}
 			 
 		 // simpan di table
@@ -99,6 +102,7 @@ class Register extends CI_Controller {
 		}
 		
 		redirect('creative?reg=1');
+		
 	}
 	
 	function _createThumbnail($filename)

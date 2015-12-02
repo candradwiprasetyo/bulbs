@@ -3,6 +3,15 @@ if (document.documentElement.clientWidth <= 768) {
 	// scripts
 	window.location.href = "<?= site_url() ?>profile_mobile";
 }
+
+function confirm_delete_project(id,control){
+	var a = confirm("Are you sure want to delete this project ?");
+	if(a==true){
+		window.location.href = control+id;
+	}
+}
+
+
 </script>
 
 
@@ -15,8 +24,11 @@ if (document.documentElement.clientWidth <= 768) {
 		echo $this->access->get_alert_success("Your account has been saved"); 
 	}else if(isset($_GET['did']) && $_GET['did']==4){
 		echo $this->access->get_alert_success("Your project has been updated"); 
+	}else if(isset($_GET['did']) && $_GET['did']==5){
+		echo $this->access->get_alert_success("Your project has been deleted"); 
 	}
 ?>
+
 
 
     
@@ -131,7 +143,7 @@ if (document.documentElement.clientWidth <= 768) {
 									join creatives b on b.creative_id = a.creative_id
 									join users c on c.user_id = b.user_id
 									where c.user_id = '".$this->session->userdata('user_id')."' 
-									
+									and a.project_active_status = 1
 									order by project_id");
 				while($r_p = mysql_fetch_array($q_p)){ 
 				
@@ -167,7 +179,7 @@ if (document.documentElement.clientWidth <= 768) {
 							
                             
                         	<div class="circle_showcase" <?= $style?>></div>
-                            
+                           
                             <?php
 							$no_color++;
 							}
@@ -176,16 +188,33 @@ if (document.documentElement.clientWidth <= 768) {
                         
                             <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['project_img'] ?>" class="<?= $img_class?>" />
                             
+                           
                         </div>
-                        <div class="box-showcaseDesc">
+                        
+                        <div class="box-showcaseDesc">  
+                        
+               
+                        
+                        
                              <div class="box-showcaseDesc_name"><?= $r_p['project_name'] ?></div>
                              
-                            <div class="box-showcaseDesc_by"><?= $r_p['creative_wp_name'] ?></div>
-                            <div class="box-showcaseDesc_button"> 
+                           
+                            <!--
+                            <div class="box-showcaseDesc_button" style="right:90px;"> 
                             	<a href="<?= site_url('project/form_edit/'.$r_p['project_id']); ?>" class="btn my_button"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
+                            </div>-->
+                            
+                             <div class="box-showcaseDesc_button" > 
+                            	<a href="javascript:void(0)" onclick="confirm_delete_project(<?= $r_p['project_id']; ?>, '<?= site_url().'project/delete/'; ?>')" class="btn my_button"><i class="fa fa-trash-o"></i>&nbsp;Delete</a>
                             </div>
                             
+                           
+                            
+                            
+                           
+                           
                         </div>
+                        
                     </div>
                     </a>
                 <?php

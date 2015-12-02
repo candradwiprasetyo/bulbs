@@ -23,9 +23,11 @@ class Profile_view_mobile extends CI_Controller {
 			$result = $this->profile_view_model->read_id($id);
 			
 			// simpan profile views
-			$check_profile_view = $this->profile_view_model->check_profile_view($id, $this->session->userdata('user_id'));
-			if($check_profile_view == 0){
-				$this->profile_view_model->create_profile_view($id, $this->session->userdata('user_id'));
+			if($this->session->userdata('logged')){
+				$check_profile_view = $this->profile_view_model->check_profile_view($id, $this->session->userdata('user_id'));
+				if($check_profile_view == 0){
+					$this->profile_view_model->create_profile_view($id, $this->session->userdata('user_id'));
+				}
 			}
 			
 			if($result){

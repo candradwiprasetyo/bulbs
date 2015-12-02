@@ -2,27 +2,27 @@
 
 @font-face {
   font-family: 'Akkurat-Regular';
-  src:url('http://localhost/bulbs/assets/fonts/Akkurat-Regular.otf') format('opentype')
+  src:url('../fonts/Akkurat-Regular.otf') format('opentype')
 }
 
 @font-face {
   font-family: 'Roboto-Regular';
-  src:url('http://localhost/bulbs/assets/fonts/Roboto-Regular.ttf') format('truetype')
+  src:url('../fonts/Roboto-Regular.ttf') format('truetype')
 }
 
 @font-face {
   font-family: 'MinionProRegular';
-  src:url('http://localhost/bulbs/assets/fonts/MinionProRegular.ttf') format('truetype')
+  src:url('../fonts/MinionProRegular.ttf') format('truetype')
 }
 
 @font-face {
   font-family: 'BrauerNeue-Regular';
-  src:url('http://localhost/bulbs/assets/fonts/BrauerNeue-Regular.otf') format('opentype')
+  src:url('../fonts/BrauerNeue-Regular.otf') format('opentype')
 }
 
 @font-face {
   font-family: 'new_title';
-  src:url('http://localhost/bulbs/assets/fonts/BraueNRj.otf') format('opentype')
+  src:url('../fonts/BraueNRj.otf') format('opentype')
 }
 
 .rc-anchor-normal{
@@ -35,7 +35,6 @@ a:hover{
 }
 
 a{
-	
 }
 
 body
@@ -450,10 +449,12 @@ body
 	letter-spacing:2px;
 	font-weight:bold;
 	font-size:12px;
+	border-radius: 0pc;
 }
 
 .button_creatives:hover{
 	background:#19488e;
+	color: #fff;
 }
 
 .button_save{
@@ -767,7 +768,7 @@ body
 .about_us_banner{
 	padding-top:60px;
 	padding-bottom:60px;
-	background:url(../images/about_us/banner.png) repeat;
+	background:url(../images/about_us/banner2.jpg) center;
 	color:#fff;
 	margin-top:50px;
 	text-align:center;
@@ -775,6 +776,15 @@ body
 	font-family: 'new_title';
 	line-height:40px;
 	letter-spacing:1.5px;
+}
+
+.about_us_page_banner{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.about_us_page_banner img{
+
 }
 
 .about_us_banner2{
