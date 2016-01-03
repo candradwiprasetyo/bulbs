@@ -198,11 +198,9 @@ function confirm_delete_project(id,control){
                         
                              <div class="box-showcaseDesc_name"><?= $r_p['project_name'] ?></div>
                              
-                           
-                            <!--
-                            <div class="box-showcaseDesc_button" style="right:90px;"> 
+                            <div class="box-showcaseDesc_button" style="right:90px; margin-right:10px;"> 
                             	<a href="<?= site_url('project/form_edit/'.$r_p['project_id']); ?>" class="btn my_button"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
-                            </div>-->
+                            </div>
                             
                              <div class="box-showcaseDesc_button" > 
                             	<a href="javascript:void(0)" onclick="confirm_delete_project(<?= $r_p['project_id']; ?>, '<?= site_url().'project/delete/'; ?>')" class="btn my_button"><i class="fa fa-trash-o"></i>&nbsp;Delete</a>
@@ -232,8 +230,7 @@ function confirm_delete_project(id,control){
         </div>
         </div>
         </div>
-       </div>
-        
+        </div>
         </div>
 	</div>
     

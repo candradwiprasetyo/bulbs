@@ -8,13 +8,25 @@ class Login_model extends CI_Model{
 
 	function is_valid($username, $password)
 	{
+		
 		$param['user_username'] = $username;
 		$param['user_password'] = md5($password);
 		$param['user_active_status'] = '1';
 		
-		$query = $this->db->get_where('users u', $param);
+		$query = $this->db->get_where('users u', array('user_type_id != 1  && `user_username` =' => $username, 'user_active_status' => 1, 'user_password' => md5($password)));
 		
 		# debug($this->db->last_query());
+		
+/*
+		$sql = "select * 
+				from users 
+				where user_username = '$username' 
+				and user_password = '".md5($password)."'
+				and user_active_status = '1'
+				 
+				";
+		
+		$query = $this->db->query($sql);*/
 
 		if ($query->num_rows() == 0) return NULL;
 		$data = $query->row_array();

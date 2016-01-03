@@ -38,6 +38,16 @@ class Project_model extends CI_Model{
 		$this->db->trans_complete();
 		return $id;
 	}
+
+	function edit_img($data, $id){
+
+		$this->db->trans_start();
+		$this->db->where('pdt_id', $id);
+		$this->db->update('project_detail_tmp', $data);
+	
+		$this->db->trans_complete();
+		return $id;
+	}
 	
 	function delete($id){
 		
@@ -162,6 +172,17 @@ class Project_model extends CI_Model{
 		foreach($query->result_array() as $row)	$result = ($row); // render dulu dunk!
 		return $result; 
 	}
+
+	function read_tmp_img($id)
+	{
+		$this->db->select('a.*, b.*', 1); // ambil seluruh data
+		$this->db->where('pdt_id', $id);
+		$this->db->join('projects_tmp b', 'b.project_tmp_id = a.project_tmp_id');
+		$query = $this->db->get('project_detail_tmp a', 1); // parameter limit harus 1
+		$result = null; // inisialisasi variabel. biasakanlah, untuk mencegah warning dari php.
+		foreach($query->result_array() as $row)	$result = ($row); // render dulu dunk!
+		return $result; 
+	}
 	
 	function following($data){
 
@@ -226,6 +247,19 @@ class Project_model extends CI_Model{
 	function get_project_tmp_img($user_id)
 	{
 		$sql = "select project_img as result from projects_tmp where user_id = '$user_id'
+				";
+		
+		$query = $this->db->query($sql);
+		
+		$result = null;
+		foreach ($query->result_array() as $row) $result = ($row);
+		
+		return $result['result'];
+	}
+
+	function get_old_img($id)
+	{
+		$sql = "select pdt_value as result from project_detail_tmp where pdt_id = '$id'
 				";
 		
 		$query = $this->db->query($sql);

@@ -6,7 +6,7 @@
         <?php
 		if($this->session->userdata('user_type_id') == 2){
 		?>
-        <?= $this->access->get_navbar_category(); ?>
+        <?//= $this->access->get_navbar_category(); ?>
         <?php
         }else if($this->session->userdata('user_type_id') == 3){
 		?>
@@ -200,3 +200,6 @@
 </div>
 
 
+<script type="text/javascript">
+document.getElementById( 'form1' ).scrollIntoView();
+</script>

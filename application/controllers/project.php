@@ -63,6 +63,54 @@ class Project extends CI_Controller {
 			}
 		
  	}
+
+ 	public function form_edit_img($id) {
+		
+			$logged = $this->session->userdata('logged');
+			if($logged == ""){
+				redirect('login');
+			}else{
+
+			$data['title'] = "Add project";
+			
+			$result_tmp = $this->project_model->read_tmp_img($id);
+				if($result_tmp){
+					$data_project  = $result_tmp;
+				}
+
+			
+			$data_project['action'] = site_url('project/edit_img/'.$id);
+			
+			$this->load->view('layout/header', array('data' => $data));
+			$this->load->view('project/content_edit_img', array('data_project' => $data_project));
+			$this->load->view('layout/footer'); 
+			}
+		
+ 	}
+
+ 	public function form_edit_text($id) {
+		
+			$logged = $this->session->userdata('logged');
+			if($logged == ""){
+				redirect('login');
+			}else{
+
+			$data['title'] = "Add project";
+			
+			$result_tmp = $this->project_model->read_tmp_img($id);
+				if($result_tmp){
+					$data_project  = $result_tmp;
+				}
+
+			
+			$data_project['action'] = site_url('project/edit_text/'.$id);
+			
+			$this->load->view('layout/header', array('data' => $data));
+			$this->load->view('project/content_edit_text', array('data_project' => $data_project));
+			$this->load->view('layout/footer'); 
+			}
+		
+ 	}
 	
 	public function form_edit($id) {
 		
@@ -128,6 +176,64 @@ class Project extends CI_Controller {
 			}
 		
  	}
+
+ 	public function edit_img($id) {
+		
+		// tambah gambar
+
+		
+						
+
+		if($_FILES['i_img_detail']['name']){
+
+			$get_old_img = $this->project_model->get_old_img($id);
+		
+			unlink('assets/images/project/detail/' . $get_old_img);
+
+			$new_name = time()."_".$_FILES['i_img_detail']['name'];
+			$new_name = str_replace(" ", "_", $new_name);
+
+			move_uploaded_file(
+	            $_FILES['i_img_detail']['tmp_name'],
+	            'assets/images/project/detail/'.$new_name
+	        );
+
+	        // simpan di table
+		$data['pdt_value']	 				= $new_name;
+		
+		$id = $this->project_model->edit_img($data, $id);
+
+		redirect('project/add_next/?type=1#frame_img');
+
+		}else{
+			redirect("project/form_edit_img/$id");
+		}
+		 
+		 
+		 
+			
+		
+	}
+	
+
+	public function edit_text($id) {
+		
+		// tambah gambar
+
+		
+						
+
+		
+
+	        // simpan di table
+		$data['pdt_value']	 				= $this->input->post('i_description');
+		
+		$id = $this->project_model->edit_img($data, $id);
+
+		redirect('project/add_next/?type=1#frame_img');
+	
+		
+	}
 	
 	public function save() {
 		

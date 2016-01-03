@@ -19,7 +19,7 @@
                   <div class="col-md-12" >
                        
                   <div class="form-group">
-                                      <div class="profile_name">Upload Work</div>
+                                      <div class="profile_name">Edit Text</div>
                                      
                              </div>
                        
@@ -27,71 +27,31 @@
             
                         <div class="col-md-12" >
 
-                          <?php
-                          $q_detail_tmp = mysql_query("select 
-                                                        a.* from project_detail_tmp a
-                                                        join projects_tmp b on b.project_tmp_id = a.project_tmp_id
-                                                        where b.user_id = '".$this->session->userdata('user_id')."' 
-                                                        order by pdt_id");
-                          while($r_detail_tmp = mysql_fetch_array($q_detail_tmp)){ 
-                          if($r_detail_tmp['pdt_type']==1){
-                          ?>
+                        
                           <div class="form-group">
 
-                            <img src="<?= site_url() ?>assets/images/project/detail/<?= $r_detail_tmp['pdt_value']?>" style="width:100%;">
+                            
+                           
+                         
                             
                           </div>
-                          <div class="form-group">
-                          <a href="<?= site_url('project/form_edit_img/'.$r_detail_tmp['pdt_id']); ?>" class="btn my_button">EDIT</a>
-                          </div>
-                          <?php
-                          }else{
-                          ?>
-                          <div class="form-group">
-                           <?= $r_detail_tmp['pdt_value']?>
-                          </div>
-                          <div class="form-group">
-                          <a href="<?= site_url('project/form_edit_text/'.$r_detail_tmp['pdt_id']); ?>" class="btn my_button">EDIT</a>
-                          </div>
-                          <?php
-                          }
-                        }
-                          ?>
                           
-                          <?php
-                          if(isset($_GET['type']) && $_GET['type']==1){
-                          ?>
-                          <div class="form-group" id="frame_img">
-                            <div class="img_cover_image">
-                              <input  class="upload_project" type="file" name="i_img_detail" id="i_img_detail" accept="image/png, image/jpeg" />
-                            </div>
-                          </div>
-                          <?php
-                          }else if(isset($_GET['type']) && $_GET['type']==2){
-                          ?>
-
-
-
-                             <div class="form-group" id="frame_text">
+                         
+                         
+                           <div class="form-group" id="frame_text">
                               <div class="profile_description_content">
-                                  <textarea  name="i_description" cols="" rows="10" class="form-control" placeHolder="Enter text here..."><?= $data_project['project_description'] ?></textarea>                
+                                  <textarea  name="i_description" cols="" rows="10" class="form-control" placeHolder="Enter text here..."><?= $data_project['pdt_value']?></textarea>                
                                 </div>
                               </div>  
-
-                          <?php
-                          
-                        }
-                          ?>
+                         
                               <div class="row">
-                                <div class="col-md-4" >
+                                <div class="col-md-3" >
                                   <input class="btn button_save" type="submit" value="SAVE" name="i_button_save"/>
                                 </div>
-                                <div class="col-md-4" >
-                                  <input class="btn button_creatives" type="submit" value="+ ADD IMAGE CONTENT" name="i_button_add_image"/>
+                                <div class="col-md-3" >
+                                  <a class="btn button_creatives" href="javascript: history.back()" />CANCEL</a>
                                 </div>
-                                <div class="col-md-4" >
-                                 <input class="btn button_creatives" type="submit" value="+ ADD TEXT CONTENT" name="i_button_add_text"/>
-                                </div>
+                                
                               </div>
 
 
@@ -118,7 +78,7 @@
 
                         <div class="form-group">
                         <label>Project Title</label>
-                                    <input required type="text" name="i_name" class="form-control" value="<?= $data_project['project_name'] ?>" title="" id="i_name" style="background-color:#f2f2f2;"/>
+                                    <input readonly type="text" name="i_name" class="form-control" value="<?= $data_project['project_name'] ?>" title="" id="i_name" style="background-color:#f2f2f2;"/>
                         </div>
 
                         <div class="form-group">
@@ -138,7 +98,7 @@
                                     ?>
                                 <div>
                                    
-                                        <input type="checkbox" name="i_pc_<?= $r_project_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_project_category['pc_id'] ?>"  <?php echo $checked ?> class="rbutton" />
+                                        <input disabled type="checkbox" name="i_pc_<?= $r_project_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_project_category['pc_id'] ?>"  <?php echo $checked ?> class="rbutton" />
                                         <?= $r_project_category['pc_name']?>
                                   
                               </div>
@@ -151,12 +111,7 @@
 
                             <img src="<?= site_url() ?>assets/images/project/<?= $data_project['project_img']?>" style="width:100%;"> 
                             
-                               <div class="img_cover_image_right">
-        
-                           
-                                  <input class="" type="file" name="i_img" id="i_img" accept="image/png, image/jpeg" value="" />
                                
-                                </div>
                              </div>
 
                     </div>
@@ -209,7 +164,7 @@
   $('.upload_project').ezdz({
      
       
-            text: ' + Add Image',
+            text: ' + Edit Image',
      
             validators: {
                 maxWidth:  2000,
