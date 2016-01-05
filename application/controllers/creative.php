@@ -35,22 +35,23 @@ class Creative extends CI_Controller {
 		$multiple1 =  $this->creative_model->multiple1();
 		$data_multiple1 = '';
 		$no1 = 1;
+		$nomor1 = 1;
 		foreach($multiple1 as $row1):
 		
 		// hapus sesi concentration
 		$this->session->unset_userdata('sess_multiple1_'.$row1['pc_id']);
 		
-		if($this->input->post('i_multiple1_'.$row1['pc_id'])){
-			if($no1 > 1){  $data_multiple1 .= " or "; }
-			$data_multiple1	 				.= " d.pc_id = ".$this->input->post('i_multiple1_'.$row1['pc_id']);
+		if($this->input->post('i_multiple1_'.$no1)){
+			if($nomor1 > 1){  $data_multiple1 .= " or "; }
+			$data_multiple1	 				.= " d.pc_id = ".$this->input->post('i_multiple1_'.$no1);
 			
 			// buat sesi concentration
 			//$this->session->set_userdata('sess_multiple1_'.$row1['pc_id'], 1);
+			$nomor1++;
 			
-			$no1++;
 		}
+		$no1++;
 		
-
 		endforeach; 
 		
 		// location
@@ -58,20 +59,23 @@ class Creative extends CI_Controller {
 		$data_multiple2 = '';
 		
 		$no2 = 1;
+		$nomor2 = 1;
 		foreach($multiple2 as $row2):
 		
-		// hapus sesi location
+		//$this->input->post('i_multiple2_'.$no2) == 0 hapus sesi location
 		$this->session->unset_userdata('sess_multiple2_'.$row2['location_id']);
 		
-		if($this->input->post('i_multiple2_'.$row2['location_id'])){
-			if($no2 > 1){  $data_multiple2 .= " or "; }
-			$data_multiple2	 				.= " b.location_id = ".$this->input->post('i_multiple2_'.$row2['location_id']);
+		if($this->input->post('i_multiple2_'.$no2) != ""){
+			if($nomor2 > 1){  $data_multiple2 .= " or "; }
+			$data_multiple2	 				.= " b.location_id = ".$this->input->post('i_multiple2_'.$no2);
 			
 			// buat sesi location
 			//$this->session->set_userdata('sess_multiple2_'.$row2['location_id'], 1);
-			
-			$no2++;
+			$nomor2++;
 		}
+		$no2++;
+
+		
 		
 		endforeach; 
 		
@@ -96,6 +100,7 @@ class Creative extends CI_Controller {
 		
 		$this->session->set_userdata('parameter', $parameter);
 		
+		//echo $parameter;
 		redirect('creative/search');
 		
 		

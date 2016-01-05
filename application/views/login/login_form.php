@@ -99,7 +99,7 @@ $(document).ready(function(){  /* when the page has loaded... */
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <div class="new_label" style="text-align:right; padding-bottom:5px; ">
-                                                    Forgot password ?
+                                                    <a href="<?=site_url('forgot')?>">Forgot password ?</a>
                                                     </div>
                                                  </div>
                                                  <div class="form-group">

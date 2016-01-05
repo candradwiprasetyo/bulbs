@@ -48,6 +48,16 @@ class Project_model extends CI_Model{
 		$this->db->trans_complete();
 		return $id;
 	}
+
+	function edit_img2($data, $id){
+
+		$this->db->trans_start();
+		$this->db->where('pdi_id', $id);
+		$this->db->update('project_detail_images', $data);
+	
+		$this->db->trans_complete();
+		return $id;
+	}
 	
 	function delete($id){
 		
@@ -59,6 +69,21 @@ class Project_model extends CI_Model{
 	
 		$this->db->trans_complete();
 		return $id;
+	}
+
+	function delete_img($id){
+			
+		$this->db->trans_start();
+		$this->db->where('pdt_id', $id);
+		$this->db->delete('project_detail_tmp');
+		$this->db->trans_complete();
+	}
+	function delete_img2($id){
+			
+		$this->db->trans_start();
+		$this->db->where('pdi_id', $id);
+		$this->db->delete('project_detail_images');
+		$this->db->trans_complete();
 	}
 	
 	
@@ -173,12 +198,24 @@ class Project_model extends CI_Model{
 		return $result; 
 	}
 
+	
 	function read_tmp_img($id)
 	{
 		$this->db->select('a.*, b.*', 1); // ambil seluruh data
 		$this->db->where('pdt_id', $id);
 		$this->db->join('projects_tmp b', 'b.project_tmp_id = a.project_tmp_id');
 		$query = $this->db->get('project_detail_tmp a', 1); // parameter limit harus 1
+		$result = null; // inisialisasi variabel. biasakanlah, untuk mencegah warning dari php.
+		foreach($query->result_array() as $row)	$result = ($row); // render dulu dunk!
+		return $result; 
+	}
+
+	function read_img2($id)
+	{
+		$this->db->select('a.*, b.*', 1); // ambil seluruh data
+		$this->db->where('pdi_id', $id);
+		$this->db->join('projects b', 'b.project_id = a.project_id');
+		$query = $this->db->get('project_detail_images a', 1); // parameter limit harus 1
 		$result = null; // inisialisasi variabel. biasakanlah, untuk mencegah warning dari php.
 		foreach($query->result_array() as $row)	$result = ($row); // render dulu dunk!
 		return $result; 
@@ -260,6 +297,32 @@ class Project_model extends CI_Model{
 	function get_old_img($id)
 	{
 		$sql = "select pdt_value as result from project_detail_tmp where pdt_id = '$id'
+				";
+		
+		$query = $this->db->query($sql);
+		
+		$result = null;
+		foreach ($query->result_array() as $row) $result = ($row);
+		
+		return $result['result'];
+	}
+
+	function get_old_project_img($id)
+	{
+		$sql = "select project_img as result from projects where project_id = '$id'
+				";
+		
+		$query = $this->db->query($sql);
+		
+		$result = null;
+		foreach ($query->result_array() as $row) $result = ($row);
+		
+		return $result['result'];
+	}
+
+	function get_old_img2($id)
+	{
+		$sql = "select pdi_value as result from project_detail_images where pdi_id = '$id'
 				";
 		
 		$query = $this->db->query($sql);

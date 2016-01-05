@@ -1,17 +1,17 @@
 <script>
 
 
-function confirm_delete_img(id,control){
+function confirm_delete_img(id,control, project_id){
   var a = confirm("Are you sure want to delete this images ?");
   if(a==true){
-    window.location.href = control+'/'+id;
+    window.location.href = control+'/'+id+'/'+project_id;
   }
 }
 
-function confirm_delete_text(id,control){
+function confirm_delete_text(id,control, project_id){
   var a = confirm("Are you sure want to delete this text ?");
   if(a==true){
-    window.location.href = control+'/'+id;
+    window.location.href = control+'/'+id+'/'+project_id;
   }
 }
 
@@ -47,31 +47,32 @@ function confirm_delete_text(id,control){
 
                           <?php
                           $q_detail_tmp = mysql_query("select 
-                                                        a.* from project_detail_tmp a
-                                                        join projects_tmp b on b.project_tmp_id = a.project_tmp_id
-                                                        where b.user_id = '".$this->session->userdata('user_id')."' 
-                                                        order by pdt_id");
+                                                        a.* from project_detail_images a
+                                                        
+                                                        where a.project_id = '".$data_project['project_id']."' 
+                                                        order by pdi_id");
                           while($r_detail_tmp = mysql_fetch_array($q_detail_tmp)){ 
-                          if($r_detail_tmp['pdt_type']==1){
+                          if($r_detail_tmp['pdi_type']==1){
                           ?>
                           <div class="form-group">
 
-                            <img src="<?= site_url() ?>assets/images/project/detail/<?= $r_detail_tmp['pdt_value']?>" style="width:100%;">
+                            <img src="<?= site_url() ?>assets/images/project/detail/<?= $r_detail_tmp['pdi_value']?>" style="width:100%;">
                             
                           </div>
                           <div class="form-group">
-                          <a href="<?= site_url('project/form_edit_img/'.$r_detail_tmp['pdt_id']); ?>" class="btn my_button">EDIT</a>
-                          <a href="javascript:void(0)" onclick="confirm_delete_img(<?= $r_detail_tmp['pdt_id']; ?>, '<?= site_url("project/delete_img/"); ?>')" class="btn my_button">DELETE</a>
+                          <a href="<?= site_url('project/form_edit_img2/'.$r_detail_tmp['pdi_id']); ?>" class="btn my_button">EDIT</a>
+                          <a href="javascript:void(0)" onclick="confirm_delete_img(<?= $r_detail_tmp['pdi_id']; ?>, '<?= site_url("project/delete_img2/"); ?>', <?= $data_project['project_id']?>)" class="btn my_button">DELETE</a>
+                          
                           </div>
                           <?php
                           }else{
                           ?>
                           <div class="form-group">
-                           <?= $r_detail_tmp['pdt_value']?>
+                           <?= $r_detail_tmp['pdi_value']?>
                           </div>
                           <div class="form-group">
-                          <a href="<?= site_url('project/form_edit_text/'.$r_detail_tmp['pdt_id']); ?>" class="btn my_button">EDIT</a>
-                          <a href="javascript:void(0)" onclick="confirm_delete_text(<?= $r_detail_tmp['pdt_id']; ?>, '<?= site_url("project/delete_text/"); ?>')" class="btn my_button">DELETE</a>
+                          <a href="<?= site_url('project/form_edit_text2/'.$r_detail_tmp['pdi_id']); ?>" class="btn my_button">EDIT</a>
+                          <a href="javascript:void(0)" onclick="confirm_delete_text(<?= $r_detail_tmp['pdi_id']; ?>, '<?= site_url("project/delete_text2/"); ?>')" class="btn my_button">DELETE</a>
                           
                           </div>
                           <?php
@@ -95,7 +96,7 @@ function confirm_delete_text(id,control){
 
                              <div class="form-group" id="frame_text">
                               <div class="profile_description_content">
-                                  <textarea  name="i_description" cols="" rows="10" class="form-control" placeHolder="Enter text here..."><?= $data_project['project_description'] ?></textarea>                
+                                  <textarea  name="i_description" cols="" rows="10" class="form-control" placeHolder="Enter text here..."></textarea>                
                                 </div>
                               </div>  
 
@@ -149,7 +150,7 @@ function confirm_delete_text(id,control){
                                     while($r_project_category = mysql_fetch_array($q_project_category)){
                                       $checked = "";
                                       if($data_project['project_name']){
-                                        $q_p_valid = mysql_query("select count(pdct_id) as jumlah from project_detail_categories_tmp where project_tmp_id = '".$data_project['project_tmp_id']."' and pc_id = '".$r_project_category['pc_id']."'");
+                                        $q_p_valid = mysql_query("select count(pdc_id) as jumlah from project_detail_categories where project_id = '".$data_project['project_id']."' and pc_id = '".$r_project_category['pc_id']."'");
                                         $r_p_valid = mysql_fetch_array($q_p_valid);
                                         
                                         if($r_p_valid['jumlah'] > 0){

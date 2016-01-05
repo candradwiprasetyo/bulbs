@@ -216,8 +216,10 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
   $parameter = ($this->session->userdata('parameter')) ? $this->session->userdata('parameter') : "";
   $where = ' where a.creative_id <> 0 ';
   if($this->session->userdata('user_id')){
-    $where .= " and a.user_id <> '".$this->session->userdata('user_id')."' ";
+    //$where .= " and a.user_id <> '".$this->session->userdata('user_id')."' ";
   }
+
+  //echo $parameter;
    
    //echo $where;
    $q_c = mysql_query("select a.*, b.location_name 

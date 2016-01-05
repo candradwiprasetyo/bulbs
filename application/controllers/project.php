@@ -52,7 +52,6 @@ class Project extends CI_Controller {
 					$data_project  = $result_tmp;
 				}
 
-		
 			$data_project['project_description'] = "";
 			
 			$data_project['action'] = site_url('project/save_next/');
@@ -88,6 +87,31 @@ class Project extends CI_Controller {
 		
  	}
 
+ 
+ 	public function form_edit_img2($id) {
+		
+			$logged = $this->session->userdata('logged');
+			if($logged == ""){
+				redirect('login');
+			}else{
+
+			$data['title'] = "Add project";
+			
+			$result_tmp = $this->project_model->read_img2($id);
+				if($result_tmp){
+					$data_project  = $result_tmp;
+				}
+
+			
+			$data_project['action'] = site_url('project/edit_img2/'.$id.'/'.$data_project['project_id']);
+			
+			$this->load->view('layout/header', array('data' => $data));
+			$this->load->view('project/content_edit_img2', array('data_project' => $data_project));
+			$this->load->view('layout/footer'); 
+			}
+		
+ 	}
+
  	public function form_edit_text($id) {
 		
 			$logged = $this->session->userdata('logged');
@@ -111,6 +135,30 @@ class Project extends CI_Controller {
 			}
 		
  	}
+
+ 	public function form_edit_text2($id) {
+		
+			$logged = $this->session->userdata('logged');
+			if($logged == ""){
+				redirect('login');
+			}else{
+
+			$data['title'] = "Edit project";
+			
+			$result_tmp = $this->project_model->read_img2($id);
+				if($result_tmp){
+					$data_project  = $result_tmp;
+				}
+
+			
+			$data_project['action'] = site_url('project/edit_text2/'.$id.'/'.$data_project['project_id']);
+			
+			$this->load->view('layout/header', array('data' => $data));
+			$this->load->view('project/content_edit_text2', array('data_project' => $data_project));
+			$this->load->view('layout/footer'); 
+			}
+		
+ 	}
 	
 	public function form_edit($id) {
 		
@@ -119,18 +167,19 @@ class Project extends CI_Controller {
 				redirect('login');
 			}else{
 
-				$data['title'] = "Edit project";
+			$data['title'] = "Edit project";
 			
-				$result = $this->project_model->read_edit_id($id);
-				if($result){
-					$data_project  = $result;
+			$result_tmp = $this->project_model->read_id($id);
+				if($result_tmp){
+					$data_project  = $result_tmp;
 				}
-				
-				$data_project['action'] = site_url('project/edit/'.$id);
-				
-				$this->load->view('layout/header', array('data' => $data));
-				$this->load->view('project/content', array('data_project' => $data_project));
-				$this->load->view('layout/footer'); 
+
+			
+			$data_project['action'] = site_url('project/edit/'.$id);
+			
+			$this->load->view('layout/header', array('data' => $data));
+			$this->load->view('project/content_edit', array('data_project' => $data_project));
+			$this->load->view('layout/footer'); 
 			}
 		
  	}
@@ -214,25 +263,105 @@ class Project extends CI_Controller {
 			
 		
 	}
+
+	public function edit_img2($id, $project_id) {
+
+		
+		if($_FILES['i_img_detail']['name']){
+
+			$get_old_img = $this->project_model->get_old_img2($id);
+		
+			unlink('assets/images/project/detail/' . $get_old_img);
+
+			$new_name = time()."_".$_FILES['i_img_detail']['name'];
+			$new_name = str_replace(" ", "_", $new_name);
+
+			move_uploaded_file(
+	            $_FILES['i_img_detail']['tmp_name'],
+	            'assets/images/project/detail/'.$new_name
+	        );
+
+	        // simpan di table
+		$data['pdi_value']	 				= $new_name;
+		
+		$id = $this->project_model->edit_img2($data, $id);
+
+			redirect("project/form_edit/$project_id");
+
+		}else{
+			redirect("project/form_edit_img2/$id");
+		}
+		 
+
+		 
+			
+		
+	}
+
+	public function delete_img($id) {
+		
+			$get_old_img = $this->project_model->get_old_img($id);
+		
+			unlink('assets/images/project/detail/' . $get_old_img);
+
+			$this->project_model->delete_img($id);
+
+			redirect('project/add_next/?type=1#frame_img');
+	
+
+	}
+
+	public function delete_text($id) {
+
+			$this->project_model->delete_img($id);
+
+			redirect('project/add_next/?type=1#frame_img');
+	
+
+	}
+
+	public function delete_img2($id, $project_id) {
+		
+		
+			$get_old_img = $this->project_model->get_old_img2($id);
+		
+			unlink('assets/images/project/detail/' . $get_old_img);
+
+			$this->project_model->delete_img2($id);
+
+			redirect("project/form_edit/$project_id");
+
+
+	}
+
+	public function delete_text2($id, $project_id) {
+
+			$this->project_model->delete_img2($id);
+
+			redirect("project/form_edit/$project_id");
+	
+
+	}
 	
 
 	public function edit_text($id) {
-		
-		// tambah gambar
 
-		
-						
-
-		
-
-	        // simpan di table
 		$data['pdt_value']	 				= $this->input->post('i_description');
 		
 		$id = $this->project_model->edit_img($data, $id);
 
 		redirect('project/add_next/?type=1#frame_img');
-	
+
+	}
+
+	public function edit_text2($id, $project_id) {
+
+		$data['pdi_value']	 				= $this->input->post('i_description');
 		
+		$id = $this->project_model->edit_img2($data, $id);
+
+		redirect("project/form_edit/$project_id");
+			
 	}
 	
 	public function save() {
@@ -541,43 +670,42 @@ class Project extends CI_Controller {
 	}
 	
 	public function edit($id) {
+		// tambah gambar
 		
-		// upload gambar
+		
+		$new_name = '';
+
 		if($_FILES['i_img']['name']){
+
 			$new_name = time()."_".$_FILES['i_img']['name'];
-			
-			$data_user = $this->access->get_data_user($this->session->userdata('user_id'));
-			
-			$configUpload['upload_path']    = './assets/images/project/';                 #the folder placed in the root of project
-			$configUpload['allowed_types']  = 'gif|jpg|png|bmp|jpeg';       #allowed types description
-			$configUpload['max_size']	= '';
-			$configUpload['max_width'] = '';
-			$configUpload['max_height'] = '';                       #max height
-			$configUpload['encrypt_name']   = false;   
-			$configUpload['file_name'] 		= $new_name;                      	#encrypt name of the uploaded file
-			$this->load->library('upload', $configUpload);                  #init the upload class
-			if(!$this->upload->do_upload('i_img')){
-				$uploadedDetails    = $this->upload->display_errors();
-			}else{
-				$uploadedDetails    = $this->upload->data(); 
-				
-			}
-			$data['project_img'] 					= str_replace(" ", "_", $new_name);
+			$new_name = str_replace(" ", "_", $new_name);
+		
+			$get_old_project_img = $this->project_model->get_old_project_img($id);
+			unlink('assets/images/project/'.$get_old_project_img);
+		
+			move_uploaded_file(
+	            $_FILES['i_img']['tmp_name'],
+	            'assets/images/project/'.$new_name
+	        );
+
+	        $data['project_img'] 					= str_replace(" ", "_", $new_name);
 		}
+		 
 		 
 		 // simpan di table
 		
+		
 		$data['project_name']	 				= $this->input->post('i_name');
-		$data['project_description']	 		= $this->input->post('i_description');
+		//$data['project_description']	 		= $this->input->post('i_description');
 		
-		$id = $this->project_model->edit($data, $id);
 		
-		// hapus project detail categories
-		$this->project_model->delete_detail($id);
-		
+		$this->project_model->edit($data, $id);
 		$data_detail['project_id'] = $id;
-		$data_detail_img['project_id'] = $id;
 		
+
+		$this->project_model->delete_detail($id);
+
+		// save profile categories
 		$q_project_category = mysql_query("select * from profile_categories order by pc_id");
 		while($r_project_category = mysql_fetch_array($q_project_category)){
 			
@@ -587,33 +715,45 @@ class Project extends CI_Controller {
 			}
 			
 		}
-		
-		/*
-		
-		if($_FILES['i_detail_img']['name']){
-			$img_detail_name = time()."_".$_FILES['i_detail_img']['name'];
-		
-			$configUploadDetail['upload_path']    = './assets/images/project/';                 #the folder placed in the root of project
-			$configUploadDetail['allowed_types']  = 'gif|jpg|png|bmp|jpeg';       #allowed types description
-			$configUploadDetail['max_size']	= '100';
-			$configUploadDetail['max_width'] = '1024';
-			$configUploadDetail['max_height'] = '768';                       #max height
-			$configUploadDetail['encrypt_name']   = false;   
-			$configUploadDetail['file_name'] 		= $img_detail_name;                      	#encrypt name of the uploaded file
-			$this->load->library('upload', $configUploadDetail);                  #init the upload class
-			if(!$this->upload->do_upload('i_detail_img')){
-				$uploadedDetails2    = $this->upload->display_errors();
-			}else{
-				$uploadedDetails2    = $this->upload->data(); 
-				
-			}
-			
-			$data_detail_img['pdi_img'] 					= $img_detail_name;
-			$this->project_model->save_detail_img($data_detail_img);
+
+		// save detail images
+		$new_name_detail = '';
+		if(isset($_FILES['i_img_detail']['name']) && $_FILES['i_img_detail']['name'] != "" ){
+		$new_name_detail = time()."_".$_FILES['i_img_detail']['name'];
+		$new_name_detail = str_replace(" ", "_", $new_name_detail);
+
+			move_uploaded_file(
+	            $_FILES['i_img_detail']['tmp_name'],
+	            'assets/images/project/detail/'.$new_name_detail
+	        );
+
+	        // save images
+			$data_detail_img['project_id'] = $id;
+			$data_detail_img['pdi_type'] = 1;
+			$data_detail_img['pdi_value'] = str_replace(" ", "_", $new_name_detail);
+			$this->project_model->save_detail_images($data_detail_img);
 		}
-		*/
+
+		// save text
+			if($this->input->post('i_description')){
+				$data_detail_text['project_id'] = $id;
+				$data_detail_text['pdi_type'] = 2;
+				$data_detail_text['pdi_value'] = $this->input->post('i_description');
+				$this->project_model->save_detail_images($data_detail_text);
+			}
+
 		
-		redirect('profile/?did=4');
+		
+
+			if(isset($_POST['i_button_save'])){
+				redirect('profile');
+			}else if(isset($_POST['i_button_add_image'])){
+				redirect("project/form_edit/$id/?type=1#frame_img");
+			}else if(isset($_POST['i_button_add_text'])){
+				redirect("project/form_edit/$id/?type=2#frame_text");
+			}
+		
+		
 	}
 	
 	public function following($creative_id, $project_id){

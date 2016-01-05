@@ -1,22 +1,4 @@
-<script>
 
-
-function confirm_delete_img(id,control){
-  var a = confirm("Are you sure want to delete this images ?");
-  if(a==true){
-    window.location.href = control+'/'+id;
-  }
-}
-
-function confirm_delete_text(id,control){
-  var a = confirm("Are you sure want to delete this text ?");
-  if(a==true){
-    window.location.href = control+'/'+id;
-  }
-}
-
-
-</script>
 
 <link href="<?= base_url(); ?>assets/css/dropzone/jquery.ezdz.min.css" rel="stylesheet" />
 
@@ -37,7 +19,7 @@ function confirm_delete_text(id,control){
                   <div class="col-md-12" >
                        
                   <div class="form-group">
-                                      <div class="profile_name">Upload Work</div>
+                                      <div class="profile_name">Edit Text</div>
                                      
                              </div>
                        
@@ -45,74 +27,31 @@ function confirm_delete_text(id,control){
             
                         <div class="col-md-12" >
 
-                          <?php
-                          $q_detail_tmp = mysql_query("select 
-                                                        a.* from project_detail_tmp a
-                                                        join projects_tmp b on b.project_tmp_id = a.project_tmp_id
-                                                        where b.user_id = '".$this->session->userdata('user_id')."' 
-                                                        order by pdt_id");
-                          while($r_detail_tmp = mysql_fetch_array($q_detail_tmp)){ 
-                          if($r_detail_tmp['pdt_type']==1){
-                          ?>
+                        
                           <div class="form-group">
 
-                            <img src="<?= site_url() ?>assets/images/project/detail/<?= $r_detail_tmp['pdt_value']?>" style="width:100%;">
+                            
+                           
+                         
                             
                           </div>
-                          <div class="form-group">
-                          <a href="<?= site_url('project/form_edit_img/'.$r_detail_tmp['pdt_id']); ?>" class="btn my_button">EDIT</a>
-                          <a href="javascript:void(0)" onclick="confirm_delete_img(<?= $r_detail_tmp['pdt_id']; ?>, '<?= site_url("project/delete_img/"); ?>')" class="btn my_button">DELETE</a>
-                          </div>
-                          <?php
-                          }else{
-                          ?>
-                          <div class="form-group">
-                           <?= $r_detail_tmp['pdt_value']?>
-                          </div>
-                          <div class="form-group">
-                          <a href="<?= site_url('project/form_edit_text/'.$r_detail_tmp['pdt_id']); ?>" class="btn my_button">EDIT</a>
-                          <a href="javascript:void(0)" onclick="confirm_delete_text(<?= $r_detail_tmp['pdt_id']; ?>, '<?= site_url("project/delete_text/"); ?>')" class="btn my_button">DELETE</a>
                           
-                          </div>
-                          <?php
-                          }
-                        }
-                          ?>
-                          
-                          <?php
-                          if(isset($_GET['type']) && $_GET['type']==1){
-                          ?>
-                          <div class="form-group" id="frame_img">
-                            <div class="img_cover_image">
-                              <input  class="upload_project" type="file" name="i_img_detail" id="i_img_detail" accept="image/png, image/jpeg" />
-                            </div>
-                          </div>
-                          <?php
-                          }else if(isset($_GET['type']) && $_GET['type']==2){
-                          ?>
-
-
-
-                             <div class="form-group" id="frame_text">
+                         
+                         
+                           <div class="form-group" id="frame_text">
                               <div class="profile_description_content">
-                                  <textarea  name="i_description" cols="" rows="10" class="form-control" placeHolder="Enter text here..."><?= $data_project['project_description'] ?></textarea>                
+                                  <textarea  name="i_description" cols="" rows="10" class="form-control" placeHolder="Enter text here..."><?= $data_project['pdi_value']?></textarea>                
                                 </div>
                               </div>  
-
-                          <?php
-                          
-                        }
-                          ?>
+                         
                               <div class="row">
-                                <div class="col-md-4" >
+                                <div class="col-md-3" >
                                   <input class="btn button_save" type="submit" value="SAVE" name="i_button_save"/>
                                 </div>
-                                <div class="col-md-4" >
-                                  <input class="btn button_creatives" type="submit" value="+ ADD IMAGE CONTENT" name="i_button_add_image"/>
+                                <div class="col-md-3" >
+                                  <a class="btn button_creatives" href="javascript: history.back()" />CANCEL</a>
                                 </div>
-                                <div class="col-md-4" >
-                                 <input class="btn button_creatives" type="submit" value="+ ADD TEXT CONTENT" name="i_button_add_text"/>
-                                </div>
+                                
                               </div>
 
 
@@ -139,17 +78,17 @@ function confirm_delete_text(id,control){
 
                         <div class="form-group">
                         <label>Project Title</label>
-                                    <input required type="text" name="i_name" class="form-control" value="<?= $data_project['project_name'] ?>" title="" id="i_name" style="background-color:#f2f2f2;"/>
+                                    <input readonly type="text" name="i_name" class="form-control" value="<?= $data_project['project_name'] ?>" title="" id="i_name" style="background-color:#f2f2f2;"/>
                         </div>
 
-                        <div class="form-group">
+                       <div class="form-group">
                         <label>Project Concentrations</label>
                                     <?php
                                     $q_project_category = mysql_query("select * from profile_categories order by pc_id");
                                     while($r_project_category = mysql_fetch_array($q_project_category)){
                                       $checked = "";
                                       if($data_project['project_name']){
-                                        $q_p_valid = mysql_query("select count(pdct_id) as jumlah from project_detail_categories_tmp where project_tmp_id = '".$data_project['project_tmp_id']."' and pc_id = '".$r_project_category['pc_id']."'");
+                                        $q_p_valid = mysql_query("select count(pdc_id) as jumlah from project_detail_categories where project_id = '".$data_project['project_id']."' and pc_id = '".$r_project_category['pc_id']."'");
                                         $r_p_valid = mysql_fetch_array($q_p_valid);
                                         
                                         if($r_p_valid['jumlah'] > 0){
@@ -159,25 +98,20 @@ function confirm_delete_text(id,control){
                                     ?>
                                 <div>
                                    
-                                        <input type="checkbox" name="i_pc_<?= $r_project_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_project_category['pc_id'] ?>"  <?php echo $checked ?> class="rbutton" />
+                                        <input disabled type="checkbox" name="i_pc_<?= $r_project_category['pc_id'] ?>" value="1" id="i_pc_<?= $r_project_category['pc_id'] ?>"  <?php echo $checked ?> class="rbutton" />
                                         <?= $r_project_category['pc_name']?>
                                   
                               </div>
                               <?php
                               }
                                 ?>
-                        </div> 
+                        </div>
 
                         <div class="form-group">
 
                             <img src="<?= site_url() ?>assets/images/project/<?= $data_project['project_img']?>" style="width:100%;"> 
                             
-                               <div class="img_cover_image_right">
-        
-                           
-                                  <input class="" type="file" name="i_img" id="i_img" accept="image/png, image/jpeg" value="" />
                                
-                                </div>
                              </div>
 
                     </div>
@@ -230,7 +164,7 @@ function confirm_delete_text(id,control){
   $('.upload_project').ezdz({
      
       
-            text: ' + Add Image',
+            text: ' + Edit Image',
      
             validators: {
                 maxWidth:  2000,

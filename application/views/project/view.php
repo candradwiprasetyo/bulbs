@@ -142,7 +142,7 @@ $(function() {
                         	<div class="form-group">
                             
                              	<?php
-                       if($this->session->userdata('user_id')){
+                       if($this->session->userdata('user_id') && $this->session->userdata('user_id') != $data_project['user_id']){
 					   ?>
                                  <div class="col-md-6" >
                                      <div class="row">

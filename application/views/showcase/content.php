@@ -147,7 +147,7 @@ function open_concentration(){
 	$parameter = ($this->session->userdata('parameter')) ? $this->session->userdata('parameter') : "";
   $where = ' where a.project_id <> 0 ';
   if($this->session->userdata('user_id')){
-    $where .= " and c.user_id <> '".$this->session->userdata('user_id')."' ";
+    //$where .= " and c.user_id <> '".$this->session->userdata('user_id')."' ";
   }
                 $q_p  = mysql_query("select a.*, b.creative_wp_name
 									from projects a 
