@@ -8,7 +8,7 @@
 
 <p>Anda meminta untuk mengganti password. Bila ternyata Anda tidak meminta ini, harap abaikan.</p>
 <p>Jika Anda memang ingin mereset password, klik link berikut: </p>
-<p>http://www.8bulbs.co/forgot/form_reset_password/<?= $user_id ?>/<?= $new_password ?></p>
+<p>http://8bulbs.co/forgot/form_reset_password/<?= $user_id ?>/<?= $new_password ?></p>
 
 <p>Saat Agan mengunjungi link tersebut, silahkan memasukkan password baru.
 <p></p>

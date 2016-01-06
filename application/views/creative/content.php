@@ -216,7 +216,10 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
   $parameter = ($this->session->userdata('parameter')) ? $this->session->userdata('parameter') : "";
   $where = ' where a.creative_id <> 0 ';
   if($this->session->userdata('user_id')){
-    //$where .= " and a.user_id <> '".$this->session->userdata('user_id')."' ";
+    if(isset($_GET['reg']) && $_GET['reg'] == 1){
+      $where .= " and a.user_id <> '".$this->session->userdata('user_id')."' ";
+    }
+
   }
 
   //echo $parameter;
@@ -284,7 +287,7 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
                                 </div>
                                 <div class="blue_text">
                                 <?php
-                                if($this->session->userdata('user_id')){
+                                if($this->session->userdata('user_id') && $this->session->userdata('user_id') != $data_creatives['user_id']){
 									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$r_c['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
 									$r_tr_f = mysql_fetch_array($q_tr_f);
 									if($r_tr_f['jumlah'] > 0){

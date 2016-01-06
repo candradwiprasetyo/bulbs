@@ -18,7 +18,10 @@
                                            		<?php
                                                 if(isset($_GET['did']) && $_GET['did'] == 1){
                                                 ?>
-                                                <div class="message">Your username and details about how to reset your password have been sent to you by email</div>
+                                                <div class="message">Your username and details about how to reset your password have been sent to you by email. <br>
+
+
+If there is no incoming messages please check spam</div>
                                                 <?php
                                                 }else if(isset($_GET['err']) && $_GET['err'] == 1){
                                                 ?>

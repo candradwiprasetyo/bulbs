@@ -140,13 +140,13 @@ class Forgot extends CI_Controller {
 
 			$ci = get_instance();
 	        $ci->load->library('email');
-	        
+	        /*
 	        $config['protocol'] = "smtp";
 	        $config['smtp_host'] = "localhost";
 	        $config['smtp_port'] = "465";
 	        $config['smtp_user'] = "donotreplay@bulbs.co";
 	        $config['smtp_pass'] = "y8p!og3@X;ZT";
-	        
+	        */
 	        $config['charset'] = "utf-8";
 	        $config['newline'] = "\r\n";
 	        $config['mailtype'] = 'html';
@@ -159,7 +159,7 @@ class Forgot extends CI_Controller {
 			$data['user_id'] = $user_id;
 			
 	        $ci->email->from('donotreply@8bulbs.co', 'Admin 8bulbs');
-	       // $ci->email->reply_to('bisnisiob@gmail.com', 'Admin 8bulbs');
+	        $ci->email->reply_to('donotreply@8bulbs.co', 'Admin 8bulbs');
 	        $ci->email->to($email);
 	        $ci->email->subject('Reset Password 8bulbs');
 	       

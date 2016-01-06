@@ -77,7 +77,7 @@ class Forgot_model extends CI_Model{
 		$this->db->update('user_forgots', $data);
 	
 		$this->db->trans_complete();
-		return $id;
+		
 	}
 
 	function edit_password($data, $id){
