@@ -57,7 +57,11 @@ $(document).ready(function(){  /* when the page has loaded... */
 												?>
                                             	<div class="message_error">Wrong captcha ! Please try again</div>
                                             	<?php
-												}
+												}else if(isset($_GET['did']) && $_GET['did'] == 1){
+                                                ?>
+                                                <div class="message">Your password have been changed. Please login  </div>
+                                                <?php
+                                                }
 												?>
                                         </div>
                                 

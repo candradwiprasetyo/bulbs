@@ -12,36 +12,40 @@
                                 
                                
                                 <div class="box-body">
-                                      
+                                      <div class="form-group">
+                                        <?php
+                                         if(isset($_GET['err']) && $_GET['err'] == 1){
+                                        ?>
+                                        <div class="message_error">Wrong Confirm Password </div>
+                                        <?php
+                                        }else{
+                                        ?>
                                         
-                                        <div class="form-group">
-                                           		<?php
-                                                if(isset($_GET['did']) && $_GET['did'] == 1){
-                                                ?>
-                                                <div class="message">Your username and details about how to reset your password have been sent to you by email</div>
-                                                <?php
-                                                }else if(isset($_GET['err']) && $_GET['err'] == 1){
-                                                ?>
-                                                <div class="message_error">Invalid email. Please try again !</div>
-                                               
-                                                <?php
-                                                }
-                                                ?>
+                                           		
+                                                <div class="message">Create new password</div>
+                                                
+                                        
+                                        <?php
+                                        }
+                                        ?>
                                         </div>
-                                
                                         
                                          <div class="form-group">
                                            	<div class="col-md-12">
-                                            	<div class="new_title">Forgot Password</div>
+                                            	<div class="new_title">New Password</div>
                                             </div>
                                         </div>
                                       	
                                         
-                                        <form action="<?=site_url('forgot/submit_email')?>" method="post" enctype="multipart/form-data">
+                                        <form action="<?= $action ?>" method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-md-12">
                                                     <div class="form-group">
-                                                    <input required type="text" name="i_email" class="form-control" placeholder="Email" value="" title=""/>
+                                                    <input required type="password" name="i_password" class="form-control" placeholder="New Password" value="" title=""/>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                    <input required type="password" name="i_confirm_password" class="form-control" placeholder="Confirm New Password" value="" title=""/>
                                                     </div>
                                             </div>
                                            
@@ -51,7 +55,7 @@
                                             <div class="col-md-6 col-md-offset-3">
                                                
                                                 <div class="form-group">
-                                                    <input class="btn button_signup" type="submit" value="RESET" />
+                                                    <input class="btn button_signup" type="submit" value="SAVE" />
                                                 </div>
                                             </div>
                                         
