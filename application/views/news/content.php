@@ -76,9 +76,9 @@ $r_last = mysql_fetch_array($q_last);
 
 
  <?php
-                $q_p  = mysql_query("select a.*, b.creative_wp_name, c.news_type_name
+                $q_p  = mysql_query("select a.*, b.user_first_name, b.user_last_name, c.news_type_name
 									from news a 
-									join creatives b on b.user_id = a.user_id
+									join users b on b.user_id = a.user_id
 									join news_types c on c.news_type_id = a.news_type_id
 									where news_id <> '".$data_news['last_id']."'
 									order by news_id");
@@ -92,7 +92,7 @@ $r_last = mysql_fetch_array($q_last);
 					   ?>
 						   
                        
-                            <img src="<?= base_url(); ?>assets/images/project/<?= $r_p['news_img'] ?>" class="<?= $img_class?>" />
+                            <img src="<?= base_url(); ?>assets/images/news/<?= $r_p['news_img'] ?>" class="<?= $img_class?>" />
                           
                         </div>
                         <div class="box-showcaseDesc">

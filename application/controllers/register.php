@@ -12,7 +12,7 @@ class Register extends CI_Controller {
  	
 	public function index() {
 		
-			$data['id'] = $_GET['user_id']; 
+			$data['id'] = $this->session->userdata('user_id');; 
 		
 			$data['title'] = "Register";
 			

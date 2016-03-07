@@ -16,7 +16,7 @@
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost:81/bulbs/';
+$config['base_url'] = 'http://localhost:81/bulbs';
 
 /*
 |--------------------------------------------------------------------------

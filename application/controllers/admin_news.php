@@ -93,7 +93,8 @@ class Admin_news extends CI_Controller {
 		 $data['user_id']	 				= $this->session->userdata('user_id');
 		$data['news_name']	 				= $this->input->post('i_name');
 		$data['news_description'] 			= $this->input->post('editor');
-		
+
+		$data['news_type_id'] 			= 1;
 		
 		
 		if($id){

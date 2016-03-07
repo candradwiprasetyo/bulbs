@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-md-9">
                                 <div class="profile_name"><?= $data_news['news_name'] ?></div>
-                                <div class="profile_location">by <?= $data_news['creative_wp_name'] ?></div>
+                                <div class="profile_location">by <?= $data_news['user_first_name']." ".$data_news['user_last_name'] ?></div>
                                 <div class="profile_description_title">Project Info</div>
                                 <div class="profile_description_content">
                                <?= $data_news['news_description'] ?>
@@ -21,7 +21,7 @@
                         <div class="col-md-3">
                             <div class="profile_name">&nbsp;</div>
                             <div class="profile_location">Published on <?php echo $this->access->format_date($data_news['news_date']);  ?></div>
-                            <!--<div class="profile_description_title">Posted In <?= $data_news['news_type_name'] ?></div>-->
+                            <!--<div class="profile_description_title">Posted In News</div>-->
                             <div class="profile_description_content">
                               
                             </div>

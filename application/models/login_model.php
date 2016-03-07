@@ -77,7 +77,20 @@ class Login_model extends CI_Model{
 		return $id;
 	}
 	
-	
+	function cek_registration($user_id)
+	{
+		$sql = "select b.creative_wp_name 
+				from users a
+				join creatives b on b.user_id = a.user_id
+				where a.user_id = '$user_id' 
+				";
+		
+		$query = $this->db->query($sql);
+		
+		$result = null;
+		foreach ($query->result_array() as $row) $result = ($row);
+		return $result['creative_wp_name'];
+	}
 	
 	
 }

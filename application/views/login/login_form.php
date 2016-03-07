@@ -11,7 +11,7 @@
 			
 			function signup_facebook(link){
 				var type = document.getElementById("t_sign_up3").value;
-				window.location.href = "<?= site_url(); ?>" + "/login/signup_facebook/" + type;
+				window.location.href = "<?= site_url(); ?>" + "login/signup_facebook/" + type;
 				
 				
 		}

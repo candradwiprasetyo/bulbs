@@ -79,7 +79,7 @@ class Login extends CI_Controller {
 	
 	public function submit_login() {
 		
-		
+			
 		
 		$username 	= $this->input->post('i_first_name');
 		$password 	= $this->input->post('i_password');
@@ -97,9 +97,17 @@ class Login extends CI_Controller {
 			$this->session->set_userdata('user_type_id', $user_id[1]);
 			
 			if($user_id[1] == 2){
+				$cek_registration = $this->login_model->cek_registration($user_id[0]);
+
+				if($cek_registration==""){
+					redirect("register");
+				}else{
 					redirect("profile?did=1");
+				}
 			}else{
+
 					redirect("showcase/");
+				
 			}
 		}
 	
@@ -172,6 +180,7 @@ class Login extends CI_Controller {
 				$this->session->set_userdata('user_type_id', $data['user_type_id']);
 				
 				if($data['user_type_id'] == 2){
+
 					redirect("register?user_id=$id");
 				}else{
 					
@@ -186,7 +195,13 @@ class Login extends CI_Controller {
 				$id = $user_id[0];
 				
 				if($user_id[1] == 2){
-					redirect("profile?did=1");
+					$cek_registration = $this->login_model->cek_registration($user_id[0]);
+
+					if($cek_registration==""){
+						redirect("register");
+					}else{
+						redirect("profile?did=1");
+					}
 				}else{
 					redirect("showcase_regular/");
 				}
@@ -231,9 +246,18 @@ class Login extends CI_Controller {
 				$this->session->set_userdata('user_type_id', $user_id[1]);
 				
 				$id = $user_id[0];
+
+
 				
 				if($user_id[1] == 2){
-					redirect("profile?did=1");
+
+					$cek_registration = $this->login_model->cek_registration($user_id[0]);
+
+					if($cek_registration==""){
+						redirect("register");
+					}else{
+						redirect("profile?did=1");
+					}
 				}else{
 					redirect("showcase_regular/");
 				}

@@ -287,21 +287,23 @@ if(isset($_GET['reg']) && $_GET['reg'] == 1){
                                 </div>
                                 <div class="blue_text">
                                 <?php
-                                if($this->session->userdata('user_id') && $this->session->userdata('user_id') != $data_creatives['user_id']){
-									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$r_c['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
-									$r_tr_f = mysql_fetch_array($q_tr_f);
-									if($r_tr_f['jumlah'] > 0){
-									?>
+
+                                //echo $data_creatives['user_id'];
+                                if($this->session->userdata('user_id') != $r_c['user_id']){
+              									$q_tr_f = mysql_query("select count(tr_following_id) as jumlah from tr_following where user_creative_id = '".$r_c['user_id']."' and user_regular_id = '".$this->session->userdata('user_id')."'");
+              									$r_tr_f = mysql_fetch_array($q_tr_f);
+              									if($r_tr_f['jumlah'] > 0){
+              									?>
                                    
-                                 <a href="#" class="follow_<?= $r_c['user_id']?>" id="<?= $r_c['user_id'] ?>" style="text-decoration:none;"><div class="button_unfollow">FOLLOWING</div></a>
+                                <a href="#" class="follow_<?= $r_c['user_id']?>" id="<?= $r_c['user_id'] ?>" style="text-decoration:none;"><div class="button_unfollow">FOLLOWING</div></a>
                                 <?php
-								}else{
+								                }else{
                                 ?>
-								   <a href="#" class="follow_<?= $r_c['user_id']?>" id="<?= $r_c['user_id'] ?>" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
+								                <a href="#" class="follow_<?= $r_c['user_id']?>" id="<?= $r_c['user_id'] ?>" style="text-decoration:none;"><div class="button_creatives">FOLLOW</div></a>
                                 <?php
-								}
-								}
-								?>
+                								}
+                								}
+                								?>
                                 
                               </div>
                                
